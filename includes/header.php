@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="header">
-    <a href="#default" class="logo">CompanyLogo</a>
+    <a href="#default" class="logo"><img src= "images/logo.png"></a>
     <div class="header-right">
         <div class="zoekbalk">
         <form method="get" action="ZoekenProduct.php">
@@ -22,8 +22,9 @@
             <input type="submit" name="toevoegen" value="Search"/>
         </form>
         </div>
-        <a class="active" href="index.php">Home</a>
+        <a class="active" href="index.php">Homepage</a>
         <a href="browse.php">Browse</a>
-        <a href="#about">About</a>
+        <a href="#about">About us</a><br>
+        <a href="#winkelmand">Winkelmand <img class='mand' src='images/winkelmand.jpg'</a>
     </div>
 </div>
