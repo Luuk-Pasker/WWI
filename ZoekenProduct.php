@@ -4,8 +4,16 @@ include "db_config.php";
 
 
 function ZoekPoduct($connection, $zoek) {
-    $statement = mysqli_prepare($connection, "select * from stockitems where StockItemName like CONCAT('%',?,'%') or SearchDetails like CONCAT('%',?,'%') or Tags like CONCAT('%',?,'%') order by StockItemName");
-    mysqli_stmt_bind_param($statement,'sss', $zoek, $zoek, $zoek);
+    $statement = mysqli_prepare($connection, "select distinct * from stockitems sitem
+join stockitemstockgroups sgroup on sgroup.StockItemID = sitem.StockItemID
+join stockgroups sgroups on sgroup.StockGroupID = sgroups.StockGroupID
+where StockItemName like CONCAT('%',?,'%') 
+or SearchDetails like CONCAT('%',?,'%') 
+or Tags like CONCAT('%',?,'%') 
+or StockGroupName = ? 
+or sitem.StockItemID = ? 
+order by StockItemName");
+    mysqli_stmt_bind_param($statement,'ssssi', $zoek, $zoek, $zoek, $zoek, $zoek);
     mysqli_stmt_execute($statement);
     $result = mysqli_stmt_get_result($statement);
     return $result;
@@ -30,11 +38,17 @@ function ZoekPoduct($connection, $zoek) {
 if(isset($_GET["toevoegen"])) {
     $zoek = $_GET["zoek"];
     $result = ZoekPoduct($connection, $zoek);
-    foreach ($result as $product) {
-        print($product["StockItemName"] . " " . $product["RecommendedRetailPrice"] . "<br>");
+    if(mysqli_num_rows($result) > 0) {
+        foreach ($result as $product) {
+            print($product["StockItemName"] . " " . $product["RecommendedRetailPrice"] . "<br>");
+        }
+        header('location: browse.php');
+        exit();
+    } else {
+        header('location: NiksGevonden.php');
+        exit();
     }
-    header('location: browse.php');
-    exit();
+
 }
 
 include "includes/footer.php";
