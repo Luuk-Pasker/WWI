@@ -1,13 +1,5 @@
-<html>
-<head>
-    <title>Pagination</title>
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
 <?php
+include "includes/header.php";
 
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
@@ -17,24 +9,17 @@ if (isset($_GET['page'])) {
 $no_of_records_per_page = 25;
 $offset = ($page-1) * $no_of_records_per_page;
 
-$conn=mysqli_connect("localhost","root","","wideworldimporters");
-// Check connection
-if (mysqli_connect_errno()){
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    die();
-}
-
 $total_pages_sql = "SELECT COUNT(*) FROM stockitems";
-$result = mysqli_query($conn,$total_pages_sql);
+$result = mysqli_query($connection,$total_pages_sql);
 $total_rows = mysqli_fetch_array($result)[0];
 $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-$sql = "SELECT * FROM stockitems LIMIT $offset, $no_of_records_per_page";
-$res_data = mysqli_query($conn,$sql);
+$sql = "SELECT * FROM stockitems si JOIN stockitemholdings sih ON si.StockItemId = sih.StockItemId ORDER BY si.StockItemName LIMIT $offset, $no_of_records_per_page";
+$res_data = mysqli_query($connection,$sql);
 while($row = mysqli_fetch_array($res_data)){
-    print($row['StockItemID'] . $row['StockItemName'] . "<br>");
+    print($row["StockItemName"] . " €" . $row["UnitPrice"] . " Aantal:" . $row["QuantityOnHand"] . "<br>");
 }
-mysqli_close($conn);
+mysqli_close($connection);
 ?>
 <ul class="pagination">
     <li><a href="?page=1">First</a></li>
@@ -53,5 +38,6 @@ mysqli_close($conn);
     </li>
     <li><a href="?page=<?php echo $total_pages; ?>">Last</a></li>
 </ul>
-</body>
-</html>
+
+<?php
+include "includes/footer.php";
