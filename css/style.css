@@ -52,3 +52,18 @@ body {
         float: none;
     }
 }
+
+.zoekbalk {
+    float:right;
+    font-size: 18px;
+}
+
+input[type=submit] {
+    border-radius: 4px;
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    border: 0px;
+}

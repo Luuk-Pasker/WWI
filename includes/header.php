@@ -16,6 +16,12 @@
 <div class="header">
     <a href="#default" class="logo">CompanyLogo</a>
     <div class="header-right">
+        <div class="zoekbalk">
+        <form method="get" action="ZoekenProduct.php">
+            <input type="text" name="zoek" placeholder="Search.." value=""/>
+            <input type="submit" name="toevoegen" value="Search"/>
+        </form>
+        </div>
         <a class="active" href="index.php">Home</a>
         <a href="browse.php">Browse</a>
         <a href="#about">About</a>

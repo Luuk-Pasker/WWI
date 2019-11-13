@@ -13,10 +13,15 @@ function ZoekPoduct($connection, $zoek) {
 
 ?>
 
-<form method="get" action="ZoekenProduct.php">
+<!--<form method="get" action="ZoekenProduct.php">
     <label>Zoek Product</label>
     <input type="text" name="zoek" value=""/><br>
     <input type="submit" name="toevoegen" value="Toevoegen"/>
+</form>-->
+<form method="get" action="ZoekenProduct.php">
+    <label for="0-5">0-5</label><input type="checkbox" id="0-5"><br>
+    <label for="5-50">5-50</label><input type="checkbox" id="5-50"><br>
+    <label for="50-100">50-100</label><input type="checkbox" id="50-100"><br>
 </form>
 
 
@@ -28,6 +33,8 @@ if(isset($_GET["toevoegen"])) {
     foreach ($result as $product) {
         print($product["StockItemName"] . " " . $product["RecommendedRetailPrice"] . "<br>");
     }
+    header('location: browse.php');
+    exit();
 }
 
 include "includes/footer.php";
