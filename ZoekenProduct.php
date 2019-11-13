@@ -49,7 +49,31 @@ if(isset($_GET["toevoegen"])) {
         exit();
     }
 
+}*/
+
+
+function PrintSearchResults($search) {
+    $zoek = $search;
+    $host = "localhost";
+    $databasename = "wideworldimporters";
+    $user = "root";
+    $pass = ""; //eigen password invullen
+    $port = 3306;
+    $connection = mysqli_connect($host, $user, $pass, $databasename, $port);
+    $result = ZoekPoduct($connection, $zoek);
+    if(mysqli_num_rows($result) > 0) {
+        foreach ($result as $product) {
+            print($product["StockItemName"] . " " . $product["RecommendedRetailPrice"] . "<br>");
+        }
+    } else {
+        header('location: NiksGevonden.php');
+        exit();
+    }
 }
 
-include "includes/footer.php";
+// aanroepen om resultaten te printen
+/*if(isset($_GET["toevoegen"])) {
+    PrintSearchResults($_GET["zoek"]);
+}*/
+//include "includes/footer.php";
 ?>
