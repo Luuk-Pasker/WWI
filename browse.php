@@ -56,10 +56,24 @@ if (isset($_GET['id'])){
 
 
 $res_data = mysqli_query($connection,$sql);
-while($row = mysqli_fetch_array($res_data)){
+$zoekopdracht = "";
+$res_data = mysqli_query($connection,$sql);
+if (isset($_GET['id']) && $_GET["id"] != 20) {
 
-    print($row["StockItemName"] . " €" . $row["UnitPrice"] . " Aantal:" . $row["QuantityOnHand"] . "<br>");
+    while ($row = mysqli_fetch_array($res_data)) {
 
+        print($row["StockItemName"] . " €" . $row["UnitPrice"] . " Aantal:" . $row["QuantityOnHand"] . "<br>");
+
+    }
+    unset($_GET["zoek"]);
+} elseif(isset($_GET["toevoegen"])){
+    $sID = $_GET["zoek"];
+    $_GET["page"] = 1;
+    $_GET["id"] = $_GET["zoek"];
+    $zoekopdracht = $_GET["zoek"];
+    $zoekopdracht = "zoek=" . $zoekopdracht . "&toevoegen=Search&";
+    $total_pages = TelZoek($connection, $_GET["zoek"]);
+    PrintSearchResults($_GET["zoek"], $offset, $no_of_records_per_page);
 }
 
 mysqli_close($connection);
@@ -81,7 +95,7 @@ mysqli_close($connection);
         if($page <= 1){
             echo '#';
         } elseif($sID == 0) {
-            echo "?page=".($page - 1);
+            echo "?" . $zoekopdracht . "page=".($page - 1);
         } else {
             echo "?page=".($page - 1) . "&id=" . $sID;
         }
@@ -104,7 +118,7 @@ mysqli_close($connection);
             echo '#';
         }
         elseif($sID == 0){
-            echo "?page=" . ($page + 1);
+            echo "?" . $zoekopdracht . "page=" . ($page + 1);
         } else {
             echo "?page=" . ($page + 1) . "&id=" . $sID;
         }

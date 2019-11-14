@@ -24,7 +24,7 @@ order by StockItemName
     return $pageszoekfunctie;
 }
 
-function ZoekPoduct($connection, $zoek, $pages) {
+function ZoekPoduct($connection, $zoek, $no_of_records_per_page, $offset) {
     $statement = mysqli_prepare($connection, "select distinct * from stockitems sitem
 join stockitemstockgroups sgroup on sgroup.StockItemID = sitem.StockItemID
 join stockgroups sgroups on sgroup.StockGroupID = sgroups.StockGroupID
@@ -33,9 +33,7 @@ or SearchDetails like CONCAT('%',?,'%')
 or Tags like CONCAT('%',?,'%')
 or StockGroupName = ?
 or sitem.StockItemID = ?
-limit 25
-
-");
+limit $no_of_records_per_page, $offset");
 
     mysqli_stmt_bind_param($statement,'ssssi', $zoek, $zoek, $zoek, $zoek, $zoek);
     mysqli_stmt_execute($statement);
@@ -76,7 +74,7 @@ limit 25
 }*/
 
 
-function PrintSearchResults($search) {
+function PrintSearchResults($search, $no_of_records_per_page, $offset) {
     GLOBAL $pageszoekfunctie;
     $zoek = $search;
     $host = "localhost";
@@ -85,13 +83,15 @@ function PrintSearchResults($search) {
     $pass = ""; //eigen password invullen
     $port = 3306;
     $connection = mysqli_connect($host, $user, $pass, $databasename, $port);
-    $result = ZoekPoduct($connection, $zoek, $pageszoekfunctie);
+    $result = ZoekPoduct($connection, $zoek, $no_of_records_per_page, $offset);
     if(mysqli_num_rows($result) > 0) {
         foreach ($result as $product) {
             print($product["StockItemName"] . " " . $product["RecommendedRetailPrice"] . "<br>");
         }
     } else {
-        header('location: NiksGevonden.php');
+//        header('location: NiksGevonden.php');
+        echo "<br> $no_of_records_per_page";
+        echo " <br>$offset";
         exit();
     }
 }

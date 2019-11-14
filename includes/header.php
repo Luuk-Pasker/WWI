@@ -17,7 +17,7 @@
     <a href="#default" class="logo"><img src= "images/logo.png"></a>
     <div class="header-right">
         <div class="zoekbalk">
-        <form method="get" action="browse test.php">
+        <form method="get" action="browse.php">
             <input type="text" name="zoek" placeholder="Search.." value=""/>
             <input type="submit" name="toevoegen" value="Search"/>
         </form>
