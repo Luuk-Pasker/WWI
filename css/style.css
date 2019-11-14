@@ -72,6 +72,16 @@ input[type=submit] {
     width: 35px;
 }
 
-.login {
+.alles{
+    background: dodgerblue;
+    font-family: "Comic Sans MS";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.email{
 
 }
