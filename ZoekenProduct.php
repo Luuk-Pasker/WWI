@@ -3,7 +3,8 @@
 include "db_config.php";
 
 
-function ZoekPoduct($connection, $zoek) {
+function TelZoek($connection, $zoek){
+
     $statement = mysqli_prepare($connection, "select distinct * from stockitems sitem
 join stockitemstockgroups sgroup on sgroup.StockItemID = sitem.StockItemID
 join stockgroups sgroups on sgroup.StockGroupID = sgroups.StockGroupID
@@ -12,7 +13,30 @@ or SearchDetails like CONCAT('%',?,'%')
 or Tags like CONCAT('%',?,'%')
 or StockGroupName = ?
 or sitem.StockItemID = ?
-order by StockItemName");
+order by StockItemName
+");
+
+    mysqli_stmt_bind_param($statement,'ssssi', $zoek, $zoek, $zoek, $zoek, $zoek);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $result = mysqli_num_rows($result);
+    $pageszoekfunctie = ceil($result / 25);
+    return $pageszoekfunctie;
+}
+
+function ZoekPoduct($connection, $zoek, $pages) {
+    $statement = mysqli_prepare($connection, "select distinct * from stockitems sitem
+join stockitemstockgroups sgroup on sgroup.StockItemID = sitem.StockItemID
+join stockgroups sgroups on sgroup.StockGroupID = sgroups.StockGroupID
+where StockItemName like CONCAT('%',?,'%')
+or SearchDetails like CONCAT('%',?,'%')
+or Tags like CONCAT('%',?,'%')
+or StockGroupName = ?
+or sitem.StockItemID = ?
+limit 25
+
+");
+
     mysqli_stmt_bind_param($statement,'ssssi', $zoek, $zoek, $zoek, $zoek, $zoek);
     mysqli_stmt_execute($statement);
     $result = mysqli_stmt_get_result($statement);
@@ -53,6 +77,7 @@ order by StockItemName");
 
 
 function PrintSearchResults($search) {
+    GLOBAL $pageszoekfunctie;
     $zoek = $search;
     $host = "localhost";
     $databasename = "wideworldimporters";
@@ -60,7 +85,7 @@ function PrintSearchResults($search) {
     $pass = ""; //eigen password invullen
     $port = 3306;
     $connection = mysqli_connect($host, $user, $pass, $databasename, $port);
-    $result = ZoekPoduct($connection, $zoek);
+    $result = ZoekPoduct($connection, $zoek, $pageszoekfunctie);
     if(mysqli_num_rows($result) > 0) {
         foreach ($result as $product) {
             print($product["StockItemName"] . " " . $product["RecommendedRetailPrice"] . "<br>");
