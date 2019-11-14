@@ -24,7 +24,9 @@
         </div>
         <a class="active" href="index.php">Homepage</a>
         <a href="browse.php">Browse</a>
-        <a href="#about">About us</a><br>
-        <a href="#winkelmand">Winkelmand <img class='mand' src='images/winkelmand.jpg'></a>
+        <a href="#about">About us</a>
+        <a href="#shoppingcart">Shopping cart <img class='mand' src='images/winkelmand.jpg'></a>
+        <a href="../login.php">Login</a>
+
     </div>
 </div>
