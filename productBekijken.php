@@ -36,9 +36,6 @@
                     $voorraad = $row["QuantityOnHand"];
                     print("<div class='nogopvoorraad'>" . $voorraad . " in stock.</div><br>");
                     print("</div>");
-
-
-
                 }
                 //
 
@@ -53,7 +50,7 @@
                     </form>
                     <?php
                     }else {
-                        print("No items in stock.");
+                        print("<div class= 'noitem'>" . "No items in stock</div>");
                     }
                     ?>
 
