@@ -41,6 +41,8 @@
 
                 }
                 //
+
+                if ($voorraad>0) {
                 ?>
 
                <!aantallen selecteer formulee/toevoegen aan winkelmand knop>
@@ -49,6 +51,11 @@
                         <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
                         Amount: <input id="aantalx" type="number" name="quantity" min="1" max="<?php print("$voorraad"); ?>">
                     </form>
+                    <?php
+                    }else {
+                        print("No items in stock.");
+                    }
+                    ?>
 
                 </div>
                 <!>
