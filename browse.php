@@ -1,5 +1,6 @@
 <?php
 include "includes/header.php";
+include "ZoekenProduct.php";
 session_start();
 
 
