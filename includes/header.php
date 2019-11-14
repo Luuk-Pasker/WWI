@@ -25,6 +25,6 @@
         <a class="active" href="index.php">Homepage</a>
         <a href="browse.php">Browse</a>
         <a href="#about">About us</a><br>
-        <a href="#winkelmand">Winkelmand <img class='mand' src='images/winkelmand.jpg'</a>
+        <a href="#winkelmand">Winkelmand <img class='mand' src='images/winkelmand.jpg'></a>
     </div>
 </div>
