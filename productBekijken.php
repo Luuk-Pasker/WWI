@@ -46,7 +46,7 @@
                <!aantallen selecteer formulee/toevoegen aan winkelmand knop>
                 <div class="aantallen">
                     <form>
-                        <input id="toevoegenaanwinkelmand" type="submit" value="add to shopping cart">
+                        <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
                         Amount: <input id="aantalx" type="number" name="quantity" min="1" max="<?php print("$voorraad"); ?>">
                     </form>
 
