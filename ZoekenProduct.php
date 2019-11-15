@@ -89,9 +89,7 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
             print($product["StockItemName"] . " " . $product["RecommendedRetailPrice"] . "<br>");
         }
     } else {
-//        header('location: NiksGevonden.php');
-        echo "<br> $no_of_records_per_page";
-        echo " <br>$offset";
+        header('location: NiksGevonden.php');
         exit();
     }
 }

@@ -26,12 +26,20 @@
   <component name="ProjectId" id="1TYL6U2ftAKcP9WjF9gGitxYcVG" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/styles.css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\WWI\css" />
+      <recent name="C:\xampp\htdocs\WWI\styles.css" />
+      <recent name="C:\xampp\htdocs\WWI\oefenen" />
+      <recent name="C:\xampp\htdocs\WWI\productbekijken.css" />
       <recent name="C:\xampp\htdocs\WWi" />
-      <recent name="C:\xampp\htdocs\WWi\images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\WWI\styles.css" />
+      <recent name="C:\xampp\htdocs\WWI" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -58,6 +66,8 @@
       <updated>1573723583290</updated>
       <workItem from="1573723586429" duration="4358000" />
       <workItem from="1573742010371" duration="1718000" />
+      <workItem from="1573757930483" duration="1894000" />
+      <workItem from="1573810384700" duration="2351000" />
     </task>
     <servers />
   </component>
