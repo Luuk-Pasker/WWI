@@ -11,12 +11,12 @@
         <?php
         include "includes/header.php";
         ?>
-        //
+        <!---->
 
             <div class="container">
 
                 <?php
-                $ItemID = 120;
+                $ItemID = 140;
 
                 //Queery voor het selecteren van het bepaalde item id
                 $sql = "SELECT * FROM stockitems S LEFT JOIN stockitemholdings H ON S.StockItemID = H.StockItemID WHERE S.StockItemID = $ItemID";
@@ -31,7 +31,7 @@
 
                     print("<div class='test'>");
                     print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
-                    print("<div class='beschrijving2'>Discription:</div><BR>" ."<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
+                    print("<div class='beschrijving2'>Description:</div><BR>" ."<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
                     print("<div class='prijs'>" . "€" . $row["UnitPrice"] . "</div><br>");
                     $voorraad = $row["QuantityOnHand"];
                     print("<div class='nogopvoorraad'>" . $voorraad . " in stock.</div><br>");
