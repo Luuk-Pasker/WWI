@@ -1,3 +1,8 @@
+<?php
+$active = "login";
+include "includes/header.php";
+?>
+
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 <div class="alles">
@@ -27,3 +32,7 @@
         </div>
     </form>
 </div>
+
+<?php
+include "includes/footer.php";
+?>

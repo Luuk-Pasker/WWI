@@ -18,10 +18,8 @@
 
                 <?php
 
-                $ItemID = 140;
-
-                if(isset($_GET["ItemID"])){
-                    $ItemID = $_GET["ItemID"];
+                if(isset($_GET["id"])){
+                    $ItemID = $_GET["id"];
                 }else{
                     $ItemID = 120;
                 }
