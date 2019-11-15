@@ -5,7 +5,8 @@ include "includes/header.php";
 <div class="balk"></div>
     <div class="row">
         <div class="column">
-            <img src="images/img_nature_wide.jpg" style="width:100%;">
+            <img src="images/img_nature_wide.jpg" style="width:100%;"><br>
+            hallo wereld
         </div>
         <div class="column">
             <img src="images/img_nature_wide.jpg" style="width:100%;">
@@ -31,10 +32,10 @@ include "includes/header.php";
 
     <br>
 
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
+    <div class="paginaindex" style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)">pagina 1</span>
+        <span class="dot" onclick="currentSlide(2)">pagina 2</span>
+        <span class="dot" onclick="currentSlide(3)">pagina 3</span>
     </div>
 
     <script>

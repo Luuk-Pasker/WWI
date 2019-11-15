@@ -29,7 +29,7 @@
                 </form>");
         /*alle producten weergeven KNOP*/
 
-
+            /*print alle namen op de knoppen*/
             print("<form method='get'>");
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
@@ -37,8 +37,9 @@
                 print("<button type='submit' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
             }
             print("</form>");
+            /*print alle namen op de knoppen*/
 
-
+            /*bepaalen van het id van de geselecteerde category*/
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $_SESSION['id'] = $_GET['id'];
@@ -46,35 +47,45 @@
             } else {
                 $sID = 0;
             }
+            /*bepaalen van het id van de geselecteerde category*/
 
-
+            /*opvragen van het pagina nummer*/
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
             } else {
                 $page = 1;
             }
+            /*opvragen van het pagina nummer*/
 
+            /*bepalen aantal producten per pagina*/
             $no_of_records_per_page = 25;
             $offset = ($page-1) * $no_of_records_per_page;
+            /*bepalen aantal producten per pagina*/
 
-
+            /*ophalen van hoeveelheid producten binnen een geselecteerde category*/
             if (isset($_GET['id'])) {
                 $total_pages_sql = "SELECT COUNT(DISTINCT StockItemID) FROM stockitemstockgroups WHERE StockGroupID = $id";
             } else {
                 $total_pages_sql = "SELECT COUNT(DISTINCT StockItemID) FROM stockitemstockgroups";
             }
+            /*ophalen van hoeveelheid producten binnen een geselecteerde category*/
 
+            /*resultaten van voorgaande query ophalen*/
             $result = mysqli_query($connection,$total_pages_sql);
             $total_rows = mysqli_fetch_array($result)[0];
             $total_pages = ceil($total_rows / $no_of_records_per_page);
+            /*resultaten van voorgaande query ophalen*/
 
+            /*ophalen van alle producten binnen een geselecteerde category*/
             if (isset($_GET['id'])){
                 $sql = "SELECT * FROM stockitemstockgroups sisg JOIN stockitems si ON sisg.StockItemID = si.StockItemID JOIN stockitemholdings sih ON si.StockItemId = sih.StockItemId WHERE sisg.StockGroupID = $id ORDER BY si.StockItemName LIMIT $offset, $no_of_records_per_page";
             } else {
                 $sql = "SELECT * FROM stockitemstockgroups sisg JOIN stockitems si ON sisg.StockItemID = si.StockItemID JOIN stockitemholdings sih ON si.StockItemId = sih.StockItemId ORDER BY si.StockItemName LIMIT $offset, $no_of_records_per_page";
             }
+            /*ophalen van alle producten binnen een geselecteerde category*/
 
 
+            /*printen van de resultaten op het scherm*/
             $res_data = mysqli_query($connection,$sql);
             $zoekopdracht = "";
             if (isset($_GET['id'])) {
@@ -100,7 +111,9 @@
 
                 }
             }
+            /*printen van de resultaten op het scherm*/
 
+            /*knoppenstructuur van de paginaindeling*/
             mysqli_close($connection);
             ?>
             <ul class="pagination">
@@ -157,6 +170,7 @@
                     }
                     ?>">Last</a></li>
             </ul>
+            /*knoppenstructuur van de paginaindeling*/
 
             <?php
             include "includes/footer.php";
