@@ -86,11 +86,11 @@ img {vertical-align: middle;}
 /* The dots/bullets/indicators */
 .dot {
     cursor: pointer;
+    margin: 10px;
     height: 15px;
-    width: 15px;
-    margin: 0 2px;
+    width: 30%;
+    float: left;
     background-color: #bbb;
-    border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
 }
