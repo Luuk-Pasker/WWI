@@ -20,7 +20,7 @@
         <div class="zoekbalk">
         <form method="get" action="browse.php">
             <input type="text" name="zoek" placeholder="Search.." value=""/>
-            <input type="submit" name="toevoegen" value="Search"/>
+            <input type="submit" name="toevoegenlit" value="Search"/>
         </form>
         </div>
         <a class="active" href="index.php">Homepage</a>
