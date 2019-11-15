@@ -2,7 +2,7 @@
     <html>
         <head>
             <title>ProductBekijken</title>
-            <link rel="stylesheet" type="text/css" href="productBekijken.css">
+            <link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 
         </head>
 
@@ -11,24 +11,20 @@
         <?php
         include "includes/header.php";
         ?>
-<<<<<<< HEAD
-        <!---->
-=======
 
->>>>>>> 680a755c0c8882c13269c01a7a47de88e4208b5c
+        <!---->
 
             <div class="container">
 
                 <?php
-<<<<<<< HEAD
+
                 $ItemID = 140;
-=======
+
                 if(isset($_GET["ItemID"])){
                     $ItemID = $_GET["ItemID"];
                 }else{
                     $ItemID = 120;
                 }
->>>>>>> 680a755c0c8882c13269c01a7a47de88e4208b5c
 
                 //Queery voor het selecteren van het bepaalde item id
                 $sql = "SELECT * FROM stockitems S LEFT JOIN stockitemholdings H ON S.StockItemID = H.StockItemID WHERE S.StockItemID = $ItemID";
