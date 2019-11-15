@@ -1,28 +1,16 @@
 <?php
 include "includes/header.php";
 ?>
-<style>
-    .column {
-        float: left;
-        width: 33.33%;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-</style>
+<div class="balk"></div>
     <div class="row">
         <div class="column">
-            <img src="images/img_nature_wide.jpg" style="width:100%; padding: 20px;">
+            <img src="images/img_nature_wide.jpg" style="width:100%;">
         </div>
         <div class="column">
-            <img src="images/img_nature_wide.jpg" style="width:100%; padding: 20px;">
+            <img src="images/img_nature_wide.jpg" style="width:100%;">
         </div>
         <div class="column">
-            <img src="images/img_nature_wide.jpg" style="width:100%; padding: 20px;">
+            <img src="images/img_nature_wide.jpg" style="width:100%;">
         </div>
     </div>
     <div class="row">
