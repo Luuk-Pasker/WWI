@@ -11,12 +11,16 @@
         <?php
         include "includes/header.php";
         ?>
-        //
+
 
             <div class="container">
 
                 <?php
-                $ItemID = 120;
+                if(isset($_GET["ItemID"])){
+                    $ItemID = $_GET["ItemID"];
+                }else{
+                    $ItemID = 120;
+                }
 
                 //Queery voor het selecteren van het bepaalde item id
                 $sql = "SELECT * FROM stockitems S LEFT JOIN stockitemholdings H ON S.StockItemID = H.StockItemID WHERE S.StockItemID = $ItemID";
