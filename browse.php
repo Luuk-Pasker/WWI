@@ -60,8 +60,8 @@ $zoekopdracht = "";
 if (isset($_GET['id'])) {
 
     while ($row = mysqli_fetch_array($res_data)) {
-        
-        print("<a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . " Aantal:" . $row["QuantityOnHand"] . "</a><br>");
+
+        print("<a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a><br>");
 
     }
     unset($_GET["zoek"]);
@@ -76,7 +76,7 @@ if (isset($_GET['id'])) {
 } else {
     while ($row = mysqli_fetch_array($res_data)) {
 
-        print("<a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . " Aantal:" . $row["QuantityOnHand"] . "</a><br>");
+        print("<a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a><br>");
 
     }
 }
