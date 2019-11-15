@@ -1,28 +1,18 @@
 <?php
+$active = "home";
 include "includes/header.php";
 ?>
-<style>
-    .column {
-        float: left;
-        width: 33.33%;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-</style>
+<div class="balk"></div>
     <div class="row">
         <div class="column">
-            <img src="images/img_nature_wide.jpg" style="width:100%; padding: 20px;">
+            <img src="images/img_nature_wide.jpg" style="width:100%;"><br>
+            hallo wereld
         </div>
         <div class="column">
-            <img src="images/img_nature_wide.jpg" style="width:100%; padding: 20px;">
+            <img src="images/img_nature_wide.jpg" style="width:100%;">
         </div>
         <div class="column">
-            <img src="images/img_nature_wide.jpg" style="width:100%; padding: 20px;">
+            <img src="images/img_nature_wide.jpg" style="width:100%;">
         </div>
     </div>
     <div class="row">
@@ -42,10 +32,10 @@ include "includes/header.php";
 
     <br>
 
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
+    <div class="paginaindex" style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)">pagina 1</span>
+        <span class="dot" onclick="currentSlide(2)">pagina 2</span>
+        <span class="dot" onclick="currentSlide(3)">pagina 3</span>
     </div>
 
     <script>

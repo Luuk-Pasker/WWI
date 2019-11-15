@@ -1,4 +1,5 @@
 <?php
+$active = "cart";
 include "includes/header.php";
 ?>
 
