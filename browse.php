@@ -3,13 +3,12 @@ include "includes/header.php";
 include "ZoekenProduct.php";
 session_start();
 
-
-
 $sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
 $result = mysqli_query($connection, $sql);
 
 print("<form method=\"post\" action=\"/WWI/browse.php\">
-    <button type=\"submit\">Everything</button></form>");
+    <button type=\"submit\">Everything</button>
+    </form>");
 
 print("<form method='get'>");
 
@@ -58,12 +57,11 @@ if (isset($_GET['id'])){
 
 $res_data = mysqli_query($connection,$sql);
 $zoekopdracht = "";
-$res_data = mysqli_query($connection,$sql);
-if (isset($_GET['id']) && $_GET["id"] != 20) {
+if (isset($_GET['id'])) {
 
     while ($row = mysqli_fetch_array($res_data)) {
-
-        print($row["StockItemName"] . " €" . $row["UnitPrice"] . " Aantal:" . $row["QuantityOnHand"] . "<br>");
+        
+        print("<a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . " Aantal:" . $row["QuantityOnHand"] . "</a><br>");
 
     }
     unset($_GET["zoek"]);
@@ -75,6 +73,12 @@ if (isset($_GET['id']) && $_GET["id"] != 20) {
     $zoekopdracht = "zoek=" . $zoekopdracht . "&toevoegen=Search&";
     $total_pages = TelZoek($connection, $_GET["zoek"]);
     PrintSearchResults($_GET["zoek"], $offset, $no_of_records_per_page);
+} else {
+    while ($row = mysqli_fetch_array($res_data)) {
+
+        print("<a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . " Aantal:" . $row["QuantityOnHand"] . "</a><br>");
+
+    }
 }
 
 mysqli_close($connection);
