@@ -2,7 +2,7 @@
     <html>
         <head>
             <title>ProductBekijken</title>
-            <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" type="text/css" href="productBekijken.css">
 
         </head>
 
@@ -18,7 +18,7 @@
                 <?php
                 $ItemID = 120;
 
-                //Queery voor het selecteren van het bepaalde item i    d
+                //Queery voor het selecteren van het bepaalde item id
                 $sql = "SELECT * FROM stockitems S LEFT JOIN stockitemholdings H ON S.StockItemID = H.StockItemID WHERE S.StockItemID = $ItemID";
                 $result = mysqli_query($connection, $sql);
                 //
@@ -39,10 +39,10 @@
                 }
                 //
 
+                //aantallen selecteer formulee/toevoegen aan winkelmand knop
                 if ($voorraad>0) {
                 ?>
 
-               <!aantallen selecteer formulee/toevoegen aan winkelmand knop>
                 <div class="aantallen">
                     <form>
                         <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
