@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="header">
-    <a href="#default" class="logo"><img src= "images/logo.png"></a>
+    <a href="index.php" class="logo"><img src= "images/logo.png"></a>
     <div class="header-right">
         <div class="zoekbalk">
         <form method="get" action="browse.php">
