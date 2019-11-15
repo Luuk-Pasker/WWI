@@ -23,9 +23,9 @@
             <input type="submit" name="toevoegen" value="Search"/>
         </form>
         </div>
-        <a class="active" href="index.php">Homepage</a>
-        <a href="browse.php">Browse</a>
-        <a href="#about">About us</a>
+        <a <?php if($active == "home"){echo 'class="active"';} ?> href="index.php">Homepage</a>
+        <a <?php if($active == "browse"){echo 'class="active"';} ?> href="browse.php">Browse</a>
+        <a <?php if($active == "about"){echo 'class="active"';} ?> href="#about">About us</a>
         <a href="winkelmand.php">Shopping cart <img class='mand' src='images/winkelmand.jpg'></a>
         <a href="login.php">Login</a>
 

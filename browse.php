@@ -1,4 +1,5 @@
 <?php
+$active = "browse";
 include "includes/header.php";
 include "ZoekenProduct.php";
 session_start();
