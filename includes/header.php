@@ -3,6 +3,7 @@
 <head>
     <?php
     include "db_config.php";
+    $active="";
     ?>
     <title>
         World Wide Importers
