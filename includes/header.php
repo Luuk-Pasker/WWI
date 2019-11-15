@@ -8,6 +8,7 @@
         World Wide Importers
     </title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/slider.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,7 +27,7 @@
         <a href="browse.php">Browse</a>
         <a href="#about">About us</a>
         <a href="#shoppingcart">Shopping cart <img class='mand' src='images/winkelmand.jpg'></a>
-        <a href="../login.php">Login</a>
+        <a href="login.php">Login</a>
 
     </div>
 </div>
