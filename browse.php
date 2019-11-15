@@ -34,7 +34,8 @@
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
             {
-                print("<button type='submit' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
+
+                print("<button class= 'button' type='submit' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button></div><BR>");
             }
             print("</form>");
             /*print alle namen op de knoppen*/
@@ -116,6 +117,8 @@
             /*knoppenstructuur van de paginaindeling*/
             mysqli_close($connection);
             ?>
+
+
             <ul class="pagination">
                 <li><a href="<?php
                     if ($sID == 0){

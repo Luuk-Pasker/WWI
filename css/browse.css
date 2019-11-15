@@ -1,0 +1,14 @@
+.button{
+    background-color: deepskyblue;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20x;
+    margin: 4px 2px;
+    cursor: pointer;
+    color: floralwhite;
+    font-family: "Arial Black";
+
+}
