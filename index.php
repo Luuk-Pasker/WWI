@@ -2,7 +2,7 @@
 $active = "home";
 include "includes/header.php";
 ?>
-<div class="balk"></div>
+
 <div class="aanbiedingen">
     <div class="row">
         <div class="column">
