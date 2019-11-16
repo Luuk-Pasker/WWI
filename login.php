@@ -1,33 +1,36 @@
-<?php
+    <?php
 $active = "login";
 include "includes/header.php";
 ?>
 
-<link rel="stylesheet" type="text/css" href="css/style.css">
 
-<div class="alles">
-    <form>
 
-        <div class="form-group row">
-            <label for="inputEmail" class="col-sm-2 col-form-label"><div class ='email'>Email</div></label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+<div class="loginBox">
+    <form action="" method="post">
+        <div class="loginRow">
+            <div class="loginHead">
+                <h2>World Wide Importers Login</h2>
             </div>
         </div>
-        <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        <div class="loginRow">
+            <div class="loginColumn1">
+                <label for="inputEmail" class=""><div class ='email'>Email: </div></label>
+            </div>
+            <div class="loginColumn2">
+                <input type="email" class="loginInput" id="inputEmail" placeholder="Email">
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-sm-10 offset-sm-2">
-                <label class="form-check-label"><input type="checkbox"> Remember me</label>
+        <div class="loginRow">
+            <div class="loginColumn1">
+                <label for="inputPassword" class="">Password:</label>
+            </div>
+            <div class="loginColumn2">
+                <input type="password" class="loginInput" id="inputPassword" placeholder="Password">
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-sm-10 offset-sm-2">
-                <button type="submit" class="btn btn-primary">Sign in</button>
+        <div class="loginRow">
+            <div class="loginColumn2">
+                <input type="submit" class="" value="Sign in"> <a class="loginLink" href="">Forgot password?</a> <!-- sign in en forgot password doen nog niks -->
             </div>
         </div>
     </form>
