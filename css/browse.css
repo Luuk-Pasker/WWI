@@ -1,14 +1,43 @@
-.button{
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.button {
     background-color: deepskyblue;
     border: none;
     padding: 15px 32px;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     display: inline-block;
     font-size: 20x;
-    margin: 4px 2px;
     cursor: pointer;
     color: floralwhite;
     font-family: "Arial Black";
+    width: 250px;
+    border: 1px solid white;
+}
 
+.button:hover{
+    background-color: lightskyblue;
+    border: none;
+    padding: 15px 32px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20x;
+    cursor: pointer;
+    color: floralwhite;
+    font-family: "Arial Black";
+    width: 250px;
+    border: 1px solid white;
+
+}
+
+.producten{
+    float: right;
+    display: flex;
+    flex-direction: column;
 }
