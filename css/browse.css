@@ -40,10 +40,27 @@
 }
 
 .producten{
-    display: block;
-    width: 80%;
-    margin: 0 auto;
-    align-content: center;
+    float: left;
+    width: 180px;
+    margin: 20px auto;
     height : 45%;
-    text-align: center;
+
 }
+
+.productfoto{
+    width: 250px;
+    height: 250px;
+    float: left;
+}
+
+.test {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.pagination{
+float: left;
+}
+
