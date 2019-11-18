@@ -39,7 +39,7 @@
             print("</form>");
             /*print alle namen op de knoppen*/
 
-            /*bepaalen van het id van de geselecteerde category*/
+            /*bepalen van het id van de geselecteerde category*/
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $_SESSION['id'] = $_GET['id'];
