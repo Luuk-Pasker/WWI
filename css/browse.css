@@ -15,8 +15,8 @@
     padding: 15px 32px;
     text-align: left;
     text-decoration: none;
-    display: inline-block;
-    font-size: 20x;
+
+    font-size: 20px;
     cursor: pointer;
     color: floralwhite;
     font-family: "Arial Black";
@@ -31,7 +31,6 @@
     text-align: left;
     text-decoration: none;
     display: inline-block;
-    font-size: 20x;
     cursor: pointer;
     color: floralwhite;
     font-family: "Arial Black";
@@ -41,11 +40,11 @@
 }
 
 .producten{
-    display: block;
-    width: 80%;
-    margin: 0 auto;
-    align-content: center;
+    float: left;
+    width: 180px;
+    margin: 20px auto;
     height : 45%;
+<<<<<<< HEAD
     text-align: center;
 }
 
@@ -55,3 +54,25 @@
     color:black;
     margin-right: 500px;
 }
+=======
+
+}
+
+.productfoto{
+    width: 250px;
+    height: 250px;
+    float: left;
+}
+
+.test {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.pagination{
+float: left;
+}
+
+>>>>>>> d7012e8b64a5ba781b1fb179e11a987bf0084ac3

@@ -31,16 +31,16 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\WWI\styles.css" />
+      <recent name="C:\xampp\htdocs\WWI" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\WWi" />
       <recent name="C:\xampp\htdocs\WWI\css" />
       <recent name="C:\xampp\htdocs\WWI\styles.css" />
       <recent name="C:\xampp\htdocs\WWI\oefenen" />
       <recent name="C:\xampp\htdocs\WWI\productbekijken.css" />
-      <recent name="C:\xampp\htdocs\WWi" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\WWI\styles.css" />
-      <recent name="C:\xampp\htdocs\WWI" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -75,8 +75,12 @@
 =======
       <workItem from="1573814777651" duration="6841000" />
       <workItem from="1574064788059" duration="39000" />
+<<<<<<< HEAD
+      <workItem from="1574064881709" duration="11684000" />
+=======
       <workItem from="1574064881709" duration="6115000" />
 >>>>>>> 17742f1182a47227e0d4cb8e10472a8689e7e8a4
+>>>>>>> 8040ccf0920a7ec16e08dc832a1ac41b965e9639
     </task>
     <servers />
   </component>

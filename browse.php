@@ -102,10 +102,13 @@
 
                 while ($row = mysqli_fetch_array($res_data)) {
 
-                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div><br>");
+                    print("<div class='test'>");
+                    print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
+                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
+                    print("</div>");
 
                 }
-                unset($_GET["zoek"]);
+                  unset($_GET["zoek"]);
             } elseif(isset($_GET["toevoegen"])){
                 $sID = $_GET["zoek"];
                 $_GET["page"] = 1;
@@ -117,6 +120,7 @@
             } else {
                 while ($row = mysqli_fetch_array($res_data)) {
 
+                    print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
                     print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div><br>");
 
                 }
@@ -189,7 +193,15 @@
                     }
                     ?>">Last</a></li>
             </ul>
+<<<<<<< HEAD
             <!--/*knoppenstructuur van de paginaindeling*/-->
+=======
+<<<<<<< HEAD
+            <!--/*knoppenstructuur van de paginaindeling*/-->
+=======
+           <!-- /*knoppenstructuur van de paginaindeling*/-->
+>>>>>>> 8040ccf0920a7ec16e08dc832a1ac41b965e9639
+>>>>>>> d7012e8b64a5ba781b1fb179e11a987bf0084ac3
 
             <?php
             include "includes/footer.php";
