@@ -5,8 +5,8 @@
 }
 
 .button {
+    float: left;
     background-color: deepskyblue;
-    border: none;
     padding: 15px 32px;
     text-align: left;
     text-decoration: none;
@@ -35,12 +35,6 @@
 
 }
 
-.producten{
-    float: right;
-    display: flex;
-    flex-direction: column;
-}
-
 .quote{
     display: block;
     width: 80%;
@@ -51,6 +45,15 @@
 }
 
 .tekstabout{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    align-content: center;
+    height : 45%;
+    text-align: center;
+}
+
+.head{
     display: block;
     width: 80%;
     margin: 0 auto;
