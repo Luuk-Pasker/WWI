@@ -46,8 +46,12 @@
             print("</form>");
             /*print alle namen op de knoppen*/
 
+<<<<<<< HEAD
+            /*bepalen van het id van de geselecteerde category*/
+=======
 
             /*bepaalen van het id van de geselecteerde category*/
+>>>>>>> 17742f1182a47227e0d4cb8e10472a8689e7e8a4
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $_SESSION['id'] = $_GET['id'];
