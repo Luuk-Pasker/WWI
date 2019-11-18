@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 .button {
     background-color: deepskyblue;
     border: none;
@@ -37,6 +36,21 @@
 }
 
 .producten{
+    float: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.quote{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    align-content: center;
+    height : 45%;
+    text-align: center;
+}
+
+.tekstabout{
     display: block;
     width: 80%;
     margin: 0 auto;

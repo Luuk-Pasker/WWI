@@ -28,6 +28,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/styles.css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -69,6 +70,8 @@
       <workItem from="1573757930483" duration="1894000" />
       <workItem from="1573810384700" duration="2351000" />
       <workItem from="1573814777651" duration="6841000" />
+      <workItem from="1574064788059" duration="39000" />
+      <workItem from="1574064881709" duration="6115000" />
     </task>
     <servers />
   </component>
