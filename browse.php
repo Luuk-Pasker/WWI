@@ -46,12 +46,11 @@
             print("</form>");
             /*print alle namen op de knoppen*/
 
-<<<<<<< HEAD
             /*bepalen van het id van de geselecteerde category*/
-=======
+
 
             /*bepaalen van het id van de geselecteerde category*/
->>>>>>> 17742f1182a47227e0d4cb8e10472a8689e7e8a4
+
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $_SESSION['id'] = $_GET['id'];
@@ -127,8 +126,10 @@
             } else {
                 while ($row = mysqli_fetch_array($res_data)) {
 
+                    print("<div class='test'>");
                     print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
-                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div><br>");
+                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
+                    print("</div>");
 
                 }
             }
