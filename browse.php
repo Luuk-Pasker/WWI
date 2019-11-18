@@ -185,7 +185,7 @@
                     }
                     ?>">Last</a></li>
             </ul>
-            /*knoppenstructuur van de paginaindeling*/
+            <!--/*knoppenstructuur van de paginaindeling*/-->
 
             <?php
             include "includes/footer.php";
