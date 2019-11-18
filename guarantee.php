@@ -2,4 +2,4 @@
 $active = "about";
 include "includes/header.php";
 ?>
-<h1>Guarantee</h1>
+<div class="tekstabout"><h1><tekst class="tekstabout"></tekst>Guerantee</h1></tekst></div>

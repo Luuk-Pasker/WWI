@@ -7,7 +7,8 @@ include "includes/header.php";
 <button class='button' type="submit">Contact Form</button>
 <a href="guarantee.php" ><button class='button' type="submit">Guarantee </button></a>
 
-
+<br>
+<br>
 <div class="quote2">
 <quote class='quote' type="tekst"> <h1>"We are WWI. We are proud of our products and believe in quality.<br>
          In every home a WWI product will find his home.<br>
