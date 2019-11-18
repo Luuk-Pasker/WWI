@@ -46,10 +46,12 @@
             print("</form>");
             /*print alle namen op de knoppen*/
 
+
             /*bepalen van het id van de geselecteerde category*/
 
 
             /*bepaalen van het id van de geselecteerde category*/
+
 
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
@@ -133,6 +135,13 @@
 
                 }
             }
+
+
+            /*Als producten niet getoond worden, geen resultaat tonen */
+                if(mysqli_num_rows($res_data)==0) {
+                    print("<p class='text3'> No result </p>");
+                }
+
             /*printen van de resultaten op het scherm*/
 
             /*knoppenstructuur van de paginaindeling*/
@@ -194,7 +203,10 @@
                     }
                     ?>">Last</a></li>
             </ul>
-           <!-- /*knoppenstructuur van de paginaindeling*/-->
+
+            <!--/*knoppenstructuur van de paginaindeling*/-->
+
+
 
             <?php
             include "includes/footer.php";
