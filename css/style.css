@@ -89,8 +89,8 @@ input[type=submit] {
 }
 
 .niksgevonden {
-    margin-left: 75px;
-    margin-right: 1100px;
+    margin-left: 50px;
+    margin-right: 1000px;
     margin-top: 50px;
     border: black solid; background: lightgray; padding: 40px;
 }
