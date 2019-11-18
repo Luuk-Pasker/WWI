@@ -10,6 +10,7 @@
     <body>
         <div class = "Container">
 
+
         <!-- header-->
             <?php
             $active = "browse";
@@ -18,28 +19,39 @@
             session_start();
         /*header*/
 
+
         /* sql query voor alle categorien*/
             $sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
             $result = mysqli_query($connection, $sql);
         /* sql query voor alle categorien   */
 
+
         /*alle producten weergeven KNOP*/
             print("<form method=\"post\" action=\"/WWI/browse.php\">
-                <button type=\"submit\">Everything</button>
+                <button class='button' type=\"submit\">Everything</button>
                 </form>");
         /*alle producten weergeven KNOP*/
+
 
             /*print alle namen op de knoppen*/
             print("<form method='get'>");
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
             {
-                print("<button type='submit' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
+            /*navigationbar*/
+                print("<div class = 'navigationbar'><button class= 'button' type='submit' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button><br></div>");
             }
+            /*navigationbar*/
+
             print("</form>");
             /*print alle namen op de knoppen*/
 
+<<<<<<< HEAD
             /*bepalen van het id van de geselecteerde category*/
+=======
+
+            /*bepaalen van het id van de geselecteerde category*/
+>>>>>>> 17742f1182a47227e0d4cb8e10472a8689e7e8a4
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $_SESSION['id'] = $_GET['id'];
@@ -49,6 +61,7 @@
             }
             /*bepaalen van het id van de geselecteerde category*/
 
+
             /*opvragen van het pagina nummer*/
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
@@ -57,10 +70,12 @@
             }
             /*opvragen van het pagina nummer*/
 
+
             /*bepalen aantal producten per pagina*/
             $no_of_records_per_page = 25;
             $offset = ($page-1) * $no_of_records_per_page;
             /*bepalen aantal producten per pagina*/
+
 
             /*ophalen van hoeveelheid producten binnen een geselecteerde category*/
             if (isset($_GET['id'])) {
@@ -70,11 +85,13 @@
             }
             /*ophalen van hoeveelheid producten binnen een geselecteerde category*/
 
+
             /*resultaten van voorgaande query ophalen*/
             $result = mysqli_query($connection,$total_pages_sql);
             $total_rows = mysqli_fetch_array($result)[0];
             $total_pages = ceil($total_rows / $no_of_records_per_page);
             /*resultaten van voorgaande query ophalen*/
+
 
             /*ophalen van alle producten binnen een geselecteerde category*/
             if (isset($_GET['id'])){
@@ -92,7 +109,7 @@
 
                 while ($row = mysqli_fetch_array($res_data)) {
 
-                    print("<a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a><br>");
+                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div><br>");
 
                 }
                 unset($_GET["zoek"]);
@@ -107,7 +124,7 @@
             } else {
                 while ($row = mysqli_fetch_array($res_data)) {
 
-                    print("<a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a><br>");
+                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div><br>");
 
                 }
             }
@@ -116,6 +133,8 @@
             /*knoppenstructuur van de paginaindeling*/
             mysqli_close($connection);
             ?>
+
+
             <ul class="pagination">
                 <li><a href="<?php
                     if ($sID == 0){

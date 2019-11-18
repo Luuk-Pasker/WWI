@@ -3,7 +3,9 @@
 <head>
     <?php
     include "db_config.php";
-    $active="";
+    if(!isset($active)) {
+        $active = "";
+    }
     ?>
     <title>
         World Wide Importers
@@ -26,9 +28,10 @@
         </div>
         <a <?php if($active == "home"){echo 'class="active"';} ?> href="index.php">Homepage</a>
         <a <?php if($active == "browse"){echo 'class="active"';} ?> href="browse.php">Browse</a>
-        <a <?php if($active == "about"){echo 'class="active"';} ?> href="#about">About us</a>
+        <a <?php if($active == "about"){echo 'class="active"';} ?> href="aboutus.php">About us</a>
         <a <?php if($active == "cart"){echo 'class="active"';} ?>href="winkelmand.php">Shopping cart <img class='mand' src='images/winkelmand.jpg'></a>
         <a <?php if($active == "login"){echo 'class="active"';} ?>href="login.php">Login</a>
 
     </div>
 </div>
+<div class="balk"></div>

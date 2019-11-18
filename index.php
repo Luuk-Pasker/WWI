@@ -2,17 +2,20 @@
 $active = "home";
 include "includes/header.php";
 ?>
-<div class="balk"></div>
+
+<div class="aanbiedingen">
     <div class="row">
         <div class="column">
-            <img src="images/img_nature_wide.jpg" style="width:100%;"><br>
-            hallo wereld
+            <img src="images/img_nature_wide.jpg" style="width:100%;">
+            product 1
         </div>
         <div class="column">
             <img src="images/img_nature_wide.jpg" style="width:100%;">
+            product 2
         </div>
         <div class="column">
             <img src="images/img_nature_wide.jpg" style="width:100%;">
+            product 3
         </div>
     </div>
     <div class="row">
@@ -26,10 +29,10 @@ include "includes/header.php";
             <img src="images/img_snow_wide.jpg" style="width:100%">
         </div>
 
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
 
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
     <br>
 
     <div class="paginaindex" style="text-align:center">
@@ -37,7 +40,7 @@ include "includes/header.php";
         <span class="dot" onclick="currentSlide(2)">pagina 2</span>
         <span class="dot" onclick="currentSlide(3)">pagina 3</span>
     </div>
-
+</div>
     <script>
         var slideIndex = 1;
         showSlides(slideIndex);
