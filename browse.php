@@ -34,7 +34,7 @@
 
 
             /*print alle namen op de knoppen*/
-            print("<form method='get'>");
+            print("<form method='get' style='width: 250px; float: left'>");
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
             {
