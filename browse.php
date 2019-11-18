@@ -45,6 +45,14 @@
 
             print("</form>");
             /*print alle namen op de knoppen*/
+
+
+            /*bepalen van het id van de geselecteerde category*/
+
+
+            /*bepaalen van het id van de geselecteerde category*/
+
+
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $_SESSION['id'] = $_GET['id'];
@@ -120,8 +128,10 @@
             } else {
                 while ($row = mysqli_fetch_array($res_data)) {
 
+                    print("<div class='test'>");
                     print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
-                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div><br>");
+                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
+                    print("</div>");
 
                 }
             }
@@ -195,6 +205,11 @@
             </ul>
 
             <!--/*knoppenstructuur van de paginaindeling*/-->
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f4232d98a5a9947343bbbceea9bf0f34e390c755
 
             <?php
             include "includes/footer.php";
