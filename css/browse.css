@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.navigationbar{
+    width: 250px;
+}
+
 
 .button {
     background-color: deepskyblue;
