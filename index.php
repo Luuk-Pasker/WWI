@@ -1,12 +1,30 @@
 <?php
 $active = "home";
 include "includes/header.php";
+
+
+function GetDeals(){
+    $host = "localhost";
+    $databasename = "wideworldimporters";
+    $user = "root";
+    $pass = ""; //eigen password invullen
+    $port = 3306;
+    $connection = mysqli_connect($host, $user, $pass, $databasename, $port);
+    $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals)";
+    $results = mysqli_query($connection, $sql);
+    return $results;
+}
+$results = GetDeals();
+foreach ($results as $row){
+    print($row["StockItemName"] . "<br>");
+}
 ?>
 
 <div class="aanbiedingen">
     <div class="row">
         <div class="column">
             <img src="images/img_nature_wide.jpg" style="width:100%;">
+
             product 1
         </div>
         <div class="column">
