@@ -4,8 +4,7 @@ include "includes/header.php";
 ?>
 
 <link rel="stylesheet" type="text/css" href = "css/aboutus.css">
-
-<button class='button' type="submit">Contact Form</button><br>
+<button class='button' type="submit">Contact Form</button>
 <a href="guarantee.php" ><button class='button' type="submit">Guarantee </button></a>
 
 
@@ -17,8 +16,7 @@ include "includes/header.php";
 
 <br>
 
-<div class="tekstabout"><h4>
-        <tekst class="tekstabout"></tekst>
+<div class="tekstabout"><h4><tekst class="tekstabout"></tekst>
     Wide World Importers is an importer and wholesaler that supplies products to
     various department stores and supermarkets in the United States. WWI also supplies
     products to yet other wholesalers. Incidentally, WWI sells products
