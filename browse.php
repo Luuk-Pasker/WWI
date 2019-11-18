@@ -205,11 +205,6 @@
             </ul>
 
             <!--/*knoppenstructuur van de paginaindeling*/-->
-<<<<<<< HEAD
-=======
-
-
->>>>>>> f4232d98a5a9947343bbbceea9bf0f34e390c755
 
             <?php
             include "includes/footer.php";
