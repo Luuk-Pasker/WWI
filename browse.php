@@ -193,15 +193,8 @@
                     }
                     ?>">Last</a></li>
             </ul>
-<<<<<<< HEAD
             <!--/*knoppenstructuur van de paginaindeling*/-->
-=======
-<<<<<<< HEAD
-            <!--/*knoppenstructuur van de paginaindeling*/-->
-=======
-           <!-- /*knoppenstructuur van de paginaindeling*/-->
->>>>>>> 8040ccf0920a7ec16e08dc832a1ac41b965e9639
->>>>>>> d7012e8b64a5ba781b1fb179e11a987bf0084ac3
+
 
             <?php
             include "includes/footer.php";
