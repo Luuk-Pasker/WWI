@@ -206,6 +206,83 @@
 
     <!--/*knoppenstructuur van de paginaindeling*/-->
 
+<<<<<<< HEAD
+=======
+            /*Als producten niet getoond worden, geen resultaat tonen */
+                if(mysqli_num_rows($res_data)==0) {
+                    print("<p class='text3'> No result </p>");
+                }
+
+            /*printen van de resultaten op het scherm*/
+
+            /*knoppenstructuur van de paginaindeling*/
+            mysqli_close($connection);
+            ?>
+
+
+            <ul class="pagination">
+                <li><a href="<?php
+                    if ($sID == 0){
+                        echo '?page=1';
+                    } else {
+                        echo '?page=1&id=' . $sID;
+                    }
+                    ?>">First</a></li>
+                <li class="<?php
+                if($page <= 1){
+                    echo 'disabled';
+                }
+                ?>">
+                    <a href="<?php
+                    if($page <= 1){
+                        echo '#';
+                    } elseif($sID == 0) {
+                        echo "?" . $zoekopdracht . "page=".($page - 1);
+                    } else {
+                        echo "?page=".($page - 1) . "&id=" . $sID;
+                    }
+                    ?>">Prev</a>
+                </li>
+                <li>
+                    <a>
+                        <?php
+                        print($page);
+                        ?>
+                    </a>
+                </li>
+                <li class="<?php
+                    if($page >= $total_pages){
+                        echo 'disabled';
+                    }
+                    ?>">
+                    <a href="<?php
+                    if($page >= $total_pages){
+                        echo '#';
+                    }
+                    elseif($sID == 0){
+                        echo "?" . $zoekopdracht . "page=" . ($page + 1);
+                    } else {
+                        echo "?page=" . ($page + 1) . "&id=" . $sID;
+                    }
+                    ?>">Next</a>
+                </li>
+                <li><a href="<?php
+                    if ($sID == 0){
+                        echo '?page=' . $total_pages;
+                    } else {
+                        echo '?page=' . $total_pages . "&id=" . $sID;
+                    }
+                    ?>">Last</a></li>
+            </ul>
+
+            <!--/*knoppenstructuur van de paginaindeling*/-->
+
+            <?php
+            include "includes/footer.php";
+            ?>
+        </div>
+    </body>
+>>>>>>> 840392eb874f0dc5b88c32d9a388a85e4d536894
 
 
     <?php
