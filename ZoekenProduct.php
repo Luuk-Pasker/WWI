@@ -92,8 +92,6 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
             print("<a href='productBekijken.php?id=" . $product['StockItemID'] . "'>" . $product["StockItemName"] . " €" . $product["RecommendedRetailPrice"] . "</a><br>");
             print("</div>");
             print("</div>");
-
-
         }
     } else {
         header('location: NiksGevonden.php');
