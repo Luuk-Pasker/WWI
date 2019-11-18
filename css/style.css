@@ -90,7 +90,7 @@ input[type=submit] {
 
 .niksgevonden {
     margin-left: 50px;
-    margin-right: 1000px;
+    margin-right: 400px;
     margin-top: 50px;
     border: black solid; background: lightgray; padding: 40px;
 }
@@ -111,9 +111,9 @@ input[type=submit] {
 .terug {
     font-weight: bold;
     color: black;
-    margin-left: 570px;
     border: black solid 2px; background: lightgray;
     padding: 3px;
+    margin-left: 740px;
 }
 
 
