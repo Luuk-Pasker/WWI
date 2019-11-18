@@ -34,7 +34,7 @@
 
 
             /*print alle namen op de knoppen*/
-            print("<form method='get'>");
+            print("<form method='get' style='width: 250px; float: left'>");
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
             {
@@ -46,8 +46,12 @@
             print("</form>");
             /*print alle namen op de knoppen*/
 
+<<<<<<< HEAD
+            /*bepalen van het id van de geselecteerde category*/
+=======
 
             /*bepaalen van het id van de geselecteerde category*/
+>>>>>>> 17742f1182a47227e0d4cb8e10472a8689e7e8a4
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $_SESSION['id'] = $_GET['id'];
@@ -105,10 +109,13 @@
 
                 while ($row = mysqli_fetch_array($res_data)) {
 
-                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div><br>");
+                    print("<div class='test'>");
+                    print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
+                    print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
+                    print("</div>");
 
                 }
-                unset($_GET["zoek"]);
+                  unset($_GET["zoek"]);
             } elseif(isset($_GET["toevoegen"])){
                 $sID = $_GET["zoek"];
                 $_GET["page"] = 1;
@@ -120,6 +127,7 @@
             } else {
                 while ($row = mysqli_fetch_array($res_data)) {
 
+                    print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
                     print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div><br>");
 
                 }
@@ -185,7 +193,11 @@
                     }
                     ?>">Last</a></li>
             </ul>
+<<<<<<< HEAD
             <!--/*knoppenstructuur van de paginaindeling*/-->
+=======
+           <!-- /*knoppenstructuur van de paginaindeling*/-->
+>>>>>>> 8040ccf0920a7ec16e08dc832a1ac41b965e9639
 
             <?php
             include "includes/footer.php";

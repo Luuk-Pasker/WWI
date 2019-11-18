@@ -26,7 +26,7 @@
   <component name="ProjectId" id="1TYL6U2ftAKcP9WjF9gGitxYcVG" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/styles.css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Other" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -69,9 +69,18 @@
       <workItem from="1573742010371" duration="1718000" />
       <workItem from="1573757930483" duration="1894000" />
       <workItem from="1573810384700" duration="2351000" />
+<<<<<<< HEAD
+      <workItem from="1573814777651" duration="7548000" />
+      <workItem from="1574030330655" duration="1712000" />
+=======
       <workItem from="1573814777651" duration="6841000" />
       <workItem from="1574064788059" duration="39000" />
+<<<<<<< HEAD
       <workItem from="1574064881709" duration="11684000" />
+=======
+      <workItem from="1574064881709" duration="6115000" />
+>>>>>>> 17742f1182a47227e0d4cb8e10472a8689e7e8a4
+>>>>>>> 8040ccf0920a7ec16e08dc832a1ac41b965e9639
     </task>
     <servers />
   </component>
