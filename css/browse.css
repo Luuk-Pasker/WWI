@@ -16,7 +16,7 @@
     text-align: left;
     text-decoration: none;
 
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
     color: floralwhite;
     font-family: "Arial Black";
@@ -44,7 +44,7 @@
     width: 180px;
     margin: 20px auto;
     height : 45%;
-<<<<<<< HEAD
+
     text-align: center;
 }
 
@@ -54,7 +54,7 @@
     color:black;
     margin-right: 500px;
 }
-=======
+
 
 }
 
@@ -69,10 +69,16 @@
     display: flex;
     flex-direction: column;
     margin: 30px;
+
 }
 
 .pagination{
 float: left;
 }
 
->>>>>>> d7012e8b64a5ba781b1fb179e11a987bf0084ac3
+
+.productnaam{
+    width: 150px;
+    align-content: center;
+}
+

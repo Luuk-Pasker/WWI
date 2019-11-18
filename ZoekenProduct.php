@@ -86,7 +86,14 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
     $result = ZoekPoduct($connection, $zoek, $no_of_records_per_page, $offset);
     if(mysqli_num_rows($result) > 0) {
         foreach ($result as $product) {
+            print("<div class='test'>");
+            print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . "<br>");
+            print("<div class='productnaam'>");
             print("<a href='productBekijken.php?id=" . $product['StockItemID'] . "'>" . $product["StockItemName"] . " €" . $product["RecommendedRetailPrice"] . "</a><br>");
+            print("</div>");
+            print("</div>");
+
+
         }
     } else {
         header('location: NiksGevonden.php');
