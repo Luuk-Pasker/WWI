@@ -177,21 +177,22 @@ a.loginLink:hover{
 .scImage{
     margin: 10px;
     float: left;
-    width: 8%;
+    width: 100px;
 }
 
 .scName{
     padding-top: 30px;
     margin: 10px;
     float: left;
-    width: 50%;
+    width: 48%;
 }
 
 .scAmount{
     padding-top: 30px;
     margin: 10px;
     float: left;
-    width: 7%;
+    width: 9%;
+    text-align: right;
 }
 
 .scPrice{
