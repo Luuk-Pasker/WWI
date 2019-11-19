@@ -75,17 +75,17 @@ print($aantalpaginas);*/
         <a href="browse.php" class="extraaanbiedingen"> bekijk meer</a>
         <div class="row">
             <div class="column">
-                <img src="images/img_nature_wide.jpg" style="width:100%;">
+                <img class='foto' src='images/120_dino_slippers.jpg' width="300px"><BR>
                 <?php print($fullarray[0]['StockItemName'] . "<br>prijs: " . $fullarray[0]['RecommendedRetailPrice'] . "<br>") ?>
                 <a class="bekijkkorting" href="productBekijken.php">bekijk product</a>
             </div>
             <div class="column">
-                <img src="images/img_nature_wide.jpg" style="width:100%;">
+                <img class='foto' src='images/120_dino_slippers.jpg' width="300px"><BR>
                 <?php print($fullarray[1]['StockItemName'] . "<br>prijs: " . $fullarray[1]['RecommendedRetailPrice'] . "<br>") ?>
                 <a class="bekijkkorting" href="productBekijken.php">bekijk product</a>
             </div>
             <div class="column">
-                <img src="images/img_nature_wide.jpg" style="width:100%;">
+                <img class='foto' src='images/120_dino_slippers.jpg' width="300px"><BR>
                 <?php print($fullarray[2]['StockItemName'] . "<br>prijs: " . $fullarray[2]['RecommendedRetailPrice'] . "<br>") ?>
                 <a class="bekijkkorting" href="productBekijken.php">bekijk product</a>
             </div>
