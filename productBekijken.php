@@ -37,8 +37,7 @@
                     //$row["Photo"]
                     print("<img class='foto' src='$Image'><br>");
                     print("<div class='test'>");
-                    $ItemName = $row["StockItemName"];
-                    print("<div class='naam'>" . $ItemName . "</div><br>");
+                    print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
                     print("<div class='beschrijving2'>Description:</div><BR>" ."<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
                     $price = $row["UnitPrice"];
                     print("<div class='prijs'>" . "€" . $price . "</div><br>");
@@ -57,9 +56,7 @@
                         <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
                         Amount: <input id="aantalx" type="number" name="quantity" min="1" max="<?php print("$voorraad"); ?>">
                         <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
-                        <input type="hidden" name="ItemName" value="<?php print("$ItemName"); ?>">
                         <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
-                        <input type="hidden" name="image" value="<?php print("$Image"); ?>">
                     </form>
                     <?php
                     }else {

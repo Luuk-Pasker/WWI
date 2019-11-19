@@ -199,6 +199,7 @@ a.loginLink:hover{
     margin: 10px;
     float: left;
     width: 13%;
+    text-align: right;
 }
 
 .scTPrice{
@@ -206,10 +207,12 @@ a.loginLink:hover{
     margin: 10px;
     float: left;
     width: 10%;
+    text-align: right;
 }
 
 .scButton{
     margin: 10px 10px 10px 85%;
+    text-align: center;
 }
 
 
