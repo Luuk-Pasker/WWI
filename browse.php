@@ -3,11 +3,11 @@
 $active = "browse";
 include "includes/header.php";
 include "ZoekenProduct.php";
-session_start();
+/*session_start();*/
 /*header*/
 ?>
 
-<div class="Container">
+
 
     <?php
 
@@ -18,14 +18,14 @@ session_start();
 
 
     /*alle producten weergeven KNOP*/
-    print("<form method=\"post\" action=\"/WWI/browse.php\">
-                <button class='button' type=\"submit\">Everything</button>
-                </form>");
+    print("<div class='everything'>");
+    print("<form method=\"post\" action=\"/WWI/browse.php\"><button class='button' type=\"submit\">Everything</button></form>");
+    print("</div>");
     /*alle producten weergeven KNOP*/
 
 
     /*print alle namen op de knoppen*/
-    print("<form method='get' style='width: 250px; float: left'>");
+    print("<form method='get' style='width: 250px; height: 3000px; float: left'>");
 
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         /*navigationbar*/
@@ -92,6 +92,12 @@ session_start();
     }
     /*ophalen van alle producten binnen een geselecteerde category*/
 
+    ?>
+
+
+<div class="test6">
+<?php
+
 
     /*printen van de resultaten op het scherm*/
     $res_data = mysqli_query($connection, $sql);
@@ -100,10 +106,11 @@ session_start();
 
         while ($row = mysqli_fetch_array($res_data)) {
 
-            print("<div class='test'>");
-            print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
-            print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
-            print("</div>");
+                print("<div class='test'>");
+                print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
+                print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
+                print("</div>");
+
 
         }
         unset($_GET["zoek"]);
@@ -125,40 +132,36 @@ session_start();
 
         }
     }
-
-
-    /*Als producten niet getoond worden, geen resultaat tonen */
-    if (mysqli_num_rows($res_data) == 0) {
-        print("<p class='text3'> No result </p>");
-    }
-
-    /*printen van de resultaten op het scherm*/
-
-    /*knoppenstructuur van de paginaindeling*/
-    mysqli_close($connection);
     ?>
 
+</div>
 
+
+
+
+<!--/*knoppenstructuur van de paginaindeling*/-->
+
+<div class="paginatie">
     <ul class="pagination">
         <li><a href="<?php
-            if ($sID == 0) {
+            if ($sID == 0){
                 echo '?page=1';
             } else {
                 echo '?page=1&id=' . $sID;
             }
             ?>">First</a></li>
         <li class="<?php
-        if ($page <= 1) {
+        if($page <= 1){
             echo 'disabled';
         }
         ?>">
             <a href="<?php
-            if ($page <= 1) {
+            if($page <= 1){
                 echo '#';
-            } elseif ($sID == 0) {
-                echo "?" . $zoekopdracht . "page=" . ($page - 1);
+            } elseif($sID == 0) {
+                echo "?" . $zoekopdracht . "page=".($page - 1);
             } else {
-                echo "?page=" . ($page - 1) . "&id=" . $sID;
+                echo "?page=".($page - 1) . "&id=" . $sID;
             }
             ?>">Prev</a>
         </li>
@@ -170,14 +173,15 @@ session_start();
             </a>
         </li>
         <li class="<?php
-        if ($page >= $total_pages) {
+        if($page >= $total_pages){
             echo 'disabled';
         }
         ?>">
             <a href="<?php
-            if ($page >= $total_pages) {
+            if($page >= $total_pages){
                 echo '#';
-            } elseif ($sID == 0) {
+            }
+            elseif($sID == 0){
                 echo "?" . $zoekopdracht . "page=" . ($page + 1);
             } else {
                 echo "?page=" . ($page + 1) . "&id=" . $sID;
@@ -185,101 +189,99 @@ session_start();
             ?>">Next</a>
         </li>
         <li><a href="<?php
-            if ($sID == 0) {
+            if ($sID == 0){
                 echo '?page=' . $total_pages;
             } else {
                 echo '?page=' . $total_pages . "&id=" . $sID;
             }
             ?>">Last</a></li>
     </ul>
+</div>
 
-<<<<<<< HEAD
-    <!--/*knoppenstructuur van de paginaindeling*/-->
-
-
-            /*Als producten niet getoond worden, geen resultaat tonen */
-                if(mysqli_num_rows($res_data)==0) {
-                    print("<p class='text3'> No result </p>");
-                }
-
-            /*printen van de resultaten op het scherm*/
-
-            /*knoppenstructuur van de paginaindeling*/
-            mysqli_close($connection);
-            ?>
+<!--/*knoppenstructuur van de paginaindeling*/-->
 
 
-            <ul class="pagination">
-                <li><a href="<?php
-                    if ($sID == 0){
-                        echo '?page=1';
-                    } else {
-                        echo '?page=1&id=' . $sID;
-                    }
-                    ?>">First</a></li>
-                <li class="<?php
-                if($page <= 1){
-                    echo 'disabled';
-                }
-                ?>">
-                    <a href="<?php
-                    if($page <= 1){
-                        echo '#';
-                    } elseif($sID == 0) {
-                        echo "?" . $zoekopdracht . "page=".($page - 1);
-                    } else {
-                        echo "?page=".($page - 1) . "&id=" . $sID;
-                    }
-                    ?>">Prev</a>
-                </li>
-                <li>
-                    <a>
-                        <?php
-                        print($page);
-                        ?>
-                    </a>
-                </li>
-                <li class="<?php
-                    if($page >= $total_pages){
-                        echo 'disabled';
-                    }
-                    ?>">
-                    <a href="<?php
-                    if($page >= $total_pages){
-                        echo '#';
-                    }
-                    elseif($sID == 0){
-                        echo "?" . $zoekopdracht . "page=" . ($page + 1);
-                    } else {
-                        echo "?page=" . ($page + 1) . "&id=" . $sID;
-                    }
-                    ?>">Next</a>
-                </li>
-                <li><a href="<?php
-                    if ($sID == 0){
-                        echo '?page=' . $total_pages;
-                    } else {
-                        echo '?page=' . $total_pages . "&id=" . $sID;
-                    }
-                    ?>">Last</a></li>
-            </ul>
 
-            <!--/*knoppenstructuur van de paginaindeling*/-->
+<?php
+    /* producten niet getoond worden, geen resultaat tonen */
+    if (mysqli_num_rows($res_data) == 0) {
+        print("<p class='text3'> No result </p>");
+    }
+
+
+    mysqli_close($connection);
+    ?>
+
+
+<!--    <ul class="pagination">
+        <li><a href="<?php
+/*            if ($sID == 0) {
+                echo '?page=1';
+            } else {
+                echo '?page=1&id=' . $sID;
+            }
+            */?>">First</a></li>
+        <li class="<?php
+/*        if ($page <= 1) {
+            echo 'disabled';
+        }
+        */?>">
+            <a href="<?php
+/*            if ($page <= 1) {
+                echo '#';
+            } elseif ($sID == 0) {
+                echo "?" . $zoekopdracht . "page=" . ($page - 1);
+            } else {
+                echo "?page=" . ($page - 1) . "&id=" . $sID;
+            }
+            */?>">Prev</a>
+        </li>
+        <li>
+            <a>
+                <?php
+/*                print($page);
+                */?>
+            </a>
+        </li>
+        <li class="<?php
+/*        if ($page >= $total_pages) {
+            echo 'disabled';
+        }
+        */?>">
+            <a href="<?php
+/*            if ($page >= $total_pages) {
+                echo '#';
+            } elseif ($sID == 0) {
+                echo "?" . $zoekopdracht . "page=" . ($page + 1);
+            } else {
+                echo "?page=" . ($page + 1) . "&id=" . $sID;
+            }
+            */?>">Next</a>
+        </li>
+        <li><a href="<?php
+/*            if ($sID == 0) {
+                echo '?page=' . $total_pages;
+            } else {
+                echo '?page=' . $total_pages . "&id=" . $sID;
+            }
+            */?>">Last</a></li>
+    </ul>-->
+
+
 
             <?php
             include "includes/footer.php";
             ?>
         </div>
-    </body>
+
 
 
 
     <?php
     include "includes/footer.php";
     ?>
-=======
->>>>>>> 461aa96bd9d7d3223d170b71b85f9bbe2365d06f
-</div>
+
+
 
 <?php
 include "includes/footer.php";
