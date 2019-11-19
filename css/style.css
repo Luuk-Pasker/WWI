@@ -164,3 +164,56 @@ a.loginLink:hover{
     color: #3f3f3f;
 }
 
+.scBox{
+    margin-left: 10%;
+    width: 80%;
+}
+
+.scRow{
+    overflow: hidden;
+    font-size: large;
+}
+
+.scImage{
+    margin: 10px;
+    float: left;
+    width: 100px;
+}
+
+.scName{
+    padding-top: 30px;
+    margin: 10px;
+    float: left;
+    width: 48%;
+}
+
+.scAmount{
+    padding-top: 30px;
+    margin: 10px;
+    float: left;
+    width: 9%;
+    text-align: right;
+}
+
+.scPrice{
+    padding-top: 30px;
+    margin: 10px;
+    float: left;
+    width: 13%;
+    text-align: right;
+}
+
+.scTPrice{
+    padding-top: 30px;
+    margin: 10px;
+    float: left;
+    width: 10%;
+    text-align: right;
+}
+
+.scButton{
+    margin: 10px 10px 10px 85%;
+    text-align: center;
+}
+
+
