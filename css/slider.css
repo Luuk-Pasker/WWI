@@ -5,6 +5,7 @@ img {vertical-align: middle;}
 
 
 
+
 .aanbiedingen{
     width: 96%;
     display: block;
@@ -26,6 +27,7 @@ img {vertical-align: middle;}
 }
 
 .column {
+
     float: left;
     display: inline-block;
     margin-left: auto;
