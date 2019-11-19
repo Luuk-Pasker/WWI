@@ -45,27 +45,24 @@ if(isset($_POST['submit'])) {
         $HPass = hash('sha256', $_POST['password']);
         $HPass = strtoupper($HPass);
     }
-}
 
-$sql = "SELECT * FROM people LIMIT 1";
-/*printen van de resultaten op het scherm*/
-$res_data = mysqli_query($connection,$sql);
-while ($row = mysqli_fetch_array($res_data)) {
-    if ($row['LogonName'] == $username && $row['HashedPassword'] == $HPass){
-        $_SESSION['login'] = TRUE;
-        echo "Ingelogt";
-    } elseif (!($row['LogonName'] == $username && $row['HashedPassword'] == $HPass)) {
-        $_SESSION = FALSE;
-        echo "Verkeerde gegevens!";
+    $sql = "SELECT * FROM people LIMIT 1";
+    /*printen van de resultaten op het scherm*/
+    $res_data = mysqli_query($connection, $sql);
+    while ($row = mysqli_fetch_array($res_data)) {
+        if ($row['LogonName'] == $username && $row['HashedPassword'] == $HPass) {
+            $_SESSION['login'] = TRUE;
+            echo "Ingelogt";
+        } else {
+            $_SESSION['login'] = FALSE;
+            echo "Verkeerde gegevens!";
+        }
+    }
+    if ($_SESSION['login'] == TRUE){
+        echo '<script> window.location.href = "dashboard.php"; </script>';
+        echo "ingelogt!";
     }
 }
-
-//if ($_SESSION['login'] == TRUE){
-//    echo '<script> window.location.href = "dashboard.php"; </script>';
-//    echo "ingelogt!";
-//} elseif ($_SESSION['login'] == FALSE) {
-//    echo "Verkeerde gegevens!";
-//}
 
 include "includes/footer.php";
 ?>
