@@ -206,8 +206,7 @@
 
     <!--/*knoppenstructuur van de paginaindeling*/-->
 
-<<<<<<< HEAD
-=======
+
             /*Als producten niet getoond worden, geen resultaat tonen */
                 if(mysqli_num_rows($res_data)==0) {
                     print("<p class='text3'> No result </p>");
@@ -282,7 +281,7 @@
             ?>
         </div>
     </body>
->>>>>>> 840392eb874f0dc5b88c32d9a388a85e4d536894
+
 
 
     <?php
