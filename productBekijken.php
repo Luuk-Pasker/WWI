@@ -33,7 +33,7 @@
                 //
 
 
-                //print: afbeelding, voorraad, naam, prijs en beschrijving.
+                //print: afbeelding, voorraad, naam, prijs en beschrijving en bezorgtijd .
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
                 {
                     $Image = "images/" . $row['Photo'];
@@ -45,10 +45,11 @@
                     $price = $row["UnitPrice"];
                     print("<div class='prijs'>" . "€" . $price . "</div><br>");
                     $voorraad = $row["QuantityOnHand"];
-                    print("<div class='nogopvoorraad'>" . $voorraad . " in stock.</div><br>");
+                    print("<div class='nogopvoorraad'>" . $voorraad . " in stock.</div><br><br>");
+                    print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
                     print("</div>");
                 }
-                //
+
 
                 //aantallen selecteer formulee/toevoegen aan winkelmand knop
                 if ($voorraad>0) {
