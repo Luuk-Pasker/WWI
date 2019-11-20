@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://kit.fontawesome.com/bf0a4498c5.js" crossorigin="anonymous"></script>
     <?php
     include "db_config.php";
     if(!isset($active)) {
