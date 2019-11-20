@@ -1,7 +1,6 @@
 <?php
 $active = "login";
 include "includes/header.php";
-//session_start();
 ?>
 
 <div class="loginBox">
@@ -36,33 +35,33 @@ include "includes/header.php";
 </div>
 
 <?php
+$username = "";
 
 if(isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $HPass = hash('sha256', $_POST['password']);
-    $HPass = strtoupper($HPass);
-} else {
-    $username = "";
-}
-
-$sql = "SELECT * FROM people LIMIT 1";
-/*printen van de resultaten op het scherm*/
-$res_data = mysqli_query($connection,$sql);
-while ($row = mysqli_fetch_array($res_data)) {
-    if ($row['LogonName'] == $username && $row['HashedPassword'] == $HPass){
-        $_SESSION['login'] = TRUE;
-    } elseif (!($row['LogonName'] == $username && $row['HashedPassword'] == $HPass)) {
-        echo "verkeerd ingevuld";
+    if (empty($_POST['username']) && empty($_POST['password'])) {
+        echo "Fill in data";
     } else {
-        $_SESSION['login'] = FALSE;
+        $username = $_POST['username'];
+        $HPass = hash('sha256', $_POST['password']);
+        $HPass = strtoupper($HPass);
     }
-}
 
-if ($_SESSION['login'] == TRUE){
-//    echo '<script> window.location.href = "dashboard.php"; </script>';
-    echo "ingelogt!";
-} elseif ($_SESSION['login'] == FALSE) {
-    echo "Verkeerde gegevens!";
+    $sql = "SELECT * FROM people LIMIT 1";
+    /*printen van de resultaten op het scherm*/
+    $res_data = mysqli_query($connection, $sql);
+    while ($row = mysqli_fetch_array($res_data)) {
+        if ($row['LogonName'] == $username && $row['HashedPassword'] == $HPass) {
+            $_SESSION['login'] = TRUE;
+            echo "Ingelogt";
+        } else {
+            $_SESSION['login'] = FALSE;
+            echo "Verkeerde gegevens!";
+        }
+    }
+    if ($_SESSION['login'] == TRUE){
+        echo '<script> window.location.href = "dashboard.php"; </script>';
+        echo "ingelogt!";
+    }
 }
 
 include "includes/footer.php";

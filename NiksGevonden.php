@@ -13,7 +13,7 @@ include "includes/header.php";
         This could be due: problems with our webpage, words are mispelled or other reasons. <br>
     </p>
 
-<a href="index.php" class="terug"> terug naar hoofdpagina </a>
+<a href="index.php" class="terug">  Go back to the homepage </a>
 
 </div>
 <?php

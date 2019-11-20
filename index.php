@@ -3,13 +3,7 @@ $active = "home";
 include "includes/header.php";
 
 /*zoek alle huidige producten met korting op*/
-function GetDeals(){
-    $host = "localhost";
-    $databasename = "wideworldimporters";
-    $user = "root";
-    $pass = ""; //eigen password invullen
-    $port = 3306;
-    $connection = mysqli_connect($host, $user, $pass, $databasename, $port);
+function GetDeals($connection){
     $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals) limit 3";
     $results = mysqli_query($connection, $sql);
     return $results;
@@ -18,7 +12,7 @@ function GetDeals(){
 
 
 /*laat alle producten met korting zien*/
-$results = GetDeals();
+$results = GetDeals($connection);
 $aantalpaginas = floor(mysqli_num_rows($results) / 3);
 $fullarray = array();
 $i = 0;

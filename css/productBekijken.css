@@ -18,6 +18,10 @@
     margin-bottom: 50px;
 
 }
+.naambeschrijvingprijsnogopvoorraad{
+    float: right;
+    flex-direction: column;
+}
 
 .naam{
 
@@ -45,13 +49,6 @@
 
 .aantallen{
     margin-left: 40px;
-
-}
-
-
-.test{
-    float: right;
-    flex-direction: column;
 
 }
 
@@ -89,7 +86,5 @@
     float:right;
     padding-right: 450px;
 }
+.x
 
-.test{
-
-}

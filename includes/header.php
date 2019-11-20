@@ -6,6 +6,7 @@
     if(!isset($active)) {
         $active = "";
     }
+    session_start();
     ?>
     <title>
         World Wide Importers

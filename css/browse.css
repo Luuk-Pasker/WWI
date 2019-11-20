@@ -6,6 +6,7 @@
 
 .navigationbar{
     width: 250px;
+
 }
 
 
@@ -44,7 +45,7 @@
     width: 180px;
     margin: 20px auto;
     height : 45%;
-
+    font-family: Arial;
     text-align: center;
 }
 
@@ -65,16 +66,14 @@
 }
 
 .test {
-    float: right;
+    float: left;
     display: flex;
     flex-direction: column;
     margin: 30px;
 
 }
 
-.pagination{
-float: left;
-}
+
 
 
 .productnaam{
@@ -82,3 +81,14 @@ float: left;
     align-content: center;
 }
 
+
+.paginatie{
+    float: right;
+    padding-top: 400px;
+    padding-right: 50px;
+    height: 400px;
+}
+
+.test6{
+    margin: 20px;
+}

@@ -36,7 +36,7 @@
                     $Image = "images/120_dino_slippers.jpg";
                     //$row["Photo"]
                     print("<img class='foto' src='$Image'><br>");
-                    print("<div class='test'>");
+                    print("<div class='naambeschrijvingprijsnogopvoorraad'>");
                     print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
                     print("<div class='beschrijving2'>Description:</div><BR>" ."<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
                     $price = $row["UnitPrice"];
@@ -58,14 +58,16 @@
                         <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
                         <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
                     </form>
+                </div>
+
                     <?php
                     }else {
                         print("<div class= 'noitem'>" . "No items in stock</div>");
                     }
                     ?>
 
-                </div>
-                <!>
+
+                <!x>
 
                 <!footer>
                 <?php
