@@ -1,33 +1,34 @@
 <?php
 $active = "home";
 include "includes/header.php";
-?>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <div class="w3-content w3-section" style="max-width:100%; height:20%!important">
-        <img class="mySlides" src="images/img_mountains_wide.jpg" style="width:100%">
-        <img class="mySlides" src="images/img_nature_wide.jpg" style="width:100%">
-        <img class="mySlides" src="images/img_snow_wide.jpg" style="width:100%">
-    </div>
-    <br>
+print("<link rel=\"stylesheet\" type=\"text/css\" href = \"css/home.css\">");
 
-    <script>
-        var myIndex = 0;
-        carousel();
+/* sql query voor alle categorien*/
+$sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
+$result = mysqli_query($connection, $sql);
+/* sql query voor alle categorien   */
 
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            myIndex++;
-            if (myIndex > x.length) {myIndex = 1}
-            x[myIndex-1].style.display = "block";
-            setTimeout(carousel, 2000); // Change image every 2 seconds
-        }
-    </script>
 
-<?php
+/*alle producten weergeven KNOP*/
+//print("<div class='everything'>");
+//print("<div class='div'><form method=\"post\" action=\"/WWI/browse.php\"><button class='button' type=\"submit\">Everything</button></form>");
+//print("</div>");
+/*alle producten weergeven KNOP*/
+
+
+/*print alle namen op de knoppen*/
+print("<form method='get' action=\"/WWI/browse.php\">");
+
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    /*navigationbar*/
+    print("<button class='button' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
+}
+/*navigationbar*/
+
+print("</form></div>");
+
+
+
 include "includes/footer.php";
 ?>
