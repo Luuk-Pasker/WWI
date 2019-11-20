@@ -1,0 +1,13 @@
+.button {
+    width: 10%!important;
+    height: 54px;
+    padding-top: 0px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+}
+
+.button:hover {
+    padding-top: 0px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+}

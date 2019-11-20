@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-    <html>
-        <head>
-            <title>ProductBekijken</title>
-            <link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 
-        </head>
+<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 
-        <body>
+
         <!--//header-->
         <?php
         include "includes/header.php";
@@ -14,7 +9,15 @@
 
         <!---->
 
+        <!-- go back knop-->
+           <div class="keerterug">
+                <a class="KEERTERUGNU" href="browse.php" style="color: white;"><button class="btn" title="Go back"><i class="fas fa-long-arrow-alt-left"></i>  Go back</button></a>
+            </div>
+
             <div class="container">
+        <!-- go back knop-->
+
+
 
                 <?php
 
@@ -30,10 +33,10 @@
                 //
 
 
-                //print: afbeelding, voorraad, naam, prijs en beschrijving.
+                //print: afbeelding, voorraad, naam, prijs en beschrijving en bezorgtijd .
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
                 {
-                    $Image = "images/120_dino_slippers.jpg";
+                    $Image = "images/" . $row['Photo'];
                     //$row["Photo"]
                     print("<img class='foto' src='$Image'><br>");
                     print("<div class='naambeschrijvingprijsnogopvoorraad'>");
@@ -42,10 +45,11 @@
                     $price = $row["UnitPrice"];
                     print("<div class='prijs'>" . "€" . $price . "</div><br>");
                     $voorraad = $row["QuantityOnHand"];
-                    print("<div class='nogopvoorraad'>" . $voorraad . " in stock.</div><br>");
+                    print("<div class='nogopvoorraad'>" . " In stock! </div><br><br>");
+                    print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
                     print("</div>");
                 }
-                //
+
 
                 //aantallen selecteer formulee/toevoegen aan winkelmand knop
                 if ($voorraad>0) {
