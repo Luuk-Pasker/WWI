@@ -7,7 +7,7 @@ include "includes/header.php";
     <form method="post">
         <div class="loginRow">
             <div class="loginHead">
-                <h2>World Wide Importers Login</h2>
+                <h2>Wide World Importers Login</h2>
             </div>
         </div>
         <div class="loginRow">
