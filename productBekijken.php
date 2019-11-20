@@ -33,7 +33,7 @@
                 //print: afbeelding, voorraad, naam, prijs en beschrijving.
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
                 {
-                    $Image = "images/120_dino_slippers.jpg";
+                    $Image = "images/" . $row['Photo'];
                     //$row["Photo"]
                     print("<img class='foto' src='$Image'><br>");
                     print("<div class='naambeschrijvingprijsnogopvoorraad'>");

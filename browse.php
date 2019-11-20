@@ -107,7 +107,7 @@ include "ZoekenProduct.php";
         while ($row = mysqli_fetch_array($res_data)) {
 
                 print("<div class='test'>");
-                print("<img class='productfoto' src='images/120_dino_slippers.jpg'" . $row["Photo"] . "<br>");
+                print("<img class='productfoto' src='images/" . $row["Photo"] . "'<br>");
                 print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
                 print("</div>");
 
