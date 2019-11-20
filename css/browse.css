@@ -56,9 +56,6 @@
     margin-right: 500px;
 }
 
-
-
-
 .productfoto{
     width: 250px;
     height: 250px;
@@ -69,26 +66,24 @@
     float: left;
     display: flex;
     flex-direction: column;
-    margin: 30px;
-
+    margin: -65px 30px 70px 30px;
+    height: 350px;
 }
-
-
-
 
 .productnaam{
-    width: 150px;
+    width: 260px;
     align-content: center;
-}
-
-
-.paginatie{
-    float: right;
-    padding-top: 400px;
-    padding-right: 50px;
-    height: 400px;
 }
 
 .test6{
     margin: 20px;
+}
+
+.paginatie{
+    float: left;
+    padding-right: 50px;
+    margin-right: 40%;
+}
+.pagination{
+    font-size: 20px;
 }
