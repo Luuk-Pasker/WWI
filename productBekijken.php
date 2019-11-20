@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-    <html>
-        <head>
-            <title>ProductBekijken</title>
-            <link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 
-        </head>
+<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 
-        <body>
+
         <!--//header-->
         <?php
         include "includes/header.php";
@@ -14,7 +9,15 @@
 
         <!---->
 
+        <!-- go back knop-->
+           <div class="keerterug">
+                <a class="KEERTERUGNU" href="browse.php" style="color: white;"><button class="btn" title="Go back"><i class="fas fa-long-arrow-alt-left"></i>  Go back</button></a>
+            </div>
+
             <div class="container">
+        <!-- go back knop-->
+
+
 
                 <?php
 
