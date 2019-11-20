@@ -90,7 +90,7 @@ foreach ($laatstToegevoegd as $row) {
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th>" . "<img class='foto' src='images/120_dino_slippers.jpg' width='300px'><BR>");
+                print("<th>" . "<img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
                 print($fullarray[$i]['StockItemName'] . "</th>");
             }
             ?>
@@ -112,7 +112,7 @@ foreach ($laatstToegevoegd as $row) {
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th>" . "<img class='foto' src='images/120_dino_slippers.jpg' width='300px'><BR>");
+                print("<th>" . "<img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
                 print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</th>");
             }
             ?>
