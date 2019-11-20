@@ -45,7 +45,7 @@
                     $price = $row["UnitPrice"];
                     print("<div class='prijs'>" . "€" . $price . "</div><br>");
                     $voorraad = $row["QuantityOnHand"];
-                    print("<div class='nogopvoorraad'>" . $voorraad . " in stock.</div><br><br>");
+                    print("<div class='nogopvoorraad'>" . " In stock! </div><br><br>");
                     print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
                     print("</div>");
                 }
