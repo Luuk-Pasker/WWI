@@ -6,7 +6,7 @@ include "includes/header.php";
 <link rel="stylesheet" type="text/css" href="css/aboutus.css" xmlns="">
 <a href="contactForm.php" ><button class="button" type="submit">Contact Form</button> </a>
 <a href="guarantee.php" ><button class='button' type="submit">Guarantee </button></a>
-
+<div class="contact">
 <h2>Contact form</h2>
 <h4>Select your subject:        <select>
     <optgroup label="Choose subject"</comment>
@@ -34,3 +34,4 @@ include "includes/header.php";
 
 <input type="submit" value="Send"></intput>
 
+</div>
