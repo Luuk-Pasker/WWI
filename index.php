@@ -1,166 +1,109 @@
 <?php
+
 $active = "home";
 include "includes/header.php";
-
-/*zoek alle huidige producten met korting op*/
-function GetDeals($connection){
-    $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals) limit 3";
-    $results = mysqli_query($connection, $sql);
-    return $results;
-}
-/*zoek alle huidige producten met korting op*/
+include "includes/funtions.php";
 
 
-/*laat alle producten met korting zien*/
+
+
+/*maak een array met de verkregen deals*/
 $results = GetDeals($connection);
 $aantalpaginas = floor(mysqli_num_rows($results) / 3);
 $fullarray = array();
 $i = 0;
-foreach ($results as $row){
-    if(mysqli_num_rows($results) != 0) {
+foreach ($results as $row) {
+    if (mysqli_num_rows($results) != 0) {
         $fullarray[$i] = $row;
         $i++;
     }
 }
-/*for($i=0; $i < 3; $i++) {
-    print('
-    <div class="aanbiedingen">
-        <div class="row">
-            <div class="column">
-                <img src="images/img_nature_wide.jpg" style="width:100%">
-                product 1<?php print($fullarray[$i]['StockItemName']); ?>
-            </div>
-        </div>
-    </div>';
-}*/
-/*$q=0;
-for($j=0; $j < $aantalpaginas; $j++) {
-    for ($i = 0; $i < 3; $i++) {
-        if($q == 3){
-            $q = 4;
-        }
-        print_r($fullarray[15]['StockItemName']);
-        print($q);
-        $q++;
-        print("<br><br>");
-    }
-    $q++;
-}*/
-/*while ($row = mysqli_fetch_assoc($results)) {
-    print_r($row);
-    print("<br><br>");
-}*/
-/*foreach ($results as $index => $row) {
-    print_r($index);
-    print($row[$index]['StockItemName']);
-}*/
-/*$aantalpaginas = ceil(mysqli_num_rows($results) / 3);
-print($aantalpaginas);*/
+/*maak een array met de verkregen deals*/
 
-/*for($i=1; $i < 3; $i++){
-    foreach ($results as $row){
-        print($row["StockItemName"]);
-        print("<br>");
+/*maak een array met de laatst toegevoegde items*/
+$laatstToegevoegd = GetLaatstToegevoegd($connection);
+$fullArrayLaatstToegevoegd = array();
+$i = 0;
+foreach ($laatstToegevoegd as $row) {
+    if (mysqli_num_rows($results) != 0) {
+        $fullArrayLaatstToegevoegd[$i] = $row;
+        $i++;
     }
-}*/
-/*laat alle producten met korting zien*/
+}
+/*maak een array met de laatst toegevoegde items*/
 ?>
-    <div class="aanbiedingen">
-        <a href="browse.php" class="extraaanbiedingen"> bekijk meer</a>
-        <div class="row">
-            <div class="column">
-                <img class='foto' src='images/120_dino_slippers.jpg' width="300px"><BR>
-                <?php print($fullarray[0]['StockItemName'] . "<br>prijs: " . $fullarray[0]['RecommendedRetailPrice'] . "<br>") ?>
-                <a class="bekijkkorting" href="productBekijken.php">bekijk product</a>
-            </div>
-            <div class="column">
-                <img class='foto' src='images/120_dino_slippers.jpg' width="300px"><BR>
-                <?php print($fullarray[1]['StockItemName'] . "<br>prijs: " . $fullarray[1]['RecommendedRetailPrice'] . "<br>") ?>
-                <a class="bekijkkorting" href="productBekijken.php">bekijk product</a>
-            </div>
-            <div class="column">
-                <img class='foto' src='images/120_dino_slippers.jpg' width="300px"><BR>
-                <?php print($fullarray[2]['StockItemName'] . "<br>prijs: " . $fullarray[2]['RecommendedRetailPrice'] . "<br>") ?>
-                <a class="bekijkkorting" href="productBekijken.php">bekijk product</a>
-            </div>
-        </div>
-    </div>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<div class="w3-content w3-section" style="max-width:100%; height:20%!important">
+    <img class="mySlides" src="images/img_mountains_wide.jpg" style="width:100%">
+    <img class="mySlides" src="images/img_nature_wide.jpg" style="width:100%">
+    <img class="mySlides" src="images/img_snow_wide.jpg" style="width:100%">
+</div>
+<br>
 
-    <!--slideshow-->
-<!--
-    <div class="aanbiedingen">
-        <div class="row">
-            <div class="column">
-                <img src="images/img_nature_wide.jpg" style="width:100%;">
-                product 1
-            </div>
-            <div class="column">
-                <img src="images/img_nature_wide.jpg" style="width:100%;">
-                product 2
-            </div>
-            <div class="column">
-                <img src="images/img_nature_wide.jpg" style="width:100%;">
-                product 3
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <img src="images/img_snow_wide.jpg" style="width:100%">
-            </div>
-            <div class="column">
-                <img src="images/img_snow_wide.jpg" style="width:100%">
-            </div>
-            <div class="column">
-                <img src="images/img_snow_wide.jpg" style="width:100%">
-            </div>
+<script>
+    var myIndex = 0;
+    carousel();
 
-
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        <br>
-
-        <div class="paginaindex" style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)">pagina 1</span>
-            <span class="dot" onclick="currentSlide(2)">pagina 2</span>
-            <span class="dot" onclick="currentSlide(3)">pagina 3</span>
-        </div>
-    </div>
-        <!--slideshow-->
-
-
-
-    <!--javascript voor de slideshow-->
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
         }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+</script>
 
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
 
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("row");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+<a href="productBekijken.php?id=">
+    <table width="100%" class="table table-bordered">
+        <tr>
+            <?php
+            for($i=0; $i < mysqli_num_rows($results); $i++){
+                print("<th>" . "<img class='foto' src='images/120_dino_slippers.jpg' width='300px'><BR>");
+                print($fullarray[$i]['StockItemName'] . "</th>");
             }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
+            ?>
+        </tr>
+        <tr>
+            <td colspan="4" style="border: none!important;">
+                <a href="browse.php">
+                    <div style="text-align: center">
+                        <button type="button" class="btn btn-primary">See More Deals</button>
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+</a>
+
+<a href="productBekijken.php?id=">
+    <table width="100%" class="table table-bordered">
+        <tr>
+            <?php
+            for($i=0; $i < mysqli_num_rows($results); $i++){
+                print("<th>" . "<img class='foto' src='images/120_dino_slippers.jpg' width='300px'><BR>");
+                print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</th>");
             }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-        }
-    </script>
-    <!--javascript voor de slideshow-->
+            ?>
+        </tr>
+        <tr>
+            <td colspan="4" style="border: none!important;">
+                <a href="browse.php">
+                    <div style="text-align: center">
+                        <button type="button" class="btn btn-primary">See More New Products</button>
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+</a>
+
+
 <?php
 include "includes/footer.php";
 ?>
