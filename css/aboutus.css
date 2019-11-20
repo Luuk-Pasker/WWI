@@ -84,6 +84,7 @@
 }
 
 .contact{
+<<<<<<< HEAD
     display: inline-block;
 }
 
@@ -107,4 +108,7 @@
     .column {
         width: 100%;
     }
+=======
+
+>>>>>>> 68c72be20a5c22e3a7b9cc5d0eba5b74abe5cff9
 }
