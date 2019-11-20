@@ -70,3 +70,19 @@ function print_sc_foot(){
 
     print("<form action='betalen.php' class='scButton'><input type='submit' value='Buy items'></form>");
 }
+
+/*zoek alle huidige producten met korting op*/
+function GetDeals($connection){
+    $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals) limit 4";
+    $results = mysqli_query($connection, $sql);
+    return $results;
+}
+/*zoek alle huidige producten met korting op*/
+
+/*zoek de meest recent toegevoegde producten*/
+function GetLaatstToegevoegd($connection){
+    $sql = "select * from stockitems order by StockItemID desc limit 4";
+    $GetLatstToegevoed = mysqli_query($connection, $sql);
+    return $GetLatstToegevoed;
+}
+/*zoek de meest recent toegevoegde producten*/

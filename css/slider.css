@@ -3,6 +3,12 @@ body {font-family: Verdana, sans-serif; margin:0}
 .mySlides {display: none}
 img {vertical-align: middle;}
 
+
+.btn-primary{
+    background-color: dodgerblue!important;
+    border-color: dodgerblue!important;
+}
+
 /* Slideshow container */
 .slideshow-container {
     max-width: 1000px;
