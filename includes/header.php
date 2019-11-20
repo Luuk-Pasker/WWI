@@ -29,11 +29,11 @@
             <input type="submit" name="toevoegen" value="Search"/>
         </form>
         </div>
-        <a <?php if($active == "home"){echo 'class="active"';} ?> href="index.php">Homepage</a>
-        <a <?php if($active == "browse"){echo 'class="active"';} ?> href="browse.php">Browse</a>
-        <a <?php if($active == "about"){echo 'class="active"';} ?> href="aboutus.php">About us</a>
-        <a <?php if($active == "cart"){echo 'class="active"';} ?>href="winkelmand.php">Shopping cart <img class='mand' src='images/winkelmand.jpg'></a>
-        <a <?php if($active == "login"){echo 'class="active"';} ?>href="login.php">Login</a>
+        <a <?php if($active == "home"){echo 'class="active"';} ?> href="index.php"> <i class="fas fa-home"></i> Home</a>
+        <a <?php if($active == "browse"){echo 'class="active"';} ?> href="browse.php"><i class="fas fa-globe"></i> Browse</a>
+        <a <?php if($active == "about"){echo 'class="active"';} ?> href="aboutus.php"> About us</a>
+        <a <?php if($active == "cart"){echo 'class="active"';} ?>href="winkelmand.php"><i class="fas fa-shopping-cart"></i> Shopping cart</a>
+        <a <?php if($active == "login"){echo 'class="active"';} ?>href="login.php"> <i class="fas fa-sign-in-alt"></i> Login</a>
 
     </div>
 </div>
