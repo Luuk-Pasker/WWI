@@ -43,7 +43,9 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
 }
 ?>
 
-<a href="browse.php">< Go back to shopping</a>
+<div class="keerterug">
+    <a class="KEERTERUGNU" href="browse.php" style="color: white;"><button class="btn" title="Go back"><i class="fas fa-long-arrow-alt-left"></i>  Go back to shopping</button></a>
+</div>
 <h2 class="a.hoofdtext">Shoppingcart</h2>
 
 <div class="scBox">
