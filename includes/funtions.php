@@ -20,27 +20,39 @@ function print_sc_head(){
 }
 
 function print_sc_item($index){
-    if($_SESSION["Quantitys"][$index]>0) {
-        print("<div class='scRow'>");
-        print("<div class='scImage'>");
-        $Photo = $_SESSION['Images'][$index];
-        print("<img src='$Photo' width='100px'>");
-        print("</div>");
-        print("<div class='scName'>");
-        print($_SESSION["Names"][$index]);
-        print("</div>");
-        print("<div class='scAmount'>");
-        print($_SESSION["Quantitys"][$index]);
-        print("</div>");
-        print("<div class='scPrice'>");
-        print("€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', ''));
-        print("</div>");
-        print("<div class='scTPrice'>");
-        $TPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
-        print("€" . number_format((float)$TPrice, 2, '.', ''));
-        $_SESSION["TotalPrice"] += $TPrice;
-        print("</div>");
-        print("</div>");
+    if (isset($_GET["Q$index"])) {
+        $_SESSION["Quantitys"][$index] = $_GET["Q$index"];
+        if ($_GET["Q$index"] == 0) {
+            $_SESSION["skip"][] = $index;
+        }
+    }
+
+    if(isset($_SESSION["IDs"][$index])) {
+        $quantity = $_SESSION["Quantitys"][$index];
+
+        if ($quantity > 0) {
+            $stock = $_SESSION['Stocks'][$index];
+            print("<div class='scRow'>");
+            print("<div class='scImage'>");
+            $Photo = $_SESSION['Images'][$index];
+            print("<img src='$Photo' width='100px'>");
+            print("</div>");
+            print("<div class='scName'>");
+            print($_SESSION["Names"][$index]);
+            print("</div>");
+            print("<div class='scAmount'>");
+            print("<form><input class='loginInput' type='number' value='$quantity' name='Q$index' min=\"0\" max=\"$stock\"></form>");
+            print("</div>");
+            print("<div class='scPrice'>");
+            print("€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', ''));
+            print("</div>");
+            print("<div class='scTPrice'>");
+            $TPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
+            print("€" . number_format((float)$TPrice, 2, '.', ''));
+            $_SESSION["TotalPrice"] += $TPrice;
+            print("</div>");
+            print("</div>");
+        }
     }
 }
 

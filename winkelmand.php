@@ -3,16 +3,15 @@ $active = "cart";
 include "includes/header.php";
 include "includes/funtions.php";
 
-session_start();
-
 //maakt de arrays als ze nog niet bestaan
-if(!(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quantitys"]) && isset($_SESSION["Prices"]) && isset($_SESSION["Images"]) && isset($_SESSION["Stocks"]))) {
+if(!(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quantitys"]) && isset($_SESSION["Prices"]) && isset($_SESSION["Images"]) && isset($_SESSION["Stocks"]) && isset($_SESSION["skip"]))) {
     $_SESSION["IDs"] = array();
     $_SESSION["Names"] = array();
     $_SESSION["Quantitys"] = array();
     $_SESSION["Prices"] = array();
     $_SESSION["Images"] = array();
     $_SESSION["Stocks"] = array();
+    $_SESSION["skip"] = array();
 }
 
 //haalt de nodige waarden op van de productBekijken pagina en de database
@@ -44,17 +43,33 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
 }
 ?>
 
-<a href="index.php">< Go back to shopping</a>
+<a href="browse.php">< Go back to shopping</a>
 <h2 class="a.hoofdtext">Shoppingcart</h2>
 
 <div class="scBox">
     <?php
     $_SESSION["TotalPrice"] = 0;
     print_sc_head();
-    for ($i = 0; $i < count($_SESSION["IDs"]); $i++) {
+    for ($i = 0; $i <= count($_SESSION["IDs"]); $i++) {
+        while((in_array($i, $_SESSION["skip"]))){
+            unset($_SESSION["IDs"][$i]);
+            unset($_SESSION["Names"][$i]);
+            unset($_SESSION["Prices"][$i]);
+            unset($_SESSION["Images"][$i]);
+            unset($_SESSION["Quantitys"][$i]);
+            foreach($_SESSION["skip"] as $j => $val){
+                if($val == $i){
+                    unset($_SESSION["skip"][$j]);
+                }
+            }
+            $i++;
+        }
         print_sc_item($i);
     }
     print_sc_foot();
+    if(count($_SESSION["skip"])>0){
+        header('Location: '.$_SERVER['PHP_SELF']);
+    }
     ?>
 </div>
 
