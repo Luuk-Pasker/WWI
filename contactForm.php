@@ -13,52 +13,76 @@ include "includes/header.php";
 
             <h2>Contact information:</h2>
 
-            <h4>wideworldimporters bv<br>
+            <h4>Wide World Importers bv<br>
+                <br>
                 Papendorpseweg 100<BR>
                 3528 BJ Utrecht<BR>
                 <br>
-                email ons: wideworldimporters@gmail.com<BR>
+                Mail: wideworldimporters@gmail.com<BR>
                 <BR>
-                telefoonnummer: 06-24533242
+                Phonenumber: 06-24533242
             </h4>
         </div>
     </div>
 
-    <div class="column">
+    <div class="double-column">
 
         <div class="contact">
 
-            <h2>Contact form:</h2>
+            <h2>Contact form</h2>
 
-            <h4>Select your subject:
-                <select>
+            <div class="contact-form-group">
+                <label for="subject" class="contact-form-label">Select your subject:</label>
+                <select id="subject" class="contact-form-control">
                     <optgroup label="Choose subject"</comment>
                     <option value="Delivery">Delivery</option>
                     <option value="General">General question</option>
                     <option value="Guarantee">Guarantee</option>
                     <option value="Order">Order</option>
                 </select>
-            </h4>
+            </div>
 
-            <h4>Message/Question:</h4> <textarea rows="4" cols="50"></textarea>
-
-            <h4></h4>
-
-
+            <div class="contact-form-group">
+                <label for="message" class="contact-form-label">Message/Question:</label>
+                <textarea rows="4" cols="50" id="message" class="contact-form-control"></textarea>
+            </div>
+<br>
+            <br>
             <h2>Personal information</h2>
-            <h4>Salutation:     <select>
-                    <option value="Mr">Mr.</option>
-                    <option value="Ms">Ms.</option>
-                </select></h4>
-            <h4>First name:       <input type="text"></h4>
-            <h4>Last name:        <input type="text"></h4>
 
+            <div class="contact-form-group">
+            <label for="salutation" class="contact-form-label">Salutation:</label>
+            <select id="salutation" class="contact-form-control">
+                <option value="Mr">Mr.</option>
+                <option value="Ms">Ms.</option>
+            </select>
+            </div>
 
+            <div class="contact-form-group">
+            <label for="first_name" class="contact-form-label">First name:</label>
+            <input type="text" id="first_name" class="contact-form-control"/>
+            </div>
+
+            <div class="contact-form-group">
+            <label for="last_name" class="contact-form-label">Last name:</label>
+            <input type="text" id="last_name" class="contact-form-control"/>
+            </div>
+<br>
             <h2>Contact details</h2>
-            <h4>Email:        <input type="email"> </h4>
-            <h4>Phonenumber:  <input type="number"></h4>
 
-            <input type="submit" value="Send"></intput>
+            <div class="contact-form-group">
+            <label for="email" class="contact-form-label">Email:</label>
+            <input type="email" id="email" class="contact-form-control"/>
+            </div>
+
+            <div class="contact-form-group">
+            <label for="phone_number" class="contact-form-label">Phone number:</label>
+            <input type="text" id="phone_number" class="contact-form-control"/>
+            </div>
+            <br>
+            <br>
+            <br>
+            <input type="submit" value="Send"/>
 
         </div>
     </div>

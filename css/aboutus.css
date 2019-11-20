@@ -84,14 +84,22 @@
 }
 
 .contact{
-<<<<<<< HEAD
     display: inline-block;
+    text-align: left;
 }
 
 /* Create three equal columns that floats next to each other */
 .column {
     float: left;
     width: 33.33%;
+    padding: 15px;
+    margin-bottom: 50px;
+}
+
+/* Create three equal columns that floats next to each other */
+.double-column {
+    float: left;
+    width: 66.67%;
     padding: 15px;
     margin-bottom: 50px;
 }
@@ -108,7 +116,21 @@
     .column {
         width: 100%;
     }
-=======
+}
 
->>>>>>> 68c72be20a5c22e3a7b9cc5d0eba5b74abe5cff9
+.contact .contact-form-group {
+    width: 100%;
+    clear:both;
+
+}
+
+.contact .contact-form-group .contact-form-label {
+    width: 40%;
+    float:left;
+}
+
+.contact .contact-form-group .contact-form-control {
+    width: 50%;
+    float:left;
+    resize: vertical;
 }
