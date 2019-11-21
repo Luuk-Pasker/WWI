@@ -80,10 +80,15 @@
 }
 
 .paginatie{
-    float: left;
+    float: right;
     padding-right: 50px;
     margin-right: 40%;
+    margin-bottom: 50px;
 }
 .pagination{
     font-size: 20px;
+}
+
+.th {
+    padding-left: 5% !important;
 }

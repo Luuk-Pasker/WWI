@@ -50,10 +50,10 @@ foreach ($laatstToegevoegd as $row) {
 ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<div class="w3-content w3-section" style="max-width:100%; height:20%!important">
-    <img class='mySlides' src='images/120_dino_slippers.jpg' width='300px'>
-    <img class='mySlides' src='images/t-shirt.jpg' width='300px'>
-    <img class='mySlides' src='images/mug.jpg' width='300px'>
+<div class="w3-content w3-section" style="max-width:13%;">
+    <img class='mySlides' src='images/slippers.jpg' height="200px">
+    <img class='mySlides' src='images/clothing.jpg' height="200px">
+    <img class='mySlides' src='images/mug.jpg' height="200px">
 </div>
 <br>
 
@@ -70,7 +70,7 @@ foreach ($laatstToegevoegd as $row) {
         myIndex++;
         if (myIndex > x.length) {myIndex = 1}
         x[myIndex-1].style.display = "block";
-        setTimeout(carousel, 2000); // Change image every 2 seconds
+        setTimeout(carousel, 3000); // Change image every 2 seconds
     }
 </script>
 
@@ -79,7 +79,7 @@ foreach ($laatstToegevoegd as $row) {
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
+                print("<th class='th'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
                 print($fullarray[$i]['StockItemName'] . "</a></th>");
             }
             ?>
@@ -100,7 +100,7 @@ foreach ($laatstToegevoegd as $row) {
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
+                print("<th class='th'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
                 print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</a></th>");
             }
             ?>
