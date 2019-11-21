@@ -1,11 +1,10 @@
 <?php
-
 $active = "home";
 include "includes/header.php";
 include "includes/funtions.php";
 
 
-print("<link rel=\"stylesheet\" type=\"text/css\" href = \"css/home.css\">");
+print("<link rel='stylesheet' type='text/css' href = 'css/home.css'>");
 
 /* sql query voor alle categorien*/
 $sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
