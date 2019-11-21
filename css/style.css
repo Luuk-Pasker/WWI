@@ -92,6 +92,7 @@ input[type=submit] {
     margin-left: 50px;
     margin-right: 400px;
     margin-top: 50px;
+    font-family Aharoni;
     border: black solid; background: lightgray; padding: 40px;
 }
 .itemnotfound2 {
@@ -213,6 +214,9 @@ a.loginLink:hover{
 .scButton{
     margin: 10px 10px 10px 85%;
     text-align: center;
+}
+
+.paginatie{
 }
 
 
