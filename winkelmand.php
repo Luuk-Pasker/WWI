@@ -22,7 +22,7 @@ if(isset($_GET["ItemID"]) && isset($_GET["quantity"]) && isset($_GET["ItemPrice"
     $sql = "SELECT * FROM stockitems S LEFT JOIN stockitemholdings H ON S.StockItemID = H.StockItemID WHERE S.StockItemID = $ItemID";
     $result = mysqli_query($connection, $sql);
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $image = "images/120_dino_slippers.jpg";
+        $image = "images/" . $row['Photo'];
         //$row["Photo"]
         $ItemName = $row["StockItemName"];
         $stock = $row["QuantityOnHand"];
