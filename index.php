@@ -94,7 +94,6 @@ foreach ($laatstToegevoegd as $row) {
         </tr>
     </table>
 
-<a href="productBekijken.php?id=">
     <table width="100%" class="table table-bordered">
         <tr>
             <?php
@@ -114,8 +113,6 @@ foreach ($laatstToegevoegd as $row) {
             </td>
         </tr>
     </table>
-</a>
-
 
 <?php
 include "includes/footer.php";
