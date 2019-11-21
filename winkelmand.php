@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 <?php
 $active = "cart";
 include "includes/header.php";
@@ -72,9 +73,28 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
     if(count($_SESSION["skip"])>0){
         header('Location: '.$_SERVER['PHP_SELF']);
     }
+    /*
+    //laat de inhoud van de lijst zien
+    print_r($_SESSION["IDs"]);
+    print_r($_SESSION["Quantitys"]);
+    print_r($_SESSION["Names"]);
+    print_r($_SESSION["skip"]);
+    //*/
     ?>
 </div>
 
 <?php
 include "includes/footer.php";
+/*
+//uncommend dit en zet false op true om de lijst te resetten
+if(false) {
+    foreach($_SESSION["IDs"] as $i => $j) {
+        unset($_SESSION["IDs"][$i]);
+        unset($_SESSION["Names"][$i]);
+        unset($_SESSION["Images"][$i]);
+        unset($_SESSION["Quantitys"][$i]);
+        unset($_SESSION["Prices"][$i]);
+    }
+}
+//*/
 ?>

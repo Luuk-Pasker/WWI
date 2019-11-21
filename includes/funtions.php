@@ -22,7 +22,7 @@ function print_sc_head(){
 function print_sc_item($index){
     if (isset($_GET["Q$index"])) {
         $_SESSION["Quantitys"][$index] = $_GET["Q$index"];
-        if ($_GET["Q$index"] == 0) {
+        if ($_GET["Q$index"] == 0 || $_GET["Q$index"] == NULL) {
             $_SESSION["skip"][] = $index;
         }
     }
