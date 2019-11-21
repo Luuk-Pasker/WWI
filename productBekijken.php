@@ -34,8 +34,7 @@
 
 
                 //print: afbeelding, voorraad, naam, prijs en beschrijving en bezorgtijd .
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-                {
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     $Image = "images/" . $row['Photo'];
                     //$row["Photo"]
                     print("<img class='foto' src='$Image'><br>");
