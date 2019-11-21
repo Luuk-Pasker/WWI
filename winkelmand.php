@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 <?php
 $active = "cart";
 include "includes/header.php";
@@ -21,7 +22,7 @@ if(isset($_GET["ItemID"]) && isset($_GET["quantity"]) && isset($_GET["ItemPrice"
     $sql = "SELECT * FROM stockitems S LEFT JOIN stockitemholdings H ON S.StockItemID = H.StockItemID WHERE S.StockItemID = $ItemID";
     $result = mysqli_query($connection, $sql);
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $image = "images/120_dino_slippers.jpg";
+        $image = "images/" . $row['Photo'];
         //$row["Photo"]
         $ItemName = $row["StockItemName"];
         $stock = $row["QuantityOnHand"];
@@ -72,9 +73,28 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
     if(count($_SESSION["skip"])>0){
         header('Location: '.$_SERVER['PHP_SELF']);
     }
+    /*
+    //laat de inhoud van de lijst zien
+    print_r($_SESSION["IDs"]);
+    print_r($_SESSION["Quantitys"]);
+    print_r($_SESSION["Names"]);
+    print_r($_SESSION["skip"]);
+    //*/
     ?>
 </div>
 
 <?php
 include "includes/footer.php";
+/*
+//uncommend dit en zet false op true om de lijst te resetten
+if(false) {
+    foreach($_SESSION["IDs"] as $i => $j) {
+        unset($_SESSION["IDs"][$i]);
+        unset($_SESSION["Names"][$i]);
+        unset($_SESSION["Images"][$i]);
+        unset($_SESSION["Quantitys"][$i]);
+        unset($_SESSION["Prices"][$i]);
+    }
+}
+//*/
 ?>

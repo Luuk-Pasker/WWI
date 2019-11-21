@@ -39,6 +39,7 @@ body {
 
 .header-right {
     float: right;
+    margin-top: 2%;
 }
 
 @media screen and (max-width: 500px) {
@@ -73,7 +74,6 @@ input[type=submit] {
 }
 
 .a\.hoofdtext {
-    font-family: Aharoni;
     font-size: 45px;
     margin-left:auto;
     margin-right:auto;
@@ -92,7 +92,7 @@ input[type=submit] {
     margin-left: 50px;
     margin-right: 400px;
     margin-top: 50px;
-    font-family Aharoni;
+    font-family: Aharoni;
     border: black solid; background: lightgray; padding: 40px;
 }
 .itemnotfound2 {

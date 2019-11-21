@@ -37,4 +37,3 @@
 
     </div>
 </div>
-<div class="balk"></div>
