@@ -63,7 +63,7 @@
 }
 
 .test {
-    float: left;
+    float: right;
     display: flex;
     flex-direction: column;
     margin: -65px 30px 70px 30px;

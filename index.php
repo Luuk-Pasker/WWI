@@ -12,14 +12,6 @@ $sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
 $result = mysqli_query($connection, $sql);
 /* sql query voor alle categorien   */
 
-
-/*alle producten weergeven KNOP*/
-//print("<div class='everything'>");
-//print("<div class='div'><form method=\"post\" action=\"/WWI/browse.php\"><button class='button' type=\"submit\">Everything</button></form>");
-//print("</div>");
-/*alle producten weergeven KNOP*/
-
-
 /*print alle namen op de knoppen*/
 print("<form method='get' action=\"/WWI/browse.php\">");
 
@@ -30,8 +22,6 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 /*navigationbar*/
 
 print("</form></div>");
-
-
 
 /*maak een array met de verkregen deals*/
 $results = GetDeals($connection);
@@ -85,13 +75,12 @@ foreach ($laatstToegevoegd as $row) {
 </script>
 
 
-<a href="productBekijken.php?id=">
     <table width="100%" class="table table-bordered">
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th>" . "<img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
-                print($fullarray[$i]['StockItemName'] . "</th>");
+                print("<th><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
+                print($fullarray[$i]['StockItemName'] . "</a></th>");
             }
             ?>
         </tr>
@@ -105,15 +94,14 @@ foreach ($laatstToegevoegd as $row) {
             </td>
         </tr>
     </table>
-</a>
 
 <a href="productBekijken.php?id=">
     <table width="100%" class="table table-bordered">
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th>" . "<img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
-                print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</th>");
+                print("<th><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
+                print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</a></th>");
             }
             ?>
         </tr>
