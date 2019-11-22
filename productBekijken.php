@@ -96,6 +96,10 @@
                     </form>
                 </div>
 
+                <div class="hentai">
+                <a href="oefenen/test4.php"><i class="fas fa-paw"></i></a>
+                </div>
+
                     <?php
                     }else {
                         print("<div class= 'noitem'>" . "No items in stock</div>");
