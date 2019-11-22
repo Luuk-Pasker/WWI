@@ -5,7 +5,7 @@ include "includes/header.php";
 
 <link rel="stylesheet" type="text/css" href="css/aboutus.css" xmlns="">
 <a href="contactForm.php" ><button class="button" type="submit">Contact Form</button> </a>
-<a href="guarantee.php" ><button class='button' type="submit">Guarantee </button></a>
+<a href="guarantee.php" ><button class='button' type="submit">Warranty </button></a>
 
 <div class="row">
     <div class="column">

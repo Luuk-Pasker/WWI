@@ -4,9 +4,9 @@ include "includes/header.php";
 ?>
 <link rel="stylesheet" type="text/css" href = "css/aboutus.css">
 <a href="contactForm.php" ><button class="button" type="submit">Contact Form</button> </a>
-<a href="guarantee.php" ><button class='button' type="submit">Guarantee </button></a>
+<a href="guarantee.php" ><button class='button' type="submit">Warranty </button></a>
 <link rel="stylesheet" type="text/css" href = "css/aboutus.css">
-<div class="tekstabout"><h1><tekst class="tekstabout"></tekst>Guarantee</h1></tekst></div>
+<div class="tekstabout"><h1><tekst class="tekstabout"></tekst>Warranty</h1></tekst></div>
 <br>
 <br>
 <br>
