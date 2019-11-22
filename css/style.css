@@ -177,44 +177,42 @@ a.loginLink:hover{
 }
 
 .scImage{
-    margin: 10px;
+    margin: 5px;
     float: left;
     width: 100px;
 }
 
 .scName{
-    padding-top: 30px;
-    margin: 10px;
+    margin: 35px 5px 5px 5px;
     float: left;
     width: 48%;
 }
 
 .scAmount{
-    padding-top: 30px;
-    margin: 10px;
+    margin: 35px 5px 5px 5px;
     float: left;
     width: 9%;
 }
 
 .scPrice{
-    padding-top: 30px;
-    margin: 10px;
+    margin: 35px 5px 5px 5px;
     float: left;
     width: 13%;
     text-align: right;
 }
 
 .scTPrice{
-    padding-top: 30px;
-    margin: 10px;
+    margin: 35px 5px 5px 5px;
     float: left;
     width: 10%;
     text-align: right;
 }
 
-.scButton{
-    margin: 10px 10px 10px 85%;
-    text-align: center;
+.scDelete{
+    margin: 32px 5px 5px 5px;
+    float: left;
+    width: 32px;
+    height: 32px;
 }
 
 .paginatie{
