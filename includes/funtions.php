@@ -1,6 +1,7 @@
 <?php
 
 function print_sc_head(){
+    //print de bovenkant van de winkelmand
     print("<div class='scRow'>");
     print("<div class='scImage'>");
     print("</div>");
@@ -16,40 +17,56 @@ function print_sc_head(){
     print("<div class='scTPrice'>");
     print("<b>Total price</b>");
     print("</div>");
+    print("<div class='scDelete'>");
+    print("</div>");
     print("</div>");
 }
 
 function print_sc_item($index){
+
+    //past de aantallen aan
     if (isset($_GET["Q$index"])) {
         $_SESSION["Quantitys"][$index] = $_GET["Q$index"];
-        if ($_GET["Q$index"] == 0 || $_GET["Q$index"] == NULL) {
-            $_SESSION["skip"][] = $index;
-        }
+    }
+
+    //verwijdert items uit de lijst
+    if (isset($_GET["D$index"])) {
+        unset($_SESSION["IDs"][$index]);
+        unset($_SESSION["Names"][$index]);
+        unset($_SESSION["Prices"][$index]);
+        unset($_SESSION["Images"][$index]);
+        unset($_SESSION["Quantitys"][$index]);
+        return;
     }
 
     if(isset($_SESSION["IDs"][$index])) {
-        $quantity = $_SESSION["Quantitys"][$index];
-
-        if ($quantity > 0) {
+        if ($_SESSION["Quantitys"][$index] > 0) {
+            //haalt nog ontbrekende informatie op
+            $quantity = $_SESSION["Quantitys"][$index];
             $stock = $_SESSION['Stocks'][$index];
+            $Photo = $_SESSION['Images'][$index];
+            $TPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
+            $_SESSION["TotalPrice"] += $TPrice;
+
+            //print het middenstuk van de winkelmand
             print("<div class='scRow'>");
             print("<div class='scImage'>");
-            $Photo = $_SESSION['Images'][$index];
             print("<img src='$Photo' width='100px'>");
             print("</div>");
             print("<div class='scName'>");
             print($_SESSION["Names"][$index]);
             print("</div>");
             print("<div class='scAmount'>");
-            print("<form><input class='loginInput' type='number' value='$quantity' name='Q$index' min=\"0\" max=\"$stock\"></form>");
+            print("<form><input class='loginInput' type='number' value='$quantity' name='Q$index' min=\"1\" max=\"$stock\"></form>");
             print("</div>");
             print("<div class='scPrice'>");
             print("€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', ''));
             print("</div>");
             print("<div class='scTPrice'>");
-            $TPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
             print("€" . number_format((float)$TPrice, 2, '.', ''));
-            $_SESSION["TotalPrice"] += $TPrice;
+            print("</div>");
+            print("<div class='scDelete'>");
+            print("<form><button class='loginInput' type='submit' name='D$index' value='true' ><img src='images/kruis.JPG' width='28px'></button></form>");
             print("</div>");
             print("</div>");
         }
@@ -57,11 +74,15 @@ function print_sc_item($index){
 }
 
 function print_sc_foot(){
+    //berekent de verzendkosten
     if($_SESSION["TotalPrice"]<50) {
         $shippingPrice = 6.95;
     }else{
         $shippingPrice = 0;
     }
+    $_SESSION["TotalPrice"] += $shippingPrice;
+
+    //print de onderkant van de winkelmand
     print("<div class='scRow'>");
     print("<div class='scImage'>");
     print("</div>");
@@ -75,8 +96,9 @@ function print_sc_foot(){
     print("</div>");
     print("<div class='scTPrice'>");
     print("<b>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b><br><br>");
-    $_SESSION["TotalPrice"] += $shippingPrice;
     print("<b>€" . number_format((float)$_SESSION["TotalPrice"], 2, '.', '') . "</b>");
+    print("</div>");
+    print("<div class='scDelete'>");
     print("</div>");
     print("</div>");
 
