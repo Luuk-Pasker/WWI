@@ -8,7 +8,7 @@ include "includes/header.php";
     <button class="button" type="submit">Contact Form</button>
 </a>
 <a href="guarantee.php">
-    <button class='button' type="submit">Guarantee</button>
+    <button class='button' type="submit">Warranty</button>
 </a>
 <br>
 <br>
