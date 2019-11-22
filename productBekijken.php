@@ -40,6 +40,36 @@
                     print("<img class='foto' src='$Image'><br>");
                     print("<div class='naambeschrijvingprijsnogopvoorraad'>");
                     print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
+
+                    /*print tags*/
+                        if($row["Tags"] == '["32GB","USB Powered"]') {
+                            print(substr('["32GB","USB Powered"]', -20,4 ) . "\n");
+                            print(substr('["32GB","USB Powered"]', -13,11 ));
+                        }elseif($row["Tags"] == '["16GB","USB Powered"]') {
+                            print(substr('["16GB","USB Powered"]', -20,4 ) . "\n");
+                            print(substr('["16GB","USB Powered"]', -13,11 ));
+
+                        }elseif($row["Tags"] == '["Radio Control","Realistic Sound"]'){
+                            print(substr('["Radio Control","Realistic Sound"]', -33,13 ) . "\n");
+                            print(substr('["Radio Control","Realistic Sound"]', -17,15 ));
+
+                        }elseif($row["Tags"] == '["Vintage","So Realistic"]'){
+                            print(substr('["Vintage","So Realistic"]', -24,11 ) . "\n");
+                            print(substr('["Vintage","So Realistic"]', -14,12 ));
+
+                        }elseif($row["Tags"] == '["Comfortable","Long Battery Life"]'){
+                            print(substr('["Comfortable","Long Battery Life"]', -33,11 ) . "\n");
+                            print(substr('["Comfortable","Long Battery Life"]', -19,17 ));
+
+                        }elseif ($row["Tags"] == '[]'){
+                            print"";
+                            
+                        }else{
+                            print("<div class='tags'>" . $row["Tags"] . "</div><br>");
+                        }
+                    /*print tags*/
+
+                    /**/
                     print("<div class='beschrijving2'>Description:</div><BR>" ."<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
                     $price = $row["UnitPrice"];
                     print("<div class='prijs'>" . "€" . $price . "</div><br>");
