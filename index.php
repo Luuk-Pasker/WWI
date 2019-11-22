@@ -5,6 +5,7 @@ include "includes/funtions.php";
 
 
 print("<link rel='stylesheet' type='text/css' href = 'css/home.css'>");
+print("<link rel='stylesheet' type='text/css' href='css/home.css'>");
 
 /* sql query voor alle categorien*/
 $sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
@@ -49,12 +50,25 @@ foreach ($laatstToegevoegd as $row) {
 ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+
+<div class="homebody">
+
 <div class="w3-content w3-section" style="max-width:13%;">
     <img class='mySlides' src='images/slippers.jpg' height="200px">
     <img class='mySlides' src='images/clothing.jpg' height="200px">
     <img class='mySlides' src='images/mug.jpg' height="200px">
 </div>
 <br>
+    <div class="slide-container">
+        <img src="http://placehold.it/200" />
+        <img src="http://placehold.it/200" />
+        <img src="http://placehold.it/200" />
+        <img src="http://placehold.it/200" />
+        <img src="http://placehold.it/200" />
+        <img src="http://placehold.it/200" />
+        <img src="http://placehold.it/200" />
+        <img src="http://placehold.it/200" />
+    </div>
 
 <script>
     var myIndex = 0;
@@ -78,7 +92,7 @@ foreach ($laatstToegevoegd as $row) {
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th class='th'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
+                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='100%'><BR>");
                 print($fullarray[$i]['StockItemName'] . "</a></th>");
             }
             ?>
@@ -98,7 +112,7 @@ foreach ($laatstToegevoegd as $row) {
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th class='th'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='300px'><BR>");
+                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='100%'><BR>");
                 print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</a></th>");
             }
             ?>
@@ -113,6 +127,7 @@ foreach ($laatstToegevoegd as $row) {
             </td>
         </tr>
     </table>
+</div>
 
 <?php
 include "includes/footer.php";

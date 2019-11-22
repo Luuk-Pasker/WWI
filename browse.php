@@ -19,7 +19,7 @@ $result = mysqli_query($connection, $sql);
 
 /*alle producten weergeven KNOP*/
 print("<div class='everything'>");
-print("<form method=\"post\" action=\"/WWI/browse.php\"><button class='button' type=\"submit\">Everything</button></form>");
+print("<form method=\"post\" action=\"/WWI/browse.php\"><button class='button' type=\"submit\">All products</button></form>");
 print("</div>");
 /*alle producten weergeven KNOP*/
 
@@ -124,7 +124,7 @@ if (isset($_GET['id'])) {
 
     /* producten niet getoond worden, geen resultaat tonen */
     if (mysqli_num_rows($res_data) == 0) {
-        print("<p class='text3'> No result </p>");
+        print("<p class='text2'> No results in this category </p>");
     }
     mysqli_close($connection);
     ?>
@@ -132,6 +132,10 @@ if (isset($_GET['id'])) {
 
 </div>
 <!--/*knoppenstructuur van de paginaindeling*/-->
+<?php
+if (!mysqli_num_rows($res_data) == 0) {
+?>
+
 
 <div class="paginatie">
     <ul class="pagination">
@@ -185,10 +189,14 @@ if (isset($_GET['id'])) {
             } else {
                 echo '?page=' . $total_pages . "&id=" . $sID;
             }
+
+
             ?>">Last</a></li>
     </ul>
 </div>
-
+    <?php
+    }
+    ?>
 <!--/*knoppenstructuur van de paginaindeling*/-->
 
 <?php

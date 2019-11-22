@@ -37,3 +37,6 @@ include "includes/header.php";
         questions, be free to ask them trough the contact form.
     </h4>
     </tekst></div>
+<div class="photopersonen">
+<img src="images/personen.png">
+</div>
