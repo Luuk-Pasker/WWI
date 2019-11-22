@@ -11,3 +11,29 @@
     padding-bottom: 30px;
     padding-left: 10px;
 }
+
+.homebody{
+    width: 80%;
+    background-color: #f1f1f1;
+    height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table.table-bordered{
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 1em;
+}
+
+.thhome{
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+.slide-container {
+    overflow: auto;
+    white-space: nowrap;
+}
