@@ -42,31 +42,34 @@
                     print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
 
                     /*print tags*/
+                    print"<div class='Alltags'>";
                         if($row["Tags"] == '["32GB","USB Powered"]') {
-                            print(substr('["32GB","USB Powered"]', -20,4 ) . "\n");
-                            print(substr('["32GB","USB Powered"]', -13,11 ));
+                            print("<div class='Techtags'>" . substr('["32GB","USB Powered"]', -20,4 ) . "</div>");
+                            print("<div class='Techtags'>" . substr('["32GB","USB Powered"]', -13,11 ) . "</div>");
                         }elseif($row["Tags"] == '["16GB","USB Powered"]') {
-                            print(substr('["16GB","USB Powered"]', -20,4 ) . "\n");
-                            print(substr('["16GB","USB Powered"]', -13,11 ));
+                            print("<div class='Techtags'>" . substr('["16GB","USB Powered"]', -20,4 ) . "</div>");
+                            print("<div class='Techtags'>" . substr('["16GB","USB Powered"]', -13,11 ) . "</div>");
 
                         }elseif($row["Tags"] == '["Radio Control","Realistic Sound"]'){
-                            print(substr('["Radio Control","Realistic Sound"]', -33,13 ) . "\n");
-                            print(substr('["Radio Control","Realistic Sound"]', -17,15 ));
+                            print("<div class='RCtags' >" . substr('["Radio Control","Realistic Sound"]', -33,13 ) . "</div>");
+                            print("<div class='Toytags'>" . substr('["Radio Control","Realistic Sound"]', -17,15 ) . "</div>");
 
                         }elseif($row["Tags"] == '["Vintage","So Realistic"]'){
-                            print(substr('["Vintage","So Realistic"]', -24,11 ) . "\n");
-                            print(substr('["Vintage","So Realistic"]', -14,12 ));
+                            print("<div class='Lifestyletags'>" . substr('["Vintage","So Realistic"]', -24,11 ) . "</div>");
+                            print("<div class='Lifestyletags'>" . substr('["Vintage","So Realistic"]', -14,12 ) . "</div>");
 
                         }elseif($row["Tags"] == '["Comfortable","Long Battery Life"]'){
-                            print(substr('["Comfortable","Long Battery Life"]', -33,11 ) . "\n");
-                            print(substr('["Comfortable","Long Battery Life"]', -19,17 ));
+                            print("<div class='Lifestyletags'>" . substr('["Comfortable","Long Battery Life"]', -33,11 ) . "</div>");
+                            print("<div class='Techtags'>" . substr('["Comfortable","Long Battery Life"]', -19,17 ) . "</div>");
 
                         }elseif ($row["Tags"] == '[]'){
                             print"";
-                            
+
                         }else{
-                            print("<div class='tags'>" . $row["Tags"] . "</div><br>");
+                            $x = array('["', '"]');
+                            print("<div class='tags'>" . str_replace($x, "", $row["Tags"]) . "</div>");
                         }
+                    print"</div>";
                     /*print tags*/
 
                     /**/
