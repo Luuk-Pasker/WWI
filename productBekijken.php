@@ -44,30 +44,31 @@
                     /*print tags*/
                     print"<div class='Alltags'>";
                         if($row["Tags"] == '["32GB","USB Powered"]') {
-                            print("<div class='Techtags'>" . substr('["32GB","USB Powered"]', -20,4 ) . "</div>");
-                            print("<div class='Techtags'>" . substr('["32GB","USB Powered"]', -13,11 ) . "</div>");
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=32gb&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -20,4 ) . "</a>");
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -13,11 ) . "</a>");
                         }elseif($row["Tags"] == '["16GB","USB Powered"]') {
-                            print("<div class='Techtags'>" . substr('["16GB","USB Powered"]', -20,4 ) . "</div>");
-                            print("<div class='Techtags'>" . substr('["16GB","USB Powered"]', -13,11 ) . "</div>");
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=16gb&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -20,4 ) . "</a>");
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -13,11 ) . "</a>");
 
                         }elseif($row["Tags"] == '["Radio Control","Realistic Sound"]'){
-                            print("<div class='RCtags' >" . substr('["Radio Control","Realistic Sound"]', -33,13 ) . "</div>");
-                            print("<div class='Toytags'>" . substr('["Radio Control","Realistic Sound"]', -17,15 ) . "</div>");
+                            print("<a class='RCtags' href='http://localhost/WWI/browse.php?zoek=rc&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -33,13 ) . "</a>");
+                            print("<a class='Toytags' href='http://localhost/WWI/browse.php?zoek=realistic+sound&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -17,15 ) . "</a>");
 
                         }elseif($row["Tags"] == '["Vintage","So Realistic"]'){
-                            print("<div class='Lifestyletags'>" . substr('["Vintage","So Realistic"]', -24,11 ) . "</div>");
-                            print("<div class='Lifestyletags'>" . substr('["Vintage","So Realistic"]', -14,12 ) . "</div>");
+                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -24,11 ) . "</a>");
+                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=realistic&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -14,12 ) . "</a>");
 
                         }elseif($row["Tags"] == '["Comfortable","Long Battery Life"]'){
-                            print("<div class='Lifestyletags'>" . substr('["Comfortable","Long Battery Life"]', -33,11 ) . "</div>");
-                            print("<div class='Techtags'>" . substr('["Comfortable","Long Battery Life"]', -19,17 ) . "</div>");
+                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -33,11 ) . "</a>");
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=long&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -19,17 ) . "</a>");
 
                         }elseif ($row["Tags"] == '[]'){
                             print"";
 
                         }else{
                             $x = array('["', '"]');
-                            print("<div class='tags'>" . str_replace($x, "", $row["Tags"]) . "</div>");
+                            $y= ("http://localhost/WWI/browse.php?zoek=" . $row["Tags"] . "&toevoegen=Search");
+                            print("<a class='tags' href='$y'>" . str_replace($x, "", $row["Tags"]) . "</a>");
                         }
                     print"</div>";
                     /*print tags*/
