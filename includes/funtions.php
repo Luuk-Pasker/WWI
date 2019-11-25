@@ -39,7 +39,8 @@ function sc_Print(){
 
     foreach($_SESSION["IDs"] as $index => $val){
         print("<div class='scRow'>");
-            print($_SESSION['Names'][$index]);
+        $Name = $_SESSION['Names'][$index];
+            print("<a class='scLink' href='productBekijken.php?id=" . $_SESSION["IDs"][$index] . "'>$Name</a>");
         print("</div>");
     }
         print("<div class='scHeadRow'>");
@@ -55,7 +56,14 @@ function sc_Print(){
         print("<form method='post'>");
     foreach($_SESSION["IDs"] as $index => $val){
         $quantity = $_SESSION["Quantitys"][$index];
-        $stock = $_SESSION['Stocks'][$index];
+        //limiteerd de hoeveelheid die gekocht kan worden van een product
+        if($_SESSION["Stocks"]>1000){
+            $stock = 1000;
+        }elseif($_SESSION["Stocks"]>100){
+            $stock = 100;
+        }else {
+            $stock = $_SESSION['Stocks'][$index];
+        }
             print("<div class='scRow'>");
                 print("<input class='loginInput' type='number' value='$quantity' name='Q$index' min=\"1\" max=\"$stock\">");
             print("</div>");

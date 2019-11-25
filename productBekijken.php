@@ -77,10 +77,16 @@
                     print("<div class='beschrijving2'>Description:</div><BR>" ."<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
                     $price = $row["UnitPrice"];
                     print("<div class='prijs'>" . "€" . $price . "</div><br>");
-                    $voorraad = $row["QuantityOnHand"];
                     print("<div class='nogopvoorraad'>" . " In stock! </div><br><br>");
                     print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
                     print("</div>");
+                    if($row["QuantityOnHand"]>1000){
+                        $voorraad = 1000;
+                    }elseif($row["QuantityOnHand"]>100){
+                        $voorraad = 100;
+                    }else {
+                        $voorraad = $row["QuantityOnHand"];
+                    }
                 }
 
 

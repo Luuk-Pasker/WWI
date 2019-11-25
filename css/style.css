@@ -107,7 +107,6 @@ input[type=submit] {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     margin-left: 600px;
-    kd
 }
 
 .terug {
@@ -243,6 +242,16 @@ a.loginLink:hover{
 
 .scEmpty{
     text-align: center;
+}
+
+a.scLink{
+    text-decoration: none;
+    color: black;
+}
+
+a.scLink:hover{
+    text-decoration: underline;
+    color: black;
 }
 
 .paginatie{
