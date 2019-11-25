@@ -55,8 +55,7 @@
 }
 
 .productfoto{
-    width: 250px;
-    height: 250px;
+    width: 100%;
     float: left;
 }
 
@@ -92,9 +91,34 @@
 }
 
 .results {
-    float: contour;
-    align-content: center;
-    padding-right: 10px;
+    width: calc(100% - 250px);
+    float: left;
+}
+
+.table.table-bordered{
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 1em;
+    border: 0px;
+    empty-cells: hide;
+}
+
+.browsecell{
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    empty-cells: hide;
+}
+
+.browsecell:hover{
+    box-shadow: 0px 0px 2px 2px lightgrey;
+}
+
+.resultskayleigh{
     text-align: center;
-    -moz-text-size-adjust: auto;
+}
+
+.allProducts{
+    width: 250px;
 }
