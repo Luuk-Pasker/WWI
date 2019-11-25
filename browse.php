@@ -91,9 +91,11 @@ if (isset($_GET['id'])) {
 
     /*printen van de resultaten op het scherm*/
    if ($total_rows >= 1)
-    print($total_rows . "results<br><br><br><br><br><br>");
+    print("<h4>$total_rows " . "results</h4><br><br><br><br>");
    else ("");
-
+?>
+    </div>
+        <?php
     $res_data = mysqli_query($connection, $sql);
     $zoekopdracht = "";
     if (isset($_GET['id'])) {
@@ -133,8 +135,12 @@ if (isset($_GET['id'])) {
     mysqli_close($connection);
     ?>
 
-    </div>
 </div>
+
+
+
+
+
 <!--/*knoppenstructuur van de paginaindeling*/-->
 <?php
 if (!mysqli_num_rows($res_data) == 0) {

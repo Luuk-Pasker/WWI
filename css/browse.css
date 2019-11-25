@@ -92,5 +92,9 @@
 }
 
 .results {
-    
+    float: contour;
+    align-content: center;
+    padding-right: 10px;
+    text-align: center;
+    -moz-text-size-adjust: auto;
 }
