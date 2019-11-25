@@ -18,12 +18,17 @@ $result = mysqli_query($connection, $sql);
 
 
 /*alle producten weergeven KNOP*/
+?>
+<div class="allProducts">
+    <?php
 print("<div class='everything'>");
 print("<form method=\"post\" action=\"/WWI/browse.php\"><button class='button' type=\"submit\">All products</button></form>");
 print("</div>");
-/*alle producten weergeven KNOP*/
+?>
+</div>
+<!--/*alle producten weergeven KNOP*/-->
 
-
+<?php
 /*print alle namen op de knoppen*/
 print("<form method='get' style='width: 250px; float: left'>");
 
@@ -87,14 +92,15 @@ if (isset($_GET['id'])) {
 
 <div class="test6">
     <div  class='results'>
+        <div  class='resultskayleigh'>
     <?php
 
     /*printen van de resultaten op het scherm*/
    if ($total_rows >= 1)
-    print("<h4>$total_rows " . "results</h4><br><br><br><br>");
+    print("<h4>$total_rows " . "results</h4>");
    else ("");
 ?>
-
+        </div>
         <?php
     $res_data = mysqli_query($connection, $sql);
     $zoekopdracht = "";
