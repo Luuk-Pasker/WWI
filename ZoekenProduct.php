@@ -20,8 +20,7 @@ order by StockItemName
     mysqli_stmt_execute($statement);
     $result = mysqli_stmt_get_result($statement);
     $result = mysqli_num_rows($result);
-    $pageszoekfunctie = ceil($result / 25);
-    return $pageszoekfunctie;
+    return $result;
 }
 
 function ZoekPoduct($connection, $zoek, $no_of_records_per_page, $offset) {

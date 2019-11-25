@@ -96,7 +96,10 @@ if (isset($_GET['id'])) {
     <?php
 
     /*printen van de resultaten op het scherm*/
-   if ($total_rows >= 1)
+    if(isset($_GET["toevoegen"])){
+        $aantalproducten = TelZoek($connection, $_GET["zoek"]);
+        print("<h4>$aantalproducten " . "results</h4>");
+    } elseif ($total_rows >= 1)
     print("<h4>$total_rows " . "results</h4>");
    else ("");
 ?>
