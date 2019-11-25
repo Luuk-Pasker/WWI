@@ -94,20 +94,40 @@ if (isset($_GET['id'])) {
     print("<h4>$total_rows " . "results</h4><br><br><br><br>");
    else ("");
 ?>
-    </div>
+
         <?php
     $res_data = mysqli_query($connection, $sql);
     $zoekopdracht = "";
     if (isset($_GET['id'])) {
-
-        while ($row = mysqli_fetch_array($res_data)) {
-
-            print("<div class='test'>");
-            print("<img class='productfoto' src='images/" . $row["Photo"] . "'<br>");
-            print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
-            print("</div>");
-
-
+        $browsearray = array();
+        $p=0;
+        foreach ($res_data as $row) {
+            if (mysqli_num_rows($res_data) != 0) {
+                $browsearray[$p] = $row;
+                $p++;
+            }
+        }
+        $x = 0;
+        if(!empty($browsearray[$x])) {
+            echo '<table width="100%" class="table table-bordered">';
+            for ($i = 0; $i < 5; $i++) {
+                echo "<tr>";
+                for ($j = 0; $j < 5; $j++) {
+                    echo "<td class='browsecell'>";
+                    /*/informatie voor elke cel invullen/*/
+                    if(!empty($browsearray[$x])) {
+                        print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                        print_r($browsearray[$x]['StockItemName']);
+                        /*/informatie voor elke cel invullen/*/
+                        echo "</td>";
+                        $x++;
+                    }
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
+        } else {
+            print("");
         }
         unset($_GET["zoek"]);
     } elseif (isset($_GET["toevoegen"])) {
@@ -119,13 +139,34 @@ if (isset($_GET['id'])) {
         $total_pages = TelZoek($connection, $_GET["zoek"]);
         PrintSearchResults($_GET["zoek"], $offset, $no_of_records_per_page);
     } else {
-        while ($row = mysqli_fetch_array($res_data)) {
+        $browsearray = array();
+        $p=0;
+        foreach ($res_data as $row) {
+            if (mysqli_num_rows($res_data) != 0) {
+                $browsearray[$p] = $row;
+                $p++;
+            }
+        }
+        $x = 0;
+        if(!empty($browsearray[$x])) {
+            echo '<table width="100%" class="table table-bordered">';
 
-            print("<div class='test'>");
-            print("<img class='productfoto' src='images/" . $row["Photo"] . "'<br>");
-            print("<div class='producten'><a href='productBekijken.php?id=" . $row['StockItemID'] . "'>" . $row["StockItemName"] . " €" . $row["UnitPrice"] . "</a></div>");
-            print("</div>");
-
+            for ($i = 0; $i < 5; $i++) {
+                echo "<tr>";
+                for ($j = 0; $j < 5; $j++) {
+                    echo "<td class='browsecell'>";
+                    /*/informatie voor elke cel invullen/*/
+                    if(!empty($browsearray[$x])) {
+                        print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                        print_r($browsearray[$x]['StockItemName']);
+                        /*/informatie voor elke cel invullen/*/
+                        echo "</td>";
+                        $x++;
+                    }
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
         }
     }
     /* producten niet getoond worden, geen resultaat tonen */
@@ -134,7 +175,7 @@ if (isset($_GET['id'])) {
     }
     mysqli_close($connection);
     ?>
-
+    </div>
 </div>
 
 

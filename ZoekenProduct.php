@@ -86,13 +86,34 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
     $result = ZoekPoduct($connection, $zoek, $no_of_records_per_page, $offset);
 
     if(mysqli_num_rows($result) > 0) {
-        foreach ($result as $product) {
-            print("<div class='test'>");
-            print("<img class='productfoto' src='images/" . $product['Photo'] . "'" . "<br>");
-            print("<div class='productnaam'>");
-            print("<a href='productBekijken.php?id=" . $product['StockItemID'] . "'>" . $product["StockItemName"] . " €" . $product["RecommendedRetailPrice"] . "</a><br>");
-            print("</div>");
-            print("</div>");
+        $browsearray = array();
+        $p=0;
+        foreach ($result as $row) {
+            if (mysqli_num_rows($result) != 0) {
+                $browsearray[$p] = $row;
+                $p++;
+            }
+        }
+        $x = 0;
+        if(!empty($browsearray[$x])) {
+            echo '<table width="100%" class="table table-bordered">';
+
+            for ($i = 0; $i < 5; $i++) {
+                echo "<tr>";
+                for ($j = 0; $j < 5; $j++) {
+                    echo "<td class='browsecell'>";
+                    /*/informatie voor elke cel invullen/*/
+                    if(!empty($browsearray[$x])) {
+                        print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                        print_r($browsearray[$x]['StockItemName']);
+                        /*/informatie voor elke cel invullen/*/
+                        echo "</td>";
+                        $x++;
+                    }
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
         }
     } else {
         header('location: NiksGevonden.php');
