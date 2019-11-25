@@ -15,8 +15,8 @@ if(!(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Qu
 }
 
 //haalt de nodige waarden op van de productBekijken pagina en de database
-if(isset($_GET["ItemID"]) && isset($_GET["quantity"]) && isset($_GET["ItemPrice"])) {
-    $ItemID = $_GET["ItemID"];
+if(isset($_POST["ItemID"]) && isset($_POST["quantity"]) && isset($_POST["ItemPrice"])) {
+    $ItemID = $_POST["ItemID"];
 
     $sql = "SELECT * FROM stockitems S LEFT JOIN stockitemholdings H ON S.StockItemID = H.StockItemID WHERE S.StockItemID = $ItemID";
     $result = mysqli_query($connection, $sql);
@@ -26,8 +26,8 @@ if(isset($_GET["ItemID"]) && isset($_GET["quantity"]) && isset($_GET["ItemPrice"
         $ItemName = $row["StockItemName"];
         $stock = $row["QuantityOnHand"];
     }
-    $quantity = $_GET["quantity"];
-    $price = $_GET["ItemPrice"];
+    $quantity = $_POST["quantity"];
+    $price = $_POST["ItemPrice"];
 }
 
 //zet de waarden in de arrays als dat ID er nog niet instaat
@@ -52,24 +52,24 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
     <?php
     //dit print de hele winkelmand
     $_SESSION["TotalPrice"] = 0;
-    print_sc_head();
-    foreach($_SESSION["IDs"] as $i => $j) {
-        print_sc_item($i);
+    if(count($_SESSION["IDs"])>0) {
+        sc_Print();
+    }else{
+        print("<div class='scEmpty'>Your shopping cart is empty, you can add <a href='browse.php'>these</a> products.</div>");
     }
-    print_sc_foot();
-
-    /*
-    //laat de inhoud van de lijst zien
-    //alleen voor testen
-    print_r($_SESSION["IDs"]);
-    print_r($_SESSION["Quantitys"]);
-    print_r($_SESSION["Names"]);
-    //*/
     ?>
 </div>
 
 <?php
 include "includes/footer.php";
+/*
+//laat de inhoud van de lijst zien
+//alleen voor testen
+print_r($_SESSION["IDs"]);
+print_r($_SESSION["Quantitys"]);
+print_r($_SESSION["Names"]);
+//*/
+
 /*
 //uncomment dit en zet false op true om de lijst te resetten
 if(false) {

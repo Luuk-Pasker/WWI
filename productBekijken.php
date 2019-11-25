@@ -89,7 +89,7 @@
                 ?>
 
                 <div class="aantallen">
-                    <form action="winkelmand.php" method="get">
+                    <form action="winkelmand.php" method="post">
                         <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
                         Amount: <input id="aantalx" type="number" value="1" name="quantity" min="1" max="<?php print("$voorraad"); ?>">
                         <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
