@@ -52,13 +52,13 @@ foreach ($laatstToegevoegd as $row) {
 
 
 <div class="homebody">
-<!--
-<div class="w3-content w3-section" style="max-width:13%;">
+
+<!--<div class="w3-content w3-section" style="max-width:13%;">
     <img class='mySlides' src='images/slippers.jpg' height="200px">
     <img class='mySlides' src='images/clothing.jpg' height="200px">
     <img class='mySlides' src='images/mug.jpg' height="200px">
-</div>
-<br>-->
+</div>-->
+<br>
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin: 0 auto;">
         <!-- Indicators -->
@@ -69,7 +69,7 @@ foreach ($laatstToegevoegd as $row) {
         </ol>
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner" style ="display: flex!important; justify-content: center!important;">
+        <div class="carousel-inner" style ="display: flex!important; justify-content: center">
             <div class="item active">
                 <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
                 <img src="images/clothing.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
