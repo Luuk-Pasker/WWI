@@ -84,6 +84,7 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
     $port = 3306;
     $connection = mysqli_connect($host, $user, $pass, $databasename, $port);
     $result = ZoekPoduct($connection, $zoek, $no_of_records_per_page, $offset);
+
     if(mysqli_num_rows($result) > 0) {
         foreach ($result as $product) {
             print("<div class='test'>");

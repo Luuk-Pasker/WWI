@@ -86,9 +86,16 @@ if (isset($_GET['id'])) {
 ?>
 
 <div class="test6">
+    <div  class='results'>
     <?php
 
     /*printen van de resultaten op het scherm*/
+   if ($total_rows >= 1)
+    print("<h4>$total_rows " . "results</h4><br><br><br><br>");
+   else ("");
+?>
+    </div>
+        <?php
     $res_data = mysqli_query($connection, $sql);
     $zoekopdracht = "";
     if (isset($_GET['id'])) {
@@ -121,7 +128,6 @@ if (isset($_GET['id'])) {
 
         }
     }
-
     /* producten niet getoond worden, geen resultaat tonen */
     if (mysqli_num_rows($res_data) == 0) {
         print("<p class='text2'> No results in this category </p>");
@@ -129,8 +135,12 @@ if (isset($_GET['id'])) {
     mysqli_close($connection);
     ?>
 
-
 </div>
+
+
+
+
+
 <!--/*knoppenstructuur van de paginaindeling*/-->
 <?php
 if (!mysqli_num_rows($res_data) == 0) {
