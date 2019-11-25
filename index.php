@@ -52,25 +52,54 @@ foreach ($laatstToegevoegd as $row) {
 
 
 <div class="homebody">
-
+<!--
 <div class="w3-content w3-section" style="max-width:13%;">
     <img class='mySlides' src='images/slippers.jpg' height="200px">
     <img class='mySlides' src='images/clothing.jpg' height="200px">
     <img class='mySlides' src='images/mug.jpg' height="200px">
 </div>
-<br>
-    <div class="slide-container">
-        <img src="http://placehold.it/200" />
-        <img src="http://placehold.it/200" />
-        <img src="http://placehold.it/200" />
-        <img src="http://placehold.it/200" />
-        <img src="http://placehold.it/200" />
-        <img src="http://placehold.it/200" />
-        <img src="http://placehold.it/200" />
-        <img src="http://placehold.it/200" />
+<br>-->
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin: 0 auto;">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" style ="display: flex!important; justify-content: center!important;">
+            <div class="item active">
+                <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
+                <img src="images/clothing.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
+                <img src="images/mug.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
+            </div>
+
+            <div class="item" style="text-align: center">
+                <img src="images/packaging.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
+                <img src="images/toys.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
+                <img src="images/usb.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
+            </div>
+
+            <div class="item">
+                <img src="images/t-shirt.jpg" alt="Los Angeles" style="height:200px;float: left">
+                <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left">
+                <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left">
+            </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 
-<script>
+        <script>
     var myIndex = 0;
     carousel();
 

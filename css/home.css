@@ -15,7 +15,7 @@
 .homebody{
     width: 80%;
     background-color: #f1f1f1;
-    height: 1000px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -37,3 +37,4 @@
     overflow: auto;
     white-space: nowrap;
 }
+
