@@ -3,16 +3,16 @@ $active = "login";
 include "includes/header.php";
 ?>
 
-    <div class="loginBox">
+    <div class="loginBox" style="height: 30%;">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
-                    <h2>Wide World Importers Login</h2>
+                    <h2>Wide World Importers User</h2>
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputEmail" class="">Username:</label>
+                    <label for="inputEmail" class="">Full name:</label>
                 </div>
                 <div class="loginColumn2">
                     <input type="text" class="loginInput" id="inputEmail" name="username" placeholder="Username">
