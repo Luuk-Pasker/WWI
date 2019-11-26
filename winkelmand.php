@@ -44,7 +44,15 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
 ?>
 
 <div class="keerterug">
+    <!--
     <a class="KEERTERUGNU" href="browse.php" style="color: white;"><button class="btn" title="Go back"><i class="fas fa-long-arrow-alt-left"></i>  Go back to shopping</button></a>
+    -->
+    <button class="btn" onclick="goBack()">Go back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
 <h2 class="a.hoofdtext">Shoppingcart</h2>
 

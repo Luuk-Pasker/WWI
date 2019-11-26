@@ -126,7 +126,7 @@ if (isset($_GET['id'])) {
                     /*/informatie voor elke cel invullen/*/
                     if(!empty($browsearray[$x])) {
                         print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
-                        print_r($browsearray[$x]['StockItemName']);
+                        print($browsearray[$x]['StockItemName'] . "<br>€" . $browsearray[$x]['UnitPrice']);
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";
                         $x++;
@@ -167,7 +167,7 @@ if (isset($_GET['id'])) {
                     /*/informatie voor elke cel invullen/*/
                     if(!empty($browsearray[$x])) {
                         print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
-                        print_r($browsearray[$x]['StockItemName']);
+                        print($browsearray[$x]['StockItemName'] . "<br>€" . $browsearray[$x]['UnitPrice']);
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";
                         $x++;

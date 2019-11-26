@@ -166,8 +166,7 @@ a.loginLink:hover{
 }
 
 .scBox{
-    margin-left: 10%;
-    width: 80%;
+    margin: 0 15% 0 15%;
     overflow: hidden;
     font-size: large;
 }
@@ -188,7 +187,7 @@ a.loginLink:hover{
  }
 
 .scImage{
-    margin: 5px;
+    margin: 5px 5px 5px 5px;
     float: left;
     text-align: center;
 }
@@ -196,26 +195,26 @@ a.loginLink:hover{
 .scName{
     margin: 5px;
     float: left;
-    width: 48%;
+    width: 500px;
 }
 
 .scAmount{
     margin: 5px;
     float: left;
-    width: 9%;
+    width: 80px;
 }
 
 .scPrice{
     margin: 5px;
     float: left;
-    width: 13%;
+    width: 145px;
     text-align: right;
 }
 
 .scTPrice{
     margin: 5px;
     float: left;
-    width: 10%;
+    width: 120px;
     text-align: right;
 }
 

@@ -53,12 +53,6 @@ foreach ($laatstToegevoegd as $row) {
 
 <div class="homebody">
 
-<!--<div class="w3-content w3-section" style="max-width:13%;">
-    <img class='mySlides' src='images/slippers.jpg' height="200px">
-    <img class='mySlides' src='images/clothing.jpg' height="200px">
-    <img class='mySlides' src='images/mug.jpg' height="200px">
-</div>-->
-<br>
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin: 0 auto;">
         <!-- Indicators -->
@@ -71,9 +65,24 @@ foreach ($laatstToegevoegd as $row) {
         <!-- Wrapper for slides -->
         <div class="carousel-inner" style ="display: flex!important; justify-content: center">
             <div class="item active">
-                <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
+                <table>
+                    <tr>
+                        <th>
+                            <a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'>
+                            <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
+                            </a>
+                        </th>
+                        <th>
+                            <img src="images/toys.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
+                        </th>
+                        <th>
+                            <img src="images/packaging.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
+                        </th>
+                    </tr>
+                </table>
+                <!--<img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
                 <img src="images/clothing.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
-                <img src="images/mug.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
+                <img src="images/mug.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">-->
             </div>
 
             <div class="item" style="text-align: center">

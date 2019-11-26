@@ -10,7 +10,7 @@
     session_start();
     ?>
     <title>
-        World Wide Importers
+        Wide World Importers
     </title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/slider.css">
