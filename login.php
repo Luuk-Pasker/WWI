@@ -1,7 +1,6 @@
 <?php
 $active = "login";
 include "includes/header.php";
-
 ?>
 
     <div class="loginBox">
@@ -30,7 +29,7 @@ include "includes/header.php";
             <div class="loginRow">
                 <div class="loginColumn2">
                     <input type="submit" class="" name="submit" value="Sign in"> <a class="loginLink" href="">Forgot
-                        password?</a> <!-- sign in en forgot password doen nog niks -->
+                        password? </a> <a href="register.php"><input type="submit" name="register" value="Sign up"></a> <!-- sign in en forgot password doen nog niks -->
                 </div>
             </div>
         </form>
@@ -39,6 +38,10 @@ include "includes/header.php";
 <?php
 $username = "";
 
+if (isset($_POST['register'])) {
+    echo '<script> window.location.href = "register.php"; </script>';
+}
+
 if (isset($_POST['submit'])) {
     if (empty($_POST['username']) && empty($_POST['password'])) {
         echo "Fill in data - ";
@@ -46,18 +49,19 @@ if (isset($_POST['submit'])) {
         $username = $_POST['username'];
         $HPass = hash('sha256', $_POST['password']);
         $HPass = strtoupper($HPass);
-    }
+        $sql = "SELECT * FROM people WHERE LogonName = '$username' AND 'HashedPassword' = $HPass";
+        $res_data = mysqli_query($connection, $sql);
+        /*printen van de resultaten op het scherm*/
+        foreach ($res_data as $row) {
 
-    $sql = "SELECT * FROM people LIMIT 1";
-    /*printen van de resultaten op het scherm*/
-    $res_data = mysqli_query($connection, $sql);
-    while ($row = mysqli_fetch_array($res_data)) {
-        if ($row['LogonName'] == $username && $row['HashedPassword'] == $HPass) {
-            $_SESSION['login'] = TRUE;
-            $_SESSION['user_session'] = $row['PersonID'];
-        } else {
-            $_SESSION['login'] = FALSE;
-            echo "Wrong data!";
+            if ($row['LogonName'] == $username && $row['HashedPassword'] == $HPass) {
+//                $_SESSION['login'] = TRUE;
+//                $_SESSION['user_session'] = $row['PersonID'];
+//                echo $row['PersonID'];
+            } else {
+                $_SESSION['login'] = FALSE;
+                echo "Wrong data!";
+            }
         }
     }
 }
@@ -65,6 +69,7 @@ if (isset($_POST['submit'])) {
 if ($_SESSION['login'] == TRUE) {
     echo '<script> window.location.href = "admin/dashboard.php"; </script>';
 }
+
 
 include "includes/footer.php";
 ?>
