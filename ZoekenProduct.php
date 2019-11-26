@@ -104,7 +104,7 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
                     /*/informatie voor elke cel invullen/*/
                     if(!empty($browsearray[$x])) {
                         print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
-                        print_r($browsearray[$x]['StockItemName']);
+                        print($browsearray[$x]['StockItemName'] . "<br>€" . $browsearray[$x]['UnitPrice']);
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";
                         $x++;
