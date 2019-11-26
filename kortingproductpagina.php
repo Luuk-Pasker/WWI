@@ -22,4 +22,14 @@ foreach ($results as $row) {
     }
 }
 
-print($fullarray[2]['SpecialDealID']);
+print($fullarray[1]['StockItemName']);
+print($fullarray[1]['UnitPrice']);
+
+print($fullarray[2]['StockItemName']);
+print($fullarray[2]['UnitPrice']);
+
+print($fullarray[3]['StockItemName']);
+print($fullarray[3]['UnitPrice']);
+
+print($fullarray[4]['StockItemName']);
+print($fullarray[4]['UnitPrice']);
