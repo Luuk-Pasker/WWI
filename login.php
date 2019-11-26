@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 if (empty($_SESSION['login'])){
 
 } else if ($_SESSION['login'] == TRUE) {
-    echo '<script> window.location.href = "admin/dashboard.php"; </script>';
+    echo '<script> window.location.href = "dashboard.php"; </script>';
 }
 
 
