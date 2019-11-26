@@ -40,13 +40,53 @@
                     print("<img class='foto' src='$Image'><br>");
                     print("<div class='naambeschrijvingprijsnogopvoorraad'>");
                     print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
+
+                    /*print tags*/
+                    print"<div class='Alltags'>";
+                        if($row["Tags"] == '["32GB","USB Powered"]') {
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=32gb&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -20,4 ) . "</a>");
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -13,11 ) . "</a>");
+                        }elseif($row["Tags"] == '["16GB","USB Powered"]') {
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=16gb&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -20,4 ) . "</a>");
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -13,11 ) . "</a>");
+
+                        }elseif($row["Tags"] == '["Radio Control","Realistic Sound"]'){
+                            print("<a class='RCtags' href='http://localhost/WWI/browse.php?zoek=rc&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -33,13 ) . "</a>");
+                            print("<a class='Toytags' href='http://localhost/WWI/browse.php?zoek=realistic+sound&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -17,15 ) . "</a>");
+
+                        }elseif($row["Tags"] == '["Vintage","So Realistic"]'){
+                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -24,11 ) . "</a>");
+                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=realistic&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -14,12 ) . "</a>");
+
+                        }elseif($row["Tags"] == '["Comfortable","Long Battery Life"]'){
+                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -33,11 ) . "</a>");
+                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=long&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -19,17 ) . "</a>");
+
+                        }elseif ($row["Tags"] == '[]'){
+                            print"";
+
+                        }else{
+                            $x = array('["', '"]');
+                            $y= ("http://localhost/WWI/browse.php?zoek=" . $row["Tags"] . "&toevoegen=Search");
+                            print("<a class='tags' href='$y'>" . str_replace($x, "", $row["Tags"]) . "</a>");
+                        }
+                    print"</div>";
+                    /*print tags*/
+
+                    /**/
                     print("<div class='beschrijving2'>Description:</div><BR>" ."<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
                     $price = $row["UnitPrice"];
                     print("<div class='prijs'>" . "€" . $price . "</div><br>");
-                    $voorraad = $row["QuantityOnHand"];
                     print("<div class='nogopvoorraad'>" . " In stock! </div><br><br>");
                     print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
                     print("</div>");
+                    if($row["QuantityOnHand"]>1000){
+                        $voorraad = 1000;
+                    }elseif($row["QuantityOnHand"]>100){
+                        $voorraad = 100;
+                    }else {
+                        $voorraad = $row["QuantityOnHand"];
+                    }
                 }
 
 
@@ -55,12 +95,16 @@
                 ?>
 
                 <div class="aantallen">
-                    <form action="winkelmand.php" method="get">
+                    <form action="winkelmand.php" method="post">
                         <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
-                        Amount: <input id="aantalx" type="number" name="quantity" min="1" max="<?php print("$voorraad"); ?>">
+                        Amount: <input id="aantalx" type="number" value="1" name="quantity" min="1" max="<?php print("$voorraad"); ?>">
                         <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
                         <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
                     </form>
+                </div>
+
+                <div class="hentai">
+                <a href="oefenen/test4.php"><i class="fas fa-paw"></i></a>
                 </div>
 
                     <?php

@@ -105,8 +105,8 @@ input[type=submit] {
 
 .text2 {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    margin-left: 110px;
+    font-size: 30px;
+    text-align: center;
 }
 
 .terug {
@@ -166,54 +166,91 @@ a.loginLink:hover{
 }
 
 .scBox{
-    margin-left: 10%;
-    width: 80%;
-}
-
-.scRow{
+    margin: 0 15% 0 15%;
     overflow: hidden;
     font-size: large;
 }
 
+.scRow{
+    height: 100px;
+    margin: 5px;
+    padding-top: 38px;
+}
+
+.scHeadRow{
+    margin: 5px;
+}
+
+.scImageRow{
+     height: 100px;
+     margin: 5px;
+ }
+
 .scImage{
-    margin: 10px;
+    margin: 5px 5px 5px 5px;
     float: left;
-    width: 100px;
+    text-align: center;
 }
 
 .scName{
-    padding-top: 30px;
-    margin: 10px;
+    margin: 5px;
     float: left;
-    width: 48%;
+    width: 500px;
 }
 
 .scAmount{
-    padding-top: 30px;
-    margin: 10px;
+    margin: 5px;
     float: left;
-    width: 9%;
+    width: 80px;
 }
 
 .scPrice{
-    padding-top: 30px;
-    margin: 10px;
+    margin: 5px;
     float: left;
-    width: 13%;
+    width: 145px;
     text-align: right;
 }
 
 .scTPrice{
-    padding-top: 30px;
-    margin: 10px;
+    margin: 5px;
     float: left;
-    width: 10%;
+    width: 120px;
     text-align: right;
 }
 
+.scDelete{
+    margin: 5px;
+    float: left;
+    width: 43px;
+}
+
 .scButton{
-    margin: 10px 10px 10px 85%;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.scUpdate{
+    width: 100%;
+    border-radius: 4px;
+    background-color: dodgerblue;
+    border: dodgerblue;
+    color: white;
+    font-size: 14px;
+    padding: 4px;
+}
+
+.scEmpty{
     text-align: center;
+}
+
+a.scLink{
+    text-decoration: none;
+    color: black;
+}
+
+a.scLink:hover{
+    text-decoration: underline;
+    color: black;
 }
 
 .paginatie{

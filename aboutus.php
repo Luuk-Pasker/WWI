@@ -8,7 +8,7 @@ include "includes/header.php";
     <button class="button" type="submit">Contact Form</button>
 </a>
 <a href="guarantee.php">
-    <button class='button' type="submit">Guarantee</button>
+    <button class='button' type="submit">Warranty</button>
 </a>
 <br>
 <br>
@@ -37,3 +37,6 @@ include "includes/header.php";
         questions, be free to ask them trough the contact form.
     </h4>
     </tekst></div>
+<div class="photopersonen">
+<img src="images/personen.png">
+</div>

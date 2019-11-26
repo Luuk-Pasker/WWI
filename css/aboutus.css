@@ -134,3 +134,11 @@
     float:left;
     resize: vertical;
 }
+
+.photopersonen{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
