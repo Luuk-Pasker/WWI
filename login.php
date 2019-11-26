@@ -44,29 +44,24 @@ if (isset($_POST['register'])) {
 
 if (isset($_POST['submit'])) {
     if (empty($_POST['username']) && empty($_POST['password'])) {
-        echo "Fill in data - ";
+        echo "Fill in data";
     } else {
-        $username = $_POST['username'];
+            $username = $_POST['username'];
         $HPass = hash('sha256', $_POST['password']);
         $HPass = strtoupper($HPass);
-        $sql = "SELECT * FROM people WHERE LogonName = '$username' AND 'HashedPassword' = $HPass";
+        $sql = "SELECT * FROM people WHERE LogonName = '$username' AND HashedPassword = '$HPass'";
         $res_data = mysqli_query($connection, $sql);
         /*printen van de resultaten op het scherm*/
         foreach ($res_data as $row) {
-
-            if ($row['LogonName'] == $username && $row['HashedPassword'] == $HPass) {
-//                $_SESSION['login'] = TRUE;
-//                $_SESSION['user_session'] = $row['PersonID'];
-//                echo $row['PersonID'];
-            } else {
-                $_SESSION['login'] = FALSE;
-                echo "Wrong data!";
-            }
+            $_SESSION['login'] = TRUE;
+            $_SESSION['user_session'] = $row['PersonID'];
         }
     }
 }
 
-if ($_SESSION['login'] == TRUE) {
+if (empty($_SESSION['login'])){
+
+} else if ($_SESSION['login'] == TRUE) {
     echo '<script> window.location.href = "admin/dashboard.php"; </script>';
 }
 
