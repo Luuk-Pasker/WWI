@@ -21,6 +21,8 @@
 
                 <?php
 
+                $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi" );
+
                 if(isset($_GET["id"])){
                     $ItemID = $_GET["id"];
                 }else{
@@ -35,57 +37,59 @@
 
                 //print: afbeelding, voorraad, naam, prijs en beschrijving en bezorgtijd .
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
                     $Image = "images/" . $row['Photo'];
-                    //$row["Photo"]
                     print("<img class='foto' src='$Image'><br>");
                     print("<div class='naambeschrijvingprijsnogopvoorraad'>");
                     print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
 
                     /*print tags*/
                     print"<div class='Alltags'>";
-                        if($row["Tags"] == '["32GB","USB Powered"]') {
-                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=32gb&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -20,4 ) . "</a>");
-                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -13,11 ) . "</a>");
-                        }elseif($row["Tags"] == '["16GB","USB Powered"]') {
-                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=16gb&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -20,4 ) . "</a>");
-                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -13,11 ) . "</a>");
+                    if ($row["Tags"] == '["32GB","USB Powered"]') {
+                        print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=32gb&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -20, 4) . "</a>");
+                        print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -13, 11) . "</a>");
+                    } elseif ($row["Tags"] == '["16GB","USB Powered"]') {
+                        print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=16gb&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -20, 4) . "</a>");
+                        print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -13, 11) . "</a>");
 
-                        }elseif($row["Tags"] == '["Radio Control","Realistic Sound"]'){
-                            print("<a class='RCtags' href='http://localhost/WWI/browse.php?zoek=rc&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -33,13 ) . "</a>");
-                            print("<a class='Toytags' href='http://localhost/WWI/browse.php?zoek=realistic+sound&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -17,15 ) . "</a>");
+                    } elseif ($row["Tags"] == '["Radio Control","Realistic Sound"]') {
+                        print("<a class='RCtags' href='http://localhost/WWI/browse.php?zoek=rc&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -33, 13) . "</a>");
+                        print("<a class='Toytags' href='http://localhost/WWI/browse.php?zoek=realistic+sound&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -17, 15) . "</a>");
 
-                        }elseif($row["Tags"] == '["Vintage","So Realistic"]'){
-                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -24,11 ) . "</a>");
-                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=realistic&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -14,12 ) . "</a>");
+                    } elseif ($row["Tags"] == '["Vintage","So Realistic"]') {
+                        print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -24, 11) . "</a>");
+                        print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=realistic&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -14, 12) . "</a>");
 
-                        }elseif($row["Tags"] == '["Comfortable","Long Battery Life"]'){
-                            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -33,11 ) . "</a>");
-                            print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=long&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -19,17 ) . "</a>");
+                    } elseif ($row["Tags"] == '["Comfortable","Long Battery Life"]') {
+                        print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -33, 11) . "</a>");
+                        print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=long&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -19, 17) . "</a>");
 
-                        }elseif ($row["Tags"] == '[]'){
-                            print"";
+                    } elseif ($row["Tags"] == '[]') {
+                        print"";
 
-                        }else{
-                            $x = array('["', '"]');
-                            $y= ("http://localhost/WWI/browse.php?zoek=" . $row["Tags"] . "&toevoegen=Search");
-                            print("<a class='tags' href='$y'>" . str_replace($x, "", $row["Tags"]) . "</a>");
-                        }
+                    } else {
+                        $x = array('["', '"]');
+                        $y = ("http://localhost/WWI/browse.php?zoek=" . $row["Tags"] . "&toevoegen=Search");
+                        print("<a class='tags' href='$y'>" . str_replace($x, "", $row["Tags"]) . "</a>");
+                    }
                     print"</div>";
                     /*print tags*/
 
                     /**/
-                    print("<div class='beschrijving2'>Description:</div><BR>" ."<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
+                    print("<div class='beschrijving2'>Description:</div><BR>" . "<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
                     $price = $row["UnitPrice"];
-                    print("<div class='prijs'>" . "€" . $price . "</div><br>");
-                    print("<div class='nogopvoorraad'>" . " In stock! </div><br><br>");
-                    print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
-                    print("</div>");
-                    if($row["QuantityOnHand"]>1000){
-                        $voorraad = 1000;
-                    }elseif($row["QuantityOnHand"]>100){
-                        $voorraad = 100;
-                    }else {
-                        $voorraad = $row["QuantityOnHand"];
+                    if (in_array($row['StockItemName'], $productenmetkorting)) {
+                        print("<div class='prijs'>" . "€" . $price . "</div><br>");
+                        print("<div class='nogopvoorraad'>" . " In stock! </div><br><br>");
+                        print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
+                        print("</div>");
+                        if ($row["QuantityOnHand"] > 1000) {
+                            $voorraad = 1000;
+                        } elseif ($row["QuantityOnHand"] > 100) {
+                            $voorraad = 100;
+                        } else {
+                            $voorraad = $row["QuantityOnHand"];
+                        }
                     }
                 }
 
