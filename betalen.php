@@ -26,12 +26,12 @@ include "includes/footer.php";
         <div class="information">
             <h3> <img src="images/(step 1).JPG" width="35" height="30" alt="step 1"> Information </h3>
             <form method="$_GET"  action="betalen 2.0.php">
-                *E-mail adres: <input type="email" name="email" required> <br>
+                *E-mail adres: <input type="email" name="email" <!--required-->> <br>
                 Sign up for the newspaper:<input type ="checkbox" name="Sign up"> <br> <br>
-                *Name: <input type="textarea" name="voornaam" placeholder="First name" required>  <input type="textarea" name="last name" placeholder="Last name" required> <br>
+                *Name: <input type="textarea" name="voornaam" placeholder="First name" <!--required-->>  <input type="textarea" name="last name" placeholder="Last name" <!--required-->> <br>
                 <input type="radio"> Mevr. <input type="radio"> Mnr. <br> <br>
-                *Adres: <input type="textarea" placeholder="Street" required>  <input type="textarea" placeholder="Number" required> <br> <br>
-                *Postcode: <input type="textarea" name="cijfers postcode" placeholder="4 cijfers" required>  <input type="textarea" name="letters postcode" placeholder="2 letters" required> <br> <br>
+                *Adres: <input type="textarea" placeholder="Street" <!--required-->>  <input type="textarea" placeholder="Number" <!--required-->> <br> <br>
+                *Postcode: <input type="textarea" name="cijfers postcode" placeholder="4 cijfers" <!--required-->>  <input type="textarea" name="letters postcode" placeholder="2 letters" <!--required-->> <br> <br>
                 <input type="submit" value="Next step" class="nextstep">
             </form>
         </div>

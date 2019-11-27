@@ -12,6 +12,7 @@ $sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
 $result = mysqli_query($connection, $sql);
 /* sql query voor alle categorien   */
 
+
 /*print alle namen op de knoppen*/
 print("<form method='get' action=\"/WWI/browse.php\">");
 
@@ -19,9 +20,21 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     /*navigationbar*/
     print("<button class='button' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
 }
+print("</form></div>");
 /*navigationbar*/
 
-print("</form></div>");
+/*maak een array met de random producten*/
+$sql = "SELECT * FROM StockItems ORDER BY StockItemID";
+$resultRandomProduct = mysqli_query($connection, $sql);
+$randomProductArray = array();
+$i = 0;
+foreach ($resultRandomProduct as $row) {
+    if (mysqli_num_rows($resultRandomProduct) != 0) {
+        $randomProductArray[$i] = $row;
+        $i++;
+    }
+}
+/*maak een array met de random producten*/
 
 /*maak een array met de verkregen deals*/
 $results = GetDeals($connection);
@@ -64,39 +77,38 @@ foreach ($laatstToegevoegd as $row) {
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" style ="display: flex!important; justify-content: center">
-            <div class="item active">
-                <table>
-                    <tr>
-                        <th>
-                            <a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'>
-                            <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
+            <?php
+            for($i=0; $i<3; $i++){
+                if($i==0){
+                    print("<div class=\"item active\"><table><tr>");
+                    for($j=0; $j<4; $j++) {
+                        $randomProduct = rand(0,227);
+                        print("
+                            <th>
+                            <a href='productBekijken.php?id=" . $randomProductArray[$randomProduct]['StockItemID'] . "'>
+                            <img src='images/" . $randomProductArray[$randomProduct]['Photo'] . "' style=\"height:200px;float: left; text-align: center\">
                             </a>
-                        </th>
-                        <th>
-                            <img src="images/toys.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
-                        </th>
-                        <th>
-                            <img src="images/packaging.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
-                        </th>
-                    </tr>
-                </table>
-                <!--<img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
-                <img src="images/clothing.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">
-                <img src="images/mug.jpg" alt="Los Angeles" style="height:200px;float: left; text-align: center">-->
-            </div>
-
-            <div class="item" style="text-align: center">
-                <img src="images/packaging.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
-                <img src="images/toys.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
-                <img src="images/usb.jpg" alt="Los Angeles" style="height:200px;float: left; margin-left: auto;margin-right: auto">
-            </div>
-
-            <div class="item">
-                <img src="images/t-shirt.jpg" alt="Los Angeles" style="height:200px;float: left">
-                <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left">
-                <img src="images/slippers.jpg" alt="Los Angeles" style="height:200px;float: left">
-            </div>
+                            </th>");
+                    }
+                    print("</tr></table></div>");
+                } else {
+                    print("<div class=\"item\"><table><tr>");
+                    for($j=0; $j<4; $j++) {
+                        $randomProduct = rand(0,227);
+                        print("
+                            <th>
+                            <a href='productBekijken.php?id=" . $randomProductArray[$randomProduct]['StockItemID'] . "'>
+                            <img src='images/" . $randomProductArray[$randomProduct]['Photo'] . "' style=\"height:200px;float: left; text-align: center\">
+                            </a>
+                            </th>");
+                    }
+                    print("</tr></table></div>");
+                }
+            }
+            ?>
         </div>
+
+
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
