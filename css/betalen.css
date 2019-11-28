@@ -40,3 +40,11 @@
         clear: both;
     }
 }
+
+.contact{
+    float: left;
+    width: 66.67%;
+    padding: 15px;
+    margin-bottom: 50px;
+}
+
