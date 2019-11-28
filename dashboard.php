@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_array($res_data)) {
     ?>
 
 
-    <div class="loginBox">
+    <div class="loginBox" style="height: 65%">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -51,6 +51,33 @@ while ($row = mysqli_fetch_array($res_data)) {
                 <div class="loginColumn2">
                     <input type="number" class="loginInput" id="inputPhone" name="phone"
                            placeholder="<?= $row['PhoneNumber'] ?>">
+                </div>
+            </div>
+            <div class="loginRow">
+                <div class="loginColumn1">
+                    <label for="inputAddress" class="">Address:</label>
+                </div>
+                <div class="loginColumn2">
+                    <input type="text" class="loginInput" id="inputAddress" name="address"
+                           placeholder="<?= $row['address'] ?>">
+                </div>
+            </div>
+            <div class="loginRow">
+                <div class="loginColumn1">
+                    <label for="inputPostal" class="">Postal code:</label>
+                </div>
+                <div class="loginColumn2">
+                    <input type="text" class="loginInput" id="inputPostal" name="postal"
+                           placeholder="<?= $row['postalCode'] ?>">
+                </div>
+            </div>
+            <div class="loginRow">
+                <div class="loginColumn1">
+                    <label for="inputCity" class="">City:</label>
+                </div>
+                <div class="loginColumn2">
+                    <input type="text" class="loginInput" id="inputCity" name="city"
+                           placeholder="<?= $row['city'] ?>">
                 </div>
             </div>
             <div class="loginRow">
