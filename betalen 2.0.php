@@ -13,7 +13,6 @@ include "includes/header.php";
 <h3 class="titlepayment"> Paymentmethod</h3>
 <form method="POST" action="betalen%202.0.php">
     <div class="Payment">
-    <input type="radio" name="select"> Cash <br> <br>
     <input type="radio" name="select"> Check <br><br>
     <input type="radio" name="select"> Credit-Card <br> <br>
         <input type="radio" name="select"> IDEAL <br> <br>
