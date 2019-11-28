@@ -12,7 +12,7 @@ include "includes/header.php";
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputEmail" class="">Full name:</label>
+                    <label for="inputEmail" class="">Email:</label>
                 </div>
                 <div class="loginColumn2">
                     <input type="text" class="loginInput" id="inputEmail" name="username" placeholder="Username">

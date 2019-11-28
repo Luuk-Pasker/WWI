@@ -42,19 +42,18 @@
             echo 'class="active"';
         } ?>href="winkelmand.php"><i class="fas fa-shopping-cart"></i> Shopping cart</a>
         <?php
-        $userId = $_SESSION['user_session'];
-        $sql = "SELECT * FROM people WHERE PersonID = $userId";
-        /*printen van de resultaten op het scherm*/
-        $res_data = mysqli_query($connection, $sql);
-        while ($row = mysqli_fetch_array($res_data)) {
-
-            if (empty($_SESSION['login'])) {
-                echo "<a href = 'login.php' ";
-                if ($active == 'login') {
-                    echo "class='active'";
-                }
-                echo "><i class='fas fa-sign-in-alt'></i> Login</a>";
-            } else if ($_SESSION['login'] == TRUE) {
+        if (empty($_SESSION['login'])) {
+            echo "<a href = 'login.php' ";
+            if ($active == 'login') {
+                echo "class='active'";
+            }
+            echo "><i class='fas fa-sign-in-alt'></i> Login</a>";
+        } else {
+            $userId = $_SESSION['user_session'];
+            $sql = "SELECT * FROM people WHERE PersonID = $userId";
+            /*printen van de resultaten op het scherm*/
+            $res_data = mysqli_query($connection, $sql);
+            while ($row = mysqli_fetch_array($res_data)) {
                 echo "<a href='dashboard.php' ";
                 if ($active == 'user') {
                     echo "class='active'";
