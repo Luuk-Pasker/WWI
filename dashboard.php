@@ -91,16 +91,45 @@ while ($row = mysqli_fetch_array($res_data)) {
             <div class="loginRow">
                 <div class="loginColumn2">
                     <input type="submit" name="edit" value="Edit information">
-                    <a class="loginLink" href="index.php" style="margin-left: 25%">Go back to home </a><input type="submit"
-                                                                            name="logout"
-                                                                            value="Logout">
+                    <a class="loginLink" href="index.php" style="margin-left: 25%">Go back to home </a><input
+                            type="submit"
+                            name="logout"
+                            value="Logout">
                 </div>
             </div>
         </form>
     </div>
 
     <?php
+    if (isset($_POST['edit'])) {
+        $password = hash('sha256', $_POST['password']);
+        $HPass = strtoupper($password);
+
+        if (empty($_POST['password'])) {
+            $HPass = $row['HashedPassword'];
+        }
+
+        if ($_POST['username'] == $_POST['password']) {
+            echo "Username and password can't be the same!";
+        } elseif (empty($_POST['username'])) {
+            echo "Fill in username!";
+        } elseif (empty($_POST['email'])) {
+            echo "Fill in email!";
+        } elseif (empty($_POST['phone'])) {
+            echo "Fill in phonenumber!";
+        } else {
+            $sql = "UPDATE people SET FullName = ?, address = ?, postalCode = ?, city = ?, LogonName = ?, HashedPassword = ?, PhoneNumber = ?, EmailAddress = ? WHERE PersonID = '$userId'";
+
+            $stmt = $connection->prepare($sql);
+            $stmt->bind_param('ssssssss', $_POST['username'], $_POST['address'], $_POST['postal'], $_POST['city'], $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
+            $stmt->execute();
+
+            echo '<script> window.location.href = "dashboard.php"; </script>';
+        }
+    }
 }
+
+
 if (isset($_POST['logout'])) {
     $_SESSION['login'] = FALSE;
     echo '<script> window.location.href = "login.php"; </script>';
