@@ -77,7 +77,8 @@ include "includes/header.php";
 if (isset($_POST['submit'])) {
     $password = hash('sha256', $_POST['password']);
     $HPass = strtoupper($password);
-    if ($_POST['username'] == $_POST['password']) {
+    $permitted = "1";
+    if ($_POST['email'] == $_POST['password']) {
         echo "Username and password can't be the same!";
     } elseif (empty($_POST['username'])) {
         echo "Fill in username!";
@@ -93,10 +94,10 @@ if (isset($_POST['submit'])) {
         $res_data = mysqli_query($connection, $sql);
         foreach ($res_data as $row) {
             $PersonID = $row['HighestID'] + 1;
-            $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $stmt = $connection->prepare($sql);
-            $stmt->bind_param('sssssssss', $PersonID, $_POST['username'], $_POST['address'], $_POST['postal'], $_POST['city'], $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
+            $stmt->bind_param('ssssssssss', $PersonID, $_POST['username'], $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
             $stmt->execute();
             echo "GELUKT!!!";
         }
