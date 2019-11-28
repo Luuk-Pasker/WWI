@@ -48,12 +48,18 @@
                 echo "class='active'";
             }
             echo "><i class='fas fa-sign-in-alt'></i> Login</a>";
-        } else if ($_SESSION['login'] == TRUE) {
-            echo "<a href='dashboard.php' ";
-            if ($active == 'user') {
-                echo "class='active'";
+        } else {
+            $userId = $_SESSION['user_session'];
+            $sql = "SELECT * FROM people WHERE PersonID = $userId";
+            /*printen van de resultaten op het scherm*/
+            $res_data = mysqli_query($connection, $sql);
+            while ($row = mysqli_fetch_array($res_data)) {
+                echo "<a href='dashboard.php' ";
+                if ($active == 'user') {
+                    echo "class='active'";
+                }
+                echo "> <i class='fas fa-user'></i> " . $row['FullName'] . "</a>";
             }
-            echo "> <i class='fas fa-user'></i> User</a>";
         }
         ?>
     </div>
