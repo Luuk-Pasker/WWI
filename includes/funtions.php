@@ -107,7 +107,7 @@ function sc_Print(){
     }else{
         $shippingPrice = 0;
     }
-    $_SESSION["TotalPrice"] += $shippingPrice;
+    $_SESSION["TotalPrice"] += $shippingPrice; //totaal prijs
 
         print("<div class='scHeadRow'>");
             print("<br><br><br><b>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b><br><br>");
