@@ -122,3 +122,8 @@
 .allProducts{
     width: 250px;
 }
+
+.tekstVooronderProduct{
+    font-family: Arial;
+    color: #3f3f3f;
+}

@@ -125,8 +125,10 @@ if (isset($_GET['id'])) {
                     echo "<td class='browsecell'>";
                     /*/informatie voor elke cel invullen/*/
                     if(!empty($browsearray[$x])) {
-                        print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
-                        print($browsearray[$x]['StockItemName'] . "<br>€" . $browsearray[$x]['UnitPrice']);
+                        print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                        print($browsearray[$x]['StockItemName'] . "<br>");
+                        print("<h4 class='prijsonderfoto'>" . "€" . $browsearray[$x]['UnitPrice']);
+
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";
                         $x++;
@@ -166,8 +168,9 @@ if (isset($_GET['id'])) {
                     echo "<td class='browsecell'>";
                     /*/informatie voor elke cel invullen/*/
                     if(!empty($browsearray[$x])) {
-                        print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
-                        print($browsearray[$x]['StockItemName'] . "<br>€" . $browsearray[$x]['UnitPrice']);
+                        print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                        print($browsearray[$x]['StockItemName'] . "<br>");
+                        print("<h4 class='prijsonderfoto'>" . "€" . $browsearray[$x]['UnitPrice']);
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";
                         $x++;
