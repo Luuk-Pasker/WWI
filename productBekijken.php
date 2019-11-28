@@ -48,6 +48,7 @@ include "includes/header.php";
         if ($row["Tags"] == '["32GB","USB Powered"]') {
             print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=32gb&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -20, 4) . "</a>");
             print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["32GB","USB Powered"]', -13, 11) . "</a>");
+
         } elseif ($row["Tags"] == '["16GB","USB Powered"]') {
             print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=16gb&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -20, 4) . "</a>");
             print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -13, 11) . "</a>");
@@ -67,6 +68,10 @@ include "includes/header.php";
         } elseif ($row["Tags"] == '[]') {
             print"";
 
+        }elseif ($row["Tags"] == '["So Realistic"]'){
+            print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=realistic&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -14, 12) . "</a>");
+            print("<a class='Techtags' href='oefenen/test4.php'>" . "Easteregg" . "</a>");
+
         } else {
             $x = array('["', '"]');
             $y = ("http://localhost/WWI/browse.php?zoek=" . $row["Tags"] . "&toevoegen=Search");
@@ -83,7 +88,7 @@ include "includes/header.php";
         $price = $row["UnitPrice"];
         $kortingprijs = $price / 100 * 85;
         $nieuwekortingprijs = number_format($kortingprijs, 2);
-      
+
 
         if (in_array($row['StockItemName'], $productenmetkorting)) {
             print("<div class='paynow'>" . "Pay now!" . "</div>");
