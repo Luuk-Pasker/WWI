@@ -54,10 +54,7 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
         }
     </script>
 </div>
-<h1 class="a.hoofdtext">Shoppingcart<br><br><br></h1>
-<br>
-<br>
-
+<h1 class="a.hoofdtext">Shoppingcart</h1>
 <div class="scBox">
     <?php
     //dit print de hele winkelmand
