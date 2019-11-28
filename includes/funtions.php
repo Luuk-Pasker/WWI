@@ -44,7 +44,7 @@ function sc_Print(){
         print("</div>");
     }
         print("<div class='scHeadRow'>");
-            print("<br><br><br>shipping price is €6.95 for orders below €50.00");
+            print("<br><br><br>Shipping price is €6.95 for orders below €50.00");
         print("</div>");
     print("</div>");
 
@@ -110,9 +110,9 @@ function sc_Print(){
     $_SESSION["TotalPrice"] += $shippingPrice; //totaal prijs
 
         print("<div class='scHeadRow'>");
-            print("<br><br><br><b>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b><br><br>");
-            print("<b>€" . number_format((float)$_SESSION["TotalPrice"], 2, '.', '') . "</b>");
-            print("<form action='betalen.php' class='scButton'><input type='submit' value='Buy items'></form>");
+            print("<br><br><br><b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "<br>");
+            print("<b><br>€" . number_format((float)$_SESSION["TotalPrice"], 2, '.', '') . "</b>");
+            print("<br><br><form action='betalen.php' class='scButton'><input type='submit' value='Buy items'></form>");
         print("</div>");
     print("</div>");
 

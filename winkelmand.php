@@ -54,7 +54,9 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
         }
     </script>
 </div>
-<h2 class="a.hoofdtext">Shoppingcart</h2>
+<h1 class="a.hoofdtext">Shoppingcart<br><br><br></h1>
+<br>
+<br>
 
 <div class="scBox">
     <?php
