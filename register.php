@@ -60,7 +60,9 @@ if (isset($_POST['submit'])) {
     $phone = $_POST['phone'];
     $password = hash('sha256', $_POST['password']);
     $HPass = strtoupper($password);
-    if (empty($name)){
+    if ($name == $password){
+        echo "Username and password can't be the same!";
+    } elseif (empty($name)){
         echo "Fill in username!";
     } elseif (empty($email)) {
         echo "Fill in email!";

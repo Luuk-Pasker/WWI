@@ -29,7 +29,8 @@ include "includes/header.php";
             <div class="loginRow">
                 <div class="loginColumn2">
                     <input type="submit" class="" name="submit" value="Sign in"> <a class="loginLink" href="">Forgot
-                        password? </a> <a href="register.php"><input type="submit" name="register" value="Sign up"></a> <!-- sign in en forgot password doen nog niks -->
+                        password? </a> <a href="register.php"><input type="submit" name="register" value="Sign up"></a>
+                    <!-- sign in en forgot password doen nog niks -->
                 </div>
             </div>
         </form>
@@ -46,7 +47,7 @@ if (isset($_POST['submit'])) {
     if (empty($_POST['username']) && empty($_POST['password'])) {
         echo "Fill in data";
     } else {
-            $username = $_POST['username'];
+        $username = $_POST['username'];
         $HPass = hash('sha256', $_POST['password']);
         $HPass = strtoupper($HPass);
         $sql = "SELECT * FROM people WHERE LogonName = '$username' AND HashedPassword = '$HPass'";
@@ -59,7 +60,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-if (empty($_SESSION['login'])){
+if (empty($_SESSION['login'])) {
 
 } else if ($_SESSION['login'] == TRUE) {
     echo '<script> window.location.href = "dashboard.php"; </script>';
