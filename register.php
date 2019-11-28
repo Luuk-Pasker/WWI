@@ -2,7 +2,7 @@
 include "includes/header.php";
 ?>
 
-    <div class="loginBox">
+    <div class="loginBox" style="height: 60%">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -35,6 +35,30 @@ include "includes/header.php";
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
+                    <label for="inputPhone" class="">Address:</label>
+                </div>
+                <div class="loginColumn2">
+                    <input type="text" class="loginInput" id="inputAddress" name="address" placeholder="Address">
+                </div>
+            </div>
+            <div class="loginRow">
+                <div class="loginColumn1">
+                    <label for="inputPhone" class="">Postal code:</label>
+                </div>
+                <div class="loginColumn2">
+                    <input type="text" class="loginInput" id="inputPostal" name="postal" placeholder="Postal code">
+                </div>
+            </div>
+            <div class="loginRow">
+                <div class="loginColumn1">
+                    <label for="inputPhone" class="">City:</label>
+                </div>
+                <div class="loginColumn2">
+                    <input type="text" class="loginInput" id="inputCity" name="city" placeholder="City">
+                </div>
+            </div>
+            <div class="loginRow">
+                <div class="loginColumn1">
                     <label for="inputPassword">Password:</label>
                 </div>
                 <div class="loginColumn2">
@@ -50,25 +74,18 @@ include "includes/header.php";
     </div>
 
 <?php
-if ($connection->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 if (isset($_POST['submit'])) {
-    $name = $_POST['username'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
     $password = hash('sha256', $_POST['password']);
     $HPass = strtoupper($password);
-    if ($name == $password){
+    if ($_POST['username'] == $_POST['password']) {
         echo "Username and password can't be the same!";
-    } elseif (empty($name)){
+    } elseif (empty($_POST['username'])) {
         echo "Fill in username!";
-    } elseif (empty($email)) {
+    } elseif (empty($_POST['email'])) {
         echo "Fill in email!";
-    } elseif (empty($phone)) {
+    } elseif (empty($_POST['phone'])) {
         echo "Fill in phonenumber!";
-    } elseif (empty($password)){
+    } elseif (empty($_POST['password'])) {
         echo "Fill in password!";
     } else {
         $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
@@ -76,12 +93,14 @@ if (isset($_POST['submit'])) {
         $res_data = mysqli_query($connection, $sql);
         foreach ($res_data as $row) {
             $PersonID = $row['HighestID'] + 1;
-            $sql = "INSERT INTO people (PersonID, Fullname, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES ('$PersonID', '$name', '$email', '$HPass', '$phone', '$email')";
-            /*printen van de resultaten op het scherm*/
-            if ($connection->query($sql) === TRUE) {
-                echo "New account created successfully";
-            }
+            $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            $stmt = $connection->prepare($sql);
+            $stmt->bind_param('sssssssss', $PersonID, $_POST['username'], $_POST['address'], $_POST['postal'], $_POST['city'], $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
+            $stmt->execute();
+            echo "GELUKT!!!";
         }
+        echo '<script> window.location.href = "login.php"; </script>';
     }
 }
 

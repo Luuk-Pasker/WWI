@@ -15,7 +15,7 @@ include "includes/header.php";
                     <label for="inputEmail" class="">Email:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputEmail" name="username" placeholder="Username">
+                    <input type="text" class="loginInput" id="inputEmail" name="username" placeholder="Email">
                 </div>
             </div>
             <div class="loginRow">
