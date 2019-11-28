@@ -32,7 +32,7 @@ while ($row = mysqli_fetch_array($res_data)) {
                 </div>
                 <div class="loginColumn2">
                     <input type="text" class="loginInput" id="inputName" name="username"
-                           placeholder="<?= $row['FullName'] ?>">
+                           value="<?= $row['FullName'] ?>">
                 </div>
             </div>
             <div class="loginRow">
@@ -41,7 +41,7 @@ while ($row = mysqli_fetch_array($res_data)) {
                 </div>
                 <div class="loginColumn2">
                     <input type="text" class="loginInput" id="inputEmail" name="email"
-                           placeholder="<?= $row['EmailAddress'] ?>">
+                           value="<?= $row['EmailAddress'] ?>">
                 </div>
             </div>
             <div class="loginRow">
@@ -50,7 +50,7 @@ while ($row = mysqli_fetch_array($res_data)) {
                 </div>
                 <div class="loginColumn2">
                     <input type="number" class="loginInput" id="inputPhone" name="phone"
-                           placeholder="<?= $row['PhoneNumber'] ?>">
+                           value="<?= $row['PhoneNumber'] ?>">
                 </div>
             </div>
             <div class="loginRow">
@@ -59,7 +59,7 @@ while ($row = mysqli_fetch_array($res_data)) {
                 </div>
                 <div class="loginColumn2">
                     <input type="text" class="loginInput" id="inputAddress" name="address"
-                           placeholder="<?= $row['address'] ?>">
+                           value="<?= $row['address'] ?>">
                 </div>
             </div>
             <div class="loginRow">
@@ -68,7 +68,7 @@ while ($row = mysqli_fetch_array($res_data)) {
                 </div>
                 <div class="loginColumn2">
                     <input type="text" class="loginInput" id="inputPostal" name="postal"
-                           placeholder="<?= $row['postalCode'] ?>">
+                           value="<?= $row['postalCode'] ?>">
                 </div>
             </div>
             <div class="loginRow">
@@ -77,7 +77,7 @@ while ($row = mysqli_fetch_array($res_data)) {
                 </div>
                 <div class="loginColumn2">
                     <input type="text" class="loginInput" id="inputCity" name="city"
-                           placeholder="<?= $row['city'] ?>">
+                           value="<?= $row['city'] ?>">
                 </div>
             </div>
             <div class="loginRow">
