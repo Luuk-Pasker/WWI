@@ -123,7 +123,7 @@ include "includes/header.php";
     }
     ?>
 
-    //aantallen selecteer formulee/toevoegen aan winkelmand knop
+   <!-- //aantallen selecteer formulee/toevoegen aan winkelmand knop-->
     <div class="aantallen">
         <form action="winkelmand.php" method="post">
             <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
