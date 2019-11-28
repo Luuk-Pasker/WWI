@@ -64,7 +64,7 @@ while ($row = mysqli_fetch_array($res_data)) {
             <div class="loginRow">
                 <div class="loginColumn2">
                     <input type="submit" name="edit" value="Edit information">
-                    <a class="loginLink" href="index.php">Go back to home </a><input type="submit"
+                    <a class="loginLink" href="index.php" style="margin-left: 25%">Go back to home </a><input type="submit"
                                                                             name="logout"
                                                                             value="Logout">
                 </div>
