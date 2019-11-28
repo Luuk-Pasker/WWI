@@ -167,7 +167,7 @@ a.loginLink:hover{
 
 .scBox{
     top: 50%;
-    margin: 80px -50% 0 50%;
+    margin: 160px -50% 0 50%;
     transform: translate(-50%, -50%);
     position: absolute;
     overflow: hidden;
@@ -244,6 +244,10 @@ a.loginLink:hover{
 
 .scEmpty{
     text-align: center;
+}
+
+.Inputborder{
+    border: solid thin black;
 }
 
 a.scLink{
