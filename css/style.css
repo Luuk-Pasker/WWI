@@ -166,7 +166,10 @@ a.loginLink:hover{
 }
 
 .scBox{
-    margin: 0 15% 0 15%;
+    top: 50%;
+    margin: 80px -50% 0 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
     overflow: hidden;
     font-size: large;
 }
@@ -207,7 +210,7 @@ a.loginLink:hover{
 .scPrice{
     margin: 5px;
     float: left;
-    width: 145px;
+    width: 155px;
     text-align: right;
 }
 
