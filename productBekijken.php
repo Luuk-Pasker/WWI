@@ -82,11 +82,8 @@ include "includes/header.php";
 
         $price = $row["UnitPrice"];
         $kortingprijs = $price / 100 * 85;
-        if (count($kortingprijs) <= 3) {
-            $nieuwekortingprijs = ($kortingprijs . "0");
-        } else {
-            $nieuwekortingprijs = $kortingprijs;
-        }
+        $nieuwekortingprijs = number_format($kortingprijs, 2);
+      
 
         if (in_array($row['StockItemName'], $productenmetkorting)) {
             print("<div class='paynow'>" . "Pay now!" . "</div>");
