@@ -35,6 +35,8 @@
                 //
 
 
+
+
                 //print: afbeelding, voorraad, naam, prijs en beschrijving en bezorgtijd .
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
@@ -79,6 +81,18 @@
                     print("<div class='beschrijving2'>Description:</div><BR>" . "<div class='beschrijving'>" . $row["SearchDetails"] . "</div><br>");
                     $price = $row["UnitPrice"];
                     if (in_array($row['StockItemName'], $productenmetkorting)) {
+                        print("<div class='prijs'>" . "€" . $price . "</div><br>");
+                        print("<div class='nogopvoorraad'>" . " In stock! </div><br><br>");
+                        print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
+                        print("</div>");
+                        if ($row["QuantityOnHand"] > 1000) {
+                            $voorraad = 1000;
+                        } elseif ($row["QuantityOnHand"] > 100) {
+                            $voorraad = 100;
+                        } else {
+                            $voorraad = $row["QuantityOnHand"];
+                        }
+                    } else {
                         print("<div class='prijs'>" . "€" . $price . "</div><br>");
                         print("<div class='nogopvoorraad'>" . " In stock! </div><br><br>");
                         print("<div class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</div><br>");
