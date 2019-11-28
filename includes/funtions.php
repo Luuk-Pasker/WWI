@@ -44,7 +44,7 @@ function sc_Print(){
         print("</div>");
     }
         print("<div class='scHeadRow'>");
-            print("<br><br><br>shipping price is €6.95 for orders below €50.00");
+            print("<br><br><br>Shipping price is €6.95 for orders below €50.00");
         print("</div>");
     print("</div>");
 
