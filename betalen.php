@@ -33,43 +33,6 @@ include "includes/footer.php";
                 <label for="first_name" class="contact-form-label">First name:</label>
                 <input type="text" id="first_name" name="fname" class="contact-form-control"/>
             </div>
-
-        <!--step 2 verzendmethode-->
-                <div class="verzendmethode/css">
-                <br>
-                <h3><img src="images/(step 2).JPG" width="35" height="30" alt="step 1"> Send method </h3>
-                    <h4>Home delivered with:</h4>
-                <select>
-                    <?php while ($row = mysqli_fetch_array($result)):; ?>
-                        <option> <?php print ($row[0]); ?> </option>
-                    <?php endwhile; ?>
-                </select>
-                <br> Shipping price: <?php $costs ?>
-                <?php
-                if ($costs < 50) {
-                    print("€6,95 <br> <br> Shipping price is €6.95 for orders below €50.00!");
-                } else {
-                    print("€0,00");
-                }
-                ?>
-                    <br>
-                    <br>
-                    <br>
-
-
-                    <div class="Sign up">
-                    <h3> Sign up </h3>
-                        <br>
-
-                    <form method = "$_POST" action="">
-                        <label for="user" class="usernamebetalen"> Username = </label>
-                        <input type="text" id="user" name="usenname">
-                        <br>
-                        <label for="pass" class="passwordbetalen"> Password = </label>
-                        <input type="password" id="pass" name="password">
-
-            <br>
-            <br>
             <div class="contact-form-group">
                 <label for="last_name" class="contact-form-label">Last name:</label>
                 <input type="text" id="last_name" name="lname" class="contact-form-control"/>
@@ -90,7 +53,7 @@ include "includes/footer.php";
             </div>
             <!--            <br>-->
             <!--            <br>-->
-            <!--            <!--mr or ms-->
+            <!--            mr or ms-->
             <!--            <div class="contact-form-group">-->
             <!--                <label for="salutation" class="contact-form-label">Salutation:</label>-->
             <!--                <select id="salutation" class="contact-form-control">-->
@@ -126,14 +89,18 @@ include "includes/footer.php";
             <br><br>
             <div class="contact-form-group">
                 <label for="repeatPassword" class="contact-form-label">Repeat password:</label>
-                <input type="password" id="repeatPassword" name="repeatPassword" class="contact-form-control"/>
+                <input type="password" id="repeatPassword" name="repeatPassword"
+                       class="contact-form-control"/>
             </div>
-            <br><br>
+            <br>
+            <br>
 
             <input type="submit" name="submit" value="Send"/>
         </form>
     </div>
 
+    <div class="make account">
+        <h3> Make account </h3>
     <?php
     if (isset($_POST['submit'])) {
         $password = hash('sha256', $_POST['password']);
@@ -182,87 +149,63 @@ include "includes/footer.php";
         }
     }
     ?>
+<br>
+            <!--step 2 verzendmethode-->
+            <div class="verzendmethode/css">
+                <img src="images/(step 2).JPG" width="35" height="30" alt="step 1"> <h3>Send method</h3>
 
-    <!--step 2 verzendmethode-->
-    <div class="verzendmethode/css">
-        <br>
-        <h3><img src="images/(step 2).JPG" width="35" height="30" alt="step 1"> Send method </h3>
-        <h4>Home delivered with:</h4>
-        <select>
-            <?php while ($row = mysqli_fetch_array($result)):; ?>
-                <option> <?php print ($row[0]); ?> </option>
-            <?php endwhile; ?>
-        </select>
-        <br> Shipping price: <?php $costs ?>
-        <?php
-        if ($costs < 50) {
-            print("€6,95 <br> <br> Shipping price is €6.95 for orders below €50.00!");
-        } else {
-            print("€0,00");
-        }
-        ?>
+                <h4>Home delivered with:</h4>
+                <select>
+                    <?php while ($row = mysqli_fetch_array($result)):; ?>
+                        <option> <?php print ($row[0]); ?> </option>
+                    <?php endwhile; ?>
+                </select>
+                <br>
+                 Shipping price: <?php $costs ?>
+                <?php
+                if ($costs < 50) {
+                    print("€6,95 <br> <br> Shipping price is €6.95 for orders below €50.00!");
+                } else {
+                    print("€0,00");
+                }
+                ?>
 
-        <div class="log in">
-            <div class="totalbetalen">
-                <b><h3> Total </h3> <b><!--rechterkant en border-->
-                        <?php
-                        $totalPrice = ($_SESSION["TotalPrice"]);
-                        ?>
-                        Total: €<?php print($totalPrice); ?>
-                        <br>
-                        *with sendingcosts included
-                        <br>
-                        <input type="submit" name="inloggen" value="Sign in">
-                    </form>
-                    <br>
 
-                    <?php
-                    $Password1=isset($_POST['password']);
-                    $Passwordagain=isset($_POST['passwordagain']);
-                    $Username1=isset($_POST['username']);
+                    <div class="totalbetalen">
+                        <b><h3> Total </h3></b><!--rechterkant en border-->
+                                <?php
+                                $totalPrice = ($_SESSION["TotalPrice"]);
+                                ?>
+                                Total: €<?php print($totalPrice); ?>
+                                <br>
+                                *with sendingcosts included
+                                <br>
 
-                    if(!$Username1 || !$Password1 || !$Passwordagain) {
-                        print("No username/password");
-                    } elseif($Password1 != $Passwordagain){
-                        print("The password is not the same");
-                    } else {
-                        print("succesfully logged in");
-                    }
-                    ?>
+                                <h3> Your Order </h3> <!-- border + border om elk product > plaatje Float; right overflow: scroll;-->
+                                <br>
+                                <br>
+                                <?php
+                                foreach ($_SESSION["IDs"] as $index => $val) {
+                                    $Photo = $_SESSION['Images'][$index];
+                                    $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
+                                    print("<img src='$Photo' height='100px'>");
+                                    print("<br>");
+                                    print($_SESSION["Names"][$index]);
+                                    print("<br>");
+                                    print($_SESSION["Quantitys"][$index]);
+                                    print("<br>");
+                                    print("€" . number_format((float)$ItemPrice, 2, '.', ''));
 
-                        <br>
-                        <br>
-                        <br>
-
-                        <h3> Your Order </h3> <!-- border + border om elk product > plaatje Float; right overflow: scroll;-->
-
-                        <br>
-                        <br>
-
-                        <?php
-                        foreach($_SESSION["IDs"] as $index => $val) {
-                            $Photo = $_SESSION['Images'][$index];
-                            $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
-                            print("<img src='$Photo' height='100px'>");
-                            print("<br>");
-                            print($_SESSION["Names"][$index]);
-                            print("<br>");
-                            print($_SESSION["Quantitys"][$index]);
-                            print("<br>");
-                            print("€" . number_format((float)$ItemPrice, 2, '.', ''));
-
-                        }
-                        /*while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-                            print($_SESSION["Names"]);
-                        print($_SESSION["Quantitys"]);
-                        print($_SESSION["Prices"]);
-                        print($_SESSION["Images"]);*/
-                        ?>
-
-                        </div>
+                                }
+                                /*while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+                                    print($_SESSION["Names"]);
+                                print($_SESSION["Quantitys"]);
+                                print($_SESSION["Prices"]);
+                                print($_SESSION["Images"]);*/
+                                ?>
+                                </div>
+                </div>
             </div>
-        </div>
-    </div>
 </div>
 <?php
 include "includes/footer.php";
