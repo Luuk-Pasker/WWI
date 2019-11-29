@@ -103,6 +103,30 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
                     echo "<td class='browsecell'>";
                     /*/informatie voor elke cel invullen/*/
                     if(!empty($browsearray[$x])) {
+
+                        print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                        $stockitemname = ($browsearray[$x]['StockItemName']);
+                        print($stockitemname . "<br><br>");
+                        if(strlen($stockitemname)  <=34){
+                            print"<br>";
+                        }
+                        $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                        if(in_array($stockitemname, $productenmetkorting)==true){
+                            $price =$browsearray[$x]['UnitPrice'];
+                            $kortingprijs = $price / 100 * 85;
+                            $nieuwekortingprijs = number_format($kortingprijs, 2);
+                            print("<a class='specialdeal'>SpecialDeal<a/><br>");
+                            print("<a class='standaardprijs'>" . "€" . $nieuwekortingprijs . " " . "</a>");
+                            print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
+                            print("<a>Available Now<a/>");
+                        }else {
+                            $price =$browsearray[$x]['UnitPrice'];
+                            print"<br>";
+                            print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
+                            print("<a class='availablenow'> Available Now</a>");
+
+                        }
+
                         $ItemID = $browsearray[$x]['StockItemID'];
                         $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
                         if(!(@getimagesize($image))){
@@ -110,6 +134,7 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
                         }
                         print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                         print($browsearray[$x]['StockItemName'] . "<br>€" . $browsearray[$x]['UnitPrice']);
+
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";
                         $x++;
