@@ -125,6 +125,7 @@ if (isset($_GET['id'])) {
                     echo "<td class='browsecell'>";
                     /*/informatie voor elke cel invullen/*/
                     if(!empty($browsearray[$x])) {
+
                         print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
                        $stockitemname = ($browsearray[$x]['StockItemName']);
                         print($stockitemname . "<br><br>");
@@ -147,6 +148,17 @@ if (isset($_GET['id'])) {
                             print("<a class='availablenow'> Available Now</a>");
 
                         }
+
+                        $ItemID = $browsearray[$x]['StockItemID'];
+                        $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
+                        if(!(@getimagesize($image))){
+                            $image = "images/" . $row['Photo'];
+                        }
+                        print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
+                        print($browsearray[$x]['StockItemName'] . "<br>");
+                        print("<h4 class='prijsonderfoto'>" . "€" . $browsearray[$x]['UnitPrice']);
+
+
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";
                         $x++;

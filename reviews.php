@@ -1,3 +1,6 @@
+<?php
+include "includes/header.php";
+?>
 <h1>Comments</h1>
 
 
@@ -5,10 +8,10 @@ add a comment
 <form method="get">
     <table border="1" style="border: black; height: 100px; width: 500px;" class="tableMakeReview">
         <tr style="height: 20px">
-            <td style="width: 410px!important;">
-                <input type="text" placeholder="wat is uw naam" name="Author" style="width: 410px!important; float: left">
+            <td style="width: 400px!important;">
+                <input type="text" placeholder="What is your name?" name="Author" style="width: 410px!important; float: left">
             </td>
-            <td style="width: 90px;">
+            <td style="width: 100px;">
                 <div class="rating" style="float: left; text-align: center">
                     <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
                     <label for="star5">☆</label>
@@ -20,18 +23,26 @@ add a comment
                     <label for="star2">☆</label>
                     <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
                     <label for="star1">☆</label>
+
+                    <div class="rating">
+                        <span><i class="rating4 fa fa-star"></i></span><span><i class="rating4 fa fa-star"></i></span><span><i class="rating4 fa fa-star"></i></span><span><i class="rating4 fa fa-star"></i></span><span><i class="rating4 fa fa-star"></i></span>
+                    </div>
+                    <i class="rating4 fa fa-star"></i>
+                    <i class="rating4 fa fa-star"></i>
+                    <i class="rating4 fa fa-star"></i>
+                    <i class="rating4 fa fa-star"></i>
                     <div class="clear"></div>
                 </div>
            </td>
        </tr>
        <tr>
            <td colspan="2">
-               <textarea name="Comment" style="height: 100px; width: 100%"></textarea>
+               <textarea name="Comment" placeholder="Text" style="height: 100px; width: 100%"></textarea>
           </td>
       </tr>
       <tr>
           <td colspan="2">
-              <input type="submit" name="verzendReview" value="Verzend Review">
+              <input class="reviewButton" type="submit" name="verzendReview" value="Verzend Review">
           </td>
       </tr>
     </table>
@@ -39,16 +50,50 @@ add a comment
 
 
 <?php
-if(isset($_GET['verzendReview'])){
+if(isset($_GET['verzendReview'])) {
     $author = $_GET['Author'];
     $review = $_GET['Comment'];
     $aantalSterren = $_GET['star'];
+    $id = 5;
 
-    print("<table class='tableDisplayReviews'border='1' style='border: black; height: 100px; width: 500px;'>
-<tr><td style='width: 410px;'>$author</td><td style='width: 90px'> $aantalSterren</td></tr>
-<tr><td colspan='2'>$review</td></tr>
-</table>");
+    $sql = "INSERT INTO reviews (PersonID, Naam, Text, aantalSterren) VALUES ('$id', '$author', '$review', '$aantalSterren')";
+    $insertIntoReviews = mysqli_query($connection, $sql);
 }
+
+    $getreviews = "SELECT * FROM reviews";
+    $res_data = mysqli_query($connection, $getreviews);
+    $reviewArray = array();
+    $i = 0;
+    foreach ($res_data as $row) {
+        if (mysqli_num_rows($res_data) != 0) {
+            $reviewArray[$i] = $row;
+            $i++;
+        }
+    }
+    if (mysqli_num_rows($res_data) != 0) {
+        for ($i = 0; $i < 4; $i++) {
+            if(isset($reviewArray[$i]['Naam'])) {
+            $author2 = $reviewArray[$i]['Naam'];
+            $aantalSterren2 = $reviewArray[$i]['aantalSterren'];
+            $reviewText = $reviewArray[$i]['Text'];
+                ?>
+                <table class='tableDisplayReviews' border='1' style='border: black; height: 100px; width: 500px;'>
+                    <tr>
+                        <td style='width: 400px; height: 20px'><?php print($author2); ?></td>
+                        <td style='width: 100px'><?php for ($j = 0; $j < $aantalSterren2; $j++) {
+                                print('<i class="rating2 fa fa-star"></i>');
+                            } ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><?php print($reviewText); ?></td>
+                    </tr>
+                </table><br>
+                <?php
+            } else {
+                print(" ");
+            }
+        }
+    }
 ?>
 
 
@@ -109,3 +154,36 @@ if(isset($_GET['verzendReview'])){
         color: #FFD700;
     }
 </style>
+
+
+<h1>User Rating</h1>
+<i class="rating2 fa fa-star"></i>
+
+
+<style>
+    .rating2:before {
+        position: inherit;
+        float: left;
+        top: 100%;
+        height: 100%;
+        width: 20%!important;
+        color: #eb0;
+        font-size: 120%;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: auto;
+    }
+
+    .rating4{
+        color: green;
+    }
+    .rating4:hover{
+        color: #eb0;
+    }
+    .rating4:hover:first-child{
+        color: purple;
+    }
+
+
+</style>
+
