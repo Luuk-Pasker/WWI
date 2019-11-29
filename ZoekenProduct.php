@@ -103,7 +103,12 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
                     echo "<td class='browsecell'>";
                     /*/informatie voor elke cel invullen/*/
                     if(!empty($browsearray[$x])) {
-                        print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                        $ItemID = $browsearray[$x]['StockItemID'];
+                        $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
+                        if(!(@getimagesize($image))){
+                            $image = "images/" . $row['Photo'];
+                        }
+                        print("<a href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                         print($browsearray[$x]['StockItemName'] . "<br>€" . $browsearray[$x]['UnitPrice']);
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";

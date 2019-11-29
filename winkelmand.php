@@ -22,7 +22,7 @@ if(isset($_POST["ItemID"]) && isset($_POST["quantity"]) && isset($_POST["ItemPri
     $result = mysqli_query($connection, $sql);
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
-        if(!(imageExists($image))){
+        if(!(@getimagesize($image))){
             $image = "images/" . $row['Photo'];
         }
         $ItemName = $row["StockItemName"];

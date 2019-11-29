@@ -130,15 +130,6 @@ function sc_Print(){
     print("</div>");
 }
 
-/*checks if an image exists*/
-function imageExists($img){
-    if (@getimagesize($img)) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
-}
-
 /*zoek alle huidige producten met korting op*/
 function GetDeals($connection){
     $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals) limit 4";
