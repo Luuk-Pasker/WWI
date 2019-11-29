@@ -83,10 +83,15 @@ foreach ($laatstToegevoegd as $row) {
                     print("<div class=\"item active\"><table><tr>");
                     for($j=0; $j<4; $j++) {
                         $randomProduct = rand(0,227);
+                        $ItemID = $randomProductArray[$randomProduct]['StockItemID'];
+                        $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
+                        if(!(@getimagesize($image))){
+                            $image = "images/" . $randomProductArray[$randomProduct]['Photo'];
+                        }
                         print("
                             <th>
                             <a href='productBekijken.php?id=" . $randomProductArray[$randomProduct]['StockItemID'] . "'>
-                            <img src='images/" . $randomProductArray[$randomProduct]['Photo'] . "' style=\"height:200px;float: left; text-align: center\">
+                            <img src='$image' style=\"height:200px;float: left; text-align: center\">
                             </a>
                             </th>");
                     }
@@ -95,10 +100,15 @@ foreach ($laatstToegevoegd as $row) {
                     print("<div class=\"item\"><table><tr>");
                     for($j=0; $j<4; $j++) {
                         $randomProduct = rand(0,227);
+                        $ItemID = $randomProductArray[$randomProduct]['StockItemID'];
+                        $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
+                        if(!(@getimagesize($image))){
+                            $image = "images/" . $randomProductArray[$randomProduct]['Photo'];
+                        }
                         print("
                             <th>
                             <a href='productBekijken.php?id=" . $randomProductArray[$randomProduct]['StockItemID'] . "'>
-                            <img src='images/" . $randomProductArray[$randomProduct]['Photo'] . "' style=\"height:200px;float: left; text-align: center\">
+                            <img src='$image' style=\"height:200px;float: left; text-align: center\">
                             </a>
                             </th>");
                     }
@@ -142,7 +152,12 @@ foreach ($laatstToegevoegd as $row) {
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='100%'><BR>");
+                $ItemID = $fullarray[$i]['StockItemID'];
+                $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
+                if(!(@getimagesize($image))){
+                    $image = "images/" . $fullarray[$i]['Photo'];
+                }
+                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='$image' width='100%'><BR>");
                 print($fullarray[$i]['StockItemName'] . "</a></th>");
             }
             ?>
@@ -162,7 +177,12 @@ foreach ($laatstToegevoegd as $row) {
         <tr>
             <?php
             for($i=0; $i < mysqli_num_rows($results); $i++){
-                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='images/" . $fullarray[$i]['Photo'] . "' width='100%'><BR>");
+                $ItemID = $fullArrayLaatstToegevoegd[$i]['StockItemID'];
+                $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
+                if(!(@getimagesize($image))){
+                    $image = "images/" . $fullArrayLaatstToegevoegd[$i]['Photo'];
+                }
+                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='$image' width='100%'><BR>");
                 print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</a></th>");
             }
             ?>

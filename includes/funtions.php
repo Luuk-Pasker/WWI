@@ -26,7 +26,7 @@ function sc_Print(){
     foreach($_SESSION["IDs"] as $index => $val){
         $Photo = $_SESSION['Images'][$index];
         print("<div class='scImageRow'>");
-            print("<img src='$Photo' height='100px'>");
+        print("<img src='$Photo' height='100px'>");
         print("</div>");
     }
     print("</div>");
@@ -84,7 +84,7 @@ function sc_Print(){
         print("</div>");
     }
         print("<div class='scHeadRow'>");
-            print("<br><br><br><b>Shipping price:</b><br><br><b>Total price:</b>");
+            print("<br><br><br><b>Shipping<br>price:</b><br><br><b>Total price:</b>");
         print("</div>");
     print("</div>");
 
@@ -107,11 +107,11 @@ function sc_Print(){
     }else{
         $shippingPrice = 0;
     }
-    $_SESSION["TotalPrice"] += $shippingPrice; //totaal prijs
+    $_SESSION["TotalPrice"] += $shippingPrice;
 
         print("<div class='scHeadRow'>");
-            print("<br><br><br><b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "<br>");
-            print("<b><br>€" . number_format((float)$_SESSION["TotalPrice"], 2, '.', '') . "</b>");
+            print("<br><br><br><br><b>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
+            print("<b><br><br>€" . number_format((float)$_SESSION["TotalPrice"], 2, '.', '') . "</b>");
             print("<br><br><form action='betalen.php' class='scButton'><input type='submit' value='Buy items'></form>");
         print("</div>");
     print("</div>");
