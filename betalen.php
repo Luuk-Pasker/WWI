@@ -33,7 +33,6 @@ include "includes/footer.php";
                 <label for="first_name" class="contact-form-label">First name:</label>
                 <input type="text" id="first_name" name="fname" class="contact-form-control"/>
             </div>
-<<<<<<< HEAD
 
         <!--step 2 verzendmethode-->
                 <div class="verzendmethode/css">
@@ -68,7 +67,7 @@ include "includes/footer.php";
                         <br>
                         <label for="pass" class="passwordbetalen"> Password = </label>
                         <input type="password" id="pass" name="password">
-=======
+
             <br>
             <br>
             <div class="contact-form-group">
@@ -210,11 +209,9 @@ include "includes/footer.php";
                         $totalPrice = ($_SESSION["TotalPrice"]);
                         ?>
                         Total: €<?php print($totalPrice); ?>
->>>>>>> dbeae16109b64098882c60d0ed09a3ce8b561452
                         <br>
                         *with sendingcosts included
                         <br>
-<<<<<<< HEAD
                         <input type="submit" name="inloggen" value="Sign in">
                     </form>
                     <br>
@@ -232,13 +229,11 @@ include "includes/footer.php";
                         print("succesfully logged in");
                     }
                     ?>
-=======
->>>>>>> dbeae16109b64098882c60d0ed09a3ce8b561452
+
                         <br>
                         <br>
                         <br>
 
-<<<<<<< HEAD
                         <h3> Your Order </h3> <!-- border + border om elk product > plaatje Float; right overflow: scroll;-->
 
                         <br>
@@ -263,47 +258,7 @@ include "includes/footer.php";
                         print($_SESSION["Prices"]);
                         print($_SESSION["Images"]);*/
                         ?>
-                    <br>
-                    <br>
-                        <div class="totalbetalen">
-                            <b> <h3> Total </h3> <b><!--rechterkant en border-->
-                                    <?php
-                                    $totalPrice = ($_SESSION["TotalPrice"]);
-                                    ?>
-                                    Total: €<?php print($totalPrice); ?>
-                                    <br>
-                                    *with sendingcosts included
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div class="Your order">
 
-                    <input type="submit" value="Send"/>
-=======
-
-                        <div class="Your order">
-                            <h3> Your Order </h3>
-                            <!-- border + border om elk product > plaatje Float; right overflow: scroll;-->
-
-                            <?php
-                            foreach ($_SESSION["IDs"] as $index => $val) {
-                                $Photo = $_SESSION['Images'][$index];
-                                $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
-                                print("<img src='$Photo' height='100px'>");
-                                print("<br>");
-                                print($_SESSION["Names"][$index]);
-                                print("<br>");
-                                print($_SESSION["Quantitys"][$index]);
-                                print("<br>");
-                                print("€" . number_format((float)$ItemPrice, 2, '.', ''));
-
-                            }
-                            ?>
-                            <br>
-                            <br>
-
-
->>>>>>> dbeae16109b64098882c60d0ed09a3ce8b561452
                         </div>
             </div>
         </div>
