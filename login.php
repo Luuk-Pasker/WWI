@@ -45,19 +45,38 @@ if (isset($_POST['register'])) {
 
 if (isset($_POST['submit'])) {
     if (empty($_POST['username']) && empty($_POST['password'])) {
-        echo "Fill in data";
+        $error = "Fill in data";
     } else {
         $username = $_POST['username'];
         $HPass = hash('sha256', $_POST['password']);
         $HPass = strtoupper($HPass);
-        $sql = "SELECT * FROM people WHERE LogonName = '$username' AND HashedPassword = '$HPass'";
+
+        $sql = "SELECT * FROM people";
         $res_data = mysqli_query($connection, $sql);
         /*printen van de resultaten op het scherm*/
-        foreach ($res_data as $row) {
-            $_SESSION['login'] = TRUE;
-            $_SESSION['user_session'] = $row['PersonID'];
+        foreach ($res_data as $row1) {
+            if ($row1['LogonName'] == $username && $row1['HashedPassword'] == $HPass) {
+
+                $sql = "SELECT * FROM people WHERE LogonName = '$username' AND HashedPassword = '$HPass'";
+                $res_data = mysqli_query($connection, $sql);
+                /*printen van de resultaten op het scherm*/
+                foreach ($res_data as $row) {
+                    $_SESSION['login'] = TRUE;
+                    $_SESSION['user_session'] = $row['PersonID'];
+                }
+
+            } else {
+                $error = "error";
+            }
         }
     }
+}
+
+
+if (empty($error)) {
+
+} else {
+    echo "<div class='errorBox'>$error</div>";
 }
 
 if (empty($_SESSION['login'])) {
