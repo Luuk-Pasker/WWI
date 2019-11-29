@@ -111,11 +111,16 @@ include "includes/footer.php";
                     print("€0,00");
                 }
                 ?>
+                    <br>
+                    <br>
+                    <br>
 
-                    <div class="log in">
-                    <h3> Log in </h3>
 
-                    <form method = "$_POST" action="betalen.php">
+                    <div class="Sign up">
+                    <h3> Sign up </h3>
+                        <br>
+
+                    <form method = "$_POST" action="">
                         <label for="user" class="usernamebetalen"> Username = </label>
                         <input type="text" id="user" name="usenname">
                         <br>
@@ -125,7 +130,7 @@ include "includes/footer.php";
                         <label for="pass1" class="passfirst"> Password (again) = </label>
                         <input type="password" name="passwordagain">
                         <br>
-                        <input type="submit" name="inloggen" value="Log in">
+                        <input type="submit" name="inloggen" value="Sign in">
                     </form>
                     <br>
 
@@ -134,9 +139,9 @@ include "includes/footer.php";
                     $Passwordagain=isset($_POST['passwordagain']);
                     $Username1=isset($_POST['username']);
 
-                    if(!$Username1) {
+                    if(!$Username1 || !$Password1 || !$Passwordagain) {
                         print("No username/password");
-                    } if($Password1 != $Passwordagain){
+                    } elseif($Password1 != $Passwordagain){
                         print("The password is not the same");
                     } else {
                         print("succesfully logged in");
@@ -144,22 +149,12 @@ include "includes/footer.php";
                     ?>
                         <br>
                         <br>
+                        <br>
 
-                        <div class="totalbetalen">
-                            <b> <h3> Total </h3> <b><!--rechterkant en border-->
-                            <?php
-                            $totalPrice = ($_SESSION["TotalPrice"]);
-                            ?>
-                            Total: €<?php print($totalPrice); ?>
-                            <br>
-                            *with sendingcosts included
-                            <br>
-                            <br>
-                            <br>
-
-
-                        <div class="Your order">
                         <h3> Your Order </h3> <!-- border + border om elk product > plaatje Float; right overflow: scroll;-->
+
+                        <br>
+                        <br>
 
                         <?php
                         foreach($_SESSION["IDs"] as $index => $val) {
@@ -182,7 +177,18 @@ include "includes/footer.php";
                         ?>
                     <br>
                     <br>
-
+                        <div class="totalbetalen">
+                            <b> <h3> Total </h3> <b><!--rechterkant en border-->
+                                    <?php
+                                    $totalPrice = ($_SESSION["TotalPrice"]);
+                                    ?>
+                                    Total: €<?php print($totalPrice); ?>
+                                    <br>
+                                    *with sendingcosts included
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="Your order">
 
                     <input type="submit" value="Send"/>
                         </div>
