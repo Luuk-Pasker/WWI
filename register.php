@@ -22,7 +22,7 @@ include "includes/header.php";
                     <label for="inputEmail" class="">Email adress:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputEmail" name="email" placeholder="Email adress">
+                    <input type="email" class="loginInput" id="inputEmail" name="email" placeholder="Email adress">
                 </div>
             </div>
             <div class="loginRow">
@@ -30,7 +30,7 @@ include "includes/header.php";
                     <label for="inputPhone" class="">Phone number:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputPhone" name="phone" placeholder="Phone number">
+                    <input type="number" class="loginInput" id="inputPhone" name="phone" placeholder="Phone number">
                 </div>
             </div>
             <div class="loginRow">
