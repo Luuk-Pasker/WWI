@@ -89,7 +89,7 @@ include "includes/header.php";
         $kortingprijs = $price / 100 * 85;
         $nieuwekortingprijs = number_format($kortingprijs, 2);
 
-
+/*producten met korting*/
         if (in_array($row['StockItemName'], $productenmetkorting)) {
             print("<div class='paynow'>" . "Pay now!" . "</div>");
             if ($row['StockItemName'] == 'USB rocket launcher (Gray)') {
@@ -109,11 +109,16 @@ include "includes/header.php";
             } else {
                 $voorraad = $row["QuantityOnHand"];
             }
+            /*producten met korting*/
+
+/*            producten zonder korting*/
         } else {
             print("<div class='prijs'>" . "€" . $price . "</div><br><br>");
             print("<h4 class='nogopvoorraad'>" . " In stock! </h4>");
             print("<h4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</h4><br>");
             print("</div>");
+/*            producten zonder korting*/
+
             if ($row["QuantityOnHand"] > 1000) {
                 $voorraad = 1000;
             } elseif ($row["QuantityOnHand"] > 100) {

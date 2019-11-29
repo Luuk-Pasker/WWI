@@ -70,6 +70,7 @@
 .productnaam{
     width: 260px;
     align-content: center;
+
 }
 
 .test6{
@@ -130,4 +131,36 @@
 
 .prijsonderfoto{
     color: dodgerblue;
+    font-size: 22px;
+}
+
+.kortingprijs{
+    color: indianred;
+    margin-left: 3px;
+    font-size: 16px;
+}
+
+.standaardprijs{
+    color: dodgerblue;
+    font-size: 22px;
+    margin-left: 3px;
+}
+
+.specialdeal{
+    font-size: 20px;
+    font-family: Bahnschrift;
+    color: #3f3f3f;
+}
+
+.availablenow{
+    font-size: 16px;
+}
+
+.prijsje{
+    color: #2491ff;
+    font-size: 22px;
+}
+
+.availablenow{
+
 }
