@@ -11,8 +11,9 @@
 }
 
 .btn{
-
+    right: 50%;
     background: dodgerblue;
+    color: white;
 }
 
 .keerterug{

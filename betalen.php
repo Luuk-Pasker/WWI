@@ -1,6 +1,7 @@
 <link rel="stylesheets" type="text/css" href="css/betalen.css">
 <link rel="stylesheet" type="text/css" href="css/aboutus.css">
-
+<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
+<div class="paymentpage">
 <?php
 active:
 "betalen";
@@ -15,12 +16,19 @@ $result1 = mysqli_query($connection, $costs);
 
 ?>
 
-<a href="winkelmand.php"> < Back to shoppingcart </a>
+    <button class="btn" onclick="goBack()">Go back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 <h1> Payment </h1> <br>
 
 <?php
 include "includes/footer.php";
 ?>
+
+
 <div class="double-column2">
 
     <div class="contact">
@@ -76,7 +84,7 @@ include "includes/footer.php";
                     <input type="text" id="City" name="city" class="contact-form-control">
                 </div>
                 <br><br><br>
-                <p>Want to make an account? Fill in your password here!</p>
+                <p>Do you want an acount? Fill in a password to sign up.</p>
                 <div class="contact-form-group">
                     <label for="password" class="contact-form-label">Password:</label>
                     <input type="password" id="password" name="password" class="contact-form-control"/>
@@ -90,8 +98,9 @@ include "includes/footer.php";
                 <br>
                 <br>
 
-                <input type="submit" name="submit" value="Send"/>
+                <input type="submit" name="submit" value="Next step"/>
             </form>
+    </div>
             <?PHP
             if (isset($_POST['submit'])) {
                 $password = hash('sha256', $_POST['password']);
@@ -147,69 +156,29 @@ include "includes/footer.php";
         ?>
 
     </div>
-
-    <div class="make account">
-        <?php
-
-        ?>
-        <br>
+    <div class="sendmethode">
         <!--step 2 verzendmethode-->
         <div class="verzendmethode/css">
-            <img src="images/(step 2).JPG" width="35" height="30" alt="step 1">
-            <h3>Send method</h3>
-
-            <h4>Home delivered with:</h4>
-            <select>
-                <?php while ($row = mysqli_fetch_array($result)):; ?>
-                    <option> <?php print ($row[0]); ?> </option>
-                <?php endwhile; ?>
-            </select>
-            <br>
-            Shipping price: <?php $costs ?>
-            <?php
-            if ($costs < 50) {
-                print("€6,95 <br> <br> Shipping price is €6.95 for orders below €50.00!");
-            } else {
-                print("€0,00");
-            }
-            ?>
-
-
-            <div class="totalbetalen">
-                <b><h3> Total </h3></b><!--rechterkant en border-->
-                <?php
-                $totalPrice = ($_SESSION["TotalPrice"]);
-                ?>
-                Total: €<?php print($totalPrice); ?>
-                <br>
-                *with sendingcosts included
-                <br>
-
-                <h3> Your Order </h3> <!-- border + border om elk product > plaatje Float; right overflow: scroll;-->
-                <br>
-                <br>
-                <?php
-                foreach ($_SESSION["IDs"] as $index => $val) {
-                    $Photo = $_SESSION['Images'][$index];
-                    $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
-                    print("<img src='$Photo' height='100px'>");
-                    print("<br>");
-                    print($_SESSION["Names"][$index]);
-                    print("<br>");
-                    print($_SESSION["Quantitys"][$index]);
-                    print("<br>");
-                    print("€" . number_format((float)$ItemPrice, 2, '.', ''));
-
-                }
-                /*while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-                    print($_SESSION["Names"]);
-                print($_SESSION["Quantitys"]);
-                print($_SESSION["Prices"]);
-                print($_SESSION["Images"]);*/
-                ?>
-            </div>
+            <h3><img src="images/(step 2).JPG" width="35" height="30" alt="step 1"> Send method</h3>
         </div>
+
+        <h4>Home delivered with:</h4>
+        <select>
+            <?php while ($row = mysqli_fetch_array($result)):; ?>
+                <option> <?php print ($row[0]); ?> </option>
+            <?php endwhile; ?>
+        </select>
+        <br>
+        Your shipping price: <?php $costs ?>
+        <?php
+        if ($costs < 50) {
+            print("€6,95 <br> <br> Order above €50,00 and shipping will be FREE!   ");
+        } else {
+            print("€0,00");
+        }
+        ?>
     </div>
+
 </div>
 <?php
 include "includes/footer.php";
