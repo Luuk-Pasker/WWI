@@ -166,11 +166,13 @@ foreach ($laatstToegevoegd as $row) {
         </tr>
         <tr>
             <td colspan="4" style="border: none!important;">
-                <a href="browse.php">
+                <!--<a href="browse.php">-->
                     <div style="text-align: center">
-                        <button type="button" class="btn btn-primary">See More Deals</button>
+                        <form method="post" action="browse.php">
+                        <button type="submit" name='deals' value="deals" class="btn btn-primary">See More Deals</button>
+                        </form>
                     </div>
-                </a>
+                <!--</a>-->
             </td>
         </tr>
     </table>
@@ -192,11 +194,13 @@ foreach ($laatstToegevoegd as $row) {
         </tr>
         <tr>
             <td colspan="4" style="border: none!important;">
-                <a href="browse.php">
-                    <div style="text-align: center">
-                        <button type="button" class="btn btn-primary">See More New Products</button>
-                    </div>
-                </a>
+                <!--<a href="browse.php">-->
+                <div style="text-align: center">
+                    <form method="post" action="browse.php">
+                        <button type="submit" name='NewItems' value="NewItems" class="btn btn-primary">See More Deals</button>
+                    </form>
+                </div>
+                <!--</a>-->
             </td>
         </tr>
     </table>
