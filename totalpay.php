@@ -1,4 +1,5 @@
 <div class="totalbetalen">
+
                 <b><h3> Total </h3></b><!--rechterkant en border-->
                 <?php
                 $totalPrice = ($_SESSION["TotalPrice"]);
