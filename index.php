@@ -158,7 +158,9 @@ foreach ($laatstToegevoegd as $row) {
                     $image = "images/" . $fullarray[$i]['Photo'];
                 }
                 print("<th class='thhome'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='$image' width='100%'><BR>");
-                print($fullarray[$i]['StockItemName'] . "</a></th>");
+                print($fullarray[$i]['StockItemName'] . "<br>");
+                $price = number_format($fullarray[$i]['UnitPrice'] / 100 * 85, 2);
+                print("<a class='standaardprijs'>" . "€" . $price . " " . "</a><a class='kortingprijs'>" . "<strike>€" . $fullarray[$i]['UnitPrice'] . "</strike>" . "</a></a></th>");
             }
             ?>
         </tr>
@@ -183,7 +185,8 @@ foreach ($laatstToegevoegd as $row) {
                     $image = "images/" . $fullArrayLaatstToegevoegd[$i]['Photo'];
                 }
                 print("<th class='thhome'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='$image' width='100%'><BR>");
-                print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</a></th>");
+                print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "<br>");
+                print("<a class='prijsje'>" . "€" . $fullArrayLaatstToegevoegd[$i]['UnitPrice'] . "</a></a></th>");
             }
             ?>
         </tr>
