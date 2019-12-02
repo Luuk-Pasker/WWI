@@ -6,10 +6,11 @@
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 <?php
-active:
-"betalen";
+$active = "betalen";
 include "includes/header.php";
+include "includes/funtions.php";
 
+$userId = $_SESSION['user_session'];
 
 $sql = "SELECT DeliveryMethodName FROM deliverymethods";
 $result = mysqli_query($connection, $sql);
@@ -26,11 +27,11 @@ $result1 = mysqli_query($connection, $costs);
 </div>
 
 <div class="container2">
-<h1> Payment </h1> <br>
+    <h1> Payment </h1> <br>
 
-<?php
-include "includes/footer.php";
-?>
+    <?php
+    include "includes/footer.php";
+    ?>
 
 
     <div class="row">
@@ -41,10 +42,10 @@ include "includes/footer.php";
                 <!--step 1: information-->
 
                 <h3><img src="images/(step 1).JPG" width="35" height="30" alt="step 1"> Information </h3>
-                <?php
-                if (empty($_SESSION['login'])) {
-                    ?>
-                    <form method="post">
+                <form method="post">
+                    <?php
+                    if (empty($_SESSION['login'])) {
+                        ?>
                         <!--Name-->
                         <div class="contact-form-group">
                             <label for="first_name" class="contact-form-label">First name:</label>
@@ -101,64 +102,27 @@ include "includes/footer.php";
                             <input type="password" id="repeatPassword" name="repeatPassword"
                                    class="contact-form-control"/>
                         </div>
-                        <br>
-                        <br>
-                    </form>
-            </div>
 
-                    <?PHP
-                    if (isset($_POST['submit'])) {
-                        $password = hash('sha256', $_POST['password']);
-                        $HPass = strtoupper($password);
-                        $permitted = "1";
-                        $notPermitted = "0";
-                        $username = $_POST['fname'] . " " . $_POST['lname'];
-
-                        $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
+                        <?PHP
+                    } elseif ($_SESSION["login"] == TRUE) {
+                        $sql = "SELECT * FROM people WHERE PersonID = $userId";
                         /*printen van de resultaten op het scherm*/
                         $res_data = mysqli_query($connection, $sql);
-                        foreach ($res_data as $row) {
-                            $PersonID = $row['HighestID'] + 1;
-
-                            if (empty($_POST['fname'])) {
-                                echo "Fill in name!";
-                            } elseif (empty($_POST['email'])) {
-                                echo "Fill in email!";
-                            } elseif (empty($_POST['phone'])) {
-                                echo "Fill in phonenumber!";
-                            } elseif (empty($_POST['address'])) {
-                                echo "Fill in address!";
-                            } elseif (empty($_POST['postal'])) {
-                                echo "Fill in postal!";
-                            } elseif (empty($_POST['city'])) {
-                                echo "Fill in city!";
-                            } elseif (empty($_POST['password'])) {
-                                $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-                                $stmt = $connection->prepare($sql);
-                                $stmt->bind_param('sssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $notPermitted, $_POST['email'], $_POST['phone'], $_POST['email']);
-                                $stmt->execute();
-                                echo "GELUKT!!!";
-                            } elseif ($_POST['email'] == $_POST['password']) {
-                                echo "Email and password can't be the same!";
-                            } elseif ($_POST['password'] == $_POST['repeatPassword']) {
-                                $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-                                $stmt = $connection->prepare($sql);
-                                $stmt->bind_param('ssssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
-                                $stmt->execute();
-                                echo "GELUKT!!!";
-                            } else {
-                                echo "wrong information";
-                            }
+                        while ($row = mysqli_fetch_array($res_data)) {
+                            echo "U bent al ingelogt als " . $row['FullName'];
+                            echo "<br>Ga verder met betalen.";
                         }
+
                     }
 
-                } elseif ($_SESSION["login"] == TRUE) {
-
-                }
-
-                ?>
+                    ?>
+                    <br>
+                    <br>
+                    <a href="betalen 2.0.php">
+                        <input type="submit" name="submit" value="Next step"/>
+                    </a>
+                </form>
+            </div>
         </div>
 
         <div class="column">
@@ -183,12 +147,21 @@ include "includes/footer.php";
                     print("€0,00");
                 }
                 ?>
+<<<<<<< HEAD
                 <BR><br><br><br><BR><br><br><br><BR><br><br><br><br>
 
+=======
+                <br>
+                <br>
+                <!--                <a href="betalen 2.0.php">-->
+                <!--                    <input type="submit" name="submit" value="Next step"/>-->
+                <!--                </a>-->
+>>>>>>> 7dcfd9113ac16c950f464659bd0d27c560fa607f
             </div>
 
         </div>
 
+<<<<<<< HEAD
         <div class="column">
 
                 <h3 class="titlepayment"> Paymentmethod</h3>
@@ -228,6 +201,134 @@ include "includes/footer.php";
                 </div>
         </div>
 
+=======
+        <?php
+        if (isset($_POST['submit']) && $_SESSION['login'] == TRUE) {
+            $sql = "INSERT INTO invoice (PersonID) VALUES (?)";
+            $stmt = $connection->prepare($sql);
+            $stmt->bind_param('s', $userId);
+            $stmt->execute();
+
+            foreach ($_SESSION["IDs"] as $index => $val) {
+                $id = $_SESSION['IDs'][$index];
+                $Quantity = $_SESSION['Quantitys'][$index];
+                echo $id;
+                echo $Quantity;
+
+                $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                /*printen van de resultaten op het scherm*/
+                $res_data = mysqli_query($connection, $sql);
+                foreach ($res_data as $row) {
+                    $invoiceID = $row['HighestID'];
+
+                    $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                    $stmt->execute();
+                    echo '<script> window.location.href = "betalen 2.0.php"; </script>';
+                }
+            }
+
+
+        } elseif (isset($_POST['submit'])) {
+            $password = hash('sha256', $_POST['password']);
+            $HPass = strtoupper($password);
+            $permitted = "1";
+            $notPermitted = "0";
+            $username = $_POST['fname'] . " " . $_POST['lname'];
+
+            $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
+            /*printen van de resultaten op het scherm*/
+            $res_data = mysqli_query($connection, $sql);
+            foreach ($res_data as $row) {
+                $PersonID = $row['HighestID'] + 1;
+
+                if (empty($_POST['fname'])) {
+                    echo "Fill in name!";
+                } elseif (empty($_POST['email'])) {
+                    echo "Fill in email!";
+                } elseif (empty($_POST['phone'])) {
+                    echo "Fill in phonenumber!";
+                } elseif (empty($_POST['address'])) {
+                    echo "Fill in address!";
+                } elseif (empty($_POST['postal'])) {
+                    echo "Fill in postal!";
+                } elseif (empty($_POST['city'])) {
+                    echo "Fill in city!";
+                } elseif (empty($_POST['password'])) {
+                    $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('sssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $notPermitted, $_POST['email'], $_POST['phone'], $_POST['email']);
+                    $stmt->execute();
+                    echo "GELUKT!!!";
+
+                    $sql = "INSERT INTO invoice (PersonID) VALUES (?)";
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('s', $PersonID);
+                    $stmt->execute();
+
+                    foreach ($_SESSION["IDs"] as $index => $val) {
+                        $id = $_SESSION['IDs'][$index];
+                        $Quantity = $_SESSION['Quantitys'][$index];
+                        echo $id;
+                        echo $Quantity;
+
+                        $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                        /*printen van de resultaten op het scherm*/
+                        $res_data = mysqli_query($connection, $sql);
+                        foreach ($res_data as $row) {
+                            $invoiceID = $row['HighestID'];
+
+                            $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                            $stmt = $connection->prepare($sql);
+                            $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                            $stmt->execute();
+                            echo '<script> window.location.href = "betalen 2.0.php"; </script>';
+                        }
+                    }
+                } elseif ($_POST['email'] == $_POST['password']) {
+                    echo "Email and password can't be the same!";
+                } elseif ($_POST['password'] == $_POST['repeatPassword']) {
+                    $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('ssssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
+                    $stmt->execute();
+                    echo "GELUKT!!!";
+
+
+                    $sql = "INSERT INTO invoice (PersonID) VALUES (?)";
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('s', $PersonID);
+                    $stmt->execute();
+
+                    foreach ($_SESSION["IDs"] as $index => $val) {
+                        $id = $_SESSION['IDs'][$index];
+                        $Quantity = $_SESSION['Quantitys'][$index];
+                        echo $id;
+                        echo $Quantity;
+
+                        $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                        /*printen van de resultaten op het scherm*/
+                        $res_data = mysqli_query($connection, $sql);
+                        foreach ($res_data as $row) {
+                            $invoiceID = $row['HighestID'];
+
+                            $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                            $stmt = $connection->prepare($sql);
+                            $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                            $stmt->execute();
+                            echo '<script> window.location.href = "betalen 2.0.php"; </script>';
+                        }
+                    }
+                } else {
+                    echo "wrong information";
+                }
+            }
+        }
+        ?>
+>>>>>>> 7dcfd9113ac16c950f464659bd0d27c560fa607f
 
     </div>
 
