@@ -16,12 +16,12 @@ $result1 = mysqli_query($connection, $costs);
 
 ?>
 
-    <button class="btn" onclick="goBack()">Go back</button>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+<div class="keerterug">
+    <a class="KEERTERUGNU" href="winkelmand.php" style="color: white;">
+        <button class="btn" title="Go back"><i class="fas fa-long-arrow-alt-left"></i> Shoppingcart</button>
+    </a>
+</div>
+
 <div class="container2">
 <h1> Payment </h1> <br>
 
