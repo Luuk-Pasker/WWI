@@ -84,7 +84,7 @@ include "includes/header.php";
 
                 <div class="contact-form-group">
                     <label for="phone_number" class="contact-form-label">Phone number:</label>
-                    <input type="number" id="phone_number" name="phone" class="contact-form-control"/>
+                    <input type="text" id="phone_number" name="phone" class="contact-form-control"/>
                 </div>
                 <br>
                 <br>
