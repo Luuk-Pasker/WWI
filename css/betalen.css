@@ -46,12 +46,12 @@
 }
 
 .contact{
-    display: table-cell;
+    width:200px;
+    float:left;
 }
 
 
 .sendmethode{
-    display: table-cell;
-    width: 200px;
+        overflow-x:hidden;
 }
 
