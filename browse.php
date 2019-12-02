@@ -30,14 +30,14 @@ $result = mysqli_query($connection, $sql);
 <div class="Deals">
     <?php
     print("<div class='Deals'>");
-    print("<form method=\"get\" action=\"/WWI/browse.php\"><button name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
+    print("<form method=\"post\" action=\"/WWI/browse.php\"><button name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
     print("</div>");
     ?>
 </div>
 <div class="NewItems">
     <?php
     print("<div class='Deals'>");
-    print("<form method=\"get\" action=\"/WWI/browse.php\"><button name='NewItems' value='NewItems' class='button' type=\"submit\">New Items</button></form>");
+    print("<form method=\"post\" action=\"/WWI/browse.php\"><button name='NewItems' value='NewItems' class='button' type=\"submit\">New Items</button></form>");
     print("</div>");
     ?>
 </div>
@@ -187,7 +187,7 @@ if (isset($_GET['id'])) {
             $zoekopdracht = "zoek=" . $zoekopdracht . "&toevoegen=Search&";
             $total_pages = TelZoek($connection, $_GET["zoek"]);
             PrintSearchResults($_GET["zoek"], $offset, $no_of_records_per_page);
-        } elseif (isset($_GET['deals'])){
+        } elseif (isset($_POST['deals'])){
             $deals = GetDealsBrowse($connection);
             $dealsArray = array();
             $i = 0;
@@ -240,7 +240,7 @@ if (isset($_GET['id'])) {
             } else {
                 print("");
             }
-        } elseif(isset($_GET['NewItems'])) {
+        } elseif(isset($_POST['NewItems'])) {
             $deals = GetLaatstToegevoegdBrowse($connection);
             $browsearray = array();
             $i = 0;
