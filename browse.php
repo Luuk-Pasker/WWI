@@ -3,6 +3,7 @@
 $active = "browse";
 include "includes/header.php";
 include "ZoekenProduct.php";
+include "includes/funtions.php"
 /*session_start();*/
 /*header*/
 ?>
@@ -23,6 +24,20 @@ $result = mysqli_query($connection, $sql);
     <?php
     print("<div class='everything'>");
     print("<form method=\"post\" action=\"/WWI/browse.php\"><button class='button' type=\"submit\">All products</button></form>");
+    print("</div>");
+    ?>
+</div>
+<div class="Deals">
+    <?php
+    print("<div class='Deals'>");
+    print("<form method=\"get\" action=\"/WWI/browse.php\"><button name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
+    print("</div>");
+    ?>
+</div>
+<div class="NewItems">
+    <?php
+    print("<div class='Deals'>");
+    print("<form method=\"get\" action=\"/WWI/browse.php\"><button name='NewItems' value='NewItems' class='button' type=\"submit\">New Items</button></form>");
     print("</div>");
     ?>
 </div>
@@ -96,12 +111,15 @@ if (isset($_GET['id'])) {
             <?php
 
             /*printen van de resultaten op het scherm*/
-            if(isset($_GET["toevoegen"])){
+            if(isset($_GET["toevoegen"])) {
                 $aantalproducten = TelZoek($connection, $_GET["zoek"]);
                 print("<h4>$aantalproducten " . "results</h4>");
-            } elseif ($total_rows >= 1)
+            } elseif(isset($_GET["deals"])){
+                $aantalproducten = 14;
+                print("<h4>$aantalproducten " . "results</h4>");
+            } elseif ($total_rows >= 1) {
                 print("<h4>$total_rows " . "results</h4>");
-            else ("");
+            } else ("");
             ?>
         </div>
         <?php
@@ -129,7 +147,7 @@ if (isset($_GET['id'])) {
                             $Stocktitemname = ($browsearray[$x]['StockItemName']);
                             $price =$browsearray[$x]['UnitPrice'];
                             $kortingprijs = number_format($price / 100 * 85, 2);
-                            $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
 
                             if(in_array($Stocktitemname, $productenmetkorting)==true){
                                 print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
@@ -165,6 +183,104 @@ if (isset($_GET['id'])) {
             $zoekopdracht = "zoek=" . $zoekopdracht . "&toevoegen=Search&";
             $total_pages = TelZoek($connection, $_GET["zoek"]);
             PrintSearchResults($_GET["zoek"], $offset, $no_of_records_per_page);
+        } elseif (isset($_GET['deals'])){
+            $deals = GetDealsBrowse($connection);
+            $dealsArray = array();
+            $i = 0;
+            foreach ($deals as $row) {
+                if (mysqli_num_rows($deals) != 0) {
+                    $dealsArray[$i] = $row;
+                    $i++;
+                }
+            }
+            $x = 0;
+            if(!empty($dealsArray[$x])) {
+                echo '<table width="100%" class="table table-bordered">';
+                for ($i = 0; $i < 5; $i++) {
+                    echo "<tr>";
+                    for ($j = 0; $j < 5; $j++) {
+                        echo "<td class='browsecell'>";
+                        /*/informatie voor elke cel invullen/*/
+                        if(!empty($dealsArray[$x])) {
+                            $Stocktitemname = ($dealsArray[$x]['StockItemName']);
+                            $price =$dealsArray[$x]['UnitPrice'];
+                            $kortingprijs = number_format($price / 100 * 85, 2);
+                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+
+                            if(in_array($Stocktitemname, $productenmetkorting)==true){
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $dealsArray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print($Stocktitemname . "<br>");
+                                print("<a class='specialdeal'>SpecialDeal<a/><br>");
+                                print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
+                                print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
+                                print("<a>Available Now<a/>");
+                            }else{
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $dealsArray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print($Stocktitemname . "<br>");
+                                print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
+                                print("<a class='availablenow'> Available Now</a>");
+                            }
+
+                            /*/informatie voor elke cel invullen/*/
+                            echo "</td>";
+                            $x++;
+                        }
+                    }
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } else {
+                print("");
+            }
+        } elseif(isset($_GET['NewItems'])) {
+            $deals = GetLaatstToegevoegdBrowse($connection);
+            $browsearray = array();
+            $i = 0;
+            foreach ($deals as $row) {
+                if (mysqli_num_rows($deals) != 0) {
+                    $browsearray[$i] = $row;
+                    $i++;
+                }
+            }
+            $x = 0;
+            if(!empty($browsearray[$x])) {
+                echo '<table width="100%" class="table table-bordered">';
+                for ($i = 0; $i < 5; $i++) {
+                    echo "<tr>";
+                    for ($j = 0; $j < 5; $j++) {
+                        echo "<td class='browsecell'>";
+                        /*/informatie voor elke cel invullen/*/
+                        if(!empty($browsearray[$x])) {
+                            $Stocktitemname = ($browsearray[$x]['StockItemName']);
+                            $price =$browsearray[$x]['UnitPrice'];
+                            $kortingprijs = number_format($price / 100 * 85, 2);
+                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+
+                            if(in_array($Stocktitemname, $productenmetkorting)==true){
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print($Stocktitemname . "<br>");
+                                print("<a class='specialdeal'>SpecialDeal<a/><br>");
+                                print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
+                                print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
+                                print("<a>Available Now<a/>");
+                            }else{
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print($Stocktitemname . "<br>");
+                                print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
+                                print("<a class='availablenow'> Available Now</a>");
+                            }
+
+                            /*/informatie voor elke cel invullen/*/
+                            echo "</td>";
+                            $x++;
+                        }
+                    }
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } else {
+                print("");
+            }
         } else {
             $browsearray = array();
             $p=0;
@@ -187,7 +303,7 @@ if (isset($_GET['id'])) {
                             $Stocktitemname = ($browsearray[$x]['StockItemName']);
                             $price =$browsearray[$x]['UnitPrice'];
                             $kortingprijs = number_format($price / 100 * 85, 2);
-                            $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
 
                             if(in_array($Stocktitemname, $productenmetkorting)==true){
                                 print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
