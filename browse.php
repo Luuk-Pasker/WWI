@@ -148,16 +148,20 @@ if (isset($_GET['id'])) {
                             $price =$browsearray[$x]['UnitPrice'];
                             $kortingprijs = number_format($price / 100 * 85, 2);
                             $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                            $image = 'images/ProductImages/' . $browsearray[$x]['StockItemID'] . '.1.jpg';
+                            if(!(@getimagesize($image))){
+                                $image = "images/" . $row['Photo'];
+                            }
 
                             if(in_array($Stocktitemname, $productenmetkorting)==true){
-                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<a class='specialdeal'>SpecialDeal<a/><br>");
                                 print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
                                 print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
                                 print("<a>Available Now<a/>");
                             }else{
-                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
                                 print("<a class='availablenow'> Available Now</a>");
@@ -206,16 +210,20 @@ if (isset($_GET['id'])) {
                             $price =$dealsArray[$x]['UnitPrice'];
                             $kortingprijs = number_format($price / 100 * 85, 2);
                             $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                            $image = 'images/ProductImages/' . $dealsArray[$x]['StockItemID'] . '.1.jpg';
+                            if(!(@getimagesize($image))){
+                                $image = "images/" . $row['Photo'];
+                            }
 
                             if(in_array($Stocktitemname, $productenmetkorting)==true){
-                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $dealsArray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $dealsArray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<a class='specialdeal'>SpecialDeal<a/><br>");
                                 print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
                                 print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
                                 print("<a>Available Now<a/>");
                             }else{
-                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $dealsArray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $dealsArray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
                                 print("<a class='availablenow'> Available Now</a>");
@@ -304,16 +312,20 @@ if (isset($_GET['id'])) {
                             $price =$browsearray[$x]['UnitPrice'];
                             $kortingprijs = number_format($price / 100 * 85, 2);
                             $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                            $image = 'images/ProductImages/' . $browsearray[$x]['StockItemID'] . '.1.jpg';
+                            if(!(@getimagesize($image))){
+                                $image = "images/" . $row['Photo'];
+                            }
 
                             if(in_array($Stocktitemname, $productenmetkorting)==true){
-                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<a class='specialdeal'>SpecialDeal<a/><br>");
                                 print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
                                 print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
                                 print("<a>Available Now<a/>");
                             }else{
-                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
+                                print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
                                 print("<a class='availablenow'> Available Now</a>");
