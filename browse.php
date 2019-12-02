@@ -114,7 +114,7 @@ if (isset($_GET['id'])) {
             if(isset($_GET["toevoegen"])) {
                 $aantalproducten = TelZoek($connection, $_GET["zoek"]);
                 print("<h4>$aantalproducten " . "results</h4>");
-            } elseif(isset($_GET["deals"])){
+            } elseif(isset($_POST["deals"])){
                 $aantalproducten = 14;
                 print("<h4>$aantalproducten " . "results</h4>");
             } elseif ($total_rows >= 1) {
