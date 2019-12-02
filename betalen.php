@@ -2,6 +2,9 @@
 <link rel="stylesheet" type="text/css" href="css/aboutus.css">
 <link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 <?php
 active:
 "betalen";
@@ -180,23 +183,51 @@ include "includes/footer.php";
                     print("€0,00");
                 }
                 ?>
-                <BR>
-                <br>
-                <br>
-                <br>
-                <BR>
-                <br>
-                <br>
-                <br>
-                <BR>
-                <br>
-                <br>
-                <br>
-                <br>
-                <a href="betalen 2.0.php"><input type="submit" name="submit" value="Next step"/> </a>
+                <BR><br><br><br><BR><br><br><br><BR><br><br><br><br>
+
             </div>
 
         </div>
+
+        <div class="column">
+
+                <h3 class="titlepayment"> Paymentmethod</h3>
+                <form method="POST" action="betalen%202.0.php">
+
+                    <div class="Payment">
+
+                        <input type="radio" name="select"> <i class="fas fa-money-check-alt" style="font-size:24px;"></i> Check
+                        <br>
+                        <br>
+                        <input type="radio" name="select"> <i class="fas fa-credit-card" style="font-size:24px;"></i> Credit-Card
+                        <br>
+                        <br>
+                        <input type="radio" name="select"> <img class="IDEAL" src="images/IDEAL.png" style="font-size:24px;"> IDEAL
+                        <br>
+                        <br>
+                        <input type="radio" name="select"> <i class="fab fa-bitcoin" style="font-size:24px;"></i> EFT
+                        <br>
+                        <br>
+                        I have a discount code: <input type="text" name="discountcode">
+                        </form>
+                        <?php
+                        if(isset($_POST['Payment'])) {
+                            $discountcode = $_POST['discountcode'];
+                            $discountcodecorrect = "SALE";
+                            $codemoney = "5";
+                            if ($discountcode == $discountcodecorrect) {
+                                print("€ $codemoney discount with code: $discountcode.");
+                            } else {
+                                print("This is no discount code.");
+                            }
+                        }
+                        ?>
+                        <br> <br>
+                        <input type="submit" name="Payment" value="Finish payment">
+
+                </div>
+        </div>
+
 
     </div>
 
