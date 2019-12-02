@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
 
 <div class="test6">
     <div  class='results'>
-        <div  class='resultskayleigh'>
+        <div  class='resultskayleigh' style="margin-top: -170px!important;">
             <?php
 
             /*printen van de resultaten op het scherm*/
