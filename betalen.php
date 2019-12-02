@@ -10,7 +10,11 @@ $active = "betalen";
 include "includes/header.php";
 include "includes/funtions.php";
 
-$userId = $_SESSION['user_session'];
+if (empty($_SESSION['user_session'])) {
+    $userId = "";
+} else if ($_SESSION['user_session'] == TRUE) {
+    $userId = $_SESSION['user_session'];
+}
 
 $sql = "SELECT DeliveryMethodName FROM deliverymethods";
 $result = mysqli_query($connection, $sql);
@@ -147,21 +151,21 @@ $result1 = mysqli_query($connection, $costs);
                     print("€0,00");
                 }
                 ?>
-<<<<<<< HEAD
+
                 <BR><br><br><br><BR><br><br><br><BR><br><br><br><br>
 
-=======
+
                 <br>
                 <br>
                 <!--                <a href="betalen 2.0.php">-->
                 <!--                    <input type="submit" name="submit" value="Next step"/>-->
                 <!--                </a>-->
->>>>>>> 7dcfd9113ac16c950f464659bd0d27c560fa607f
+
             </div>
 
         </div>
 
-<<<<<<< HEAD
+
         <div class="column">
 
                 <h3 class="titlepayment"> Paymentmethod</h3>
@@ -201,7 +205,7 @@ $result1 = mysqli_query($connection, $costs);
                 </div>
         </div>
 
-=======
+
         <?php
         if (isset($_POST['submit']) && $_SESSION['login'] == TRUE) {
             $sql = "INSERT INTO invoice (PersonID) VALUES (?)";
@@ -328,7 +332,7 @@ $result1 = mysqli_query($connection, $costs);
             }
         }
         ?>
->>>>>>> 7dcfd9113ac16c950f464659bd0d27c560fa607f
+
 
     </div>
 
