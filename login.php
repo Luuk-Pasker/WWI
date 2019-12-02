@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
                 }
 
             } else {
-                $error = "error";
+                $error = "Wrong information!";
             }
         }
     }
