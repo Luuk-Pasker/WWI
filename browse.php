@@ -147,7 +147,7 @@ if (isset($_GET['id'])) {
                             $Stocktitemname = ($browsearray[$x]['StockItemName']);
                             $price =$browsearray[$x]['UnitPrice'];
                             $kortingprijs = number_format($price / 100 * 85, 2);
-                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety pack");
                             $image = 'images/ProductImages/' . $browsearray[$x]['StockItemID'] . '.1.jpg';
                             if(!(@getimagesize($image))){
                                 $image = "images/" . $row['Photo'];
@@ -209,7 +209,7 @@ if (isset($_GET['id'])) {
                             $Stocktitemname = ($dealsArray[$x]['StockItemName']);
                             $price =$dealsArray[$x]['UnitPrice'];
                             $kortingprijs = number_format($price / 100 * 85, 2);
-                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety pack");
                             $image = 'images/ProductImages/' . $dealsArray[$x]['StockItemID'] . '.1.jpg';
                             if(!(@getimagesize($image))){
                                 $image = "images/" . $row['Photo'];
@@ -262,7 +262,7 @@ if (isset($_GET['id'])) {
                             $Stocktitemname = ($browsearray[$x]['StockItemName']);
                             $price =$browsearray[$x]['UnitPrice'];
                             $kortingprijs = number_format($price / 100 * 85, 2);
-                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                            $productenmetkorting = array("USB missile launcher (Green)", "USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety pack");
 
                             if(in_array($Stocktitemname, $productenmetkorting)==true){
                                 print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='images/" . $row["Photo"] . "' width='100%' <br>");
