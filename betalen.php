@@ -100,8 +100,6 @@ include "includes/footer.php";
                         </div>
                         <br>
                         <br>
-
-                        <input type="submit" name="submit" value="Next step"/>
                     </form>
             </div>
 
@@ -182,6 +180,20 @@ include "includes/footer.php";
                     print("€0,00");
                 }
                 ?>
+                <BR>
+                <br>
+                <br>
+                <br>
+                <BR>
+                <br>
+                <br>
+                <br>
+                <BR>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="betalen 2.0.php"><input type="submit" name="submit" value="Next step"/> </a>
             </div>
 
         </div>
