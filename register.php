@@ -2,7 +2,7 @@
 include "includes/header.php";
 ?>
 
-    <div class="loginBox" style="height: 60%">
+    <div class="loginBox" style="height: 60%; top: 55%;">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -66,6 +66,14 @@ include "includes/header.php";
                 </div>
             </div>
             <div class="loginRow">
+                <div class="loginColumn1">
+                    <label for="inputPassword1">Repeat password:</label>
+                </div>
+                <div class="loginColumn2">
+                    <input type="password" class="loginInput" id="inputPassword" name="repeatPassword" placeholder="Repeat password">
+                </div>
+            </div>
+            <div class="loginRow">
                 <div class="loginColumn2">
                     <input type="submit" class="" name="submit" value="Sign up">
                 </div>
@@ -78,17 +86,17 @@ if (isset($_POST['submit'])) {
     $password = hash('sha256', $_POST['password']);
     $HPass = strtoupper($password);
     $permitted = "1";
-    if ($_POST['email'] == $_POST['password']) {
-        echo "Username and password can't be the same!";
-    } elseif (empty($_POST['username'])) {
-        echo "Fill in username!";
+    if (empty($_POST['username'])) {
+        $error = "Fill in username!";
     } elseif (empty($_POST['email'])) {
-        echo "Fill in email!";
+        $error = "Fill in email!";
     } elseif (empty($_POST['phone'])) {
-        echo "Fill in phonenumber!";
+        $error = "Fill in phonenumber!";
     } elseif (empty($_POST['password'])) {
-        echo "Fill in password!";
-    } else {
+        $error = "Fill in password!";
+    } elseif ($_POST['email'] == $_POST['password']) {
+        $error = "Username and password can't be the same!";
+    } elseif ($_POST['password'] == $_POST['repeatPassword']) {
         $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
         /*printen van de resultaten op het scherm*/
         $res_data = mysqli_query($connection, $sql);
@@ -99,10 +107,18 @@ if (isset($_POST['submit'])) {
             $stmt = $connection->prepare($sql);
             $stmt->bind_param('ssssssssss', $PersonID, $_POST['username'], $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
             $stmt->execute();
-            echo "GELUKT!!!";
         }
         echo '<script> window.location.href = "login.php"; </script>';
+    } else {
+        $error = "Passwords do not match";
     }
 }
+
+if (empty($error)) {
+
+} else {
+    echo "<div class='errorBox' style='margin-top: 1%'>$error</div>";
+}
+
 
 include "includes/footer.php";

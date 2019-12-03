@@ -171,55 +171,55 @@ $result1 = mysqli_query($connection, $costs);
             <h3 class="titlepayment"><img src="images/(step%203).JPG" width="35" height="30" alt="step 3"> Paymentmethod
             </h3>
 
-                <div class="Payment">
+            <div class="Payment">
 
-                    <input type="radio" name="paymentMethod" value="Check"> <i class="fas fa-money-check-alt"
-                                                                               style="font-size:24px;"></i>
-                    Check
-                    <br>
-                    <br>
-                    <input type="radio" name="paymentMethod" value="Credit-Card"> <i class="fas fa-credit-card"
-                                                                                     style="font-size:24px;"></i>
-                    Credit-Card
-                    <br>
-                    <br>
-                    <input type="radio" name="paymentMethod" value="IDEAL"> <img class="IDEAL" src="images/IDEAL.png"
-                                                                                 style="font-size:24px;"> IDEAL
-                    <br>
-                    <br>
-                    <input type="radio" name="paymentMethod" value="EFT"> <i class="fab fa-bitcoin"
-                                                                             style="font-size:24px;"></i> EFT
-                    <br>
-                    <br>
-                    <!-- I have a discount code: <input type="text" name="discountcode">
-                     </form>
-                     -->
-                    <?php
-                    /*                        if(isset($_POST['Payment'])) {
-                                                $discountcode = $_POST['discountcode'];
-                                                $discountcodecorrect = "SALE";
-                                                $codemoney = "5";
-                                                if ($discountcode == $discountcodecorrect) {
-                                                    print("€ $codemoney discount with code: $discountcode.");
-                                                } else {
-                                                    print("This is no discount code.");
-                                                }
+                <input type="radio" name="paymentMethod" value="Check"> <i class="fas fa-money-check-alt"
+                                                                           style="font-size:24px;"></i>
+                Check
+                <br>
+                <br>
+                <input type="radio" name="paymentMethod" value="Credit-Card"> <i class="fas fa-credit-card"
+                                                                                 style="font-size:24px;"></i>
+                Credit-Card
+                <br>
+                <br>
+                <input type="radio" name="paymentMethod" value="IDEAL"> <img class="IDEAL" src="images/IDEAL.png"
+                                                                             style="font-size:24px;"> IDEAL
+                <br>
+                <br>
+                <input type="radio" name="paymentMethod" value="EFT"> <i class="fab fa-bitcoin"
+                                                                         style="font-size:24px;"></i> EFT
+                <br>
+                <br>
+                <!-- I have a discount code: <input type="text" name="discountcode">
+                 </form>
+                 -->
+                <?php
+                /*                        if(isset($_POST['Payment'])) {
+                                            $discountcode = $_POST['discountcode'];
+                                            $discountcodecorrect = "SALE";
+                                            $codemoney = "5";
+                                            if ($discountcode == $discountcodecorrect) {
+                                                print("€ $codemoney discount with code: $discountcode.");
+                                            } else {
+                                                print("This is no discount code.");
                                             }
-                                            */
-                    ?>
-                    <input type="submit" name="submit" value="Finish payment">
+                                        }
+                                        */
+                ?>
+                <input type="submit" name="submit" value="Finish payment">
 
-                </div>
+            </div>
         </div>
         </form>
 
 
         <?php
         if (isset($_POST['submit']) && $_SESSION['login'] == TRUE) {
-            if(empty($_POST['sendMethod'])) {
-                echo "Fill in a send method";
-            } elseif (empty($_POST['paymentMethod'])){
-                echo "Fill in a payment method";
+            if (empty($_POST['sendMethod'])) {
+                $error = "Fill in a send method";
+            } elseif (empty($_POST['paymentMethod'])) {
+                $error = "Fill in a payment method";
             } else {
                 $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
                 $stmt = $connection->prepare($sql);
@@ -260,28 +260,27 @@ $result1 = mysqli_query($connection, $costs);
                 $PersonID = $row['HighestID'] + 1;
 
                 if (empty($_POST['fname'])) {
-                    echo "Fill in name!";
+                    $error = "Fill in name!";
                 } elseif (empty($_POST['email'])) {
-                    echo "Fill in email!";
+                    $error = "Fill in email!";
                 } elseif (empty($_POST['phone'])) {
-                    echo "Fill in phonenumber!";
+                    $error = "Fill in phonenumber!";
                 } elseif (empty($_POST['address'])) {
-                    echo "Fill in address!";
+                    $error = "Fill in address!";
                 } elseif (empty($_POST['postal'])) {
-                    echo "Fill in postal!";
+                    $error = "Fill in postal!";
                 } elseif (empty($_POST['city'])) {
-                    echo "Fill in city!";
-                } elseif(empty($_POST['sendMethod'])) {
-                    echo "Fill in a send method";
-                } elseif (empty($_POST['paymentMethod'])){
-                    echo "Fill in a payment method";
+                    $error = "Fill in city!";
+                } elseif (empty($_POST['sendMethod'])) {
+                    $error = "Fill in a send method";
+                } elseif (empty($_POST['paymentMethod'])) {
+                    $error = "Fill in a payment method";
                 } elseif (empty($_POST['password'])) {
                     $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                     $stmt = $connection->prepare($sql);
                     $stmt->bind_param('sssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $notPermitted, $_POST['email'], $_POST['phone'], $_POST['email']);
                     $stmt->execute();
-                    echo "GELUKT!!!";
 
                     $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
                     $stmt = $connection->prepare($sql);
@@ -308,15 +307,13 @@ $result1 = mysqli_query($connection, $costs);
                         }
                     }
                 } elseif ($_POST['email'] == $_POST['password']) {
-                    echo "Email and password can't be the same!";
+                    $error = "Email and password can't be the same!";
                 } elseif ($_POST['password'] == $_POST['repeatPassword']) {
                     $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                     $stmt = $connection->prepare($sql);
                     $stmt->bind_param('ssssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
                     $stmt->execute();
-                    echo "GELUKT!!!";
-
 
                     $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
                     $stmt = $connection->prepare($sql);
@@ -343,14 +340,14 @@ $result1 = mysqli_query($connection, $costs);
                         }
                     }
                 } else {
-                    echo "wrong information";
+                    $error = "wrong information";
                 }
             }
         }
 
         print"<div class='column'>";
 
-        if(empty($_SESSION['IDs'])){
+        if (empty($_SESSION['IDs'])) {
             print"<h3 style='font-weight: bold;'>Shoppincart is empty.</h3>";
         } else {
 
@@ -371,13 +368,7 @@ $result1 = mysqli_query($connection, $costs);
             print("<h5 style='font-weight: bold; font-size: 20px'>" . "Total: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
 
         }
-
-
-
-
-        print"</div>";
         ?>
-
 
 
     </div>
@@ -385,4 +376,11 @@ $result1 = mysqli_query($connection, $costs);
 </div>
 
 <?php
+print"</div>";
+
+if (empty($error)) {
+
+} else {
+    echo "<div class='errorBox' style='margin-top: -660px'>$error</div>";
+}
 include "includes/footer.php";

@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_array($res_data)) {
     ?>
 
 
-    <div class="loginBox" style="height: 65%">
+    <div class="loginBox" style="height: 65%; top: 55%">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -110,13 +110,19 @@ while ($row = mysqli_fetch_array($res_data)) {
         }
 
         if ($_POST['email'] == $_POST['password']) {
-            echo "Username and password can't be the same!";
+            $error = "Username and password can't be the same!";
         } elseif (empty($_POST['username'])) {
-            echo "Fill in username!";
+            $error = "Fill in name!";
         } elseif (empty($_POST['email'])) {
-            echo "Fill in email!";
+            $error = "Fill in email!";
         } elseif (empty($_POST['phone'])) {
-            echo "Fill in phonenumber!";
+            $error = "Fill in phonenumber!";
+        } elseif (empty($_POST['address'])) {
+            $error = "Fill in address!";
+        } elseif (empty($_POST['postal'])) {
+            $error = "Fill in postal code!";
+        } elseif (empty($_POST['city'])) {
+            $error = "Fill in city!";
         } else {
             $sql = "UPDATE people SET FullName = ?, address = ?, postalCode = ?, city = ?, LogonName = ?, HashedPassword = ?, PhoneNumber = ?, EmailAddress = ? WHERE PersonID = '$userId'";
 
@@ -129,6 +135,11 @@ while ($row = mysqli_fetch_array($res_data)) {
     }
 }
 
+if (empty($error)) {
+
+} else {
+    echo "<div class='errorBox' style='margin-top: 0.2%'>$error</div>";
+}
 
 if (isset($_POST['logout'])) {
     $_SESSION['login'] = FALSE;
