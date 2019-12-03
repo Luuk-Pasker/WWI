@@ -13,6 +13,7 @@ function sc_Print(){
             unset($_SESSION["Prices"][$index]);
             unset($_SESSION["Images"][$index]);
             unset($_SESSION["Quantitys"][$index]);
+            unset($_SESSION["DealPrices"][$index]);
             header('Location: '.$_SERVER['REQUEST_URI']);
         }
     }
@@ -79,8 +80,18 @@ function sc_Print(){
         print("</div>");
 
     foreach($_SESSION["IDs"] as $index => $val){
+        if($_SESSION["DealPrices"][$index] == -1000){
+            $UnitPrice = $_SESSION["Prices"][$index];
+            $hasDeal = FALSE;
+        }else{
+            $UnitPrice = $_SESSION["DealPrices"][$index];
+            $hasDeal = TRUE;
+        }
         print("<div class='scRow'>");
-            print("€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', ''));
+            print("€" . number_format((float)$UnitPrice, 2, '.', ''));
+            if($hasDeal){
+                print("<br><div class='scOldPrice'><strike>€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</strike></div>");
+            }
         print("</div>");
     }
         print("<div class='scHeadRow'>");
@@ -95,10 +106,20 @@ function sc_Print(){
         print("</div>");
 
     foreach($_SESSION["IDs"] as $index => $val){
-        $TPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
+        if($_SESSION["DealPrices"][$index] == -1000){
+            $UnitPrice = $_SESSION["Prices"][$index];
+            $hasDeal = FALSE;
+        }else{
+            $UnitPrice = $_SESSION["DealPrices"][$index];
+            $hasDeal = TRUE;
+        }
+        $TPrice = $UnitPrice * $_SESSION["Quantitys"][$index];
         $_SESSION["TotalPrice"] += $TPrice;
         print("<div class='scRow'>");
             print("€" . number_format((float)$TPrice, 2, '.', ''));
+            if($hasDeal){
+                print("<br><div class='scOldPrice'><strike>€" . number_format((float)$_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index], 2, '.', '') . "</strike></div>");
+            }
         print("</div>");
     }
     //berekent de verzendkosten

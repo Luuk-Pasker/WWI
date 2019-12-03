@@ -22,7 +22,7 @@ include "includes/funtions.php";
     <?php
 
 
-    $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+    $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi", "USB food flash drive - dessert 10 drive variety pack");
 
     if (isset($_GET["id"])) {
         $ItemID = $_GET["id"];
@@ -114,7 +114,7 @@ include "includes/funtions.php";
             } else {
                 $voorraad = $row["QuantityOnHand"];
             }
-            $price = $nieuwekortingprijs;
+            $heeftKorting = TRUE;
             /*producten met korting*/
 
 /*            producten zonder korting*/
@@ -132,6 +132,7 @@ include "includes/funtions.php";
             } else {
                 $voorraad = $row["QuantityOnHand"];
             }
+            $heeftKorting = FALSE;
         }
     }
     ?>
@@ -144,6 +145,8 @@ include "includes/funtions.php";
                            max="<?php print("$voorraad"); ?>">
             <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
             <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
+            <input type="hidden" name="DealPrice" value="<?php print("$nieuwekortingprijs"); ?>">
+            <input type="hidden" name="hasDeal" value="<?php print("$heeftKorting"); ?>">
         </form>
     </div>
     <?php
