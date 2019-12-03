@@ -20,6 +20,13 @@ $result = mysqli_query($connection, $sql);
 
 /*alle producten weergeven KNOP*/
 ?>
+<div class="Deals">
+    <?php
+    print("<div class='Deals'>");
+    print("<form method=\"post\" action=\"/WWI/browse.php\"><button style='background-color: black' name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
+    print("</div>");
+    ?>
+</div>
 <div class="allProducts">
     <?php
     print("<div class='everything'>");
@@ -27,13 +34,7 @@ $result = mysqli_query($connection, $sql);
     print("</div>");
     ?>
 </div>
-<div class="Deals">
-    <?php
-    print("<div class='Deals'>");
-    print("<form method=\"post\" action=\"/WWI/browse.php\"><button name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
-    print("</div>");
-    ?>
-</div>
+
 <div class="NewItems">
     <?php
     print("<div class='Deals'>");
@@ -100,7 +101,7 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
 if (isset($_GET['id'])) {
     $sql = "SELECT * FROM stockitemstockgroups sisg JOIN stockitems si ON sisg.StockItemID = si.StockItemID JOIN stockitemholdings sih ON si.StockItemId = sih.StockItemId WHERE sisg.StockGroupID = $id ORDER BY si.StockItemName LIMIT $offset, $no_of_records_per_page";
 } else {
-    $sql = "SELECT * FROM stockitemstockgroups sisg JOIN stockitems si ON sisg.StockItemID = si.StockItemID JOIN stockitemholdings sih ON si.StockItemId = sih.StockItemId ORDER BY si.StockItemName LIMIT $offset, $no_of_records_per_page";
+    $sql = "SELECT * FROM stockitemstockgroups sisg JOIN stockitems si ON sisg.StockItemID = si.StockItemID JOIN stockitemholdings sih ON si.StockItemId = sih.StockItemId GROUP BY si.StockItemName LIMIT $offset, $no_of_records_per_page";
 }
 /*ophalen van alle producten binnen een geselecteerde category*/
 ?>
