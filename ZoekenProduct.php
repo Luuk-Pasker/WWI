@@ -2,7 +2,22 @@
 //include "includes/header.php";
 include "db_config.php";
 
+/*select distinct * from stockitems sitem
+where sitem.StockItemName like CONCAT('%',?,'%')
+or sitem.StockItemID like ?
+or sitem.SearchDetails like CONCAT('%',?,'%')
+or sitem.Tags like CONCAT('%',?,'%')
+union select *, null as col6, null as col7, null as col8, null as col9, null as col10, null as col11, null as col12, null as col13, null as col14, null as col15, null as col16, null as col17, null as col18, null as col19, null as col20, null as col21, null as col22, null as col23, null as col24, null as col25 from stockgroups sgroups
+where sgroups.StockGroupName = ?*/
 
+/*select distinct * from stockitems sitem
+join stockitemstockgroups sgroup on sgroup.StockItemID = sitem.StockItemID
+join stockgroups sgroups on sgroup.StockGroupID = sgroups.StockGroupID
+where StockItemName like CONCAT('%',?,'%')
+or SearchDetails like CONCAT('%',?,'%')
+or Tags like CONCAT('%',?,'%')
+or StockGroupName = ?
+or sitem.StockItemID = ?*/
 function TelZoek($connection, $zoek){
 
     $statement = mysqli_prepare($connection, "select distinct * from stockitems sitem
@@ -83,7 +98,6 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
     $port = 3306;
     $connection = mysqli_connect($host, $user, $pass, $databasename, $port);
     $result = ZoekPoduct($connection, $zoek, $no_of_records_per_page, $offset);
-
     if(mysqli_num_rows($result) > 0) {
         $browsearray = array();
         $p=0;
@@ -135,7 +149,7 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
             echo "</table>";
         }
     } else {
-        header('location: NiksGevonden.php');
+        header("location: NiksGevonden.php");
         exit();
     }
 }
