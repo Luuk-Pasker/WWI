@@ -197,7 +197,7 @@ foreach ($laatstToegevoegd as $row) {
                 <!--<a href="browse.php">-->
                 <div style="text-align: center">
                     <form method="post" action="browse.php">
-                        <button type="submit" name='NewItems' value="NewItems" class="btn btn-primary">See More Deals</button>
+                        <button type="submit" name='NewItems' value="NewItems" class="btn btn-primary">See More New Items</button>
                     </form>
                 </div>
                 <!--</a>-->
