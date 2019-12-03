@@ -221,6 +221,10 @@ a.loginLink:hover{
     text-align: right;
 }
 
+.scOldPrice{
+    color: red;
+}
+
 .scDelete{
     margin: 5px;
     float: left;
