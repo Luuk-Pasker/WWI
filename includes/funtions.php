@@ -14,6 +14,7 @@ function sc_Print(){
             unset($_SESSION["Images"][$index]);
             unset($_SESSION["Quantitys"][$index]);
             unset($_SESSION["DealPrices"][$index]);
+            unset($_SESSION["Stocks"][$index]);
             header('Location: '.$_SERVER['REQUEST_URI']);
         }
     }
