@@ -114,6 +114,7 @@ include "includes/funtions.php";
             } else {
                 $voorraad = $row["QuantityOnHand"];
             }
+            $price = $nieuwekortingprijs;
             /*producten met korting*/
 
 /*            producten zonder korting*/
