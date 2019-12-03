@@ -30,7 +30,7 @@ include "includes/header.php";
                     <label for="inputPhone" class="">Phone number:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="number" class="loginInput" id="inputPhone" name="phone" placeholder="Phone number">
+                    <input type="text" class="loginInput" id="inputPhone" name="phone" placeholder="Phone number">
                 </div>
             </div>
             <div class="loginRow">
