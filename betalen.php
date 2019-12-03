@@ -350,22 +350,28 @@ $result1 = mysqli_query($connection, $costs);
 
         print"<div class='column'>";
 
-        print"<h3 style='font-weight: bold;'>Your order:</h3>";
-        print"<br>";
-        foreach ($_SESSION["IDs"] as $index => $val) {
-            $Photo = $_SESSION['Images'][$index];
-            $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
+        if(empty($_SESSION['IDs'])){
+            print"<h3 style='font-weight: bold;'>Shoppincart is empty.</h3>";
+        } else {
 
-            print("<br>");
-            print("<img style='float: left; margin-right: 10px;' src='$Photo' height='100px'>");
-            print("<h5 style='font-weight: bold;'>" . $_SESSION["Names"][$index] . "</h5>");
-            print("<h5 style='font-weight: bold;'>" . "amount: " . $_SESSION["Quantitys"][$index] . "</h5>");
-            print("<h5 style='font-weight: bold;'>" . "price: " . "€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</h5>");
+            print"<h3 style='font-weight: bold;'>Your order:</h3>";
             print"<br>";
+            foreach ($_SESSION["IDs"] as $index => $val) {
+                $Photo = $_SESSION['Images'][$index];
+                $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
+
+                print("<br>");
+                print("<img style='float: left; margin-right: 10px;' src='$Photo' height='100px'>");
+                print("<h5 style='font-weight: bold;'>" . $_SESSION["Names"][$index] . "</h5>");
+                print("<h5 style='font-weight: bold;'>" . "amount: " . $_SESSION["Quantitys"][$index] . "</h5>");
+                print("<h5 style='font-weight: bold;'>" . "price: " . "€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</h5>");
+                print"<br>";
+            }
+            print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
+            print"<h5 style='font-weight: bold; font-size: 20px'>" . "Total: " . "</h5>";
+            print("<h5 style='font-weight: bold;'>" . "amount: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
+
         }
-        print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
-        print"<h5 style='font-weight: bold; font-size: 20px'>" . "Total: " . "</h5>";
-        print("<h5 style='font-weight: bold;'>" . "amount: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
 
         print"</div>";
         ?>
