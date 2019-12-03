@@ -372,11 +372,10 @@ $result1 = mysqli_query($connection, $costs);
             print("<h5 style='font-weight: bold;'>" . "amount: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
 
         }
-<<<<<<< HEAD
+
         print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
         print("<h5 style='font-weight: bold; font-size: 20px'>" . "Total: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
-=======
->>>>>>> 1be5b8ee57806317086d0152638eca071456336a
+
 
         print"</div>";
         ?>
