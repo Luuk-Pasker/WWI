@@ -260,7 +260,13 @@ a.scLink:hover{
     color: black;
 }
 
-.paginatie{
+.errorBox{
+    text-align: center;
+    border-style: solid;
+    margin-left: 45%;
+    margin-right: 45%;
+    margin-top: 2%;
+    padding: 1%;
+    background-color: red;
+    color: white;
 }
-
-

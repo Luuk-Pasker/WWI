@@ -40,7 +40,7 @@ while ($row = mysqli_fetch_array($res_data)) {
                     <label for="inputEmail" class="">Email address:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="email" class="loginInput" id="inputEmail" name="email"
+                    <input type="text" class="loginInput" id="inputEmail" name="email"
                            value="<?= $row['EmailAddress'] ?>">
                 </div>
             </div>

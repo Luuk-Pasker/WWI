@@ -158,17 +158,21 @@ foreach ($laatstToegevoegd as $row) {
                     $image = "images/" . $fullarray[$i]['Photo'];
                 }
                 print("<th class='thhome'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='$image' width='100%'><BR>");
-                print($fullarray[$i]['StockItemName'] . "</a></th>");
+                print($fullarray[$i]['StockItemName'] . "<br>");
+                $price = number_format($fullarray[$i]['UnitPrice'] / 100 * 85, 2);
+                print("<a class='standaardprijs'>" . "€" . $price . " " . "</a><a class='kortingprijs'>" . "<strike>€" . $fullarray[$i]['UnitPrice'] . "</strike>" . "</a></a></th>");
             }
             ?>
         </tr>
         <tr>
             <td colspan="4" style="border: none!important;">
-                <a href="browse.php">
+                <!--<a href="browse.php">-->
                     <div style="text-align: center">
-                        <button type="button" class="btn btn-primary">See More Deals</button>
+                        <form method="post" action="browse.php">
+                        <button type="submit" name='deals' value="deals" class="btn btn-primary">See More Deals</button>
+                        </form>
                     </div>
-                </a>
+                <!--</a>-->
             </td>
         </tr>
     </table>
@@ -183,17 +187,20 @@ foreach ($laatstToegevoegd as $row) {
                     $image = "images/" . $fullArrayLaatstToegevoegd[$i]['Photo'];
                 }
                 print("<th class='thhome'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='$image' width='100%'><BR>");
-                print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "</a></th>");
+                print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "<br>");
+                print("<a class='prijsje'>" . "€" . $fullArrayLaatstToegevoegd[$i]['UnitPrice'] . "</a></a></th>");
             }
             ?>
         </tr>
         <tr>
             <td colspan="4" style="border: none!important;">
-                <a href="browse.php">
-                    <div style="text-align: center">
-                        <button type="button" class="btn btn-primary">See More New Products</button>
-                    </div>
-                </a>
+                <!--<a href="browse.php">-->
+                <div style="text-align: center">
+                    <form method="post" action="browse.php">
+                        <button type="submit" name='NewItems' value="NewItems" class="btn btn-primary">See More Deals</button>
+                    </form>
+                </div>
+                <!--</a>-->
             </td>
         </tr>
     </table>

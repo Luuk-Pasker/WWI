@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 <?php
 active:"betalen2";
 include "includes/header.php";
@@ -11,8 +11,11 @@ include "includes/header.php";
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 <!--<link  rel = "icon"  type = "image / png"  sizes = "32x32"  href = "/favicon-32x32.png" >-->
-
-<a href="betalen.php"> back to step 1 and 2 </a>
+<div class="keerterug">
+    <a class="KEERTERUGNU" href="betalen.php" style="color: white;">
+        <button class="btn" title="Go back"><i class="fas fa-long-arrow-alt-left"></i> Go back</button>
+    </a>
+</div>
 
 <h3 class="titlepayment"> Paymentmethod</h3>
 <form method="POST" action="betalen%202.0.php">

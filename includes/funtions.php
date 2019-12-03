@@ -138,6 +138,22 @@ function GetDeals($connection){
 }
 /*zoek alle huidige producten met korting op*/
 
+/*zoek alle huidige producten met korting op voor browse pagina*/
+function GetDealsBrowse($connection){
+    $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals)";
+    $results = mysqli_query($connection, $sql);
+    return $results;
+}
+/*zoek alle huidige producten met korting op voor browse pagina*/
+
+/*zoek alle huidige producten die nieuw zijn voor op browse pagina*/
+function GetLaatstToegevoegdBrowse($connection){
+    $sql = "select * from stockitems order by StockItemID desc";
+    $GetLatstToegevoed = mysqli_query($connection, $sql);
+    return $GetLatstToegevoed;
+}
+/*zoek alle huidige producten die nieuw zijn voor op browse pagina*/
+
 /*zoek de meest recent toegevoegde producten*/
 function GetLaatstToegevoegd($connection){
     $sql = "select * from stockitems order by StockItemID desc limit 4";

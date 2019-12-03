@@ -11,14 +11,15 @@
 }
 
 .btn{
-
+    right: 50%;
     background: dodgerblue;
+    color: white;
 }
 
 .keerterug{
     width: 50px;
     margin-top: 40px;
-    margin-left:150px;
+    margin-left: 2px;
     color: white;
 }
 .keerterug:hover{
