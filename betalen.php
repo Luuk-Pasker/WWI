@@ -166,7 +166,7 @@ $result1 = mysqli_query($connection, $costs);
         <div class="column">
 
                 <h3 class="titlepayment"> <img src="images/(step%203).JPG" width="35" height="30" alt="step 3"> Paymentmethod</h3>
-                <form method="POST" action="betalen%202.0.php">
+                <form method="POST" action="Bevestiging.php">
 
                     <div class="Payment">
 
