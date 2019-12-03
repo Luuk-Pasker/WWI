@@ -98,6 +98,8 @@ if(false) {
         unset($_SESSION["Images"][$i]);
         unset($_SESSION["Quantitys"][$i]);
         unset($_SESSION["Prices"][$i]);
+        unset($_SESSION["DealPrices"][$i]);
+        unset($_SESSION["Stocks"][$i]);
     }
 }
 //*/
