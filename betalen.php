@@ -329,6 +329,9 @@ $result1 = mysqli_query($connection, $costs);
             }
         }
 
+        print"<div class='column'>";
+
+        print"<h3 style='font-weight: bold;'>Your order:</h3>";
         print"<br>";
         foreach($_SESSION["IDs"] as $index => $val) {
             $Photo = $_SESSION['Images'][$index];
@@ -345,7 +348,9 @@ $result1 = mysqli_query($connection, $costs);
         print"<h5 style='font-weight: bold; font-size: 20px'>" . "Total: " . "</h5>";
         print("<h5 style='font-weight: bold;'>" . "amount: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
 
+        print"</div>";
         ?>
+
 
 
     </div>
