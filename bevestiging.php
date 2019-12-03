@@ -13,11 +13,20 @@ include "includes/header.php"
     If you want to check out more products, go back to the home page!
     <br>
     <br>
-    Check your mail too confirm your payment, if you have any questions contact us.
+    Check your mail to confirm your payment, if you have any questions contact us.
 </p>
 </div>
 
 <?php
+unset($_SESSION["IDs"]);
+unset($_SESSION["Names"]);
+unset($_SESSION["Quantitys"]);
+unset($_SESSION["Prices"]);
+unset($_SESSION["Images"]);
+unset($_SESSION["Stocks"]);
+unset($_SESSION["DealPrices"]);
+
+
 /*error_reporting(E_ALL);
 $ontvanger = "mijn emailu";
 $hoofd = "Contactformulier";

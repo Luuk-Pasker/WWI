@@ -113,8 +113,8 @@ $result1 = mysqli_query($connection, $costs);
                         /*printen van de resultaten op het scherm*/
                         $res_data = mysqli_query($connection, $sql);
                         while ($row = mysqli_fetch_array($res_data)) {
-                            echo "U bent al ingelogt als " . $row['FullName'];
-                            echo "<br>Ga verder met betalen.";
+                            echo "You have been logged in as " . $row['FullName'];
+                            echo "<br>proceed with the payment.";
                         }
                     }
 
@@ -122,7 +122,6 @@ $result1 = mysqli_query($connection, $costs);
                     <br>
                     <br>
 
-                </form>
             </div>
         </div>
 
@@ -133,11 +132,15 @@ $result1 = mysqli_query($connection, $costs);
                     <h3><img src="images/(step 2).JPG" width="35" height="30" alt="step 1"> Send method</h3>
                 </div>
 
-                <h4>Home delivered with:</h4>
-                <select>
-                    <?php while ($row = mysqli_fetch_array($result)):; ?>
-                        <option> <?php print ($row[0]); ?> </option>
-                    <?php endwhile; ?>
+                <label for="sendMethod" class="contact-form-label">Home deliverd with:</label><br>
+                <select name="sendMethod" id="sendMethod" class="contact-form-control">
+                    <?php
+                    foreach ($result as $row) {
+                        ?>
+                        <option value="<?= $row['DeliveryMethodName']; ?>"> <?php print ($row["DeliveryMethodName"]); ?> </option>
+                        <?php
+                    }
+                    ?>
                 </select>
                 <br>
                 Your shipping price: <?php $costs ?>
@@ -165,72 +168,84 @@ $result1 = mysqli_query($connection, $costs);
 
         <div class="column">
 
-                <h3 class="titlepayment"> <img src="images/(step%203).JPG" width="35" height="30" alt="step 3"> Paymentmethod</h3>
-                <form method="POST" action="Bevestiging.php">
+            <h3 class="titlepayment"><img src="images/(step%203).JPG" width="35" height="30" alt="step 3"> Paymentmethod
+            </h3>
 
-                    <div class="Payment">
+                <div class="Payment">
 
-                        <input type="radio" name="select"> <i class="fas fa-money-check-alt" style="font-size:24px;"></i> Check
-                        <br>
-                        <br>
-                        <input type="radio" name="select"> <i class="fas fa-credit-card" style="font-size:24px;"></i> Credit-Card
-                        <br>
-                        <br>
-                        <input type="radio" name="select"> <img class="IDEAL" src="images/IDEAL.png" style="font-size:24px;"> IDEAL
-                        <br>
-                        <br>
-                        <input type="radio" name="select"> <i class="fab fa-bitcoin" style="font-size:24px;"></i> EFT
-                        <br>
-                        <br>
-                       <!-- I have a discount code: <input type="text" name="discountcode">
-                        </form>
-                        --><?php
-/*                        if(isset($_POST['Payment'])) {
-                            $discountcode = $_POST['discountcode'];
-                            $discountcodecorrect = "SALE";
-                            $codemoney = "5";
-                            if ($discountcode == $discountcodecorrect) {
-                                print("€ $codemoney discount with code: $discountcode.");
-                            } else {
-                                print("This is no discount code.");
-                            }
-                        }
-                        */?>
-                        <br> <br>
-                        <input type="submit" name="Payment" value="Finish payment">
+                    <input type="radio" name="paymentMethod" value="Check"> <i class="fas fa-money-check-alt"
+                                                                               style="font-size:24px;"></i>
+                    Check
+                    <br>
+                    <br>
+                    <input type="radio" name="paymentMethod" value="Credit-Card"> <i class="fas fa-credit-card"
+                                                                                     style="font-size:24px;"></i>
+                    Credit-Card
+                    <br>
+                    <br>
+                    <input type="radio" name="paymentMethod" value="IDEAL"> <img class="IDEAL" src="images/IDEAL.png"
+                                                                                 style="font-size:24px;"> IDEAL
+                    <br>
+                    <br>
+                    <input type="radio" name="paymentMethod" value="EFT"> <i class="fab fa-bitcoin"
+                                                                             style="font-size:24px;"></i> EFT
+                    <br>
+                    <br>
+                    <!-- I have a discount code: <input type="text" name="discountcode">
+                     </form>
+                     -->
+                    <?php
+                    /*                        if(isset($_POST['Payment'])) {
+                                                $discountcode = $_POST['discountcode'];
+                                                $discountcodecorrect = "SALE";
+                                                $codemoney = "5";
+                                                if ($discountcode == $discountcodecorrect) {
+                                                    print("€ $codemoney discount with code: $discountcode.");
+                                                } else {
+                                                    print("This is no discount code.");
+                                                }
+                                            }
+                                            */
+                    ?>
+                    <input type="submit" name="submit" value="Finish payment">
 
                 </div>
         </div>
+        </form>
 
 
         <?php
         if (isset($_POST['submit']) && $_SESSION['login'] == TRUE) {
-            $sql = "INSERT INTO invoice (PersonID) VALUES (?)";
-            $stmt = $connection->prepare($sql);
-            $stmt->bind_param('s', $userId);
-            $stmt->execute();
+            if(empty($_POST['sendMethod'])) {
+                echo "Fill in a send method";
+            } elseif (empty($_POST['paymentMethod'])){
+                echo "Fill in a payment method";
+            } else {
+                $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
+                $stmt = $connection->prepare($sql);
+                $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
+                $stmt->execute();
 
-            foreach ($_SESSION["IDs"] as $index => $val) {
-                $id = $_SESSION['IDs'][$index];
-                $Quantity = $_SESSION['Quantitys'][$index];
-                echo $id;
-                echo $Quantity;
+                foreach ($_SESSION["IDs"] as $index => $val) {
+                    $id = $_SESSION['IDs'][$index];
+                    $Quantity = $_SESSION['Quantitys'][$index];
+                    echo $id;
+                    echo $Quantity;
 
-                $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
-                /*printen van de resultaten op het scherm*/
-                $res_data = mysqli_query($connection, $sql);
-                foreach ($res_data as $row) {
-                    $invoiceID = $row['HighestID'];
+                    $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                    /*printen van de resultaten op het scherm*/
+                    $res_data = mysqli_query($connection, $sql);
+                    foreach ($res_data as $row) {
+                        $invoiceID = $row['HighestID'];
 
-                    $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
-                    $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
-                    $stmt->execute();
-                    echo '<script> window.location.href = "betalen 2.0.php"; </script>';
+                        $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                        $stmt = $connection->prepare($sql);
+                        $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                        $stmt->execute();
+                        echo '<script> window.location.href = "bevestiging.php"; </script>';
+                    }
                 }
             }
-
-
         } elseif (isset($_POST['submit'])) {
             $password = hash('sha256', $_POST['password']);
             $HPass = strtoupper($password);
@@ -256,6 +271,10 @@ $result1 = mysqli_query($connection, $costs);
                     echo "Fill in postal!";
                 } elseif (empty($_POST['city'])) {
                     echo "Fill in city!";
+                } elseif(empty($_POST['sendMethod'])) {
+                    echo "Fill in a send method";
+                } elseif (empty($_POST['paymentMethod'])){
+                    echo "Fill in a payment method";
                 } elseif (empty($_POST['password'])) {
                     $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -264,9 +283,9 @@ $result1 = mysqli_query($connection, $costs);
                     $stmt->execute();
                     echo "GELUKT!!!";
 
-                    $sql = "INSERT INTO invoice (PersonID) VALUES (?)";
+                    $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
                     $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('s', $PersonID);
+                    $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
                     $stmt->execute();
 
                     foreach ($_SESSION["IDs"] as $index => $val) {
@@ -285,7 +304,7 @@ $result1 = mysqli_query($connection, $costs);
                             $stmt = $connection->prepare($sql);
                             $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
                             $stmt->execute();
-                            echo '<script> window.location.href = "betalen 2.0.php"; </script>';
+                            echo '<script> window.location.href = "bevestiging.php"; </script>';
                         }
                     }
                 } elseif ($_POST['email'] == $_POST['password']) {
@@ -299,9 +318,9 @@ $result1 = mysqli_query($connection, $costs);
                     echo "GELUKT!!!";
 
 
-                    $sql = "INSERT INTO invoice (PersonID) VALUES (?)";
+                    $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
                     $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('s', $PersonID);
+                    $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
                     $stmt->execute();
 
                     foreach ($_SESSION["IDs"] as $index => $val) {
@@ -320,7 +339,7 @@ $result1 = mysqli_query($connection, $costs);
                             $stmt = $connection->prepare($sql);
                             $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
                             $stmt->execute();
-                            echo '<script> window.location.href = "betalen 2.0.php"; </script>';
+                            echo '<script> window.location.href = "bevestiging.php"; </script>';
                         }
                     }
                 } else {
@@ -333,16 +352,16 @@ $result1 = mysqli_query($connection, $costs);
 
         print"<h3 style='font-weight: bold;'>Your order:</h3>";
         print"<br>";
-        foreach($_SESSION["IDs"] as $index => $val) {
+        foreach ($_SESSION["IDs"] as $index => $val) {
             $Photo = $_SESSION['Images'][$index];
             $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
 
-                print("<br>");
-                print("<img style='float: left; margin-right: 10px;' src='$Photo' height='100px'>");
-                print("<h5 style='font-weight: bold;'>" . $_SESSION["Names"][$index] . "</h5>");
-                print("<h5 style='font-weight: bold;'>" . "amount: " . $_SESSION["Quantitys"][$index] . "</h5>");
-                print("<h5 style='font-weight: bold;'>" . "price: " . "€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</h5>");
-                print"<br>";
+            print("<br>");
+            print("<img style='float: left; margin-right: 10px;' src='$Photo' height='100px'>");
+            print("<h5 style='font-weight: bold;'>" . $_SESSION["Names"][$index] . "</h5>");
+            print("<h5 style='font-weight: bold;'>" . "amount: " . $_SESSION["Quantitys"][$index] . "</h5>");
+            print("<h5 style='font-weight: bold;'>" . "price: " . "€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</h5>");
+            print"<br>";
         }
         print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
         print"<h5 style='font-weight: bold; font-size: 20px'>" . "Total: " . "</h5>";
