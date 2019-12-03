@@ -5,13 +5,14 @@ include "includes/header.php";
 include "includes/funtions.php";
 
 //maakt de arrays als ze nog niet bestaan
-if(!(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quantitys"]) && isset($_SESSION["Prices"]) && isset($_SESSION["Images"]) && isset($_SESSION["Stocks"]))) {
+if(!(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quantitys"]) && isset($_SESSION["Prices"]) && isset($_SESSION["Images"]) && isset($_SESSION["Stocks"]) && isset($_SESSION["DealPrices"]))) {
     $_SESSION["IDs"] = array();
     $_SESSION["Names"] = array();
     $_SESSION["Quantitys"] = array();
     $_SESSION["Prices"] = array();
     $_SESSION["Images"] = array();
     $_SESSION["Stocks"] = array();
+    $_SESSION["DealPrices"] = array();
 }
 
 //haalt de nodige waarden op van de productBekijken pagina en de database
@@ -30,10 +31,12 @@ if(isset($_POST["ItemID"]) && isset($_POST["quantity"]) && isset($_POST["ItemPri
     }
     $quantity = $_POST["quantity"];
     $price = $_POST["ItemPrice"];
+    $DealPrice = $_POST["DealPrice"];
+    $hasDeal = $_POST["hasDeal"];
 }
 
 //zet de waarden in de arrays als dat ID er nog niet instaat
-if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quantitys"]) && isset($_SESSION["Prices"]) && isset($_SESSION["Images"]) && isset($_SESSION["Stocks"]) && isset($ItemID)) {
+if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quantitys"]) && isset($_SESSION["Prices"]) && isset($_SESSION["Images"]) && isset($_SESSION["Stocks"]) && isset($_SESSION["DealPrices"]) && isset($ItemID)) {
     if (!(in_array($ItemID, $_SESSION["IDs"]))) {
         $_SESSION["IDs"][] = $ItemID;
         $_SESSION["Names"][] = $ItemName;
@@ -41,6 +44,11 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
         $_SESSION["Prices"][] = $price;
         $_SESSION["Images"][] = $image;
         $_SESSION["Stocks"][] = $stock;
+        if($hasDeal) {
+            $_SESSION["DealPrices"][] = $DealPrice;
+        }else{
+            $_SESSION["DealPrices"][] = -1000;
+        }
     }
 }
 ?>

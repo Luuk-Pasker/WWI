@@ -114,7 +114,7 @@ include "includes/funtions.php";
             } else {
                 $voorraad = $row["QuantityOnHand"];
             }
-            $price = $nieuwekortingprijs;
+            $heeftKorting = TRUE;
             /*producten met korting*/
 
 /*            producten zonder korting*/
@@ -132,6 +132,7 @@ include "includes/funtions.php";
             } else {
                 $voorraad = $row["QuantityOnHand"];
             }
+            $heeftKorting = FALSE;
         }
     }
     ?>
@@ -144,6 +145,8 @@ include "includes/funtions.php";
                            max="<?php print("$voorraad"); ?>">
             <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
             <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
+            <input type="hidden" name="DealPrice" value="<?php print("$nieuwekortingprijs"); ?>">
+            <input type="hidden" name="hasDeal" value="<?php print("$heeftKorting"); ?>">
         </form>
     </div>
     <?php
