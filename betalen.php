@@ -143,9 +143,9 @@ $result1 = mysqli_query($connection, $costs);
                     ?>
                 </select>
                 <br>
-                Your shipping price: <?php $costs ?>
+                Your shipping price: <?php $_SESSION["TotalPrice"] ?>
                 <?php
-                if ($costs < 50) {
+                if ($_SESSION["TotalPrice"] < 50) {
                     print("€6,95 <br> <br> Order above €50,00 and shipping will be FREE!   ");
                 } else {
                     print("€0,00");
