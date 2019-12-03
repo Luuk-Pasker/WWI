@@ -116,7 +116,6 @@ $result1 = mysqli_query($connection, $costs);
                             echo "U bent al ingelogt als " . $row['FullName'];
                             echo "<br>Ga verder met betalen.";
                         }
-
                     }
 
                     ?>
