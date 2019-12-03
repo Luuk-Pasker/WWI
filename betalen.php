@@ -73,7 +73,7 @@ $result1 = mysqli_query($connection, $costs);
                         <!--phonenumber-->
                         <div class="contact-form-group">
                             <label for="phone_number" class="contact-form-label">Phone number:</label>
-                            <input type="number" id="phone_number" name="phone" class="contact-form-control"/>
+                            <input type="text" id="phone_number" name="phone" class="contact-form-control"/>
                         </div>
                         <br>
                         <br>
@@ -182,10 +182,10 @@ $result1 = mysqli_query($connection, $costs);
                         <input type="radio" name="select"> <i class="fab fa-bitcoin" style="font-size:24px;"></i> EFT
                         <br>
                         <br>
-                        I have a discount code: <input type="text" name="discountcode">
+                       <!-- I have a discount code: <input type="text" name="discountcode">
                         </form>
-                        <?php
-                        if(isset($_POST['Payment'])) {
+                        --><?php
+/*                        if(isset($_POST['Payment'])) {
                             $discountcode = $_POST['discountcode'];
                             $discountcodecorrect = "SALE";
                             $codemoney = "5";
@@ -195,7 +195,7 @@ $result1 = mysqli_query($connection, $costs);
                                 print("This is no discount code.");
                             }
                         }
-                        ?>
+                        */?>
                         <br> <br>
                         <input type="submit" name="Payment" value="Finish payment">
 
