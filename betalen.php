@@ -370,7 +370,6 @@ $result1 = mysqli_query($connection, $costs);
         }
         ?>
 
-
     </div>
 
 </div>
