@@ -28,7 +28,7 @@ or SearchDetails like CONCAT('%',?,'%')
 or Tags like CONCAT('%',?,'%')
 or StockGroupName = ?
 or sitem.StockItemID = ?
-order by StockItemName
+group by StockItemName
 ");
 
     mysqli_stmt_bind_param($statement,'ssssi', $zoek, $zoek, $zoek, $zoek, $zoek);
@@ -47,6 +47,7 @@ or SearchDetails like CONCAT('%',?,'%')
 or Tags like CONCAT('%',?,'%')
 or StockGroupName = ?
 or sitem.StockItemID = ?
+group by StockItemName
 limit $no_of_records_per_page, $offset");
 
     mysqli_stmt_bind_param($statement,'ssssi', $zoek, $zoek, $zoek, $zoek, $zoek);
