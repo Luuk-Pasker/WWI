@@ -348,7 +348,7 @@ $result1 = mysqli_query($connection, $costs);
         print"<div class='column'>";
 
         if (empty($_SESSION['IDs'])) {
-            print"<h3 style='font-weight: bold;'>Shoppincart is empty.</h3>";
+            print"<h3 style='font-weight: bold;'>Shopping cart is empty.</h3>";
         } else {
 
             print"<h3 style='font-weight: bold;'>Your order:</h3>";
