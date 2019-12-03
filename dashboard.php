@@ -22,7 +22,7 @@ while ($row = mysqli_fetch_array($res_data)) {
                 <div class="loginHead">
                     <h1>You have been logged in!</h1>
                     <?php
-                    echo "<h3>Welkom " . $row['FullName'] . "</h3>";
+                    echo "<h3>Welcome " . $row['FullName'] . "</h3>";
                     ?>
                 </div>
             </div>
