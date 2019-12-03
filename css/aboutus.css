@@ -11,7 +11,7 @@
     text-align: left;
     text-decoration: none;
     display: inline-block;
-    font-size: 20x;
+    font-size: 20px;
     cursor: pointer;
     color: floralwhite;
     font-family: "Arial Black";
@@ -26,7 +26,7 @@
     text-align: left;
     text-decoration: none;
     display: inline-block;
-    font-size: 20x;
+    font-size: 20px;
     cursor: pointer;
     color: floralwhite;
     font-family: "Arial Black";
@@ -91,7 +91,7 @@
 /* Create three equal columns that floats next to each other */
 .column {
     float: left;
-    width: 21.33%;
+    width: 22%;
     padding: 15px;
     margin-bottom: 50px;
     margin-left: 30px;
