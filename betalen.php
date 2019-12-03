@@ -216,32 +216,36 @@ $result1 = mysqli_query($connection, $costs);
 
         <?php
         if (isset($_POST['submit']) && $_SESSION['login'] == TRUE) {
+            if(empty($_POST['sendMethod'])) {
+                echo "Fill in a send method";
+            } elseif (empty($_POST['paymentMethod'])){
+                echo "Fill in a payment method";
+            } else {
+                $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
+                $stmt = $connection->prepare($sql);
+                $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
+                $stmt->execute();
 
-            $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
-            $stmt = $connection->prepare($sql);
-            $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
-            $stmt->execute();
+                foreach ($_SESSION["IDs"] as $index => $val) {
+                    $id = $_SESSION['IDs'][$index];
+                    $Quantity = $_SESSION['Quantitys'][$index];
+                    echo $id;
+                    echo $Quantity;
 
-            foreach ($_SESSION["IDs"] as $index => $val) {
-                $id = $_SESSION['IDs'][$index];
-                $Quantity = $_SESSION['Quantitys'][$index];
-                echo $id;
-                echo $Quantity;
+                    $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                    /*printen van de resultaten op het scherm*/
+                    $res_data = mysqli_query($connection, $sql);
+                    foreach ($res_data as $row) {
+                        $invoiceID = $row['HighestID'];
 
-                $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
-                /*printen van de resultaten op het scherm*/
-                $res_data = mysqli_query($connection, $sql);
-                foreach ($res_data as $row) {
-                    $invoiceID = $row['HighestID'];
-
-                    $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
-                    $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
-                    $stmt->execute();
-                    echo '<script> window.location.href = "bevestiging.php"; </script>';
+                        $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                        $stmt = $connection->prepare($sql);
+                        $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                        $stmt->execute();
+                        echo '<script> window.location.href = "bevestiging.php"; </script>';
+                    }
                 }
             }
-
         } elseif (isset($_POST['submit'])) {
             $password = hash('sha256', $_POST['password']);
             $HPass = strtoupper($password);
@@ -267,6 +271,10 @@ $result1 = mysqli_query($connection, $costs);
                     echo "Fill in postal!";
                 } elseif (empty($_POST['city'])) {
                     echo "Fill in city!";
+                } elseif(empty($_POST['sendMethod'])) {
+                    echo "Fill in a send method";
+                } elseif (empty($_POST['paymentMethod'])){
+                    echo "Fill in a payment method";
                 } elseif (empty($_POST['password'])) {
                     $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
