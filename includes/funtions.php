@@ -59,9 +59,9 @@ function sc_Print(){
     foreach($_SESSION["IDs"] as $index => $val){
         $quantity = $_SESSION["Quantitys"][$index];
         //limiteerd de hoeveelheid die gekocht kan worden van een product
-        if($_SESSION["Stocks"]>1000){
+        if($_SESSION["Stocks"][$index]>1000){
             $stock = 1000;
-        }elseif($_SESSION["Stocks"]>100){
+        }elseif($_SESSION["Stocks"][$index]>100){
             $stock = 100;
         }else {
             $stock = $_SESSION['Stocks'][$index];

@@ -89,16 +89,28 @@ print_r($_SESSION["Quantitys"]);
 print_r($_SESSION["Names"]);
 //*/
 
-/*
-//uncomment dit en zet false op true om de lijst te resetten
+//*
+//zet false op true om de lijst te resetten
 if(false) {
     foreach($_SESSION["IDs"] as $i => $j) {
         unset($_SESSION["IDs"][$i]);
+    }
+    foreach($_SESSION["Names"] as $i => $j) {
         unset($_SESSION["Names"][$i]);
+    }
+    foreach($_SESSION["Images"] as $i => $j) {
         unset($_SESSION["Images"][$i]);
+    }
+    foreach($_SESSION["Quantitys"] as $i => $j) {
         unset($_SESSION["Quantitys"][$i]);
+    }
+    foreach($_SESSION["Prices"] as $i => $j) {
         unset($_SESSION["Prices"][$i]);
+    }
+    foreach($_SESSION["DealPrices"] as $i => $j) {
         unset($_SESSION["DealPrices"][$i]);
+    }
+    foreach($_SESSION["Stocks"] as $i => $j) {
         unset($_SESSION["Stocks"][$i]);
     }
 }
