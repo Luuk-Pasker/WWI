@@ -23,7 +23,7 @@ $result = mysqli_query($connection, $sql);
 <div class="Deals">
     <?php
     print("<div class='Deals'>");
-    print("<form method=\"post\" action=\"/WWI/browse.php\"><button style='background-color: black' name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
+    print("<form method=\"post\" action=\"/WWI/browse.php\"><button style='background-color: rgb(15,90,255)' name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
     print("</div>");
     ?>
 </div>

@@ -13,7 +13,7 @@ include "includes/header.php"
     If you want to check out more products, go back to the home page!
     <br>
     <br>
-    Check your mail too confirm your payment, if you have any questions contact us.
+    Check your mail to confirm your payment, if you have any questions contact us.
 </p>
 </div>
 
