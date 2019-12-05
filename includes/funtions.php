@@ -55,19 +55,23 @@ function sc_Print(){
         print("<div class='scHeadRow'>");
             print("<b>Amount</b>");
         print("</div>");
-        print("<form method='post'>");
+        print("<form name='form' method='post'>");
     foreach($_SESSION["IDs"] as $index => $val){
         $quantity = $_SESSION["Quantitys"][$index];
         //limiteerd de hoeveelheid die gekocht kan worden van een product
-        if($_SESSION["Stocks"][$index]>1000){
+        if($_SESSION["Stocks"][$index]>3000){
+            $stock = 3000;
+        }elseif($_SESSION["Stocks"][$index]>1000){
             $stock = 1000;
+        }elseif($_SESSION["Stocks"][$index]>300){
+            $stock = 300;
         }elseif($_SESSION["Stocks"][$index]>100){
             $stock = 100;
         }else {
             $stock = $_SESSION['Stocks'][$index];
         }
             print("<div class='scRow'>");
-                print("<input class='loginInput Inputborder' type='number' value='$quantity' name='Q$index' min=\"1\" max=\"$stock\">");
+                print("<input class='loginInput Inputborder' type='number' value='$quantity' name='Q$index' min=\"1\" max=\"$stock\" >");//onblur='this.form.submit()'
             print("</div>");
     }
             print("<button class='scUpdate'>Update amounts</button>");
@@ -145,8 +149,8 @@ function sc_Print(){
         print("</div>");
 
     foreach($_SESSION["IDs"] as $index => $val){
-        print("<div class='scRow'>");
-            print("<form method='post'><button class='loginInput' type='submit' name='D$index' value='true' ><img src='images/kruis.JPG' width='28px' alt='X'></button></form>");
+        print("<div class='scDeleteRow'>");
+            print("<form method='post'><button class='scTrashcan' type='submit' name='D$index' value='true' ><img src='images/trashcan.JPG' width='28px' alt='X'></button></form>");
         print("</div>");
     }
     print("</div>");
