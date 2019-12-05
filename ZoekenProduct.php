@@ -105,7 +105,7 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
                         $Stocktitemname = ($browsearray[$x]['StockItemName']);
                         $price =$browsearray[$x]['UnitPrice'];
                         $kortingprijs = number_format($price / 100 * 85, 2);
-                        $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                        $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety pack");
                         $image = 'images/ProductImages/' . $browsearray[$x]['StockItemID'] . '.1.jpg';
                         if(!(@getimagesize($image))){
                             $image = "images/" . $row['Photo'];
