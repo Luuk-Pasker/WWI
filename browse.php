@@ -114,15 +114,16 @@ if (isset($_GET['id'])) {
             /*printen van de resultaten op het scherm*/
             if(isset($_GET["toevoegen"])) {
                 $aantalproducten = TelZoek($connection, $_GET["zoek"]);
-                print("<h4>$aantalproducten " . "results</h4>");
+                if($aantalproducten != 0) {
+                    print("<h4>$aantalproducten " . "results</h4></div>");
+                }
             } elseif(isset($_POST["deals"])){
                 $aantalproducten = 14;
-                print("<h4>$aantalproducten " . "results</h4>");
+                print("<h4>$aantalproducten " . "results</h4></div>");
             } elseif ($total_rows >= 1) {
-                print("<h4>$total_rows " . "results</h4>");
+                print("<h4>$total_rows " . "results</h4></div>");
             } else ("");
             ?>
-        </div>
         <?php
 
         $res_data = mysqli_query($connection, $sql);
