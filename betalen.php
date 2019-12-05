@@ -113,11 +113,13 @@ $result1 = mysqli_query($connection, $costs);
                         /*printen van de resultaten op het scherm*/
                         $res_data = mysqli_query($connection, $sql);
                         while ($row = mysqli_fetch_array($res_data)) {
-                            echo "You have been logged in as " . $row['FullName'];
-                            echo "<br>proceed with the payment.";
+                            echo "You have been logged in as: " . $row['FullName'];
+                            echo "<br>Proceed with the payment.<br>";
+                            echo "<br>Your address: " . $row['address'];
+                            echo "<br>Your postal code: " . $row['postalCode'];
+                            echo "<br>Your city: " . $row['city'];
                         }
                     }
-
                     ?>
                     <br>
                     <br>
