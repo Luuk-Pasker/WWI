@@ -2,22 +2,6 @@
 //include "includes/header.php";
 include "db_config.php";
 
-/*select distinct * from stockitems sitem
-where sitem.StockItemName like CONCAT('%',?,'%')
-or sitem.StockItemID like ?
-or sitem.SearchDetails like CONCAT('%',?,'%')
-or sitem.Tags like CONCAT('%',?,'%')
-union select *, null as col6, null as col7, null as col8, null as col9, null as col10, null as col11, null as col12, null as col13, null as col14, null as col15, null as col16, null as col17, null as col18, null as col19, null as col20, null as col21, null as col22, null as col23, null as col24, null as col25 from stockgroups sgroups
-where sgroups.StockGroupName = ?*/
-
-/*select distinct * from stockitems sitem
-join stockitemstockgroups sgroup on sgroup.StockItemID = sitem.StockItemID
-join stockgroups sgroups on sgroup.StockGroupID = sgroups.StockGroupID
-where StockItemName like CONCAT('%',?,'%')
-or SearchDetails like CONCAT('%',?,'%')
-or Tags like CONCAT('%',?,'%')
-or StockGroupName = ?
-or sitem.StockItemID = ?*/
 function TelZoek($connection, $zoek){
 
     $statement = mysqli_prepare($connection, "select distinct * from stockitems sitem
@@ -121,7 +105,7 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
                         $Stocktitemname = ($browsearray[$x]['StockItemName']);
                         $price =$browsearray[$x]['UnitPrice'];
                         $kortingprijs = number_format($price / 100 * 85, 2);
-                        $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety packdi");
+                        $productenmetkorting = array("USB rocket launcher (Gray)", "USB food flash drive - sushi roll", "USB food flash drive - hamburger", "USB food flash drive - hot dog", "USB food flash drive - pizza slice", "USB food flash drive - dim sum 10 drive variety pack", "USB food flash drive - banana", "USB food flash drive - chocolate bar", "USB food flash drive - cookie", "USB food flash drive - donut", "USB food flash drive - shrimp cocktail", "USB food flash drive - fortune cookie", "USB food flash drive - dessert 10 drive variety pack");
                         $image = 'images/ProductImages/' . $browsearray[$x]['StockItemID'] . '.1.jpg';
                         if(!(@getimagesize($image))){
                             $image = "images/" . $row['Photo'];

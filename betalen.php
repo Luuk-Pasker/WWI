@@ -113,11 +113,13 @@ $result1 = mysqli_query($connection, $costs);
                         /*printen van de resultaten op het scherm*/
                         $res_data = mysqli_query($connection, $sql);
                         while ($row = mysqli_fetch_array($res_data)) {
-                            echo "You have been logged in as " . $row['FullName'];
-                            echo "<br>proceed with the payment.";
+                            echo "You have been logged in as: " . $row['FullName'];
+                            echo "<br>Proceed with the payment.<br>";
+                            echo "<br>Your address: " . $row['address'];
+                            echo "<br>Your postal code: " . $row['postalCode'];
+                            echo "<br>Your city: " . $row['city'];
                         }
                     }
-
                     ?>
                     <br>
                     <br>
@@ -231,6 +233,23 @@ $result1 = mysqli_query($connection, $costs);
                     $Quantity = $_SESSION['Quantitys'][$index];
                     echo $id;
                     echo $Quantity;
+
+
+                    $sql = "SELECT * FROM stockitemholdings WHERE StockItemID = '$id'";
+                    /*printen van de resultaten op het scherm*/
+                    $res_data = mysqli_query($connection, $sql);
+                    foreach ($res_data as $row) {
+                        $minQuantity = $row['QuantityOnHand'] - $Quantity;
+                        echo $minQuantity;
+
+                        $sql = "UPDATE stockitemholdings SET QuantityOnHand = ?, LastStocktakeQuantity = ? WHERE StockItemID = '$id'";
+
+                        $stmt = $connection->prepare($sql);
+                        $stmt->bind_param('ss', $minQuantity, $minQuantity);
+                        $stmt->execute();
+
+                    }
+
 
                     $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
                     /*printen van de resultaten op het scherm*/
