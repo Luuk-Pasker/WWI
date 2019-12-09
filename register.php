@@ -2,7 +2,7 @@
 include "includes/header.php";
 ?>
 
-    <div class="loginBox" style="height: 60%; top: 55%;">
+    <div class="loginBox" style="height: 70%; top: 55%;">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -11,66 +11,66 @@ include "includes/header.php";
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputName" class="">Full name:</label>
+                    <label for="inputName" class="form-label">Full name:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputName" name="username" placeholder="Full name">
+                    <input type="text" class="form-control form-border" id="inputName" name="username" placeholder="Full name">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputEmail" class="">Email adress:</label>
+                    <label for="inputEmail" class="form-label">Email adress:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="email" class="loginInput" id="inputEmail" name="email" placeholder="Email adress">
+                    <input type="email" class="form-control form-border" id="inputEmail" name="email" placeholder="Email adress">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPhone" class="">Phone number:</label>
+                    <label for="inputPhone" class="form-label">Phone number:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputPhone" name="phone" placeholder="Phone number">
+                    <input type="text" class="form-control form-border" id="inputPhone" name="phone" placeholder="Phone number">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPhone" class="">Address:</label>
+                    <label for="inputPhone" class="form-label">Address:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputAddress" name="address" placeholder="Address">
+                    <input type="text" class="form-control form-border" id="inputAddress" name="address" placeholder="Address">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPhone" class="">Postal code:</label>
+                    <label for="inputPhone" class="form-label">Postal code:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputPostal" name="postal" placeholder="Postal code">
+                    <input type="text" class="form-control form-border" id="inputPostal" name="postal" placeholder="Postal code">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPhone" class="">City:</label>
+                    <label for="inputPhone" class="form-label">City:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputCity" name="city" placeholder="City">
+                    <input type="text" class="form-control form-border" id="inputCity" name="city" placeholder="City">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPassword">Password:</label>
+                    <label for="inputPassword" class="form-label">Password:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="password" class="loginInput" id="inputPassword" name="password" placeholder="Password">
+                    <input type="password" class="form-control form-border" id="inputPassword" name="password" placeholder="Password">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPassword1">Repeat password:</label>
+                    <label for="inputPassword1" class="form-label">Repeat password:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="password" class="loginInput" id="inputPassword" name="repeatPassword" placeholder="Repeat password">
+                    <input type="password" class="form-control form-border" id="inputPassword" name="repeatPassword" placeholder="Repeat password">
                 </div>
             </div>
             <div class="loginRow">

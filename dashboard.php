@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_array($res_data)) {
     ?>
 
 
-    <div class="loginBox" style="height: 65%; top: 55%">
+    <div class="loginBox" style="height: 70%; top: 55%">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -28,64 +28,64 @@ while ($row = mysqli_fetch_array($res_data)) {
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputName" class="">Full name:</label>
+                    <label for="inputName" class="form-label">Full name:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputName" name="username"
+                    <input type="text" class="form-control form-border" id="inputName" name="username"
                            value="<?= $row['FullName'] ?>">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputEmail" class="">Email address:</label>
+                    <label for="inputEmail" class="form-label">Email address:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputEmail" name="email"
+                    <input type="text" class="form-control form-border" id="inputEmail" name="email"
                            value="<?= $row['EmailAddress'] ?>">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPhone" class="">Phone number:</label>
+                    <label for="inputPhone" class="form-label">Phone number:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="number" class="loginInput" id="inputPhone" name="phone"
+                    <input type="number" class="form-control form-border" id="inputPhone" name="phone"
                            value="<?= $row['PhoneNumber'] ?>">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputAddress" class="">Address:</label>
+                    <label for="inputAddress" class="form-label">Address:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputAddress" name="address"
+                    <input type="text" class="form-control form-border" id="inputAddress" name="address"
                            value="<?= $row['address'] ?>">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPostal" class="">Postal code:</label>
+                    <label for="inputPostal" class="form-label">Postal code:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputPostal" name="postal"
+                    <input type="text" class="form-control form-border" id="inputPostal" name="postal"
                            value="<?= $row['postalCode'] ?>">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputCity" class="">City:</label>
+                    <label for="inputCity" class="form-label">City:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputCity" name="city"
+                    <input type="text" class="form-control form-border" id="inputCity" name="city"
                            value="<?= $row['city'] ?>">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPassword">Password:</label>
+                    <label for="inputPassword" class="form-label">Password:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="password" class="loginInput" id="inputPassword" name="password" placeholder="Password">
+                    <input type="password" class="form-control form-border" id="inputPassword" name="password" placeholder="Password">
                 </div>
             </div>
             <div class="loginRow">

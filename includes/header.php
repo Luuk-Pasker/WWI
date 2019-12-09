@@ -26,7 +26,7 @@
     <div class="header-right">
         <div class="zoekbalk">
             <form method="get" action="browse.php">
-                <input type="text" name="zoek" placeholder="Search.." value=""/>
+                <input type="text" class="" name="zoek" placeholder="Search.." value=""/>
                 <input type="submit" name="toevoegen" value="Search"/>
             </form>
         </div>
