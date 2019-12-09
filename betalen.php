@@ -52,7 +52,7 @@ $result1 = mysqli_query($connection, $costs);
                         ?>
                         <div class="loginRow1">
                             <div class="loginColumn1">
-                                <label for="first_name" class="form-label">Full name:</label>
+                                <label for="first_name" class="form-label">First name:</label>
                             </div>
                             <div class="loginColumn2" style="width: 80%">
                                 <input type="text" class="form-control" id="first_name" name="fname">
@@ -73,7 +73,7 @@ $result1 = mysqli_query($connection, $costs);
                                     <label for="email" class="form-label">Email:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="email" id="email" name="email" class="form-control"/>
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="requires @">
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@ $result1 = mysqli_query($connection, $costs);
                                     <label for="phone_number" class="form-label">Phone number:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="text" id="phone_number" name="phone" class="form-control"/>
+                                    <input type="text" id="phone_number" name="phone" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@ $result1 = mysqli_query($connection, $costs);
                                     <label for="Street" class="form-label">Address:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="text" id="Street" name="address" class="form-control">
+                                    <input type="text" id="Street" name="address" class="form-control" placeholder="Lane 12">
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@ $result1 = mysqli_query($connection, $costs);
                                     <label for="Postal code" class="form-label">Postalcode:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="text" id="Postal code" name="postal" class="form-control">
+                                    <input type="text" id="Postal code" name="postal" class="form-control" placeholder="1111 AB">
                                 </div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@ $result1 = mysqli_query($connection, $costs);
                                     <label for="City" class="form-label">City:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="text" id="City" name="city" class="form-control">
+                                    <input type="text" id="City" name="city" class="form-control" placeholder="Rotterdam">
                                 </div>
                             </div>
                         </div>
@@ -143,7 +143,7 @@ $result1 = mysqli_query($connection, $costs);
                                 </div>
                             </div>
                         </div>
-                        <?PHP
+                        <?php
                     } elseif ($_SESSION["login"] == TRUE) {
                         $sql = "SELECT * FROM people WHERE PersonID = $userId";
                         /*printen van de resultaten op het scherm*/
@@ -227,6 +227,7 @@ $result1 = mysqli_query($connection, $costs);
 
 
                     <select>
+                        <option value="choose your option"> Choose your bank...</option>
                       <option value="ABN AMRO"> ABN AMRO</option>
                       <option value="ASN Bank">ASN Bank</option>
                       <option value="bunq">bunq</option>
@@ -246,22 +247,8 @@ $result1 = mysqli_query($connection, $costs);
                 EFT
                 <br>
                 <br>
-                <!-- I have a discount code: <input type="text" name="discountcode">
-                 </form>
-                 -->
-                <?php
-                /*                        if(isset($_POST['Payment'])) {
-                                            $discountcode = $_POST['discountcode'];
-                                            $discountcodecorrect = "SALE";
-                                            $codemoney = "5";
-                                            if ($discountcode == $discountcodecorrect) {
-                                                print("€ $codemoney discount with code: $discountcode.");
-                                            } else {
-                                                print("This is no discount code.");
-                                            }
-                                        }
-                                        */
-                ?>
+                I have a discount code: <input type="text" name="discountcode">
+                <br>
                 <input type="submit" name="submit" value="Finish payment">
 
             </div>
@@ -270,6 +257,19 @@ $result1 = mysqli_query($connection, $costs);
 
 
         <?php
+
+            $discountcode = $_POST['discountcode'];
+            $discountcodecorrect1 = "SALE";
+            $codemoney1 = "5";
+            $pricewithdiscount = ($_SESSION["TotalPrice"]-$codemoney1);
+        if (isset($_POST['Payment'])) {
+            if ($discountcodecorrect1 == $discountcodecorrect1) {
+                print("€ $codemoney1 discount with code: $discountcode.");
+            } else {
+                print("This is no discount code.");
+            }
+        }
+
         if (isset($_POST['submit']) && $_SESSION['login'] == TRUE) {
             if (empty($_POST['sendMethod'])) {
                 $error = "Fill in a send method";
