@@ -157,7 +157,7 @@ foreach ($laatstToegevoegd as $row) {
                 if(!(@getimagesize($image))){
                     $image = "images/" . $fullarray[$i]['Photo'];
                 }
-                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='foto' src='$image' width='100%'><BR>");
+                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullarray[$i]['StockItemID'] . "'><img class='homefoto' src='$image' style='width: 100%!important;'><BR>");
                 print($fullarray[$i]['StockItemName'] . "<br>");
                 $price = number_format($fullarray[$i]['UnitPrice'] / 100 * 85, 2);
                 print("<a class='standaardprijs'>" . "€" . $price . " " . "</a><a class='kortingprijs'>" . "<strike>€" . $fullarray[$i]['UnitPrice'] . "</strike>" . "</a></a></th>");
@@ -186,7 +186,7 @@ foreach ($laatstToegevoegd as $row) {
                 if(!(@getimagesize($image))){
                     $image = "images/" . $fullArrayLaatstToegevoegd[$i]['Photo'];
                 }
-                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='foto' src='$image' width='100%'><BR>");
+                print("<th class='thhome'><a href='productBekijken.php?id=" . $fullArrayLaatstToegevoegd[$i]['StockItemID'] . "'><img class='homefoto' src='$image' style='width: 100%!important;'><BR>");
                 print($fullArrayLaatstToegevoegd[$i]['StockItemName'] . "<br>");
                 print("<a class='prijsje'>" . "€" . $fullArrayLaatstToegevoegd[$i]['UnitPrice'] . "</a></a></th>");
             }
