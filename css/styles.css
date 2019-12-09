@@ -1,100 +1,95 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.container{
+.container {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
 }
 
-
-.foto{
+.foto {
     float: left;
-    width: 480px;
-    height: 410px;
     margin-top: 30px;
     margin-bottom: 50px;
-
 }
 
-.naam{
-
+.naam {
     padding-top: 60px;
     margin-left: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 34px;
-    width:600px;
-
+    width: 600px;
 }
 
-.beschrijving{
+.beschrijving {
     margin-left: 35px;
     margin-top: -20px;
     width: 600px;
-
 }
 
-.prijs{
-
+.prijs {
     margin-top: 20px;
     margin-left: 40px;
     font-size: 30px;
 }
 
-.aantallen{
+.aantallen {
     margin-left: 40px;
-
 }
 
-
-.test{
+.test {
     float: right;
     display: flex;
     flex-direction: column;
-
 }
 
-
-.beschrijving2{
-    font-size:22px;
+.beschrijving2 {
+    font-size: 22px;
     margin-left: 30px;
-
 }
 
-
-#toevoegenaanwinkelmand{
+#toevoegenaanwinkelmand {
     margin-left: 30px;
     margin-right: 20px;
-
 }
 
-
-#aantalx{
+#aantalx {
     width: 50px;
-
 }
 
-
-.nogopvoorraad{
+.nogopvoorraad {
     margin-top: -20px;
-
-    margin-left:50px;
+    margin-left: 50px;
     font-size: 16px;
-
 }
 
-.noitem{
+.noitem {
     font-size: 20px;
-    float:right;
+    float: right;
     padding-right: 450px;
 }
 
-.form-border{
-    border: solid darkgrey!important;
+.form-border {
+    border: solid darkgrey !important;
 }
 
-.form-label{
-    margin-top: 5px!important;
+.form-label {
+    margin-top: 5px !important;
+}
+
+footer {
+    margin-top: auto;
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.footer {
+    height: 23px;
+    background: dodgerblue;
+    text-align: center;
+    color: white;
 }

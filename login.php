@@ -64,6 +64,8 @@ if (isset($_POST['submit'])) {
                 foreach ($res_data as $row) {
                     $_SESSION['login'] = TRUE;
                     $_SESSION['user_session'] = $row['PersonID'];
+                    $_SESSION['email'] = $row['EmailAddress'];
+                    $_SESSION['name'] = $row['FullName'];
                 }
 
             } else {

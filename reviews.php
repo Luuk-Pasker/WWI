@@ -44,6 +44,7 @@ if(isset($_POST['verzendReview'])) {
     $id = $_SESSION['user_session'];
     $review = $_POST['Comment'];
     $aantalSterren = $_POST['star'];
+    $productID = $_GET['id'];
 
     $getName = "SELECT FullName FROM people where PersonID = $id";
     $name = mysqli_query($connection, $getName);
@@ -51,13 +52,14 @@ if(isset($_POST['verzendReview'])) {
         $author = $row['FullName'];
     }
 
-    $sql = mysqli_prepare($connection, "INSERT INTO reviews (PersonID, Naam, Text, aantalSterren) VALUES (?, ?, ?, ?)");
-    mysqli_stmt_bind_param($sql,'issi', $id, $author, $review, $aantalSterren);
+    $sql = mysqli_prepare($connection, "INSERT INTO reviews (PersonID, Naam, Text, aantalSterren, StockItemID) VALUES (?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($sql,'issii', $id, $author, $review, $aantalSterren, $productID);
     mysqli_stmt_execute($sql);
 }
 
-    $getreviews = "SELECT * FROM reviews ORDER BY ReviewID DESC limit 6";
+    $getreviews = "SELECT * FROM reviews ORDER BY ReviewID WHERE StockItemID = '.$productID.' DESC limit 6";
     $res_data = mysqli_query($connection, $getreviews);
+print_r($res_data);
     $reviewArray = array();
     $i = 0;
     foreach ($res_data as $row) {

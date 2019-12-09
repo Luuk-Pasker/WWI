@@ -1,11 +1,9 @@
-<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
-
-
 <!--//header-->
 <?php
 include "includes/header.php";
 include "includes/funtions.php";
 ?>
+<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 <!---->
 
 <!-- go back knop-->
@@ -39,12 +37,126 @@ include "includes/funtions.php";
     //print: afbeelding, voorraad, naam, prijs en beschrijving en bezorgtijd .
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
+        //print de afbeeldingen
         $ItemID = $row['StockItemID'];
-        $Image = 'images/ProductImages/' . $ItemID . '.1.jpg';
-        if(!(@getimagesize($Image))){
-            $Image = "images/" . $row['Photo'];
+        $Image1 = 'images/ProductImages/' . $ItemID . '.1.jpg';
+        $Image2 = 'images/ProductImages/' . $ItemID . '.2.jpg';
+        $Image3 = 'images/ProductImages/' . $ItemID . '.3.jpg';
+        $Image4 = 'images/ProductImages/' . $ItemID . '.4.jpg';
+        $Image5 = 'images/ProductImages/' . $ItemID . '.5.jpg';
+        $ImageFill = 'images/filler.jfif';
+        //$ImageFill = 'images/Check.png';
+
+        $Videos = array();
+        $Videos["1"] = 'https://www.youtube.com/embed/8yDkraOEgmM';
+        $Videos["215"] = 'https://www.youtube.com/embed/yD4uVbRS1C8';
+        if(!(empty($Videos["$ItemID"]))){
+            $hasVideo = true;
+        }else{
+            $hasVideo = false;
         }
-        print("<img class='foto' src='$Image'><br>");
+        if(!(@getimagesize($Image1))){
+            $Image1 = "images/" . $row['Photo'];
+        }
+
+        if((@getimagesize($Image2))||$hasVideo){
+            print('<div class="foto">');
+            print('<div class="slider-holder">');
+            print('<span id="slider-image-1"></span>');
+            if((@getimagesize($Image2))){
+                print('<span id="slider-image-2"></span>');
+            }
+            if((@getimagesize($Image3))){
+                print('<span id="slider-image-3"></span>');
+            }
+            if((@getimagesize($Image4))){
+                print('<span id="slider-image-4"></span>');
+            }
+            if((@getimagesize($Image5))){
+                print('<span id="slider-image-5"></span>');
+            }
+            if((@getimagesize($Image5))){
+                print('<span id="slider-image-5"></span>');
+            }
+            if($hasVideo){
+                print('<span id="slider-video"></span>');
+            }
+            print('<div class="image-holder">');
+            print('<img src="');
+            print($Image1);
+            print('" class="slider-image">');
+            if((@getimagesize($Image2))){
+                print('<img src="');
+                print($Image2);
+                print('" class="slider-image">');
+            }
+            if((@getimagesize($Image3))){
+                print('<img src="');
+                print($Image3);
+                print('" class="slider-image">');
+            }
+            if((@getimagesize($Image4))){
+                print('<img src="');
+                print($Image4);
+                print('" class="slider-image">');
+            }
+            if((@getimagesize($Image5))){
+                print('<img src="');
+                print($Image5);
+                print('" class="slider-image">');
+            }
+            if($hasVideo){
+                if(!(@getimagesize($Image2))){
+                    print('<img src="');
+                    print($ImageFill);
+                    print('" class="slider-image">');
+                }
+                if(!(@getimagesize($Image3))){
+                    print('<img src="');
+                    print($ImageFill);
+                    print('" class="slider-image">');
+                }
+                if(!(@getimagesize($Image4))){
+                    print('<img src="');
+                    print($ImageFill);
+                    print('" class="slider-image">');
+                }
+                if(!(@getimagesize($Image5))){
+                    print('<img src="');
+                    print($ImageFill);
+                    print('" class="slider-image">');
+                }
+                print('<iframe width="480" height="460" src="');
+                print($Videos["$ItemID"]);
+                print('">');
+                print('</iframe>');
+            }
+            print('</div>');
+            print('<div class="button-holder">');
+            print('<a href="#slider-image-1" class="slider-change"></a>');
+            if((@getimagesize($Image2))){
+                print('<a href="#slider-image-2" class="slider-change"></a>');
+            }
+            if((@getimagesize($Image3))){
+                print('<a href="#slider-image-3" class="slider-change"></a>');
+            }
+            if((@getimagesize($Image4))){
+                print('<a href="#slider-image-4" class="slider-change"></a>');
+            }
+            if((@getimagesize($Image5))){
+                print('<a href="#slider-image-5" class="slider-change"></a>');
+            }
+            if($hasVideo){
+                print('<a href="#slider-video" class="slider-change"></a>');
+            }
+            print('</div>');
+            print('</div>');
+            print('</div>');
+        }else{
+            print("<img class='foto' src='$Image1'><br>");
+        }
+
+
         print("<div class='naambeschrijvingprijsnogopvoorraad'>");
         print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
 
@@ -157,6 +269,199 @@ include "includes/funtions.php";
             <input type="hidden" name="hasDeal" value="<?php print("$heeftKorting"); ?>">
         </form>
     </div>
+</div>
+
+
+
+<h1 style="text-align: center;">Reviews</h1>
+
+
+
+<style>
+    .star-rating {
+        direction: rtl;
+        display: inline-block;
+        padding: 20px
+    }
+
+    .star-rating input[type=radio] {
+        display: none
+    }
+
+    .star-rating label {
+        color: #bbb;
+        font-size: 18px;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input[type=radio]:checked ~ label {
+        color: #f2b600
+    }
+
+    .tableDisplayReviews{
+        border: 0px;
+        height: 100px;
+        width: 600px;
+        box-shadow: 0px 0px 2px 2px lightgrey;
+    }
+</style>
+
+<?php
+if(isset($_POST['verzendReview'])) {
+
+    /*informatie over de gebruiker die de review maakt opvragen*/
+    $id = $_SESSION['user_session'];
+    $review = $_POST['Comment'];
+    $aantalSterren = $_POST['star'];
+    $productIDReview = $_GET['id'];
+    /*informatie over de gebruiker die de review maakt opvragen*/
+
+    /*naam van de gebruiker die de review maakt opvragen uit de database*/
+    $getName = "SELECT FullName FROM people where PersonID = $id";
+    $name = mysqli_query($connection, $getName);
+    foreach ($name as $row){
+        $author = $row['FullName'];
+    }
+    /*naam van de gebruiker die de review maakt opvragen uit de database*/
+
+    /*informatie uit de review in de database zetten*/
+    $sql = mysqli_prepare($connection, "INSERT INTO reviews (PersonID, Naam, Text, aantalSterren, StockItemID) VALUES (?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($sql,'issii', $id, $author, $review, $aantalSterren, $productIDReview);
+    mysqli_stmt_execute($sql);
+    /*informatie uit de review in de database zetten*/
+}
+
+/*query voor het opvragen van de bestaande reviews*/
+$productIDReview = $_GET['id'];
+$getreviews = "SELECT * FROM reviews WHERE StockItemID = $productIDReview ORDER BY ReviewID DESC limit 6";
+$res_data2 = mysqli_query($connection, $getreviews);
+$reviewArray = array();
+$i = 0;
+foreach ($res_data2 as $row) {
+    if (mysqli_num_rows($res_data2) != 0) {
+        $reviewArray[$i] = $row;
+        $i++;
+    }
+}
+/*query voor het opvragen van de bestaande reviews*/
+
+/*aantal reviews berekenen om de juiste tabel te kunnen maken*/
+$aantalReviews = mysqli_num_rows($res_data2);
+/*aantal reviews berekenen om de juiste tabel te kunnen maken*/
+
+/*checken of er reviews bestaan voor het product*/
+if($aantalReviews == 0){
+    print("<div style='text-align: center'>There are no reviews for this product yet</div><br><br>");
+} else {
+    /*checken of er reviews bestaan voor het product*/
+
+    if (mysqli_num_rows($res_data2) != 0) {
+        $teller = 0;
+        print("<table style='border-collapse: separate; border-spacing: 2em; margin-left: auto; margin-right: auto;'>");
+        for ($j = 0; $j < ($aantalReviews/2); $j++) {
+            print("<tr>");
+            for ($q = 0; $q < 2; $q++) {
+                if(isset($reviewArray[$teller]['Naam'])){
+                    $author2 = $reviewArray[$teller]['Naam'];
+                    $aantalSterren2 = $reviewArray[$teller]['aantalSterren'];
+                    $reviewText = $reviewArray[$teller]['Text'];
+                    $teller++;
+                    ?>
+                    <td>
+                    <table class='tableDisplayReviews' border='1'>
+                        <tr>
+                            <td style='width: 400px; height: 20px'><b><?php print($author2); ?></b></td>
+                            <td style='width: 110px'><?php print('<div class="star-rating" style="height: 20px!important; margin-top: 0px; padding: 0px!important; margin-left: 10px; margin-right: auto">');
+                                for ($Q = 0; $Q < $aantalSterren2; $Q++) {
+                                    print('
+                                    <label for="star-1" title="1 star" style="color: #f2b600">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>');
+                                }
+                                print('</div>'); ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'><?php print($reviewText); ?></td>
+                        </tr>
+                    </table></td><?php }
+            }
+            print("</tr>");
+        }
+        print("</table>");
+
+    }
+    ?>
+
+
+    <?php
+    if(isset($_SESSION['login']) &&  $_SESSION['login'] == TRUE) {
+        $id = $_SESSION['user_session'];
+
+        $getName = "SELECT FullName FROM people where PersonID = $id";
+        $name = mysqli_query($connection, $getName);
+        foreach ($name as $row){
+            $author = $row['FullName'];
+        }
+        ?>
+        <form method="post">
+            <table border="1"
+                   style="border: 0px; height: 100px; width: 600px; box-shadow: 0px 0px 2px 2px lightgrey; margin-left: auto; margin-right: auto"
+                   class="tableMakeReview">
+                <tr style="height: 20px">
+                    <td style="width: 400px!important;">
+                        <input type="text" name="Author" value="<?php print($author); ?>"
+                               style="width: 100%!important; float: left">
+                    </td>
+                    <td style="width: 100px;">
+                        <div class="rating" style="float: left; text-align: center">
+                            <div class="star-rating"
+                                 style="height: 20px; margin-top: 0px; padding: 0px; margin-left: 10px; margin-right: auto">
+                                <input id="star-5" type="radio" name="star" value="5">
+                                <label for="star-5" title="5 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input id="star-4" type="radio" name="star" value="4">
+                                <label for="star-4" title="4 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input id="star-3" type="radio" name="star" value="3">
+                                <label for="star-3" title="3 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input id="star-2" type="radio" name="star" value="2">
+                                <label for="star-2" title="2 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input id="star-1" type="radio" name="star" value="1">
+                                <label for="star-1" title="1 star">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <textarea name="Comment" placeholder="Text" style="height: 100px; width: 100%"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="reviewButton" type="submit" name="verzendReview" value="Verzend Review">
+                    </td>
+                </tr>
+            </table>
+        </form><br><br>
+        <?php
+    }}
+?>
+
+
+
     <?php
     include "includes/footer.php";
     ?>

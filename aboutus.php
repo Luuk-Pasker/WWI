@@ -40,3 +40,5 @@ include "includes/header.php";
 <div class="photopersonen">
 <img src="images/personen.png">
 </div>
+<?php
+include "includes/footer.php";
