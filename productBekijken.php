@@ -107,11 +107,15 @@ include "includes/funtions.php";
             print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
             print("<H4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</H4><br>");
             print("</div>");
-            if ($row["QuantityOnHand"] > 1000) {
+            if($row["QuantityOnHand"]>3000){
+                $voorraad = 3000;
+            }elseif($row["QuantityOnHand"]>1000){
                 $voorraad = 1000;
-            } elseif ($row["QuantityOnHand"] > 100) {
+            }elseif($row["QuantityOnHand"]>300){
+                $voorraad = 300;
+            }elseif($row["QuantityOnHand"]>100){
                 $voorraad = 100;
-            } else {
+            }else {
                 $voorraad = $row["QuantityOnHand"];
             }
             $heeftKorting = TRUE;
@@ -125,11 +129,15 @@ include "includes/funtions.php";
             print("</div>");
 /*            producten zonder korting*/
 
-            if ($row["QuantityOnHand"] > 1000) {
+            if($row["QuantityOnHand"]>3000){
+                $voorraad = 3000;
+            }elseif($row["QuantityOnHand"]>1000){
                 $voorraad = 1000;
-            } elseif ($row["QuantityOnHand"] > 100) {
+            }elseif($row["QuantityOnHand"]>300){
+                $voorraad = 300;
+            }elseif($row["QuantityOnHand"]>100){
                 $voorraad = 100;
-            } else {
+            }else {
                 $voorraad = $row["QuantityOnHand"];
             }
             $heeftKorting = FALSE;

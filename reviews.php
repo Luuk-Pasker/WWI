@@ -9,7 +9,7 @@ include "includes/header.php";
 
 add a comment
 <form method="get">
-    <table border="1" style="border: black; height: 100px; width: 600px;" class="tableMakeReview">
+    <table border="1" style="border: 0px; height: 100px; width: 600px; box-shadow: 0px 0px 2px 2px lightgrey;" class="tableMakeReview">
         <tr style="height: 20px">
             <td style="width: 400px!important;">
                 <input type="text" placeholder="What is your name?" name="Author" style="width: 410px!important; float: left">
@@ -79,6 +79,13 @@ add a comment
     .star-rating input[type=radio]:checked ~ label {
         color: #f2b600
     }
+
+    .tableDisplayReviews{
+        border: 0px;
+        height: 100px;
+        width: 600px;
+        box-shadow: 0px 0px 2px 2px lightgrey;
+    }
 </style>
 
 <?php
@@ -103,16 +110,41 @@ if(isset($_GET['verzendReview'])) {
         }
     }
     if (mysqli_num_rows($res_data) != 0) {
+        $author2 = 'stefan';
+        $aantalSterren2 = 4;
+        $reviewText = 'hai';
+        print("<table>");
+        for($j=0; $j<3;$j++){
+            print("<tr>");
+            for($q=0; $q<2; $q++){
+                ?><td>
+                <table class='tableDisplayReviews' border='1'>
+                    <tr>
+                        <td style='width: 400px; height: 20px'><b><?php print($author2); ?></b></td>
+                        <td style='width: 110px'><?php print('<div class=\"star-rating\" style=\"height: 20px; margin-top: 0px; padding: 0px; margin-left: 10px; margin-right: auto\">');
+                            for ($j = 0; $j < $aantalSterren2; $j++) {
+                                print('
+                                    <label for=\"star-1\" title=\"1 star\" style=\"color: #f2b600\">
+                                    <i class=\"active fa fa-star\" aria-hidden=\"true\"></i>
+                                    </label>');
+                            } print('</div>'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><?php print($reviewText); ?></td>
+                    </tr>
+                </table></td><?php }
+        }print("</tr></table>");
         for ($i = 0; $i < mysqli_num_rows($res_data); $i++) {
             if(isset($reviewArray[$i]['Naam'])) {
             $author2 = $reviewArray[$i]['Naam'];
             $aantalSterren2 = $reviewArray[$i]['aantalSterren'];
             $reviewText = $reviewArray[$i]['Text'];
                 ?>
-                <table class='tableDisplayReviews' border='1' style='border: black; height: 100px; width: 600px;'>
+                <table class='tableDisplayReviews' border='1'>
                     <tr>
-                        <td style='width: 400px; height: 20px'><?php print($author2); ?></td>
-                        <td style='width: 110px'><?php print('<div class="star-rating" style="height: 20px; margin-top: 0px; padding: 0px; margin-left: 10px; margin-right: auto">'); for ($j = 0; $j < $aantalSterren2; $j++) {
+                        <td style='width: 400px; height: 20px'><b><?php print($author2); ?></b></td>
+                        <td style='width: 110px'><?php print('<div class="star-rating" style="height: 20px; margin-top: 0px; padding: 0px; margin-left: 10px; margin-right: auto">');
+                            for ($j = 0; $j < $aantalSterren2; $j++) {
                                 print('
                                     <label for="star-1" title="1 star" style="color: #f2b600">
                                     <i class="active fa fa-star" aria-hidden="true"></i>

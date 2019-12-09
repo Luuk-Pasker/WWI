@@ -12,18 +12,18 @@ include "includes/header.php";
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputEmail" class="">Email:</label>
+                    <label for="inputEmail" class="form-label">Email:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="text" class="loginInput" id="inputEmail" name="username" placeholder="Email">
+                    <input type="text" class="form-control form-border" id="inputEmail" name="username" placeholder="Email">
                 </div>
             </div>
             <div class="loginRow">
                 <div class="loginColumn1">
-                    <label for="inputPassword">Password:</label>
+                    <label for="inputPassword" class="form-label">Password:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="password" class="loginInput" id="inputPassword" name="password" placeholder="Password">
+                    <input type="password" class="form-control form-border" id="inputPassword" name="password" placeholder="Password">
                 </div>
             </div>
             <div class="loginRow">

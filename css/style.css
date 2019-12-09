@@ -133,6 +133,13 @@ input[type=submit] {
     margin: 30px;
 }
 
+.loginRow1 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: -30px;
+}
+
 .loginHead{
     text-align: center;
 }
@@ -185,9 +192,15 @@ a.loginLink:hover{
 }
 
 .scImageRow{
-     height: 100px;
-     margin: 5px;
- }
+    height: 100px;
+    margin: 5px;
+}
+
+.scDeleteRow{
+    margin: 5px;
+    padding-top: 34px;
+    height: 100px;
+}
 
 .scImage{
     margin: 5px 5px 5px 5px;
@@ -236,6 +249,12 @@ a.loginLink:hover{
     width: 100%;
 }
 
+.scTrashcan{
+    padding: 0;
+    border: none;
+    background: none;
+}
+
 .scUpdate{
     width: 100%;
     border-radius: 4px;
@@ -265,12 +284,13 @@ a.scLink:hover{
 }
 
 .errorBox{
+    position: absolute;
     text-align: center;
-    border-style: solid;
     margin-left: 45%;
     margin-right: 45%;
     margin-top: 2%;
     padding: 1%;
     background-color: red;
     color: white;
+    border-radius: 20px;
 }
