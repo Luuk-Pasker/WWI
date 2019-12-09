@@ -1,8 +1,13 @@
+
 <?php
+include "includes/funtions.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'C:\xampp\composer\vendor\autoload.php';
+require 'C:\xampp\htdocs\WWi\composer\vendor\autoload.php';
+
+$email = $_SESSION['email'];
+$name = $_SESSION['name'];
 
 /* Create a new PHPMailer object. Passing TRUE to the constructor enables exceptions. */
 $mail = new PHPMailer(TRUE);
@@ -10,10 +15,10 @@ $mail = new PHPMailer(TRUE);
 /* Open the try/catch block. */
 try {
     /* Set the mail sender. */
-    $mail->setFrom('darth@empire.com', 'Darth Vader');
+    $mail->setFrom('kayleigh22x@gmail.com', 'Kayleigh Roest');
 
     /* Add a recipient. */
-    $mail->addAddress('palpatine@empire.com', 'Emperor');
+    $mail->addAddress("$email", $name);
 
     /* Set the subject. */
     $mail->Subject = 'Force';
