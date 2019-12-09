@@ -1,11 +1,9 @@
-<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
-
-
 <!--//header-->
 <?php
 include "includes/header.php";
 include "includes/funtions.php";
 ?>
+<link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 <!---->
 
 <!-- go back knop-->
@@ -39,12 +37,103 @@ include "includes/funtions.php";
     //print: afbeelding, voorraad, naam, prijs en beschrijving en bezorgtijd .
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
+        //print de afbeeldingen
         $ItemID = $row['StockItemID'];
-        $Image = 'images/ProductImages/' . $ItemID . '.1.jpg';
-        if(!(@getimagesize($Image))){
-            $Image = "images/" . $row['Photo'];
+        $Image1 = 'images/ProductImages/' . $ItemID . '.1.jpg';
+        $Image2 = 'images/ProductImages/' . $ItemID . '.2.jpg';
+        $Image3 = 'images/ProductImages/' . $ItemID . '.3.jpg';
+        $Image4 = 'images/ProductImages/' . $ItemID . '.4.jpg';
+        $Image5 = 'images/ProductImages/' . $ItemID . '.5.jpg';
+
+        $Videos = array();
+        $Videos["1"] = 'https://www.youtube.com/embed/8yDkraOEgmM';
+        if(!(empty($Videos["$ItemID"]))){
+            $hasVideo = true;
+        }else{
+            $hasVideo = false;
         }
-        print("<img class='foto' src='$Image'><br>");
+        if(!(@getimagesize($Image1))){
+            $Image1 = "images/" . $row['Photo'];
+        }
+
+        if((@getimagesize($Image2))||$hasVideo){
+            print('<div class="foto">');
+            print('<div class="slider-holder">');
+            print('<span id="slider-image-1"></span>');
+            if((@getimagesize($Image2))){
+                print('<span id="slider-image-2"></span>');
+            }
+            if((@getimagesize($Image3))){
+                print('<span id="slider-image-3"></span>');
+            }
+            if((@getimagesize($Image4))){
+                print('<span id="slider-image-4"></span>');
+            }
+            if((@getimagesize($Image5))){
+                print('<span id="slider-image-5"></span>');
+            }
+            if((@getimagesize($Image5))){
+                print('<span id="slider-image-5"></span>');
+            }
+            if($hasVideo){
+                print('<span id="slider-video"></span>');
+            }
+            print('<div class="image-holder">');
+            print('<img src="');
+            print($Image1);
+            print('" class="slider-image">');
+            if((@getimagesize($Image2))){
+                print('<img src="');
+                print($Image2);
+                print('" class="slider-image">');
+            }
+            if((@getimagesize($Image3))){
+                print('<img src="');
+                print($Image3);
+                print('" class="slider-image">');
+            }
+            if((@getimagesize($Image4))){
+                print('<img src="');
+                print($Image4);
+                print('" class="slider-image">');
+            }
+            if((@getimagesize($Image5))){
+                print('<img src="');
+                print($Image5);
+                print('" class="slider-image">');
+            }
+            if($hasVideo){
+                print('<iframe width="480" height="460" src="');
+                print($Videos["$ItemID"]);
+                print('">');
+                print('</iframe>');
+            }
+            print('</div>');
+            print('<div class="button-holder">');
+            print('<a href="#slider-image-1" class="slider-change"></a>');
+            if((@getimagesize($Image2))){
+                print('<a href="#slider-image-2" class="slider-change"></a>');
+            }
+            if((@getimagesize($Image3))){
+                print('<a href="#slider-image-3" class="slider-change"></a>');
+            }
+            if((@getimagesize($Image4))){
+                print('<a href="#slider-image-4" class="slider-change"></a>');
+            }
+            if((@getimagesize($Image5))){
+                print('<a href="#slider-image-5" class="slider-change"></a>');
+            }
+            if($hasVideo){
+                print('<a href="#slider-video" class="slider-change"></a>');
+            }
+            print('</div>');
+            print('</div>');
+            print('</div>');
+        }else{
+            print("<img class='foto' src='$Image1'><br>");
+        }
+
+
         print("<div class='naambeschrijvingprijsnogopvoorraad'>");
         print("<div class='naam'>" . $row["StockItemName"] . "</div><br>");
 
@@ -157,6 +246,7 @@ include "includes/funtions.php";
             <input type="hidden" name="hasDeal" value="<?php print("$heeftKorting"); ?>">
         </form>
     </div>
+</div>
     <?php
     include "includes/footer.php";
     ?>

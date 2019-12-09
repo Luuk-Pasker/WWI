@@ -128,7 +128,7 @@
 
 .bezorgdatum{
     margin-top: -27px;
-    margin-left:100px;
+    margin-left:120px;
     font-size: 16px;
     color: limegreen;
 }
@@ -398,3 +398,85 @@
 /*tags*/
 
 /*xx*/
+
+.slider-holder
+{
+    width: 480px;
+    height: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.image-holder
+{
+    width: 3360px;
+    height: 480px;
+    clear: both;
+    position: relative;
+
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+}
+
+.slider-image
+{
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    width: 480px;
+    height: 480px;
+}
+
+#slider-image-1:target ~ .image-holder
+{
+    left: 0px;
+}
+
+#slider-image-2:target ~ .image-holder
+{
+    left: -480px;
+}
+
+#slider-image-3:target ~ .image-holder
+{
+    left: -960px;
+}
+
+#slider-image-4:target ~ .image-holder
+{
+    left: -1440px;
+}
+
+#slider-image-5:target ~ .image-holder
+{
+    left: -1920px;
+}
+
+#slider-video:target ~ .image-holder
+{
+    left: -2400px;
+}
+
+.button-holder
+{
+    position: relative;
+    top: -20px;
+}
+
+.slider-change
+{
+    border: #303030 double medium;
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    margin: 2px;
+    background-color: #a0a0a0;
+    opacity:  0.5;
+}
