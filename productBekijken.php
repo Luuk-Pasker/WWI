@@ -44,9 +44,12 @@ include "includes/funtions.php";
         $Image3 = 'images/ProductImages/' . $ItemID . '.3.jpg';
         $Image4 = 'images/ProductImages/' . $ItemID . '.4.jpg';
         $Image5 = 'images/ProductImages/' . $ItemID . '.5.jpg';
+        $ImageFill = 'images/filler.jfif';
+        //$ImageFill = 'images/Check.png';
 
         $Videos = array();
         $Videos["1"] = 'https://www.youtube.com/embed/8yDkraOEgmM';
+        $Videos["215"] = 'https://www.youtube.com/embed/yD4uVbRS1C8';
         if(!(empty($Videos["$ItemID"]))){
             $hasVideo = true;
         }else{
@@ -103,6 +106,26 @@ include "includes/funtions.php";
                 print('" class="slider-image">');
             }
             if($hasVideo){
+                if(!(@getimagesize($Image2))){
+                    print('<img src="');
+                    print($ImageFill);
+                    print('" class="slider-image">');
+                }
+                if(!(@getimagesize($Image3))){
+                    print('<img src="');
+                    print($ImageFill);
+                    print('" class="slider-image">');
+                }
+                if(!(@getimagesize($Image4))){
+                    print('<img src="');
+                    print($ImageFill);
+                    print('" class="slider-image">');
+                }
+                if(!(@getimagesize($Image5))){
+                    print('<img src="');
+                    print($ImageFill);
+                    print('" class="slider-image">');
+                }
                 print('<iframe width="480" height="460" src="');
                 print($Videos["$ItemID"]);
                 print('">');
