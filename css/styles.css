@@ -12,8 +12,6 @@
 
 .foto{
     float: left;
-    width: 480px;
-    height: 410px;
     margin-top: 30px;
     margin-bottom: 50px;
 
@@ -97,4 +95,19 @@
 
 .form-label{
     margin-top: 5px!important;
+}
+
+footer{
+    margin-top: auto;
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+    padding-top: -10px;
+}
+
+.footer{
+    height: 23px;
+    background: dodgerblue;
+    text-align: center;
+    color: white;
 }
