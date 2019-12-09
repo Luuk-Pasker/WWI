@@ -319,11 +319,13 @@ $result1 = mysqli_query($connection, $costs);
                 }
             }
         } elseif (isset($_POST['submit'])) {
+            $_SESSION['email'] = $_POST['email'];
             $password = hash('sha256', $_POST['password']);
             $HPass = strtoupper($password);
             $permitted = "1";
             $notPermitted = "0";
             $username = $_POST['fname'] . " " . $_POST['lname'];
+            $_SESSION['fullname'] = $username;
 
             $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
             /*printen van de resultaten op het scherm*/
