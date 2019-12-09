@@ -1,6 +1,7 @@
 <?php
 
 error_reporting(E_ALL);
+$fullname = $_SESSION['fullname'];
 
 //mail ontvanger
 $to = $_SESSION['email'];
@@ -13,44 +14,35 @@ mail($to, $subject, $txt, $headers);
 
 
 // body voor de email opmaken
-
-
-$to = "somebody@example.com, somebodyelse@example.com";
-$subject = "HTML email";
-
-$message = "
+$message = print("this");
+?>
 <html>
 <head>
-<title>Confirmation of your payment</title>
+    <title> Confirmation of your payment </title>
 </head>
 <body>
-<p> Hello The payment has been confired, you ordered:
-
+<p> Hello <?php print($fullname); ?>
+<br>
+<br>
+The payment has been confirmed, you ordered:
 
 </p>
 
 </body>
 </html>
-";
 
+<?php
+// Always set content-type when sending HTML email
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <webmaster@example.com>' . "\r\n";
+$headers .= 'Cc: myboss@example.com' . "\r\n";
+
+mail($to,$subject,$message,$headers);
+?>
 // email verzenden
 
-$formsent = mail($ontvanger, $hoofd, $body, "From: <$email>");
-$replyemail = mail($onderwerp2, $bericht2, "From: <$email>:);
- 
- 
-$body .= "<e.stienstra@live.nl>"; 
-$body2 .= "X - Sender: <?????? ?> n";
-    $headers2 .= "Return-Path: <?php ?????? ?>n";
-$onderwerp2 = "Bedankt u voor uw reactie";
-$bericht2 = "Beste <?php $naam ?>,
-
-Bedankt voor uw reactie! Ik neem zo spoedig mogelijk contact met u op via uw e-mailadres, $replyemail .
-
-Groeten,
-
-rene );
-
-}
 
 
