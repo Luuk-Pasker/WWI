@@ -223,9 +223,22 @@ $result1 = mysqli_query($connection, $costs);
                 <br>
                 <br>
                 <input type="radio" name="paymentMethod" value="IDEAL"> <img class="IDEAL"
-                                                                             src="images/IDEAL.png"
-                                                                             style="font-size:24px;">
-                IDEAL
+                                                                             src="images/IDEAL.png" style="font-size:24px;">
+
+
+                    <select>
+                      <option value="ABN AMRO"> ABN AMRO</option>
+                      <option value="ASN Bank">ASN Bank</option>
+                      <option value="bunq">bunq</option>
+                      <option value="ING">ING</option>
+                      <option value="Knab">Knab</option>
+                      <option value="Moneyou">Moneyou</option>
+                      <option value="Rabobank">Rabobank</option>
+                      <option value="Regiobank">Regiobank</option>
+                      <option value="SNS Bank">SNS Bank</option>
+                      <option value="Triodos Bank">Triodos Bank</option>
+                      <option value="Van Lanschot">Van Lanschot</option>
+                    </select>
                 <br>
                 <br>
                 <input type="radio" name="paymentMethod" value="EFT"> <i class="fab fa-bitcoin"
