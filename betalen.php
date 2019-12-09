@@ -120,7 +120,7 @@ $result1 = mysqli_query($connection, $costs);
                             </div>
                         </div>
                         <div class="loginRow1">
-                            <p style="margin-left: 30px">Do you want an acount? Fill in a password to sign up.</p>
+                            <p style="margin-left: 30px">Do you want an account? Fill in a password to sign up.</p>
                             <div class="form-group">
                                 <div class="loginColumn1">
                                     <label for="password" class="form-label">Password:</label>
