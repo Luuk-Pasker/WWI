@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 11 dec 2019 om 11:58
+-- Gegenereerd op: 11 dec 2019 om 12:16
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.2
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `discount` (
   `discountID` int(11) NOT NULL,
   `discountCode` varchar(255) NOT NULL,
-  `PeopleID` int(11) DEFAULT NULL,
+  `PersonID` int(11) DEFAULT NULL,
   `discountUsed` int(11) NOT NULL,
   `discount` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,7 +40,7 @@ CREATE TABLE `discount` (
 -- Gegevens worden geëxporteerd voor tabel `discount`
 --
 
-INSERT INTO `discount` (`discountID`, `discountCode`, `PeopleID`, `discountUsed`, `discount`) VALUES
+INSERT INTO `discount` (`discountID`, `discountCode`, `PersonID`, `discountUsed`, `discount`) VALUES
 (1, 'SALE', NULL, 2, '20%');
 
 --
@@ -51,7 +51,8 @@ INSERT INTO `discount` (`discountID`, `discountCode`, `PeopleID`, `discountUsed`
 -- Indexen voor tabel `discount`
 --
 ALTER TABLE `discount`
-  ADD PRIMARY KEY (`discountID`);
+  ADD PRIMARY KEY (`discountID`),
+  ADD KEY `PersonID` (`PersonID`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
@@ -62,6 +63,16 @@ ALTER TABLE `discount`
 --
 ALTER TABLE `discount`
   MODIFY `discountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Beperkingen voor geëxporteerde tabellen
+--
+
+--
+-- Beperkingen voor tabel `discount`
+--
+ALTER TABLE `discount`
+  ADD CONSTRAINT `discount_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `people` (`PersonID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

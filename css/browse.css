@@ -164,3 +164,13 @@
 .availablenow{
 
 }
+
+.countdown{
+    float: left;
+    right: 1000%;
+    border: 2px solid black;
+    font-weight:bold;
+    background: limegreen;
+    width:28%;
+    text-align: center;
+}

@@ -4,6 +4,7 @@ include "includes/header.php";
 include "includes/funtions.php";
 ?>
 <link rel="stylesheet" type="text/css" href="css/productBekijken.css">
+<link rel="stylesheet" type="text/css" href="css/browse.css">
 <!---->
 
 <!-- go back knop-->
@@ -225,7 +226,49 @@ include "includes/funtions.php";
                 print("<A class='prijs'>" . "€" . $nieuwekortingprijs . "</A>");
             }
             print("<A class='oudeprijs'>" . "<strike>€$price </strike>" . "</A>");
-            print("<div class='safeoff'>" . "15% off save " . ($price / 100 * 15) . "</div><br><br>");
+            print("<div class='safeoff'>" . "15% off save " . ($price / 100 * 15) . "</div><br>");
+
+
+            ?>
+            <div class="countdown">
+<p id="demo"></p>
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Dec 20, 2019 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                document.getElementById("demo").innerHTML = "Just " + days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s left!!";
+
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+</script>
+</div>
+            <br>
+            <br>
+            <br>
+    <?php
+
             print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
             print("<H4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</H4><br>");
             print("</div>");
