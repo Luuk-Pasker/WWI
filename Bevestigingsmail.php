@@ -5,31 +5,15 @@ $fullname = $_SESSION['fullname'];
 
 //mail ontvanger
 $to = $_SESSION['email'];
+$from = 'From: Eva Stienstra<e.stienstra@live.nl>';
 $subject = "Confirmed payment WWI";
-$txt = "Purchase has been succesfull";
-$headers = "From: e.stienstra@live.nl" . "\r\n" .
-    "CC:";
-
-mail($to, $subject, $txt, $headers);
-
-
-// body voor de email opmaken
-$message = print("this");
-?>
-<html>
-<head>
-    <title> Confirmation of your payment </title>
-</head>
-<body>
-<p> Hello <?php print($fullname); ?>
+$message = ?> <b> Confirmation of your payment </b>
 <br>
 <br>
-The payment has been confirmed, you ordered:
+Purchase has been succesfull!<?php
 
-</p>
 
-</body>
-</html>
+mail($to, $subject, $message, $headers);
 
 <?php
 // Always set content-type when sending HTML email

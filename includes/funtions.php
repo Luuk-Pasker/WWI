@@ -57,21 +57,20 @@ function sc_Print(){
         print("</div>");
         print("<form name='form' method='post'>");
     foreach($_SESSION["IDs"] as $index => $val){
-        $quantity = $_SESSION["Quantitys"][$index];
-        //limiteerd de hoeveelheid die gekocht kan worden van een product
-        if($_SESSION["Stocks"][$index]>3000){
-            $stock = 3000;
-        }elseif($_SESSION["Stocks"][$index]>1000){
-            $stock = 1000;
-        }elseif($_SESSION["Stocks"][$index]>300){
-            $stock = 300;
-        }elseif($_SESSION["Stocks"][$index]>100){
-            $stock = 100;
-        }else {
-            $stock = $_SESSION['Stocks'][$index];
+        //veranderd de hoeveelheid naar 3000 of de hoeveelheid op voorraad als de ingevorde waarde groter is dan die waardes
+        if($_SESSION["Quantitys"][$index]>$_SESSION["Stocks"][$index]){
+            $_SESSION["Quantitys"][$index] = $_SESSION["Stocks"][$index];
         }
+        if($_SESSION["Quantitys"][$index]>3000){
+            $_SESSION["Quantitys"][$index] = 3000;
+        }
+        //veranderd de hoeveelheid naar 1als de ingevorde waarde kleiner is dan 1
+        if($_SESSION["Quantitys"][$index]<1){
+            $_SESSION["Quantitys"][$index] = 1;
+        }
+        $quantity = $_SESSION["Quantitys"][$index];
             print("<div class='scRow'>");
-                print("<input class='loginInput Inputborder' type='number' value='$quantity' name='Q$index' min=\"1\" max=\"$stock\" >");//onblur='this.form.submit()'
+                print("<input class='loginInput Inputborder' type='number' value='$quantity' name='Q$index'>");//onblur='this.form.submit()'
             print("</div>");
     }
             print("<button class='scUpdate'>Update amounts</button>");
