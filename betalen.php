@@ -22,6 +22,11 @@ $result = mysqli_query($connection, $sql);
 $costs = "SELECT RecommendedRetailPrice FROM stockitems";
 $result1 = mysqli_query($connection, $costs);
 
+$code = "SELECT discountcode FROM discount";
+$result = mysqli_query($connection, $code);
+
+$discount = "SELECT discount FROM discount";
+$result = mysqli_query($connection, $discount);
 ?>
 
 <div class="keerterug">
@@ -157,6 +162,7 @@ $result1 = mysqli_query($connection, $costs);
                         }
                     }
                     ?>
+
             </div>
         </div>
 
@@ -188,9 +194,7 @@ $result1 = mysqli_query($connection, $costs);
                 }
                 ?>
 
-                <BR><br><br><br><BR><br><br><br><BR><br><br><br><br>
-
-
+                <br><br><br><br><BR><br><br><br><BR><br><br><br><br>
                 <br>
                 <br>
                 <!--                <a href="betalen 2.0.php">-->
@@ -247,8 +251,9 @@ $result1 = mysqli_query($connection, $costs);
                 EFT
                 <br>
                 <br>
+
                 I have a discount code: <input type="text" name="discountcode">
-                <br>
+
                 <input type="submit" name="submit" value="Finish payment">
 
             </div>
@@ -256,15 +261,14 @@ $result1 = mysqli_query($connection, $costs);
         </form>
 
 
-        <?php
+       <?php
 
-            $discountcode = $_POST['discountcode'];
-            $discountcodecorrect1 = "SALE";
-            $codemoney1 = "5";
-            $pricewithdiscount = ($_SESSION["TotalPrice"]-$codemoney1);
-        if (isset($_POST['Payment'])) {
-            if ($discountcodecorrect1 == $discountcodecorrect1) {
-                print("€ $codemoney1 discount with code: $discountcode.");
+        $discountcode = $_POST["discountcode"];
+        $correct = $_SESSION["TotalPrice"] * (100 - $discount) / 100;
+        /*door de code heen*/
+        for ($i = 0; $i < $code; $i++) {
+            if ($code == $discountcode) {
+                print($correct);
             } else {
                 print("This is no discount code.");
             }
