@@ -49,7 +49,17 @@ include "includes/funtions.php";
 
         $Videos = array();
         $Videos["1"] = 'https://www.youtube.com/embed/8yDkraOEgmM';
+        $Videos["2"] = 'https://www.youtube.com/embed/8yDkraOEgmM';
+        $Videos["66"] = 'https://www.youtube.com/embed/d6B8aVZA4sM';
+        $Videos["174"] = 'https://www.youtube.com/embed/bnqKxYbwWKU';
+        $Videos["175"] = 'https://www.youtube.com/embed/bnqKxYbwWKU';
+        $Videos["176"] = 'https://www.youtube.com/embed/bnqKxYbwWKU';
+        $Videos["203"] = 'https://www.youtube.com/embed/LEmqJ_eQnR0';
+        $Videos["204"] = 'https://www.youtube.com/embed/LEmqJ_eQnR0';
+        $Videos["205"] = 'https://www.youtube.com/embed/LEmqJ_eQnR0';
         $Videos["215"] = 'https://www.youtube.com/embed/yD4uVbRS1C8';
+
+
         if(!(empty($Videos["$ItemID"]))){
             $hasVideo = true;
         }else{
