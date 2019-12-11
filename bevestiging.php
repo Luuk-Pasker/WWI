@@ -18,6 +18,8 @@ include "includes/header.php"
 </div>
 
 <?php
+include "mailer.php";
+
 unset($_SESSION["IDs"]);
 unset($_SESSION["Names"]);
 unset($_SESSION["Quantitys"]);
@@ -25,6 +27,7 @@ unset($_SESSION["Prices"]);
 unset($_SESSION["Images"]);
 unset($_SESSION["Stocks"]);
 unset($_SESSION["DealPrices"]);
+
 
 
 /*error_reporting(E_ALL);

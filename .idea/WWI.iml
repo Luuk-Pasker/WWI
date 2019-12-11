@@ -3,7 +3,15 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/composer/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/league/oauth2-client" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/league/oauth2-google" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/composer/vendor/phpmailer/phpmailer" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/composer/vendor/ralouphie/getallheaders" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
