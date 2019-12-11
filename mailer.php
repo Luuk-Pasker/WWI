@@ -32,7 +32,7 @@ $mail = new PHPMailer(TRUE);
 
 try {
 
-   $mail->setFrom($google_email, 'Groep5');
+   $mail->setFrom($google_email, 'WWi');
    $mail->addAddress($email, $name);
    $mail->Subject = 'Force';
    $mail->Body = 'There is a great disturbance in the Force.';
