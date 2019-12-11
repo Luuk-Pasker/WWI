@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_array($res_data)) {
     ?>
 
 
-    <div class="loginBox" style="height: 70%; top: 55%">
+    <div class="loginBox" style="height: 70%; top: 55%; border-radius: 20px">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
