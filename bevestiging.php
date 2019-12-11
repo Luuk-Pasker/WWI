@@ -18,7 +18,7 @@ include "includes/header.php"
 </div>
 
 <?php
-include "mailer.php";
+include "bevestigingsMail.php";
 
 unset($_SESSION["IDs"]);
 unset($_SESSION["Names"]);

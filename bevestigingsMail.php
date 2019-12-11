@@ -34,8 +34,8 @@ try {
 
    $mail->setFrom($google_email, 'WWi');
    $mail->addAddress($email, $name);
-   $mail->Subject = 'Force';
-   $mail->Body = 'There is a great disturbance in the Force.';
+   $mail->Subject = 'Confirming your order';
+   $mail->Body = '';
    $mail->isSMTP();
    $mail->Port = 587;
    $mail->SMTPAuth = TRUE;
