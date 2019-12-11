@@ -229,17 +229,6 @@ include "includes/funtions.php";
             print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
             print("<H4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</H4><br>");
             print("</div>");
-            if ($row["QuantityOnHand"] > 3000) {
-                $voorraad = 3000;
-            } elseif ($row["QuantityOnHand"] > 1000) {
-                $voorraad = 1000;
-            } elseif ($row["QuantityOnHand"] > 300) {
-                $voorraad = 300;
-            } elseif ($row["QuantityOnHand"] > 100) {
-                $voorraad = 100;
-            } else {
-                $voorraad = $row["QuantityOnHand"];
-            }
             $heeftKorting = TRUE;
             /*producten met korting*/
 
@@ -250,18 +239,6 @@ include "includes/funtions.php";
             print("<h4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</h4><br>");
             print("</div>");
             /*            producten zonder korting*/
-
-            if ($row["QuantityOnHand"] > 3000) {
-                $voorraad = 3000;
-            } elseif ($row["QuantityOnHand"] > 1000) {
-                $voorraad = 1000;
-            } elseif ($row["QuantityOnHand"] > 300) {
-                $voorraad = 300;
-            } elseif ($row["QuantityOnHand"] > 100) {
-                $voorraad = 100;
-            } else {
-                $voorraad = $row["QuantityOnHand"];
-            }
             $heeftKorting = FALSE;
         }
     }
@@ -271,8 +248,7 @@ include "includes/funtions.php";
     <div class="aantallen">
         <form action="winkelmand.php" method="post">
             <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
-            Amount: <input id="aantalx" type="number" value="1" name="quantity" min="1"
-                           max="<?php print("$voorraad"); ?>">
+            Amount: <input id="aantalx" type="number" value="1" name="quantity">
             <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
             <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
             <input type="hidden" name="DealPrice" value="<?php print("$nieuwekortingprijs"); ?>">
