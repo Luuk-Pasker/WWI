@@ -5,7 +5,7 @@ include "includes/funtions.php";
 require 'C:\xampp\htdocs\WWi\composer\vendor\autoload.php';
 
 $email = $_SESSION['email'];
-$name = $_SESSION['name'];
+$name = $_SESSION['fullname'];
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -35,7 +35,7 @@ try {
    $mail->setFrom($google_email, 'WWi');
    $mail->addAddress($email, $name);
    $mail->Subject = 'Confirming your order';
-   $mail->Body = '';
+   $mail->Body = 'ik wil slapen';
    $mail->isSMTP();
    $mail->Port = 587;
    $mail->SMTPAuth = TRUE;
