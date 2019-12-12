@@ -466,7 +466,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == TRUE) {
                             <label for="star-2" title="2 stars">
                                 <i class="active fa fa-star" aria-hidden="true"></i>
                             </label>
-                            <input id="star-1" type="radio" name="star" value="1">
+                            <input id="star-1" type="radio" name="star" value="1" checked>
                             <label for="star-1" title="1 star">
                                 <i class="active fa fa-star" aria-hidden="true"></i>
                             </label>
