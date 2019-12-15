@@ -174,7 +174,7 @@ var turboMode = false;
 var gameMode = GAME_PACMAN;
 var getGameName = (function(){
 
-    var names = ["PAC-MAN"];
+    var names = ["PAC-MAN", "MS PAC-MAN", "COOKIE-MAN","CRAZY OTTO"];
     
     return function(mode) {
         if (mode == undefined) {
@@ -373,7 +373,12 @@ var highScores = [
     10000,10000, // otto
     ];
 
-
+var getScoreIndex = function() {
+    if (practiceMode) {
+        return 8;
+    }
+    return gameMode*2 + (turboMode ? 1 : 0);
+};
 
 // handle a score increment
 var addScore = function(p) {
@@ -9585,7 +9590,7 @@ var homeState = (function(){
         menu.disable();
     };
 
-    var menu = new Menu("NEW GAME",2*tileSize,0*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
+    var menu = new Menu("CHOOSE A GAME",2*tileSize,0*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
     var getIconAnimFrame = function(frame) {
         frame = Math.floor(frame/3)+1;
         frame %= 4;
