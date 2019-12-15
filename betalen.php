@@ -27,6 +27,7 @@ $result = mysqli_query($connection, $code);
 
 $discount = "SELECT discount FROM discount";
 $result = mysqli_query($connection, $discount);
+
 ?>
 
 <div class="keerterug">
@@ -177,10 +178,10 @@ $result = mysqli_query($connection, $discount);
                 <label for="sendMethod" class="contact-form-label">Home deliverd with:</label><br>
                 <select name="sendMethod" id="sendMethod" class="contact-form-control">
                     <?php
-                    foreach ($result as $row) {
-                        ?>
-                        <option value="<?= $row['DeliveryMethodName']; ?>"> <?php print ($row["DeliveryMethodName"]); ?> </option>
-                        <?php
+                    $delivery = mysqli_fetch_row($rows["DeliveryMethodName"]);
+                    while ($rows == $result) {
+                       $option="<option>$delivery</option>";
+                        print($option);
                     }
                     ?>
                 </select>
@@ -262,8 +263,10 @@ $result = mysqli_query($connection, $discount);
 
 
        <?php
-
-        $discountcode = $_POST["discountcode"];
+        if(isset($_POST['discountcode'])){
+           $discountcode = $_POST['discountcode'];
+           var_dump($discountcode);
+       }
         $correct = $_SESSION["TotalPrice"] * (100 - $discount) / 100;
         /*door de code heen*/
         for ($i = 0; $i < $code; $i++) {
