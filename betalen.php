@@ -23,10 +23,10 @@ $costs = "SELECT RecommendedRetailPrice FROM stockitems";
 $result1 = mysqli_query($connection, $costs);
 
 $code = "SELECT discountcode FROM discount";
-$result = mysqli_query($connection, $code);
+$result2 = mysqli_query($connection, $code);
 
 $discount = "SELECT discount FROM discount";
-$result = mysqli_query($connection, $discount);
+$result3 = mysqli_query($connection, $discount);
 
 ?>
 
@@ -178,10 +178,9 @@ $result = mysqli_query($connection, $discount);
                 <label for="sendMethod" class="contact-form-label">Home deliverd with:</label><br>
                 <select name="sendMethod" id="sendMethod" class="contact-form-control">
                     <?php
-                    $delivery = mysqli_fetch_row($rows["DeliveryMethodName"]);
-                    while ($rows == $result) {
-                       $option="<option>$delivery</option>";
-                        print($option);
+                    while ($row = mysqli_fetch_array($result)):; ?>
+                        <option> <?php print($row[0]); ?> </option>
+                    <?php endwhile; ?>
                     }
                     ?>
                 </select>
