@@ -166,11 +166,10 @@
 }
 
 .countdown{
-    float: left;
-    right: 1000%;
+    padding-left: 20px;
     border: 2px solid black;
     font-weight:bold;
     background: limegreen;
-    width:28%;
+    width:35%;
     text-align: center;
 }
