@@ -29,8 +29,8 @@ include "includes/header.php";
             <div class="loginRow">
                 <div class="loginColumn2">
                     <input type="submit" class="" name="submit" value="Login">
-<!--                    <a class="loginLink" href="">Forgot password? </a> -->
                     <a href="register.php"><input type="submit" name="register" value="Sign up"></a>
+                    <a href="wachtwoordVergeten.php"><class="loginLink" href="">Forgot password? </a>
                     <!-- sign in en forgot password doen nog niks -->
                 </div>
             </div>
