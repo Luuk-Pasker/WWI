@@ -238,7 +238,7 @@ include "includes/funtions.php";
                 print("<A class='prijs'>" . "€" . $nieuwekortingprijs . "</A>");
             }
             print("<A class='oudeprijs'>" . "<strike>€$price </strike>" . "</A>");
-            print("<div class='safeoff'>" . "15% off save " . ($price / 100 * 15) . "</div><br>");
+            print("<div class='safeoff'>" . "15% off, save €" . ($price / 100 * 15) . "</div><br>");
 
 
             ?>
@@ -266,7 +266,7 @@ include "includes/funtions.php";
 
                 // Display the result in the element with id="demo"
                 document.getElementById("demo").innerHTML = "Just " + days + "d " + hours + "h "
-                    + minutes + "m " + seconds + "s left!!";
+                    + minutes + "m " + seconds + "s left for this deal!!";
 
                 // If the count down is finished, write some text
                 if (distance < 0) {
@@ -278,7 +278,7 @@ include "includes/funtions.php";
 </div>
             <br>
             <br>
-            <br>
+
     <?php
 
             print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
