@@ -4,6 +4,8 @@ include "includes/funtions.php";
 
 $n = 10;
 $discountCode = getName($n);
+$discount = "20";
+$discountUsed = "1";
 ?>
 
     <div class="loginBox" style="height: 70%; top: 55%;">
@@ -123,9 +125,6 @@ if (isset($_POST['submit'])) {
                 $stmt->bind_param('ssssssssss', $PersonID, $_POST['username'], $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
                 $stmt->execute();
 
-
-                $discount = "20";
-                $discountUsed = "1";
                 $sql1 = "INSERT INTO discount (discountCode, PersonID, discountUsed, discount) VALUES (?, ?, ?, ?)";
 
                 $stmt1 = $connection->prepare($sql1);

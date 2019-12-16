@@ -10,6 +10,11 @@ $active = "betalen";
 include "includes/header.php";
 include "includes/funtions.php";
 
+$n = 10;
+$discountCode = getName($n);
+$discountPercent = "20";
+$discountUsed = "1";
+
 if (empty($_SESSION['user_session'])) {
     $userId = "";
 } else if ($_SESSION['user_session'] == TRUE) {
@@ -79,7 +84,8 @@ $result3 = mysqli_query($connection, $discount);
                                     <label for="email" class="form-label">Email:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="email" id="email" name="email" class="form-control" placeholder="requires @">
+                                    <input type="email" id="email" name="email" class="form-control"
+                                           placeholder="requires @">
                                 </div>
                             </div>
                         </div>
@@ -101,7 +107,8 @@ $result3 = mysqli_query($connection, $discount);
                                     <label for="Street" class="form-label">Address:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="text" id="Street" name="address" class="form-control" placeholder="Lane 12">
+                                    <input type="text" id="Street" name="address" class="form-control"
+                                           placeholder="Lane 12">
                                 </div>
                             </div>
                         </div>
@@ -111,7 +118,8 @@ $result3 = mysqli_query($connection, $discount);
                                     <label for="Postal code" class="form-label">Postalcode:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="text" id="Postal code" name="postal" class="form-control" placeholder="1111 AB">
+                                    <input type="text" id="Postal code" name="postal" class="form-control"
+                                           placeholder="1111 AB">
                                 </div>
                             </div>
                         </div>
@@ -121,7 +129,8 @@ $result3 = mysqli_query($connection, $discount);
                                     <label for="City" class="form-label">City:</label>
                                 </div>
                                 <div class="loginColumn2" style="width: 80%">
-                                    <input type="text" id="City" name="city" class="form-control" placeholder="Rotterdam">
+                                    <input type="text" id="City" name="city" class="form-control"
+                                           placeholder="Rotterdam">
                                 </div>
                             </div>
                         </div>
@@ -227,23 +236,24 @@ $result3 = mysqli_query($connection, $discount);
                 <br>
                 <br>
                 <input type="radio" name="paymentMethod" value="IDEAL"> <img class="IDEAL"
-                                                                             src="images/IDEAL.png" style="font-size:24px;">
+                                                                             src="images/IDEAL.png"
+                                                                             style="font-size:24px;">
 
 
-                    <select>
-                        <option value="choose your option"> Choose your bank...</option>
-                      <option value="ABN AMRO"> ABN AMRO</option>
-                      <option value="ASN Bank">ASN Bank</option>
-                      <option value="bunq">bunq</option>
-                      <option value="ING">ING</option>
-                      <option value="Knab">Knab</option>
-                      <option value="Moneyou">Moneyou</option>
-                      <option value="Rabobank">Rabobank</option>
-                      <option value="Regiobank">Regiobank</option>
-                      <option value="SNS Bank">SNS Bank</option>
-                      <option value="Triodos Bank">Triodos Bank</option>
-                      <option value="Van Lanschot">Van Lanschot</option>
-                    </select>
+                <select>
+                    <option value="choose your option"> Choose your bank...</option>
+                    <option value="ABN AMRO"> ABN AMRO</option>
+                    <option value="ASN Bank">ASN Bank</option>
+                    <option value="bunq">bunq</option>
+                    <option value="ING">ING</option>
+                    <option value="Knab">Knab</option>
+                    <option value="Moneyou">Moneyou</option>
+                    <option value="Rabobank">Rabobank</option>
+                    <option value="Regiobank">Regiobank</option>
+                    <option value="SNS Bank">SNS Bank</option>
+                    <option value="Triodos Bank">Triodos Bank</option>
+                    <option value="Van Lanschot">Van Lanschot</option>
+                </select>
                 <br>
                 <br>
                 <input type="radio" name="paymentMethod" value="EFT"> <i class="fab fa-bitcoin"
@@ -261,11 +271,11 @@ $result3 = mysqli_query($connection, $discount);
         </form>
 
 
-       <?php
-        if(isset($_POST['discountcode'])){
-           $discountcode = $_POST['discountcode'];
-           var_dump($discountcode);
-       }
+        <?php
+        if (isset($_POST['discountcode'])) {
+            $discountcode = $_POST['discountcode'];
+            var_dump($discountcode);
+        }
         $correct = $_SESSION["TotalPrice"] * (100 - $discount) / 100;
         /*door de code heen*/
         for ($i = 0; $i < $code; $i++) {
@@ -333,101 +343,103 @@ $result3 = mysqli_query($connection, $discount);
             $username = $_POST['fname'] . " " . $_POST['lname'];
             $_SESSION['fullname'] = $username;
 
-            $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
+            $sql = "SELECT *, MAX(PersonID) AS HighestID FROM people";
             /*printen van de resultaten op het scherm*/
             $res_data = mysqli_query($connection, $sql);
             foreach ($res_data as $row) {
                 $PersonID = $row['HighestID'] + 1;
+                if ($_POST['email'] == $row['LogonName']) {
+                    $error = "Email is already in use, try something else!";
+                } elseif (empty($_POST['fname'])) {
+                    $error = "Fill in name!";
+                } elseif (empty($_POST['email'])) {
+                    $error = "Fill in email!";
+                } elseif (empty($_POST['phone'])) {
+                    $error = "Fill in phonenumber!";
+                } elseif (empty($_POST['address'])) {
+                    $error = "Fill in address!";
+                } elseif (empty($_POST['postal'])) {
+                    $error = "Fill in postal!";
+                } elseif (empty($_POST['city'])) {
+                    $error = "Fill in city!";
+                } elseif (empty($_POST['sendMethod'])) {
+                    $error = "Fill in a send method";
+                } elseif (empty($_POST['paymentMethod'])) {
+                    $error = "Fill in a payment method";
+                } elseif (empty($_POST['password'])) {
+                    $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                $sql = "SELECT * FROM people";
-                /*printen van de resultaten op het scherm*/
-                $res_data = mysqli_query($connection, $sql);
-                foreach ($res_data as $row) {
-                    if ($_POST['email'] == $row['LogonName']) {
-                        $error = "Email is already in use, try something else!";
-                    } elseif (empty($_POST['fname'])) {
-                        $error = "Fill in name!";
-                    } elseif (empty($_POST['email'])) {
-                        $error = "Fill in email!";
-                    } elseif (empty($_POST['phone'])) {
-                        $error = "Fill in phonenumber!";
-                    } elseif (empty($_POST['address'])) {
-                        $error = "Fill in address!";
-                    } elseif (empty($_POST['postal'])) {
-                        $error = "Fill in postal!";
-                    } elseif (empty($_POST['city'])) {
-                        $error = "Fill in city!";
-                    } elseif (empty($_POST['sendMethod'])) {
-                        $error = "Fill in a send method";
-                    } elseif (empty($_POST['paymentMethod'])) {
-                        $error = "Fill in a payment method";
-                    } elseif (empty($_POST['password'])) {
-                        $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('sssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $notPermitted, $_POST['email'], $_POST['phone'], $_POST['email']);
+                    $stmt->execute();
 
-                        $stmt = $connection->prepare($sql);
-                        $stmt->bind_param('sssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $notPermitted, $_POST['email'], $_POST['phone'], $_POST['email']);
-                        $stmt->execute();
+                    $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
+                    $stmt->execute();
 
-                        $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
-                        $stmt = $connection->prepare($sql);
-                        $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
-                        $stmt->execute();
+                    foreach ($_SESSION["IDs"] as $index => $val) {
+                        $id = $_SESSION['IDs'][$index];
+                        $Quantity = $_SESSION['Quantitys'][$index];
+                        echo $id;
+                        echo $Quantity;
 
-                        foreach ($_SESSION["IDs"] as $index => $val) {
-                            $id = $_SESSION['IDs'][$index];
-                            $Quantity = $_SESSION['Quantitys'][$index];
-                            echo $id;
-                            echo $Quantity;
+                        $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                        /*printen van de resultaten op het scherm*/
+                        $res_data = mysqli_query($connection, $sql);
+                        foreach ($res_data as $row) {
+                            $invoiceID = $row['HighestID'];
 
-                            $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
-                            /*printen van de resultaten op het scherm*/
-                            $res_data = mysqli_query($connection, $sql);
-                            foreach ($res_data as $row) {
-                                $invoiceID = $row['HighestID'];
-
-                                $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
-                                $stmt = $connection->prepare($sql);
-                                $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
-                                $stmt->execute();
-                                echo '<script> window.location.href = "bevestiging.php"; </script>';
-                            }
+                            $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                            $stmt = $connection->prepare($sql);
+                            $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                            $stmt->execute();
+                            echo '<script> window.location.href = "bevestiging.php"; </script>';
                         }
-                    } elseif ($_POST['email'] == $_POST['password']) {
-                        $error = "Email and password can't be the same!";
-                    } elseif ($_POST['password'] == $_POST['repeatPassword']) {
-                        $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-                        $stmt = $connection->prepare($sql);
-                        $stmt->bind_param('ssssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
-                        $stmt->execute();
-
-                        $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
-                        $stmt = $connection->prepare($sql);
-                        $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
-                        $stmt->execute();
-
-                        foreach ($_SESSION["IDs"] as $index => $val) {
-                            $id = $_SESSION['IDs'][$index];
-                            $Quantity = $_SESSION['Quantitys'][$index];
-                            echo $id;
-                            echo $Quantity;
-
-                            $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
-                            /*printen van de resultaten op het scherm*/
-                            $res_data = mysqli_query($connection, $sql);
-                            foreach ($res_data as $row) {
-                                $invoiceID = $row['HighestID'];
-
-                                $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
-                                $stmt = $connection->prepare($sql);
-                                $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
-                                $stmt->execute();
-                                echo '<script> window.location.href = "bevestiging.php"; </script>';
-                            }
-                        }
-                    } else {
-                        $error = "wrong information";
                     }
+                } elseif ($_POST['email'] == $_POST['password']) {
+                    $error = "Email and password can't be the same!";
+                } elseif ($_POST['password'] == $_POST['repeatPassword']) {
+                    $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('ssssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
+                    $stmt->execute();
+
+
+                    $sql1 = "INSERT INTO discount (discountCode, PersonID, discountUsed, discount) VALUES (?, ?, ?, ?)";
+
+                    $stmt1 = $connection->prepare($sql1);
+                    $stmt1->bind_param('ssss', $discountCode, $PersonID, $discountUsed, $discountPercent);
+                    $stmt1->execute();
+
+
+                    $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
+                    $stmt->execute();
+
+                    foreach ($_SESSION["IDs"] as $index => $val) {
+                        $id = $_SESSION['IDs'][$index];
+                        $Quantity = $_SESSION['Quantitys'][$index];
+                        echo $id;
+                        echo $Quantity;
+
+                        $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                        /*printen van de resultaten op het scherm*/
+                        $res_data = mysqli_query($connection, $sql);
+                        foreach ($res_data as $row) {
+                            $invoiceID = $row['HighestID'];
+
+                            $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                            $stmt = $connection->prepare($sql);
+                            $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                            $stmt->execute();
+                            echo '<script> window.location.href = "bevestiging.php"; </script>';
+                        }
+                    }
+                } else {
+                    $error = "wrong information";
                 }
             }
         }
@@ -448,16 +460,16 @@ $result3 = mysqli_query($connection, $discount);
                 <div class='Orderlist'>
                     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-                <?php
-                print("<br>");
-                print("<img style='float: left; margin-right: 10px;' src='$Photo' height='100px'>");
-                print("<h5 style='font-weight: bold;'>" . $_SESSION["Names"][$index] . "</h5>");
-                print("<h5 style='font-weight: bold;'>" . "amount: " . $_SESSION["Quantitys"][$index] . "</h5>");
-                print("<h5 style='font-weight: bold;'>" . "price: " . "€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</h5>");
-                print"<br>";
-                ?>
+                    <?php
+                    print("<br>");
+                    print("<img style='float: left; margin-right: 10px;' src='$Photo' height='100px'>");
+                    print("<h5 style='font-weight: bold;'>" . $_SESSION["Names"][$index] . "</h5>");
+                    print("<h5 style='font-weight: bold;'>" . "amount: " . $_SESSION["Quantitys"][$index] . "</h5>");
+                    print("<h5 style='font-weight: bold;'>" . "price: " . "€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</h5>");
+                    print"<br>";
+                    ?>
                 </div>
-        <?php
+                <?php
             }
             print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
             print("<h5 style='font-weight: bold; font-size: 20px'>" . "Total: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
