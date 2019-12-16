@@ -125,7 +125,7 @@ if (isset($_POST['submit'])) {
 
 
                 $discount = "20";
-                $discountUsed = "0";
+                $discountUsed = "1";
                 $sql1 = "INSERT INTO discount (discountCode, PersonID, discountUsed, discount) VALUES (?, ?, ?, ?)";
 
                 $stmt1 = $connection->prepare($sql1);

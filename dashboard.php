@@ -18,7 +18,7 @@ while ($row = mysqli_fetch_array($res_data)) {
     /*printen van de resultaten op het scherm*/
     $res_data = mysqli_query($connection, $sql);
     while ($row = mysqli_fetch_array($res_data)) {
-        if ($row['discountUsed'] == 0) {
+        if ($row['discountUsed'] == 1) {
             ?>
 
             <div class="loginBox1">
