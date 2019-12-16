@@ -1,6 +1,7 @@
 
 <?php
 include "includes/funtions.php";
+include "Mail.php";
 
 require 'C:\xampp\htdocs\WWi\composer\vendor\autoload.php';
 
@@ -35,12 +36,7 @@ try {
    $mail->setFrom($google_email, 'WWi');
    $mail->addAddress($email, $name);
    $mail->Subject = 'Confirming your order';
-   $mail->Body = 'Dear Costumer,
-   
-   Thank you for your order. We will send it as soon as possible. If there is something wrong with your order, feel free to contact us. 
-   All information you need is on our website. Here you have the invoice, witch is also your warranty
-   
-   Greetings WWI';
+   $mail->Body = $okMail;
    $mail->isSMTP();
    $mail->Port = 587;
    $mail->SMTPAuth = TRUE;
