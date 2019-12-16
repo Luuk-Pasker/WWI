@@ -182,25 +182,21 @@ include "includes/funtions.php";
         } elseif ($row["Tags"] == '["16GB","USB Powered"]') {
             print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=16gb&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -20, 4) . "</a>");
             print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=USB&toevoegen=Search'>" . substr('["16GB","USB Powered"]', -13, 11) . "</a>");
-            print("<a class='Techtags' href='easteregg.php'>" . "Easteregg" . "</a>");
 
 
         } elseif ($row["Tags"] == '["Radio Control","Realistic Sound"]') {
             print("<a class='RCtags' href='http://localhost/WWI/browse.php?zoek=rc&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -33, 13) . "</a>");
             print("<a class='Toytags' href='http://localhost/WWI/browse.php?zoek=realistic+sound&toevoegen=Search'>" . substr('["Radio Control","Realistic Sound"]', -17, 15) . "</a>");
-            print("<a class='Techtags' href='easteregg.php'>" . "Easteregg" . "</a>");
 
 
         } elseif ($row["Tags"] == '["Vintage","So Realistic"]') {
             print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -24, 11) . "</a>");
             print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=realistic&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -14, 12) . "</a>");
-            print("<a class='Techtags' href='easteregg.php'>" . "Easteregg" . "</a>");
 
 
         } elseif ($row["Tags"] == '["Comfortable","Long Battery Life"]') {
             print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=vintage&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -33, 11) . "</a>");
             print("<a class='Techtags' href='http://localhost/WWI/browse.php?zoek=long&toevoegen=Search'>" . substr('["Comfortable","Long Battery Life"]', -19, 17) . "</a>");
-            print("<a class='Techtags' href='easteregg.php'>" . "Easteregg" . "</a>");
 
 
         } elseif ($row["Tags"] == '[]') {
@@ -208,13 +204,11 @@ include "includes/funtions.php";
 
         } elseif ($row["Tags"] == '["So Realistic"]') {
             print("<a class='Lifestyletags' href='http://localhost/WWI/browse.php?zoek=realistic&toevoegen=Search'>" . substr('["Vintage","So Realistic"]', -14, 12) . "</a>");
-            print("<a class='Techtags' href='easteregg.php'>" . "Easteregg" . "</a>");
 
         } else {
             $x = array('["', '"]');
             $y = ("http://localhost/WWI/browse.php?zoek=" . $row["Tags"] . "&toevoegen=Search");
             print("<a class='tags' href='$y'>" . str_replace($x, "", $row["Tags"]) . "</a>");
-            print("<a class='Techtags' href='easteregg.php'>" . "Easteregg" . "</a>");
 
         }
         print"</div>";
