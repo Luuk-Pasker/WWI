@@ -1,7 +1,8 @@
 <?php
 
-function sc_Print(){
-    foreach($_SESSION["IDs"] as $index => $val) {
+function sc_Print()
+{
+    foreach ($_SESSION["IDs"] as $index => $val) {
         //past de aantallen aan
         if (isset($_POST["Q$index"])) {
             $_SESSION["Quantitys"][$index] = $_POST["Q$index"];
@@ -15,7 +16,7 @@ function sc_Print(){
             unset($_SESSION["Quantitys"][$index]);
             unset($_SESSION["DealPrices"][$index]);
             unset($_SESSION["Stocks"][$index]);
-            header('Location: '.$_SERVER['REQUEST_URI']);
+            header('Location: ' . $_SERVER['REQUEST_URI']);
         }
     }
 
@@ -25,7 +26,7 @@ function sc_Print(){
     print("<br>");
     print("</div>");
 
-    foreach($_SESSION["IDs"] as $index => $val){
+    foreach ($_SESSION["IDs"] as $index => $val) {
         $Photo = $_SESSION['Images'][$index];
         print("<div class='scImageRow'>");
         print("<img src='$Photo' height='100px'>");
@@ -39,7 +40,7 @@ function sc_Print(){
     print("<b>Item name</b>");
     print("</div>");
 
-    foreach($_SESSION["IDs"] as $index => $val){
+    foreach ($_SESSION["IDs"] as $index => $val) {
         print("<div class='scRow'>");
         $Name = $_SESSION['Names'][$index];
         print("<a class='scLink' href='productBekijken.php?id=" . $_SESSION["IDs"][$index] . "'>$Name</a>");
@@ -56,16 +57,16 @@ function sc_Print(){
     print("<b>Amount</b>");
     print("</div>");
     print("<form name='form' method='post'>");
-    foreach($_SESSION["IDs"] as $index => $val){
+    foreach ($_SESSION["IDs"] as $index => $val) {
         //veranderd de hoeveelheid naar 3000 of de hoeveelheid op voorraad als de ingevorde waarde groter is dan die waardes
-        if($_SESSION["Quantitys"][$index]>$_SESSION["Stocks"][$index]){
+        if ($_SESSION["Quantitys"][$index] > $_SESSION["Stocks"][$index]) {
             $_SESSION["Quantitys"][$index] = $_SESSION["Stocks"][$index];
         }
-        if($_SESSION["Quantitys"][$index]>3000){
+        if ($_SESSION["Quantitys"][$index] > 3000) {
             $_SESSION["Quantitys"][$index] = 3000;
         }
         //veranderd de hoeveelheid naar 1als de ingevorde waarde kleiner is dan 1
-        if($_SESSION["Quantitys"][$index]<1){
+        if ($_SESSION["Quantitys"][$index] < 1) {
             $_SESSION["Quantitys"][$index] = 1;
         }
         $quantity = $_SESSION["Quantitys"][$index];
@@ -83,17 +84,17 @@ function sc_Print(){
     print("<b>Price per Item</b>");
     print("</div>");
 
-    foreach($_SESSION["IDs"] as $index => $val){
-        if($_SESSION["DealPrices"][$index] == -1000){
+    foreach ($_SESSION["IDs"] as $index => $val) {
+        if ($_SESSION["DealPrices"][$index] == -1000) {
             $UnitPrice = $_SESSION["Prices"][$index];
             $hasDeal = FALSE;
-        }else{
+        } else {
             $UnitPrice = $_SESSION["DealPrices"][$index];
             $hasDeal = TRUE;
         }
         print("<div class='scRow'>");
         print("€" . number_format((float)$UnitPrice, 2, '.', ''));
-        if($hasDeal){
+        if ($hasDeal) {
             print("<br><div class='scOldPrice'><strike>€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</strike></div>");
         }
         print("</div>");
@@ -109,11 +110,11 @@ function sc_Print(){
     print("<b>Total price</b>");
     print("</div>");
 
-    foreach($_SESSION["IDs"] as $index => $val){
-        if($_SESSION["DealPrices"][$index] == -1000){
+    foreach ($_SESSION["IDs"] as $index => $val) {
+        if ($_SESSION["DealPrices"][$index] == -1000) {
             $UnitPrice = $_SESSION["Prices"][$index];
             $hasDeal = FALSE;
-        }else{
+        } else {
             $UnitPrice = $_SESSION["DealPrices"][$index];
             $hasDeal = TRUE;
         }
@@ -121,15 +122,15 @@ function sc_Print(){
         $_SESSION["TotalPrice"] += $TPrice;
         print("<div class='scRow'>");
         print("€" . number_format((float)$TPrice, 2, '.', ''));
-        if($hasDeal){
+        if ($hasDeal) {
             print("<br><div class='scOldPrice'><strike>€" . number_format((float)$_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index], 2, '.', '') . "</strike></div>");
         }
         print("</div>");
     }
     //berekent de verzendkosten
-    if($_SESSION["TotalPrice"]<50) {
+    if ($_SESSION["TotalPrice"] < 50) {
         $shippingPrice = 6.95;
-    }else{
+    } else {
         $shippingPrice = 0;
     }
     $_SESSION["TotalPrice"] += $shippingPrice;
@@ -139,7 +140,7 @@ function sc_Print(){
 
     print("<br><form method='post'> 
                 <p style='width: 150px; margin-bottom: 0px'>discount code:</p><input type=\"text\" name=\"discountcode\" style='width: 144px'>
-                <input type=\"submit\" name=\"verstuur\" value=\"discountsubmit\"></form><br>");
+                <input type=\"submit\" name=\"discountSubmit\" value=\"discountsubmit\"></form><br>");
 
     $host = "localhost";
     $databasename = "wideworldimporters";
@@ -148,34 +149,43 @@ function sc_Print(){
     $port = 3306;
     $connection = mysqli_connect($host, $user, $pass, $databasename, $port);
 
-    $discount = "SELECT * FROM discount";
-    $result3 = mysqli_query($connection, $discount);
-    $discountArray = array();
-    $i = 0;
-    foreach ($result3 as $row) {
-        if (mysqli_num_rows($result3) != 0) {
-            $discountArray[$i] = $row;
-            $i++;
-        }
-    }
-    $_SESSION['TotalPrice'];
-    $discount = $discountArray[0]['discount'];
-    $code = $discountArray[0]['discountCode'];
-    if(isset($_POST['discountcode'])) {
-        $dcode = $_POST['discountcode'];
+    if (isset($_POST['discountSubmit'])) {
+        $discount = "SELECT * FROM discount";
+        $result = mysqli_query($connection, $discount);
+        foreach ($result as $row1) {
+            $dcode = $_POST['discountcode'];
+            $disountCode = $row1['discountCode'];
+            if ($disountCode == $dcode) {
 
-        $correct = $_SESSION["TotalPrice"] * (100 - $discount) / 100;
-        /*door de code heen*/
-        if ($code == $dcode) {
-            print("<b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
-            print("<b><br><br>€" . number_format((float)$correct, 2, '.', '') . "</b>");
-            $_SESSION["TotalPrice"] = $correct;
+                $discount = "SELECT * FROM discount WHERE discountCode = '$dcode' AND discountUsed = '0'";
+                $result = mysqli_query($connection, $discount);
+
+                foreach ($result as $row) {
+                    $correct = $_SESSION["TotalPrice"] * (100 - $row['discount']) / 100;
+                    /*door de code heen*/
+                    print("<b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
+                    print("<b><br><br>€" . number_format((float)$correct, 2, '.', '') . "</b>");
+                    $_SESSION["TotalPrice"] = $correct;
+                }
+
+            }
         }
     } else {
         print("<b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
         print("<b><br><br>€" . number_format((float)$_SESSION["TotalPrice"], 2, '.', '') . "</b>");
     }
 
+//    $discountArray = array();
+//    $i = 0;
+//    foreach ($result3 as $row) {
+//        if (mysqli_num_rows($result3) != 0) {
+//            $discountArray[$i] = $row;
+//            $i++;
+//        }
+//    }
+//    $_SESSION['TotalPrice'];
+//    $discount = $discountArray[0]['discount'];
+//    $code = $discountArray[0]['discountCode'];
 
 
     print("<br><br><form action='betalen.php' class='scButton'><input type='submit' value='Buy items'></form>");
@@ -188,7 +198,7 @@ function sc_Print(){
     print("<br>");
     print("</div>");
 
-    foreach($_SESSION["IDs"] as $index => $val){
+    foreach ($_SESSION["IDs"] as $index => $val) {
         print("<div class='scDeleteRow'>");
         print("<form method='post'><button class='scTrashcan' type='submit' name='D$index' value='true' ><img src='images/trashcan.JPG' width='28px' alt='X'></button></form>");
         print("</div>");
@@ -197,41 +207,47 @@ function sc_Print(){
 }
 
 /*zoek alle huidige producten met korting op*/
-function GetDeals($connection){
+function GetDeals($connection)
+{
     $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals) limit 4";
     $results = mysqli_query($connection, $sql);
     return $results;
 }
+
 /*zoek alle huidige producten met korting op*/
 
 /*zoek alle huidige producten met korting op voor browse pagina*/
-function GetDealsBrowse($connection){
+function GetDealsBrowse($connection)
+{
     $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals)";
     $results = mysqli_query($connection, $sql);
     return $results;
 }
+
 /*zoek alle huidige producten met korting op voor browse pagina*/
 
 /*zoek alle huidige producten die nieuw zijn voor op browse pagina*/
-function GetLaatstToegevoegdBrowse($connection){
+function GetLaatstToegevoegdBrowse($connection)
+{
     $sql = "select * from stockitems order by StockItemID desc";
     $GetLatstToegevoed = mysqli_query($connection, $sql);
     return $GetLatstToegevoed;
 }
+
 /*zoek alle huidige producten die nieuw zijn voor op browse pagina*/
 
 /*zoek de meest recent toegevoegde producten*/
-function GetLaatstToegevoegd($connection){
+function GetLaatstToegevoegd($connection)
+{
     $sql = "select * from stockitems order by StockItemID desc limit 4";
     $GetLatstToegevoed = mysqli_query($connection, $sql);
     return $GetLatstToegevoed;
 }
+
 /*zoek de meest recent toegevoegde producten*/
 
-
-
-
-function getName($n) {
+function getName($n)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
 
