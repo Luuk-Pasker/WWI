@@ -24,7 +24,7 @@ $amount. $name €$ItemPrice";
 $totalprice = number_format($_SESSION["TotalPrice"], 2);
 $tekst = "$tekst 
 The totalprice is €$totalprice";
-print($tekst);
+
 
 $okMail= "$okMail $tekst";
 ?>
