@@ -276,8 +276,11 @@ include "includes/funtions.php";
             <br>
 
     <?php
+            If($row['QuantityOnHand'] > 100) {
+                print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
+            } Else {
+                print ("<H4 class='nogopvoorraad'>" . $row['QuantityOnHand'] . "</H4>");}
 
-            print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
             print("<H4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</H4><br>");
             print("</div>");
             $heeftKorting = TRUE;
