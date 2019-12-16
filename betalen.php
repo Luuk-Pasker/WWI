@@ -30,7 +30,7 @@ $result1 = mysqli_query($connection, $costs);
 $code = "SELECT discountcode FROM discount";
 $result2 = mysqli_query($connection, $code);
 
-$discount = "SELECT discount FROM discount";
+$discount = "SELECT * FROM discount";
 $result3 = mysqli_query($connection, $discount);
 
 ?>
