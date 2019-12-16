@@ -262,8 +262,6 @@ $result3 = mysqli_query($connection, $discount);
                 <br>
                 <br>
 
-                I have a discount code: <input type="text" name="discountcode">
-
                 <input type="submit" name="submit" value="Finish payment">
 
             </div>
@@ -272,19 +270,6 @@ $result3 = mysqli_query($connection, $discount);
 
 
         <?php
-        if (isset($_POST['discountcode'])) {
-            $discountcode = $_POST['discountcode'];
-            var_dump($discountcode);
-        }
-        $correct = $_SESSION["TotalPrice"] * (100 - $discount) / 100;
-        /*door de code heen*/
-        for ($i = 0; $i < $code; $i++) {
-            if ($code == $discountcode) {
-                print($correct);
-            } else {
-                print("This is no discount code.");
-            }
-        }
 
         if (isset($_POST['submit']) && $_SESSION['login'] == TRUE) {
             if (empty($_POST['sendMethod'])) {
