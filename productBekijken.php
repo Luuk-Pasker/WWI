@@ -228,6 +228,8 @@ include "includes/funtions.php";
         $price = $row["UnitPrice"];
         $kortingprijs = $price / 100 * 85;
         $nieuwekortingprijs = number_format($kortingprijs, 2);
+        $oudeprijsje1 = ($price / 100 * 15);
+        $oudeprijsje2 = number_format($oudeprijsje1, 2);
 
         /*producten met korting*/
         if (in_array($row['StockItemName'], $productenmetkorting)) {
@@ -238,7 +240,7 @@ include "includes/funtions.php";
                 print("<A class='prijs'>" . "€" . $nieuwekortingprijs . "</A>");
             }
             print("<A class='oudeprijs'>" . "<strike>€$price </strike>" . "</A>");
-            print("<div class='safeoff'>" . "15% off, save €" . ($price / 100 * 15) . "</div><br>");
+            print("<div class='safeoff'>" . "15% off, save €" . ($oudeprijsje2) . "</div><br>");
 
 
             ?>
