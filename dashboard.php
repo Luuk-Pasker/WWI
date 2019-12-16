@@ -13,10 +13,24 @@ $sql = "SELECT * FROM people WHERE PersonID = $userId";
 /*printen van de resultaten op het scherm*/
 $res_data = mysqli_query($connection, $sql);
 while ($row = mysqli_fetch_array($res_data)) {
+    $userId = $_SESSION['user_session'];
+    $sql = "SELECT * FROM discount WHERE PersonID = $userId";
+    /*printen van de resultaten op het scherm*/
+    $res_data = mysqli_query($connection, $sql);
+    while ($row = mysqli_fetch_array($res_data)) {
+        if ($row['discountUsed'] == 0) {
+            ?>
+
+            <div class="loginBox1">
+                <h3 class="discount" style="margin-top: 70%">You discountcode is:<br>
+                    <?= $row['discountCode'] ?></h3>
+                <p class="discount">Usable for one time only!<br>For 20% discount!</p>
+            </div>
+            <?php
+        }
+    }
     ?>
-
-
-    <div class="loginBox" style="height: 70%; top: 55%; border-radius: 20px">
+    <div class="loginBox">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -85,7 +99,8 @@ while ($row = mysqli_fetch_array($res_data)) {
                     <label for="inputPassword" class="form-label">Password:</label>
                 </div>
                 <div class="loginColumn2">
-                    <input type="password" class="form-control form-border" id="inputPassword" name="password" placeholder="Password">
+                    <input type="password" class="form-control form-border" id="inputPassword" name="password"
+                           placeholder="Password">
                 </div>
             </div>
             <div class="loginRow">

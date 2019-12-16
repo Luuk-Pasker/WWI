@@ -117,16 +117,33 @@ input[type=submit] {
     margin-left: 740px;
 }
 
-
 .loginBox{
     background: lightgray;
     position: absolute;
-    top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     width: 55%;
-    height : 45%;
+    height: 70%;
+    top: 55%;
+    border-radius: 20px
+}
+
+.loginBox1{
+    background: dodgerblue;
+    position: absolute;
+    left: 15%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 70%;
+    top: 55%;
+    border-radius: 20px
+}
+
+.discount {
+    text-align: center;
+    color: white;
 }
 
 .loginRow{
