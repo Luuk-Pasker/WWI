@@ -1,5 +1,9 @@
 <?php
 include "includes/header.php";
+include "includes/funtions.php";
+
+$n = 10;
+$discountCode = getName($n);
 ?>
 
     <div class="loginBox" style="height: 70%; top: 55%;">
@@ -95,7 +99,7 @@ if (isset($_POST['submit'])) {
     $HPass = strtoupper($password);
     $permitted = "1";
 
-    $sql = "SELECT * FROM people";
+    $sql = "SELECT LogonName, MAX(PersonID) AS HighestID FROM people";
     /*printen van de resultaten op het scherm*/
     $res_data = mysqli_query($connection, $sql);
     foreach ($res_data as $row) {
@@ -112,17 +116,21 @@ if (isset($_POST['submit'])) {
         } elseif ($_POST['email'] == $_POST['password']) {
             $error = "Username and password can't be the same!";
         } elseif ($_POST['password'] == $_POST['repeatPassword']) {
-            $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
-            /*printen van de resultaten op het scherm*/
-            $res_data = mysqli_query($connection, $sql);
-            foreach ($res_data as $row) {
                 $PersonID = $row['HighestID'] + 1;
                 $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 $stmt = $connection->prepare($sql);
                 $stmt->bind_param('ssssssssss', $PersonID, $_POST['username'], $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
                 $stmt->execute();
-            }
+
+
+                $discount = "20";
+                $discountUsed = "0";
+                $sql1 = "INSERT INTO discount (discountCode, PersonID, discountUsed, discount) VALUES (?, ?, ?, ?)";
+
+                $stmt1 = $connection->prepare($sql1);
+                $stmt1->bind_param('ssss', $discountCode, $PersonID, $discountUsed, $discount);
+                $stmt1->execute();
             echo '<script> window.location.href = "login.php"; </script>';
         } else {
             $error = "Passwords do not match";
