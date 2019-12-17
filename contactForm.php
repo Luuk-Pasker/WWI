@@ -33,7 +33,7 @@ include "includes/footer.php";
 
     <div class="double-column">
 
-        <div class="contact">
+        <div class="contact" style="margin-left: 28%">
 
             <h2>Contact form</h2>
 
