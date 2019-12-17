@@ -419,7 +419,6 @@ if (!mysqli_num_rows($res_data) == 0) {
                     echo '?page=' . $total_pages . "&id=" . $sID;
                 }
 
-
                 ?>">Last page</a></li>
         </ul>
     </div>

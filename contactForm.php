@@ -1,6 +1,7 @@
 <?php
 $active = "about";
 include "includes/header.php";
+include "includes/footer.php";
 ?>
 <!--fdjsi-->
 
