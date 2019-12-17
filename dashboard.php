@@ -8,11 +8,14 @@ if ($_SESSION['login'] == FALSE) {
     echo '<script> window.location.href = "login.php"; </script>';
 }
 
+
 $userId = $_SESSION['user_session'];
 $sql = "SELECT * FROM people WHERE PersonID = $userId";
 /*printen van de resultaten op het scherm*/
 $res_data = mysqli_query($connection, $sql);
 while ($row = mysqli_fetch_array($res_data)) {
+    $_SESSION['fullname'] = $row['FullName'];
+    $_SESSION['email'] = $row['EmailAddress'];
     $userId = $_SESSION['user_session'];
     $sql = "SELECT * FROM discount WHERE PersonID = $userId";
     /*printen van de resultaten op het scherm*/
