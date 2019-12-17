@@ -9,12 +9,11 @@ Greetings WWI
 
 
 
-
-
 ';
 
 
-$tekst ="You have ordered:
+$tekst ="
+You have ordered:
 ";
 
 foreach ($_SESSION["IDs"] as $index => $val) {
