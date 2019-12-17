@@ -7,6 +7,10 @@ All information you need is on our website. Here you have the invoice, witch is 
 
 Greetings WWI
 
+
+
+
+
 ';
 
 
@@ -19,10 +23,11 @@ foreach ($_SESSION["IDs"] as $index => $val) {
     $amount = $_SESSION["Quantitys"][$index];
     $price = $_SESSION["Prices"][$index];
     $tekst = "$tekst
-$amount. $name €$ItemPrice";
+Amount: $amount             Name of product: $name             Itemprice: €$ItemPrice";
 }
 $totalprice = number_format($_SESSION["TotalPrice"], 2);
 $tekst = "$tekst 
+
 The totalprice is €$totalprice";
 
 
