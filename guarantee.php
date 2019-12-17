@@ -20,3 +20,7 @@ include "includes/footer.php";
     <br>There’s a dissimilarity between every factory with the warranty of the items. You can see how long that lasts in the captions of your article.<br>
         <br> If there are any questions or problems about your product, go to <a href='contactForm.php'>contact form</a>  to get in touch with us.
 </h4></div>
+
+<?php
+include "includes/footer.php";
+?>
