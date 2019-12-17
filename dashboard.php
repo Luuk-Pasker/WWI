@@ -17,13 +17,13 @@ while ($row = mysqli_fetch_array($res_data)) {
     $sql = "SELECT * FROM discount WHERE PersonID = $userId";
     /*printen van de resultaten op het scherm*/
     $res_data = mysqli_query($connection, $sql);
-    while ($row = mysqli_fetch_array($res_data)) {
-        if ($row['discountUsed'] == 1) {
+    while ($row1 = mysqli_fetch_array($res_data)) {
+        if ($row1['discountUsed'] == 1) {
             ?>
 
             <div class="loginBox1">
                 <h3 class="discount" style="margin-top: 70%">You discountcode is:<br>
-                    <?= $row['discountCode'] ?></h3>
+                    <?= $row1['discountCode'] ?></h3>
                 <p class="discount">Usable for one time only!<br>For 20% discount!</p>
             </div>
             <?php
