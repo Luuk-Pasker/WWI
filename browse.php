@@ -361,6 +361,7 @@ if (isset($_GET['id'])) {
 
 <!--/*knoppenstructuur van de paginaindeling*/-->
 <?php
+
 if (!mysqli_num_rows($res_data) == 0) {
     ?>
 
@@ -373,7 +374,7 @@ if (!mysqli_num_rows($res_data) == 0) {
                 } else {
                     echo '?page=1&id=' . $sID;
                 }
-                ?>">First</a></li>
+                ?>">First page</a></li>
             <li class="<?php
             if ($page <= 1) {
                 echo 'disabled';
@@ -387,7 +388,7 @@ if (!mysqli_num_rows($res_data) == 0) {
                 } else {
                     echo "?page=" . ($page - 1) . "&id=" . $sID;
                 }
-                ?>">Prev</a>
+                ?>">Prev page</a>
             </li>
             <li>
                 <a>
@@ -409,7 +410,7 @@ if (!mysqli_num_rows($res_data) == 0) {
                 } else {
                     echo "?page=" . ($page + 1) . "&id=" . $sID;
                 }
-                ?>">Next</a>
+                ?>">Next page</a>
             </li>
             <li><a href="<?php
                 if ($sID == 0) {
@@ -419,7 +420,7 @@ if (!mysqli_num_rows($res_data) == 0) {
                 }
 
 
-                ?>">Last</a></li>
+                ?>">Last page</a></li>
         </ul>
     </div>
     <?php
