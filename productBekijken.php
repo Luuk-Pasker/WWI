@@ -278,6 +278,8 @@ include "includes/funtions.php";
     <?php
             If($row['QuantityOnHand'] > 100) {
                 print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
+            } elseif ($row['QuantityOnHand'] == 0) {
+                print("<H4 class='nogopvoorraad'>" . " Out of stock! </H4>");
             } Else {
                 print ("<H3 class='nogopvoorraad'> <strong>" . "Just ". $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");}
 
@@ -291,6 +293,8 @@ include "includes/funtions.php";
             print("<div class='prijs'>" . "€" . $price . "</div><br><br>");
             If($row['QuantityOnHand'] > 100) {
                 print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
+            } elseif ($row['QuantityOnHand'] == 0) {
+                print("<H4 class='nogopvoorraad'>" . " Out of stock! </H4>");
             } Else {
                 print ("<H3 class='nogopvoorraad'> <strong>" . "Just ". $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");}
             print("<h4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</h4><br>");
