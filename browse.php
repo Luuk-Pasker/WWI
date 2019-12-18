@@ -229,12 +229,18 @@ if (isset($_GET['id'])) {
                                 print("<a class='specialdeal'>SpecialDeal<a/><br>");
                                 print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
                                 print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
-                                print("<a>Available Now<a/>");
+
                             }else{
                                 print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $dealsArray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
-                                print("<a class='availablenow'> Available Now</a>");
+
+                            }
+
+                            if ($row["QuantityOnHand"] >=1){
+                                print("<a>Available Now<a/>");}
+                            else {
+                                print ("<a>Sold Out</a>");
                             }
 
                             /*/informatie voor elke cel invullen/*/
@@ -282,12 +288,17 @@ if (isset($_GET['id'])) {
                                 print("<a class='specialdeal'>SpecialDeal<a/><br>");
                                 print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
                                 print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
-                                print("<a>Available Now<a/>");
+
                             }else{
                                 print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
-                                print("<a class='availablenow'> Available Now</a>");
+                            }
+
+                            if ($row["QuantityOnHand"] >=1){
+                                print("<a>Available Now<a/>");}
+                            else {
+                                print ("<a>Sold Out</a>");
                             }
 
                             /*/informatie voor elke cel invullen/*/
@@ -335,12 +346,18 @@ if (isset($_GET['id'])) {
                                 print("<a class='specialdeal'>SpecialDeal<a/><br>");
                                 print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
                                 print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
-                                print("<a>Available Now<a/>");
+
                             }else{
                                 print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                                 print($Stocktitemname . "<br>");
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
-                                print("<a class='availablenow'> Available Now</a>");
+
+                            }
+
+                            if ($row["QuantityOnHand"] >=1){
+                                print("<a>Available Now<a/>");}
+                            else {
+                                print ("<a>Sold Out</a>");
                             }
                             /*/informatie voor elke cel invullen/*/
                             echo "</td>";
