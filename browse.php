@@ -118,7 +118,7 @@ if (isset($_GET['id'])) {
                 if($aantalproducten != 0) {
                     print("<h4>$aantalproducten " . "results</h4></div>");
                 }
-            } elseif(isset($_POST["deals"])){
+            } elseif(isset($_GET["deals"])){
                 $aantalproducten = 14;
                 print("<h4>$aantalproducten " . "results</h4></div>");
             } elseif ($total_rows >= 1) {
@@ -366,7 +366,7 @@ if (isset($_GET['id'])) {
 
 
 if (!mysqli_num_rows($res_data) == 0) {
-    if ($total_pages > 1 && !isset($_POST['deals']) && !isset($_GET["toevoegen"]) || $aantalproducten > 25) {
+    if ($total_pages > 1 && !isset($_GET['deals']) && !isset($_GET["toevoegen"]) || $aantalproducten > 25) {
         ?>
 
 
