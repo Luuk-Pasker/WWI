@@ -23,7 +23,7 @@ $result = mysqli_query($connection, $sql);
 <div class="Deals">
     <?php
     print("<div class='Deals'>");
-    print("<form method=\"post\" action=\"/WWI/browse.php\"><button style='background-color: rgb(15,90,255)' name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
+    print("<form method=\"get\" action=\"/WWI/browse.php\"><button style='background-color: rgb(15,90,255)' name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
     print("</div>");
     ?>
 </div>
@@ -189,7 +189,7 @@ if (isset($_GET['id'])) {
             $zoekopdracht = "zoek=" . $zoekopdracht . "&toevoegen=Search&";
             $total_pages = TelZoek($connection, $_GET["zoek"]);
             PrintSearchResults($_GET["zoek"], $offset, $no_of_records_per_page);
-        } elseif (isset($_POST['deals'])){
+        } elseif (isset($_GET['deals'])){
             $deals = GetDealsBrowse($connection);
             $dealsArray = array();
             $i = 0;
