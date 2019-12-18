@@ -474,9 +474,16 @@ $result3 = mysqli_query($connection, $discount);
             print"<h3 style='font-weight: bold;'>Your order:</h3>";
             print"<br>";
             ?> <div class="orderlist"> <?php
+
+
             foreach ($_SESSION["IDs"] as $index => $val) {
+                if ($_SESSION["DealPrices"][$index] == -1000) {
+                    $UnitPrice = $_SESSION["Prices"][$index];
+                } else {
+                    $UnitPrice = $_SESSION["DealPrices"][$index];
+                    }
                 $Photo = $_SESSION['Images'][$index];
-                $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
+                $ItemPrice = $UnitPrice * $_SESSION["Quantitys"][$index];
 
                 ?>
                     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -485,17 +492,16 @@ $result3 = mysqli_query($connection, $discount);
                     print("<br>");
                     print("<img style='float: left; margin-right: 10px;' src='$Photo' height='100px'>");
                     print("<h5 style='font-weight: bold;'>" . $_SESSION["Names"][$index] . "</h5>");
-                    print("<h5 style='font-weight: bold;'>" . "amount: " . $_SESSION["Quantitys"][$index] . "</h5>");
-                    print("<h5 style='font-weight: bold;'>" . "price: " . "€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</h5>");
+                    print("<h5 style='font-weight: bold;'>" . "Amount: " . $_SESSION["Quantitys"][$index] . "</h5>");
+                    print("<h5 style='font-weight: bold;'>" . "Price: " . "€" . number_format((float) $UnitPrice, 2, '.', '') . "</h5>");
                     print"<br>";
                     ?>
                 <?php
             }
             ?>
         </div> <?php
-            print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
 
-            if ($_SESSION['TotalPrice'] < 56.95){
+            if ($_SESSION['ShippingPrice'] ){
                 print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
             }
             print("<h5 style='font-weight: bold; font-size: 20px'>" . "Total: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
