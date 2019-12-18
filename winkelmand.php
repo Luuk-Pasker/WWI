@@ -243,18 +243,21 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
                     print("<b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
                     print("<b><br><br>€" . number_format((float)$correct, 2, '.', '') . "</b>");*/
                             $_SESSION["TotalPrice"] = $correct;
-                        } elseif ($row['discountUsed'] == 1 && $row['PersonID'] == $userId) {
-                            $correct = $_SESSION["TotalPrice"] * (100 - $row['discount']) / 100;
-                            print("<div class='scDiscountMessageGood'>Your personal discount for " . $row['discount'] . "% code has been used!</div>");
-                            $_SESSION["TotalPrice"] = $correct;
+                        } elseif ($row['discountUsed'] == 1) {
+                            if (empty($_SESSION['login'])) {
+                                print("<div class='scDiscountMessageBad2'>This discount code is wrong.</div>");
+                            } else if ($row['PersonID'] == $userId) {
+                                $correct = $_SESSION["TotalPrice"] * (100 - $row['discount']) / 100;
+                                print("<div class='scDiscountMessageGood'>Your personal discount for " . $row['discount'] . "% code has been used!</div>");
+                                $_SESSION["TotalPrice"] = $correct;
 
-                            $sql = "UPDATE discount SET  discountUsed = ? WHERE PersonID = '$userId'";
+                                $sql = "UPDATE discount SET  discountUsed = ? WHERE PersonID = '$userId'";
 
-                            $disused = 2;
-                            $stmt = $connection->prepare($sql);
-                            $stmt->bind_param('s', $disused);
-                            $stmt->execute();
-
+                                $disused = 2;
+                                $stmt = $connection->prepare($sql);
+                                $stmt->bind_param('s', $disused);
+                                $stmt->execute();
+                            }
                         } else {
                             print("<div class='scDiscountMessageBad'>This discount code has already been used.</div>");
                         }
