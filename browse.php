@@ -169,7 +169,7 @@ if (isset($_GET['id'])) {
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
                             }
 
-                            if($row["QuantityOnHand"] >= 1) {
+                            if($browsearray[$x]["QuantityOnHand"] >= 1) {
                                 print("<a>Available Now</a>");
                             } else {
                                 print("<a>Sold Out</a>");
@@ -237,8 +237,8 @@ if (isset($_GET['id'])) {
 
                             }
 
-                            if(isset($row["QuantityOnHand"])){
-                            if ($row["QuantityOnHand"] >=1){
+                            if(isset($browsearray[$x]["QuantityOnHand"])){
+                            if ($browsearray[$x]["QuantityOnHand"] >=1){
                                 print("<a>Available Now<a/>");
                             } } else {
                                 print ("<a>Sold Out</a>");
@@ -296,8 +296,8 @@ if (isset($_GET['id'])) {
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
                             }
 
-                            if(isset($row["QuantityOnHand"])) {
-                                if ($row["QuantityOnHand"] >=1){
+                            if(isset($browsearray[$x]["QuantityOnHand"])) {
+                                if ($browsearray[$x]["QuantityOnHand"] >=1){
                                 print("<a>Available Now<a/>");
                                 } } else {
                                 print ("<a>Sold Out</a>");
