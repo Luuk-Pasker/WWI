@@ -169,10 +169,10 @@ if (isset($_GET['id'])) {
                                 print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
                             }
 
-                            if ($row["QuantityOnHand"] >=1) {
-                                print("<a>Available Now</a>");
-                            } else {
+                            if($row["QuantityOnHand"] >= 1) {
                                 print("<a>Sold Out</a>");
+                            } else {
+                                print("<a>Available Now</a>");
                             }
 
                             /*/informatie voor elke cel invullen/*/
