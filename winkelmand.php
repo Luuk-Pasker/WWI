@@ -237,8 +237,8 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
                     $result = mysqli_query($connection, $discount);
                     foreach ($result as $row) {
                         if (($row['discountUsed']) == 0) {
-                            $correct = $_SESSION["TotalPrice"] * (100 - substr($row['discount'], 0, -1)) / 100;
-                            print("<div class='scDiscountMessageGood'>" . $row['discount'] . " discount has been applied.</div>");
+                            $correct = $_SESSION["TotalPrice"] * (100 - $row['discount']) / 100;
+                            print("<div class='scDiscountMessageGood'>" . $row['discount'] . "% discount has been applied.</div>");
                             /*door de code heen*//*
                     print("<b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
                     print("<b><br><br>€" . number_format((float)$correct, 2, '.', '') . "</b>");*/
