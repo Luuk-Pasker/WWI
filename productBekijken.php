@@ -507,7 +507,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == TRUE) {
     </form><br><br>
     <?php
 } else {
-    print("<h4 style='text-align: center; margin-bottom: 30px'>You need to login to post a review</h4>");
+    print("<h4 style='text-align: center; margin-bottom: 30px'>You need to <href login to post a review</h4>");
 }
 
 include "includes/footer.php";

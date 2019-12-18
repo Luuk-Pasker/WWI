@@ -304,7 +304,7 @@ $result3 = mysqli_query($connection, $discount);
                     }
 
                     $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
-                    
+
 
                     /*printen van de resultaten op het scherm*/
                     $res_data = mysqli_query($connection, $sql);
