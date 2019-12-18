@@ -134,8 +134,21 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
             echo "</table>";
         }
     } else {
-        header("location: NiksGevonden.php");
-        exit();
+        ?>
+        <div class="niksgevonden">
+
+            <img class="kruis2" src="images/kruis.JPG">
+            <div class="fouttekst">
+                <p class="itemnotfound2"> This item has not been found.<br></p>
+
+                <p class="text2"> The item that you wanted to find, could not be found. <br>
+                    This could be due: problems with our webpage, words are mispelled or other reasons. <br>
+                </p>
+
+                <a href="index.php" class="terug">  Go back to the homepage </a>
+
+            </div>
+<?php
     }
 }
 

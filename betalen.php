@@ -491,9 +491,15 @@ $result3 = mysqli_query($connection, $discount);
                     ?>
                 <?php
             }
+<<<<<<< HEAD
             ?>
         </div> <?php
             print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
+=======
+            if ($_SESSION['TotalPrice'] < 56.95){
+                print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
+            }
+>>>>>>> 2e05c03b737e89265955b0db118a40a78b05cb91
             print("<h5 style='font-weight: bold; font-size: 20px'>" . "Total: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
 
         }
