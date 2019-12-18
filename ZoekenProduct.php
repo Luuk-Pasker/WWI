@@ -22,8 +22,19 @@ group by StockItemName
     return $result;
 }
 
+
+/*select distinct * from stockitems sitem
+join stockitemstockgroups sgroup on sgroup.StockItemID = sitem.StockItemID
+join stockgroups sgroups on sgroup.StockGroupID = sgroups.StockGroupID
+where StockItemName like CONCAT('%',?,'%')
+or SearchDetails like CONCAT('%',?,'%')
+or Tags like CONCAT('%',?,'%')
+or StockGroupName = ?
+or sitem.StockItemID = ?
+group by StockItemName*/
 function ZoekPoduct($connection, $zoek, $no_of_records_per_page, $offset) {
-    $statement = mysqli_prepare($connection, "select distinct * from stockitems sitem
+    $statement = mysqli_prepare($connection, "select distinct *, QuantityOnHand from stockitems sitem
+join stockitemholdings sih on sitem.StockItemID = sih.StockItemID
 join stockitemstockgroups sgroup on sgroup.StockItemID = sitem.StockItemID
 join stockgroups sgroups on sgroup.StockGroupID = sgroups.StockGroupID
 where StockItemName like CONCAT('%',?,'%')
@@ -117,12 +128,20 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
                             print("<a class='specialdeal'>SpecialDeal<a/><br>");
                             print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
                             print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
-                            print("<a>Available Now<a/>");
+                            if ($browsearray[$x][$x]["QuantityOnHand"] >=1){
+                                print("<a>Available Now<a/>");
+                            } else {
+                                print ("<a>Sold Out</a>");
+                            }
                         }else{
                             print("<a class= 'tekstVooronderProduct' href='productBekijken.php?id=" . $browsearray[$x]['StockItemID'] . "'><img class='productfoto' src='$image' width='100%' <br>");
                             print($Stocktitemname . "<br>");
                             print("<h4 class='prijsje'>" . "€" . $price . "</h4>");
-                            print("<a class='availablenow'> Available Now</a>");
+                            if ($browsearray[$x]["QuantityOnHand"] >=1){
+                                print("<a>Available Now<a/>");
+                            } else {
+                                print ("<a>Sold Out</a>");
+                            }
                         }
                         /*/informatie voor elke cel invullen/*/
                         echo "</td>";
