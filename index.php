@@ -1,27 +1,36 @@
 <?php
 $active = "home";
+/*header en functions*/
 include "includes/header.php";
 include "includes/funtions.php";
+/*header en functions*/
 
 
+/*link naar css*/
 print("<link rel='stylesheet' type='text/css' href = 'css/home.css'>");
-print("<link rel='stylesheet' type='text/css' href='css/home.css'>");
-
-/* sql query voor alle categorien*/
-$sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
-$result = mysqli_query($connection, $sql);
-/* sql query voor alle categorien   */
+print("<link rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css'>");
+/*link naar css*/
 
 
-/*print alle namen op de knoppen*/
-print("<form method='get' action=\"/WWI/browse.php\">");
+/*navigatie bar*/
 
-while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    /*navigationbar*/
-    print("<button class='button' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
-}
-print("</form></div>");
-/*navigationbar*/
+    /* sql query voor alle categorien*/
+    $sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
+    $result = mysqli_query($connection, $sql);
+    /* sql query voor alle categorien   */
+
+
+    /*print alle namen op de knoppen*/
+    print("<form method='get' action=\"/WWI/browse.php\">");
+
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        /*navigationbar*/
+        print("<button class='button' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
+    }
+    print("</form></div>");
+
+/*navigatie bar*/
+
 
 /*maak een array met de random producten*/
 $sql = "SELECT * FROM StockItems ORDER BY StockItemID";
@@ -36,6 +45,7 @@ foreach ($resultRandomProduct as $row) {
 }
 /*maak een array met de random producten*/
 
+
 /*maak een array met de verkregen deals*/
 $results = GetDeals($connection);
 $aantalpaginas = floor(mysqli_num_rows($results) / 3);
@@ -49,6 +59,7 @@ foreach ($results as $row) {
 }
 /*maak een array met de verkregen deals*/
 
+
 /*maak een array met de laatst toegevoegde items*/
 $laatstToegevoegd = GetLaatstToegevoegd($connection);
 $fullArrayLaatstToegevoegd = array();
@@ -59,11 +70,11 @@ foreach ($laatstToegevoegd as $row) {
         $i++;
     }
 }
-/*maak een array met de laatst toegevoegde items*/
 ?>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--/*maak een array met de laatst toegevoegde items*/-->
 
 
+<!--slider/banner-->
 <div class="homebody">
 
     <link rel='stylesheet' type='text/css' href = 'banner css/slider.css'>
@@ -84,9 +95,12 @@ foreach ($laatstToegevoegd as $row) {
 
 
         </figure>
-    </div>
+
+</div>
+<!--slider/banner-->
 
 
+<!--producten geprint in tabel die in de aanbieding zijn-->
     <table width="100%" class="table table-bordered">
         <tr>
             <?php
@@ -115,7 +129,10 @@ foreach ($laatstToegevoegd as $row) {
             </td>
         </tr>
     </table>
+<!--producten geprint in tabel die in de aanbieding zijn-->
 
+
+<!--producten geprint die nieuw zijn-->
     <table width="100%" class="table table-bordered">
         <tr>
             <?php
@@ -144,6 +161,8 @@ foreach ($laatstToegevoegd as $row) {
         </tr>
     </table>
 </div>
+<!--producten geprint die nieuw zijn-->
+
 
 <?php
 include "includes/footer.php";
