@@ -295,8 +295,25 @@ a.loginLink:hover{
     text-align: center;
 }
 
-.scDiscountMessage{
-    margin: 80px 60px 0px 0px;
+.scDiscountMessageGood{
+    margin: 80px 60px 0px 730px;
+    background-color: #19c107;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.scDiscountMessageBad{
+    margin: 80px 60px 0px 640px;
+    background-color: red;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.scDiscountMessageBad2{
+    margin: 80px 60px 0px 800px;
+    background-color: red;
+    border-radius: 4px;
+    padding: 5px;
 }
 
 .Inputborder{

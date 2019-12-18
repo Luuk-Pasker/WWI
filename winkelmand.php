@@ -214,7 +214,7 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
 
         print("<div class='scBoxFoot'>");
         print("<div  class='scHeadRow'  style=' position: absolute; overflow: hidden; margin-top: 20px'>");
-        print("<form method='post'><p style='width: 700px; float: left; margin-top: 10px'>Discount code:</p><input type='text' name='discountcode' style='width: 134px; margin: 0 0 0 26px; float: left; margin-top: 10px'> <input type='submit' name='discountSubmit' value='submit' style='width: 106px; margin: 0 0 0 24px; float: left'></form>");
+        print("<form method='post'><p style='width: 700px; float: left; margin-top: 10px'>Discount code:</p><input type='text' name='discountcode' style='width: 134px; margin: 0 0 0 26px; float: left; margin-top: 10px'> <input type='submit' name='discountSubmit' value='Submit' style='width: 106px; margin: 0 0 0 24px; float: left'></form>");
         print("</div>");
 
         $host = "localhost";
@@ -227,27 +227,33 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
         if (isset($_POST['discountSubmit'])&&!empty($_POST["discountcode"])) {
             $discount = "SELECT * FROM discount";
             $result = mysqli_query($connection, $discount);
+            $DiscUsed = false;
             foreach ($result as $row1) {
                 $dcode = $_POST['discountcode'];
                 $disountCode = $row1['discountCode'];
                 if ($disountCode == $dcode) {
-
-                    $discount = "SELECT * FROM discount WHERE discountCode = '$dcode' AND discountUsed = '0'";
+                    $DiscUsed = true;
+                    $discount = "SELECT * FROM discount WHERE discountCode = '$dcode'";
                     $result = mysqli_query($connection, $discount);
-
                     foreach ($result as $row) {
-                        $correct = $_SESSION["TotalPrice"] * (100 - substr($row['discount'], 0, -1)) / 100;
-                        print("<div class='scDiscountMessage'>" . $row['discount'] . " discount has been applied.</div>");
-                        /*door de code heen*//*
-                        print("<b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
-                        print("<b><br><br>€" . number_format((float)$correct, 2, '.', '') . "</b>");*/
-                        $_SESSION["TotalPrice"] = $correct;
+                        if (($row['discountUsed']) == 0) {
+                            $correct = $_SESSION["TotalPrice"] * (100 - substr($row['discount'], 0, -1)) / 100;
+                            print("<div class='scDiscountMessageGood'>" . $row['discount'] . " discount has been applied.</div>");
+                            /*door de code heen*//*
+                    print("<b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
+                    print("<b><br><br>€" . number_format((float)$correct, 2, '.', '') . "</b>");*/
+                            $_SESSION["TotalPrice"] = $correct;
+                        } else {
+                            print("<div class='scDiscountMessageBad'>This discount code has already been used.</div>");
+                        }
                     }
-
                 }
             }
+            if(!$DiscUsed) {
+                print("<div class='scDiscountMessageBad2'>This discount code is wrong.</div>");
+            }
         } else {
-            print("<div class='scDiscountMessage'> </div>");
+            print("<div style='margin: 80px 60px 0px 0px;'> </div>");
             /*
             print("<b><br>€" . number_format((float)$shippingPrice, 2, '.', '') . "</b>");
             print("<b><br><br>€" . number_format((float)$_SESSION["TotalPrice"], 2, '.', '') . "</b>");*/
