@@ -13,7 +13,9 @@ function GetDeals($connection)
 /*zoek alle huidige producten met korting op voor browse pagina*/
 function GetDealsBrowse($connection)
 {
-    $sql = "SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals)";
+    /*SELECT * FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals)";
+    */
+    $sql = "SELECT *, QuantityOnHand FROM stockitems sitem JOIN stockitemstockgroups sitemsgroup ON sitem.StockItemID = sitemsgroup.StockItemID join stockitemholdings sih on sitem.StockItemID = sih.StockItemID WHERE sitemsgroup.StockGroupID IN (SELECT StockGroupID FROM specialdeals)";
     $results = mysqli_query($connection, $sql);
     return $results;
 }
