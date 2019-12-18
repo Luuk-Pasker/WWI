@@ -1,27 +1,36 @@
 <?php
 $active = "home";
+/*header en functions*/
 include "includes/header.php";
 include "includes/funtions.php";
+/*header en functions*/
 
 
+/*link naar css*/
 print("<link rel='stylesheet' type='text/css' href = 'css/home.css'>");
-print("<link rel='stylesheet' type='text/css' href='css/home.css'>");
-
-/* sql query voor alle categorien*/
-$sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
-$result = mysqli_query($connection, $sql);
-/* sql query voor alle categorien   */
+print("<link rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css'>");
+/*link naar css*/
 
 
-/*print alle namen op de knoppen*/
-print("<form method='get' action=\"/WWI/browse.php\">");
+/*navigatie bar*/
 
-while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    /*navigationbar*/
-    print("<button class='button' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
-}
-print("</form></div>");
-/*navigationbar*/
+    /* sql query voor alle categorien*/
+    $sql = "SELECT * FROM stockgroups ORDER BY StockGroupName";
+    $result = mysqli_query($connection, $sql);
+    /* sql query voor alle categorien   */
+
+
+    /*print alle namen op de knoppen*/
+    print("<form method='get' action=\"/WWI/browse.php\">");
+
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        /*navigationbar*/
+        print("<button class='button' name='id' value='" . $row['StockGroupID'] . "'>" . $row['StockGroupName'] . "</button>");
+    }
+    print("</form></div>");
+
+/*navigatie bar*/
+
 
 /*maak een array met de random producten*/
 $sql = "SELECT * FROM StockItems ORDER BY StockItemID";
@@ -36,6 +45,7 @@ foreach ($resultRandomProduct as $row) {
 }
 /*maak een array met de random producten*/
 
+
 /*maak een array met de verkregen deals*/
 $results = GetDeals($connection);
 $aantalpaginas = floor(mysqli_num_rows($results) / 3);
@@ -49,6 +59,7 @@ foreach ($results as $row) {
 }
 /*maak een array met de verkregen deals*/
 
+
 /*maak een array met de laatst toegevoegde items*/
 $laatstToegevoegd = GetLaatstToegevoegd($connection);
 $fullArrayLaatstToegevoegd = array();
@@ -59,95 +70,37 @@ foreach ($laatstToegevoegd as $row) {
         $i++;
     }
 }
-/*maak een array met de laatst toegevoegde items*/
 ?>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--/*maak een array met de laatst toegevoegde items*/-->
 
 
+<!--slider/banner-->
 <div class="homebody">
 
+    <link rel='stylesheet' type='text/css' href = 'banner css/slider.css'>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin: 0 auto;">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+    <div id="slider">
+        <figure>
+            <a href="browse.php<?= '?deals=deals' ?>">
+                <img src="banner css/banner%20christmas.gif">
+            </a>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" style ="display: flex!important; justify-content: center">
-            <?php
-            for($i=0; $i<3; $i++){
-                if($i==0){
-                    print("<div class=\"item active\"><table><tr>");
-                    for($j=0; $j<4; $j++) {
-                        $randomProduct = rand(0,227);
-                        $ItemID = $randomProductArray[$randomProduct]['StockItemID'];
-                        $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
-                        if(!(@getimagesize($image))){
-                            $image = "images/" . $randomProductArray[$randomProduct]['Photo'];
-                        }
-                        print("
-                            <th>
-                            <a href='productBekijken.php?id=" . $randomProductArray[$randomProduct]['StockItemID'] . "'>
-                            <img src='$image' style=\"height:200px;float: left; text-align: center\">
-                            </a>
-                            </th>");
-                    }
-                    print("</tr></table></div>");
-                } else {
-                    print("<div class=\"item\"><table><tr>");
-                    for($j=0; $j<4; $j++) {
-                        $randomProduct = rand(0,227);
-                        $ItemID = $randomProductArray[$randomProduct]['StockItemID'];
-                        $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
-                        if(!(@getimagesize($image))){
-                            $image = "images/" . $randomProductArray[$randomProduct]['Photo'];
-                        }
-                        print("
-                            <th>
-                            <a href='productBekijken.php?id=" . $randomProductArray[$randomProduct]['StockItemID'] . "'>
-                            <img src='$image' style=\"height:200px;float: left; text-align: center\">
-                            </a>
-                            </th>");
-                    }
-                    print("</tr></table></div>");
-                }
-            }
-            ?>
-        </div>
+            <a href="register.php">
+                <img src="banner%20css/banner%20login.gif">
+            </a>
+
+            <a href="browse.php">
+                <img src="banner%20css/banner%20footwear.gif">
+            </a>
 
 
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+        </figure>
 
-        <script>
-    var myIndex = 0;
-    carousel();
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}
-        x[myIndex-1].style.display = "block";
-        setTimeout(carousel, 3000); // Change image every 2 seconds
-    }
-</script>
+</div>
+<!--slider/banner-->
 
 
+<!--producten geprint in tabel die in de aanbieding zijn-->
     <table width="100%" class="table table-bordered">
         <tr>
             <?php
@@ -168,7 +121,7 @@ foreach ($laatstToegevoegd as $row) {
             <td colspan="4" style="border: none!important;">
                 <!--<a href="browse.php">-->
                     <div style="text-align: center">
-                        <form method="post" action="browse.php">
+                        <form method="get" action="browse.php">
                         <button type="submit" name='deals' value="deals" class="btn btn-primary">See More Deals</button>
                         </form>
                     </div>
@@ -176,7 +129,10 @@ foreach ($laatstToegevoegd as $row) {
             </td>
         </tr>
     </table>
+<!--producten geprint in tabel die in de aanbieding zijn-->
 
+
+<!--producten geprint die nieuw zijn-->
     <table width="100%" class="table table-bordered">
         <tr>
             <?php
@@ -205,6 +161,8 @@ foreach ($laatstToegevoegd as $row) {
         </tr>
     </table>
 </div>
+<!--producten geprint die nieuw zijn-->
+
 
 <?php
 include "includes/footer.php";

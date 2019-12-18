@@ -8,7 +8,7 @@ $discount = "20";
 $discountUsed = "1";
 ?>
 
-    <div class="loginBox" style="height: 70%; top: 55%;">
+    <div class="loginBox" style="height: 85%; top: 70%; margin-bottom: 5%;">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -95,29 +95,34 @@ $discountUsed = "1";
     </div>
 
 <?php
-
 if (isset($_POST['submit'])) {
     $password = hash('sha256', $_POST['password']);
     $HPass = strtoupper($password);
     $permitted = "1";
 
-    $sql = "SELECT LogonName, MAX(PersonID) AS HighestID FROM people";
+    $sql = "SELECT LogonName FROM people";
     /*printen van de resultaten op het scherm*/
     $res_data = mysqli_query($connection, $sql);
-    foreach ($res_data as $row) {
-        if ($_POST['email'] == $row['LogonName']) {
-            $error = "Email is already in use, try something else!";
-        } elseif (empty($_POST['username'])) {
-            $error = array("Fill in username!");
-        } elseif (empty($_POST['email'])) {
-            $error = array("Fill in email!");
-        } elseif (empty($_POST['phone'])) {
-            $error = "Fill in phonenumber!";
-        } elseif (empty($_POST['password'])) {
-            $error = "Fill in password!";
-        } elseif ($_POST['email'] == $_POST['password']) {
-            $error = "Username and password can't be the same!";
-        } elseif ($_POST['password'] == $_POST['repeatPassword']) {
+    foreach ($res_data as $row1) {
+
+        $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
+        /*printen van de resultaten op het scherm*/
+        $res_data = mysqli_query($connection, $sql);
+        foreach ($res_data as $row) {
+
+            if ($_POST['email'] == $row1['LogonName']) {
+                $error = "Email is already in use, try something else!";
+            } elseif (empty($_POST['username'])) {
+                $error = array("Fill in username!");
+            } elseif (empty($_POST['email'])) {
+                $error = array("Fill in email!");
+            } elseif (empty($_POST['phone'])) {
+                $error = "Fill in phonenumber!";
+            } elseif (empty($_POST['password'])) {
+                $error = "Fill in password!";
+            } elseif ($_POST['email'] == $_POST['password']) {
+                $error = "Username and password can't be the same!";
+            } elseif ($_POST['password'] == $_POST['repeatPassword']) {
                 $PersonID = $row['HighestID'] + 1;
                 $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -130,9 +135,10 @@ if (isset($_POST['submit'])) {
                 $stmt1 = $connection->prepare($sql1);
                 $stmt1->bind_param('ssss', $discountCode, $PersonID, $discountUsed, $discount);
                 $stmt1->execute();
-            echo '<script> window.location.href = "login.php"; </script>';
-        } else {
-            $error = "Passwords do not match";
+                echo '<script> window.location.href = "login.php"; </script>';
+            } else {
+                $error = "Passwords do not match";
+            }
         }
     }
 }
@@ -140,9 +146,8 @@ if (isset($_POST['submit'])) {
 if (empty($error)) {
 
 } else {
-    foreach ($error as $item => $message) {
-        echo "<div class='errorBox' style='margin-top: 1%'>$message</div>";
-    }
+    echo "<div class='errorBox' style='margin-top: 1%'>$error</div>";
+
 }
 
 include "includes/footer.php";

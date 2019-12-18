@@ -278,6 +278,8 @@ include "includes/funtions.php";
     <?php
             If($row['QuantityOnHand'] > 100) {
                 print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
+            } elseif ($row['QuantityOnHand'] == 0) {
+                print("<H4 class='nogopvoorraad'>" . " Out of stock! </H4>");
             } Else {
                 print ("<H3 class='nogopvoorraad'> <strong>" . "Just ". $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");}
 
@@ -291,6 +293,8 @@ include "includes/funtions.php";
             print("<div class='prijs'>" . "€" . $price . "</div><br><br>");
             If($row['QuantityOnHand'] > 100) {
                 print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
+            } elseif ($row['QuantityOnHand'] == 0) {
+                print("<H4 class='nogopvoorraad'>" . " Out of stock! </H4>");
             } Else {
                 print ("<H3 class='nogopvoorraad'> <strong>" . "Just ". $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");}
             print("<h4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</h4><br>");
@@ -460,7 +464,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == TRUE) {
                     <input type="text" name="Author" value="<?php print($author); ?>"
                            style="width: 100%!important; float: left">
                 </td>
-                <td style="width: 100px;">
+                <td style="width: 110px;">
                     <div class="rating" style="float: left; text-align: center">
                         <div class="star-rating"
                              style="height: 20px; margin-top: 0px; padding: 0px; margin-left: 10px; margin-right: auto">

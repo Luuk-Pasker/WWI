@@ -33,7 +33,7 @@ while ($row = mysqli_fetch_array($res_data)) {
         }
     }
     ?>
-    <div class="loginBox">
+    <div class="loginBox" style="height: 85%; top: 70%; margin-bottom: 5%;">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
@@ -109,7 +109,7 @@ while ($row = mysqli_fetch_array($res_data)) {
             <div class="loginRow">
                 <div class="loginColumn2">
                     <input type="submit" name="edit" value="Edit information">
-                    <a class="loginLink" href="index.php" style="margin-left: 25%">Go back to home </a>
+                    <a class="loginLink" href="index.php" style="margin-left: 22%; margin-right: 5%">Home </a>
                     <input type="submit" name="logout" value="Logout">
                 </div>
             </div>

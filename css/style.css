@@ -136,8 +136,8 @@ input[type=submit] {
     margin-right: -50%;
     transform: translate(-50%, -50%);
     width: 20%;
-    height: 70%;
-    top: 55%;
+    height: 84.5%;
+    top: 70%;
     border-radius: 20px
 }
 
@@ -170,7 +170,6 @@ input[type=submit] {
 .loginColumn2{
     width: 50%;
     margin-left: 30%;
-    overflow: hidden;
     padding-left: 10px;
 }
 
@@ -190,12 +189,22 @@ a.loginLink:hover{
 }
 
 .scBox{
-    top: 40%;
+    top: 340px;
     margin: 0 -50% 0 50%;
     transform: translate(-50%);
     position: absolute;
     overflow: hidden;
     font-size: large;
+    width: 1100px;
+}
+
+.scBoxFoot{
+    margin: 10px;
+    overflow: hidden;
+    font-size: large;
+    width: 1058px;
+    height: 300px;
+    text-align: right;
 }
 
 .scRow{
@@ -284,6 +293,10 @@ a.loginLink:hover{
 
 .scEmpty{
     text-align: center;
+}
+
+.scDiscountMessage{
+    margin: 80px 60px 0px 0px;
 }
 
 .Inputborder{

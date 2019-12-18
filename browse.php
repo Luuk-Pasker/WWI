@@ -23,7 +23,7 @@ $result = mysqli_query($connection, $sql);
 <div class="Deals">
     <?php
     print("<div class='Deals'>");
-    print("<form method=\"post\" action=\"/WWI/browse.php\"><button style='background-color: rgb(15,90,255)' name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
+    print("<form method=\"get\" action=\"/WWI/browse.php\"><button style='background-color: rgb(15,90,255)' name='deals' value='deals' class='button' type=\"submit\">Deals</button></form>");
     print("</div>");
     ?>
 </div>
@@ -37,6 +37,7 @@ $result = mysqli_query($connection, $sql);
 
 <div class="NewItems">
     <?php
+    print("<div class='Deals'>");
     print("<div class='Deals'>");
     print("<form method=\"post\" action=\"/WWI/browse.php\"><button name='NewItems' value='NewItems' class='button' type=\"submit\">New Items</button></form>");
     print("</div>");
@@ -117,7 +118,7 @@ if (isset($_GET['id'])) {
                 if($aantalproducten != 0) {
                     print("<h4>$aantalproducten " . "results</h4></div>");
                 }
-            } elseif(isset($_POST["deals"])){
+            } elseif(isset($_GET["deals"])){
                 $aantalproducten = 14;
                 print("<h4>$aantalproducten " . "results</h4></div>");
             } elseif ($total_rows >= 1) {
@@ -189,7 +190,7 @@ if (isset($_GET['id'])) {
             $zoekopdracht = "zoek=" . $zoekopdracht . "&toevoegen=Search&";
             $total_pages = TelZoek($connection, $_GET["zoek"]);
             PrintSearchResults($_GET["zoek"], $offset, $no_of_records_per_page);
-        } elseif (isset($_POST['deals'])){
+        } elseif (isset($_GET['deals'])){
             $deals = GetDealsBrowse($connection);
             $dealsArray = array();
             $i = 0;
@@ -362,67 +363,71 @@ if (isset($_GET['id'])) {
 <!--/*knoppenstructuur van de paginaindeling*/-->
 <?php
 
+
+
 if (!mysqli_num_rows($res_data) == 0) {
-    ?>
+    if ($total_pages > 1 && !isset($_GET['deals']) && !isset($_GET["toevoegen"]) || $aantalproducten > 25) {
+        ?>
 
 
-    <div class="paginatie">
-        <ul class="pagination">
-            <li><a href="<?php
-                if ($sID == 0) {
-                    echo '?page=1';
-                } else {
-                    echo '?page=1&id=' . $sID;
-                }
-                ?>">First page</a></li>
-            <li class="<?php
-            if ($page <= 1) {
-                echo 'disabled';
-            }
-            ?>">
-                <a href="<?php
+        <div class="paginatie">
+            <ul class="pagination">
+                <li><a href="<?php
+                    if ($sID == 0) {
+                        echo '?page=1';
+                    } else {
+                        echo '?page=1&id=' . $sID;
+                    }
+                    ?>">First page</a></li>
+                <li class="<?php
                 if ($page <= 1) {
-                    echo '#';
-                } elseif ($sID == 0) {
-                    echo "?" . $zoekopdracht . "page=" . ($page - 1);
-                } else {
-                    echo "?page=" . ($page - 1) . "&id=" . $sID;
+                    echo 'disabled';
                 }
-                ?>">Prev page</a>
-            </li>
-            <li>
-                <a>
-                    <?php
-                    print($page);
-                    ?>
-                </a>
-            </li>
-            <li class="<?php
-            if ($page >= $total_pages) {
-                echo 'disabled';
-            }
-            ?>">
-                <a href="<?php
+                ?>">
+                    <a href="<?php
+                    if ($page <= 1) {
+                        echo '#';
+                    } elseif ($sID == 0) {
+                        echo "?" . $zoekopdracht . "page=" . ($page - 1);
+                    } else {
+                        echo "?page=" . ($page - 1) . "&id=" . $sID;
+                    }
+                    ?>">Prev page</a>
+                </li>
+                <li>
+                    <a>
+                        <?php
+                        print($page);
+                        ?>
+                    </a>
+                </li>
+                <li class="<?php
                 if ($page >= $total_pages) {
-                    echo '#';
-                } elseif ($sID == 0) {
-                    echo "?" . $zoekopdracht . "page=" . ($page + 1);
-                } else {
-                    echo "?page=" . ($page + 1) . "&id=" . $sID;
+                    echo 'disabled';
                 }
-                ?>">Next page</a>
-            </li>
-            <li><a href="<?php
-                if ($sID == 0) {
-                    echo '?page=' . $total_pages;
-                } else {
-                    echo '?page=' . $total_pages . "&id=" . $sID;
-                }
+                ?>">
+                    <a href="<?php
+                    if ($page >= $total_pages) {
+                        echo '#';
+                    } elseif ($sID == 0) {
+                        echo "?" . $zoekopdracht . "page=" . ($page + 1);
+                    } else {
+                        echo "?page=" . ($page + 1) . "&id=" . $sID;
+                    }
+                    ?>">Next page</a>
+                </li>
+                <li><a href="<?php
+                    if ($sID == 0) {
+                        echo '?page=' . $total_pages;
+                    } else {
+                        echo '?page=' . $total_pages . "&id=" . $sID;
+                    }
 
-                ?>">Last page</a></li>
-        </ul>
-    </div>
-    <?php
+                    ?>">Last page</a></li>
+            </ul>
+        </div>
+        <?php
+    }
 }
 ?>
 <!--/*knoppenstructuur van de paginaindeling*/-->
