@@ -81,23 +81,22 @@ foreach ($laatstToegevoegd as $row) {
 
     <div id="slider">
         <figure>
-            <a href="browse.php">
+            <a href="http://localhost/WWI/browse.php?deals=deals">
                 <img src="banner css/banner%20christmas.gif">
             </a>
 
-            <a href="browse.php">
+            <a href="http://localhost/WWI/register.php">
                 <img src="banner%20css/banner%20login.gif">
             </a>
 
-            <a href="browse.php">
+            <a href="http://localhost/WWI/browse.php?id=8">
                 <img src="banner%20css/testbanner3.33.gif">
             </a>
 
-            <a href="browse.php">
-                <img src="banner%20css/banner 4.gif">
-            </a>
 
-            <a href="browse.php">
+                <img src="banner%20css/banner 4.gif">
+            
+            <a href="http://localhost/WWI/browse.php?deals=deals">
                 <img src="banner css/banner%20christmas.gif">
             </a>
 
