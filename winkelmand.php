@@ -291,8 +291,10 @@ if(isset($_SESSION["IDs"]) && isset($_SESSION["Names"]) && isset($_SESSION["Quan
         //berekent de verzendkosten
         if ($_SESSION["TotalPrice"] < 50) {
             $shippingPrice = 6.95;
+            $_SESSION["ShippingPrice"] = true;
         } else {
             $shippingPrice = 0;
+            $_SESSION["ShippingPrice"] = false;
         }
         $_SESSION["TotalPrice"] += $shippingPrice;
         print("<div class='scHeadRow' style=' position: absolute; overflow: hidden; margin-top: 30px'>");
