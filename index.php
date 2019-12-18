@@ -81,22 +81,31 @@ foreach ($laatstToegevoegd as $row) {
 
     <div id="slider">
         <figure>
-            <a href="browse.php<?= '?deals=deals' ?>">
+            <a href="browse.php">
                 <img src="banner css/banner%20christmas.gif">
             </a>
 
-            <a href="register.php">
+            <a href="browse.php">
                 <img src="banner%20css/banner%20login.gif">
             </a>
 
             <a href="browse.php">
-                <img src="banner%20css/banner%20footwear.gif">
+                <img src="banner%20css/testbanner3.33.gif">
             </a>
+
+            <a href="browse.php">
+                <img src="banner%20css/banner 4.gif">
+            </a>
+
+            <a href="browse.php">
+                <img src="banner css/banner%20christmas.gif">
+            </a>
+
 
 
         </figure>
 
-</div>
+    </div>
 <!--slider/banner-->
 
 
