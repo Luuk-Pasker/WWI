@@ -24,7 +24,7 @@ include "includes/footer.php";
                 Papendorpseweg 100<BR>
                 3528 BJ Utrecht<BR>
                 <br>
-                Mail: wideworldimporters@gmail.com<BR>
+                Mail: wideworldimportersgroep5@gmail.com<BR>
                 <BR>
                 Phonenumber: 06-24533242
             </h4>
