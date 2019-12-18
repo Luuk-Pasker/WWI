@@ -170,9 +170,9 @@ if (isset($_GET['id'])) {
                             }
 
                             if($row["QuantityOnHand"] >= 1) {
-                                print("<a>Sold Out</a>");
-                            } else {
                                 print("<a>Available Now</a>");
+                            } else {
+                                print("<a>Sold Out</a>");
                             }
 
                             /*/informatie voor elke cel invullen/*/
