@@ -121,7 +121,7 @@ foreach ($laatstToegevoegd as $row) {
             <td colspan="4" style="border: none!important;">
                 <!--<a href="browse.php">-->
                     <div style="text-align: center">
-                        <form method="post" action="browse.php">
+                        <form method="get" action="browse.php">
                         <button type="submit" name='deals' value="deals" class="btn btn-primary">See More Deals</button>
                         </form>
                     </div>
