@@ -239,49 +239,50 @@ include "includes/funtions.php";
 
             ?>
             <div class="countdown">
-<p id="demo"></p>
+                <p id="demo"></p>
 
-<script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Dec 20, 2019 15:37:25").getTime();
+                <script>
+                    // Set the date we're counting down to
+                    var countDownDate = new Date("Dec 20, 2019 15:37:25").getTime();
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
+                    // Update the count down every 1 second
+                    var x = setInterval(function () {
 
-                // Get today's date and time
-                var now = new Date().getTime();
+                        // Get today's date and time
+                        var now = new Date().getTime();
 
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
+                        // Find the distance between now and the count down date
+                        var distance = countDownDate - now;
 
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        // Time calculations for days, hours, minutes and seconds
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                // Display the result in the element with id="demo"
-                document.getElementById("demo").innerHTML = "Just " + days + "d " + hours + "h "
-                    + minutes + "m " + seconds + "s left for this deal!!";
+                        // Display the result in the element with id="demo"
+                        document.getElementById("demo").innerHTML = "Just " + days + "d " + hours + "h "
+                            + minutes + "m " + seconds + "s left for this deal!!";
 
-                // If the count down is finished, write some text
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("demo").innerHTML = "EXPIRED";
-                }
-            }, 1000);
-</script>
-</div>
+                        // If the count down is finished, write some text
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("demo").innerHTML = "EXPIRED";
+                        }
+                    }, 1000);
+                </script>
+            </div>
             <br>
             <br>
 
-    <?php
-            If($row['QuantityOnHand'] > 100) {
+            <?php
+            If ($row['QuantityOnHand'] > 100) {
                 print("<H4 class='nogopvoorraad'><strong>" . " In stock! </H4></strong>");
             } elseif ($row['QuantityOnHand'] <= 0) {
                 print("<H4 class='nogopvoorraad'><strong>" . " Out of stock! </H4></strong>");
             } Else {
-                print ("<H3 class='nogopvoorraad'> <strong>" . "Just ". $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");}
+                print ("<H3 class='nogopvoorraad'> <strong>" . "Just " . $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");
+            }
 
             print("<H4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</H4><br>");
             print("</div>");
@@ -291,32 +292,40 @@ include "includes/funtions.php";
             /*            producten zonder korting*/
         } else {
             print("<div class='prijs'>" . "€" . $price . "</div><br><br>");
-            If($row['QuantityOnHand'] > 100) {
+            If ($row['QuantityOnHand'] > 100) {
                 print("<H4 class='nogopvoorraad'><strong>" . " In stock! </H4></strong>");
             } elseif ($row['QuantityOnHand'] <= 0) {
                 print("<H4 class='nogopvoorraad'><strong>" . " Out of stock! </H4></strong>");
             } Else {
-                print ("<H3 class='nogopvoorraad'> <strong>" . "Just ". $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");}
+                print ("<H3 class='nogopvoorraad'> <strong>" . "Just " . $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");
+            }
             print("<h4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</h4><br>");
             print("</div>");
             /*            producten zonder korting*/
             $heeftKorting = FALSE;
         }
+
+        if ($row['QuantityOnHand'] <= 0) {
+
+        } else {
+            ?>
+
+            <!-- //aantallen selecteer formulee/toevoegen aan winkelmand knop-->
+            <div class="aantallen">
+                <form action="winkelmand.php" method="post">
+                    <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
+                    Amount: <input id="aantalx" type="number" value="1" name="quantity"><br><br>
+                    <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
+                    <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
+                    <input type="hidden" name="DealPrice" value="<?php print("$nieuwekortingprijs"); ?>">
+                    <input type="hidden" name="hasDeal" value="<?php print("$heeftKorting"); ?>">
+                </form>
+            </div>
+            <?php
+        }
     }
     ?>
-
-    <!-- //aantallen selecteer formulee/toevoegen aan winkelmand knop-->
-    <div class="aantallen">
-        <form action="winkelmand.php" method="post">
-            <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
-            Amount: <input id="aantalx" type="number" value="1" name="quantity"><br><br>
-            <?php print("<h4 style='text-align: center; margin-bottom: 30px'><a href='guarantee.php'>Warranty Policy</a></h4>"); ?>
-            <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
-            <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
-            <input type="hidden" name="DealPrice" value="<?php print("$nieuwekortingprijs"); ?>">
-            <input type="hidden" name="hasDeal" value="<?php print("$heeftKorting"); ?>">
-        </form>
-    </div>
+    <h4 style='text-align: center; margin-bottom: 30px'><a href='guarantee.php'>Warranty Policy</a></h4>
 </div>
 
 
@@ -358,7 +367,7 @@ include "includes/funtions.php";
 <?php
 if (isset($_POST['verzendReview'])) {
 
-    if (empty($_POST['star'])){
+    if (empty($_POST['star'])) {
         $aantalSterren = 0;
     } else {
         $aantalSterren = $_POST['star'];
