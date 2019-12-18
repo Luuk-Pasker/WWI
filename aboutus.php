@@ -34,7 +34,7 @@ include "includes/header.php";
         who travels to the country to get their products on the market. WWI has ambitions
         to start their activities in Europe from a new headquarters in Amsterdam, so now we have the
         opportunity with this website to sell our products to consumers directly. <br>If you have any
-        questions, be free to ask them trough the contact form.
+        questions, be free to ask them trough the <a href='contactForm.php'>contact form</a>.
     </h4>
     </tekst></div>
 <div class="photopersonen">
