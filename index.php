@@ -66,86 +66,25 @@ foreach ($laatstToegevoegd as $row) {
 
 <div class="homebody">
 
+    <link rel='stylesheet' type='text/css' href = 'banner css/slider.css'>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin: 0 auto;">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+    <div id="slider">
+        <figure>
+            <a href="browse.php">
+                <img src="banner css/banner%20christmas.gif">
+            </a>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" style ="display: flex!important; justify-content: center">
-            <?php
-            for($i=0; $i<3; $i++){
-                if($i==0){
-                    print("<div class=\"item active\"><table><tr>");
-                    for($j=0; $j<4; $j++) {
-                        $randomProduct = rand(0,227);
-                        $ItemID = $randomProductArray[$randomProduct]['StockItemID'];
-                        $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
-                        if(!(@getimagesize($image))){
-                            $image = "images/" . $randomProductArray[$randomProduct]['Photo'];
-                        }
-                        print("
-                            <th>
-                            <a href='productBekijken.php?id=" . $randomProductArray[$randomProduct]['StockItemID'] . "'>
-                            <img src='$image' style=\"height:200px;float: left; text-align: center\">
-                            </a>
-                            </th>");
-                    }
-                    print("</tr></table></div>");
-                } else {
-                    print("<div class=\"item\"><table><tr>");
-                    for($j=0; $j<4; $j++) {
-                        $randomProduct = rand(0,227);
-                        $ItemID = $randomProductArray[$randomProduct]['StockItemID'];
-                        $image = 'images/ProductImages/' . $ItemID . '.1.jpg';
-                        if(!(@getimagesize($image))){
-                            $image = "images/" . $randomProductArray[$randomProduct]['Photo'];
-                        }
-                        print("
-                            <th>
-                            <a href='productBekijken.php?id=" . $randomProductArray[$randomProduct]['StockItemID'] . "'>
-                            <img src='$image' style=\"height:200px;float: left; text-align: center\">
-                            </a>
-                            </th>");
-                    }
-                    print("</tr></table></div>");
-                }
-            }
-            ?>
-        </div>
+            <a href="browse.php">
+                <img src="banner%20css/banner%20login.gif">
+            </a>
+
+            <a href="browse.php">
+                <img src="banner%20css/banner%20footwear.gif">
+            </a>
 
 
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        </figure>
     </div>
-
-        <script>
-    var myIndex = 0;
-    carousel();
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}
-        x[myIndex-1].style.display = "block";
-        setTimeout(carousel, 3000); // Change image every 2 seconds
-    }
-</script>
 
 
     <table width="100%" class="table table-bordered">
