@@ -86,7 +86,7 @@ foreach ($laatstToegevoegd as $row) {
             </a>
 
             <a href="http://localhost/WWI/register.php">
-                <img src="banner%20css/banner%20login.gif">
+                <img src="banner%20css/banner%202.gif">
             </a>
 
             <a href="http://localhost/WWI/browse.php?id=8">
@@ -95,7 +95,7 @@ foreach ($laatstToegevoegd as $row) {
 
 
                 <img src="banner%20css/banner 4.gif">
-            
+
             <a href="http://localhost/WWI/browse.php?deals=deals">
                 <img src="banner css/banner%20christmas.gif">
             </a>
@@ -106,6 +106,7 @@ foreach ($laatstToegevoegd as $row) {
 
     </div>
 <!--slider/banner-->
+
 
 
 <!--producten geprint in tabel die in de aanbieding zijn-->
