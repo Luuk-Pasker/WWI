@@ -15,10 +15,10 @@ include "includes/header.php";
 <br>
 <br>
 <div class="quote2">
-    <quote class='quote' type="tekst"><h1>"We are WWI. We are proud of our products and believe in quality.<br>
-            In every home a WWI product will find his home.<br>
-            Despite our size, customers see us as small-scale and concerned company.<br>
-            To stay in touch with our customers is a very important part of our business."</h1></quote>
+    <quote class='quote' type="tekst"><h1>"We are WWI. We are proud to present our products.
+            Our products are build using state of the art technology creating products with high quality standards.
+            Despite our size, we are a small caring company which puts their users on top priority to give them the best service we have to offer.
+            Our products are designed in such a way that it will always find a snug place in your home."</h1></quote>
 </div>
 
 <br>

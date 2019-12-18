@@ -277,9 +277,9 @@ include "includes/funtions.php";
 
     <?php
             If($row['QuantityOnHand'] > 100) {
-                print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
-            } elseif ($row['QuantityOnHand'] == 0) {
-                print("<H4 class='nogopvoorraad'>" . " Out of stock! </H4>");
+                print("<H4 class='nogopvoorraad'><strong>" . " In stock! </H4></strong>");
+            } elseif ($row['QuantityOnHand'] <= 0) {
+                print("<H4 class='nogopvoorraad'><strong>" . " Out of stock! </H4></strong>");
             } Else {
                 print ("<H3 class='nogopvoorraad'> <strong>" . "Just ". $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");}
 
@@ -292,9 +292,9 @@ include "includes/funtions.php";
         } else {
             print("<div class='prijs'>" . "€" . $price . "</div><br><br>");
             If($row['QuantityOnHand'] > 100) {
-                print("<H4 class='nogopvoorraad'>" . " In stock! </H4>");
-            } elseif ($row['QuantityOnHand'] == 0) {
-                print("<H4 class='nogopvoorraad'>" . " Out of stock! </H4>");
+                print("<H4 class='nogopvoorraad'><strong>" . " In stock! </H4></strong>");
+            } elseif ($row['QuantityOnHand'] <= 0) {
+                print("<H4 class='nogopvoorraad'><strong>" . " Out of stock! </H4></strong>");
             } Else {
                 print ("<H3 class='nogopvoorraad'> <strong>" . "Just ". $row['QuantityOnHand'] . " left in stock!" . "</strong> </H3>");}
             print("<h4 class='bezorgdatum'>" . $row['LeadTimeDays'] . " days to deliver</h4><br>");
@@ -309,7 +309,8 @@ include "includes/funtions.php";
     <div class="aantallen">
         <form action="winkelmand.php" method="post">
             <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
-            Amount: <input id="aantalx" type="number" value="1" name="quantity">
+            Amount: <input id="aantalx" type="number" value="1" name="quantity"><br><br>
+            <?php print("<h4 style='text-align: center; margin-bottom: 30px'><a href='guarantee.php'>Warranty Policy</a></h4>"); ?>
             <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
             <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
             <input type="hidden" name="DealPrice" value="<?php print("$nieuwekortingprijs"); ?>">

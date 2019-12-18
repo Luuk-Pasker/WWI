@@ -22,7 +22,7 @@ foreach ($_SESSION["IDs"] as $index => $val) {
     $amount = $_SESSION["Quantitys"][$index];
     $price = $_SESSION["Prices"][$index];
     $tekst = "$tekst
-Amount: $amount             Name of product: $name                                Itemprice: €$ItemPrice";
+Amount: $amount                    Name of product: $name                                Itemprice: €$ItemPrice";
 }
 $totalprice = number_format($_SESSION["TotalPrice"], 2);
 $tekst = "$tekst 
