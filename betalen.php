@@ -304,7 +304,7 @@ $result3 = mysqli_query($connection, $discount);
                     }
 
                     $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
-                    
+
 
                     /*printen van de resultaten op het scherm*/
                     $res_data = mysqli_query($connection, $sql);
@@ -328,133 +328,139 @@ $result3 = mysqli_query($connection, $discount);
             $username = $_POST['fname'] . " " . $_POST['lname'];
             $_SESSION['fullname'] = $username;
 
-            $sql = "SELECT *, MAX(PersonID) AS HighestID FROM people";
+            $sql = "SELECT LogonName FROM people";
             /*printen van de resultaten op het scherm*/
             $res_data = mysqli_query($connection, $sql);
-            foreach ($res_data as $row) {
-                $PersonID = $row['HighestID'] + 1;
-                if ($_POST['email'] == $row['LogonName']) {
-                    $error = "Email is already in use, try something else!";
-                } elseif (empty($_POST['fname'])) {
-                    $error = "Fill in name!";
-                } elseif (empty($_POST['email'])) {
-                    $error = "Fill in email!";
-                } elseif (empty($_POST['phone'])) {
-                    $error = "Fill in phonenumber!";
-                } elseif (empty($_POST['address'])) {
-                    $error = "Fill in address!";
-                } elseif (empty($_POST['postal'])) {
-                    $error = "Fill in postal!";
-                } elseif (empty($_POST['city'])) {
-                    $error = "Fill in city!";
-                } elseif (empty($_POST['sendMethod'])) {
-                    $error = "Fill in a send method";
-                } elseif (empty($_POST['paymentMethod'])) {
-                    $error = "Fill in a payment method";
-                } elseif (empty($_POST['password'])) {
-                    $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            foreach ($res_data as $row1) {
 
-                    $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('sssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $notPermitted, $_POST['email'], $_POST['phone'], $_POST['email']);
-                    $stmt->execute();
+                $sql = "SELECT MAX(PersonID) AS HighestID FROM people";
+                /*printen van de resultaten op het scherm*/
+                $res_data = mysqli_query($connection, $sql);
+                foreach ($res_data as $row) {
+                    $PersonID = $row['HighestID'] + 1;
+                    if ($_POST['email'] == $row1['LogonName']) {
+                        $error = "Email is already in use, try something else!";
+                    } elseif (empty($_POST['fname'])) {
+                        $error = "Fill in name!";
+                    } elseif (empty($_POST['email'])) {
+                        $error = "Fill in email!";
+                    } elseif (empty($_POST['phone'])) {
+                        $error = "Fill in phonenumber!";
+                    } elseif (empty($_POST['address'])) {
+                        $error = "Fill in address!";
+                    } elseif (empty($_POST['postal'])) {
+                        $error = "Fill in postal!";
+                    } elseif (empty($_POST['city'])) {
+                        $error = "Fill in city!";
+                    } elseif (empty($_POST['sendMethod'])) {
+                        $error = "Fill in a send method";
+                    } elseif (empty($_POST['paymentMethod'])) {
+                        $error = "Fill in a payment method";
+                    } elseif (empty($_POST['password'])) {
+                        $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                    $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
-                    $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
-                    $stmt->execute();
+                        $stmt = $connection->prepare($sql);
+                        $stmt->bind_param('sssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $notPermitted, $_POST['email'], $_POST['phone'], $_POST['email']);
+                        $stmt->execute();
 
-                    foreach ($_SESSION["IDs"] as $index => $val) {
-                        $id = $_SESSION['IDs'][$index];
-                        $Quantity = $_SESSION['Quantitys'][$index];
-                        echo $id;
-                        echo $Quantity;
+                        $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
+                        $stmt = $connection->prepare($sql);
+                        $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
+                        $stmt->execute();
 
-                        $sql = "SELECT * FROM stockitemholdings WHERE StockItemID = '$id'";
-                        /*printen van de resultaten op het scherm*/
-                        $res_data = mysqli_query($connection, $sql);
-                        foreach ($res_data as $row) {
-                            $minQuantity = $row['QuantityOnHand'] - $Quantity;
-                            echo $minQuantity;
+                        foreach ($_SESSION["IDs"] as $index => $val) {
+                            $id = $_SESSION['IDs'][$index];
+                            $Quantity = $_SESSION['Quantitys'][$index];
+                            echo $id;
+                            echo $Quantity;
 
-                            $sql = "UPDATE stockitemholdings SET QuantityOnHand = ?, LastStocktakeQuantity = ? WHERE StockItemID = '$id'";
+                            $sql = "SELECT * FROM stockitemholdings WHERE StockItemID = '$id'";
+                            /*printen van de resultaten op het scherm*/
+                            $res_data = mysqli_query($connection, $sql);
+                            foreach ($res_data as $row) {
+                                $minQuantity = $row['QuantityOnHand'] - $Quantity;
+                                echo $minQuantity;
 
-                            $stmt = $connection->prepare($sql);
-                            $stmt->bind_param('ss', $minQuantity, $minQuantity);
-                            $stmt->execute();
+                                $sql = "UPDATE stockitemholdings SET QuantityOnHand = ?, LastStocktakeQuantity = ? WHERE StockItemID = '$id'";
 
+                                $stmt = $connection->prepare($sql);
+                                $stmt->bind_param('ss', $minQuantity, $minQuantity);
+                                $stmt->execute();
+
+                            }
+
+                            $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                            /*printen van de resultaten op het scherm*/
+                            $res_data = mysqli_query($connection, $sql);
+                            foreach ($res_data as $row) {
+                                $invoiceID = $row['HighestID'];
+
+                                $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                                $stmt = $connection->prepare($sql);
+                                $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                                $stmt->execute();
+                                echo '<script> window.location.href = "bevestiging.php"; </script>';
+                            }
                         }
+                    } elseif ($_POST['email'] == $_POST['password']) {
+                        $error = "Email and password can't be the same!";
+                    } elseif ($_POST['password'] == $_POST['repeatPassword']) {
+                        $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                        $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
-                        /*printen van de resultaten op het scherm*/
-                        $res_data = mysqli_query($connection, $sql);
-                        foreach ($res_data as $row) {
-                            $invoiceID = $row['HighestID'];
+                        $stmt = $connection->prepare($sql);
+                        $stmt->bind_param('ssssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
+                        $stmt->execute();
 
-                            $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
-                            $stmt = $connection->prepare($sql);
-                            $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
-                            $stmt->execute();
-                            echo '<script> window.location.href = "bevestiging.php"; </script>';
+
+                        $sql1 = "INSERT INTO discount (discountCode, PersonID, discountUsed, discount) VALUES (?, ?, ?, ?)";
+
+                        $stmt1 = $connection->prepare($sql1);
+                        $stmt1->bind_param('ssss', $discountCode, $PersonID, $discountUsed, $discountPercent);
+                        $stmt1->execute();
+
+
+                        $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
+                        $stmt = $connection->prepare($sql);
+                        $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
+                        $stmt->execute();
+
+                        foreach ($_SESSION["IDs"] as $index => $val) {
+                            $id = $_SESSION['IDs'][$index];
+                            $Quantity = $_SESSION['Quantitys'][$index];
+                            echo $id;
+                            echo $Quantity;
+
+                            $sql = "SELECT * FROM stockitemholdings WHERE StockItemID = '$id'";
+                            /*printen van de resultaten op het scherm*/
+                            $res_data = mysqli_query($connection, $sql);
+                            foreach ($res_data as $row) {
+                                $minQuantity = $row['QuantityOnHand'] - $Quantity;
+                                echo $minQuantity;
+
+                                $sql = "UPDATE stockitemholdings SET QuantityOnHand = ?, LastStocktakeQuantity = ? WHERE StockItemID = '$id'";
+
+                                $stmt = $connection->prepare($sql);
+                                $stmt->bind_param('ss', $minQuantity, $minQuantity);
+                                $stmt->execute();
+
+                            }
+
+                            $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
+                            /*printen van de resultaten op het scherm*/
+                            $res_data = mysqli_query($connection, $sql);
+                            foreach ($res_data as $row) {
+                                $invoiceID = $row['HighestID'];
+
+                                $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
+                                $stmt = $connection->prepare($sql);
+                                $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
+                                $stmt->execute();
+                                echo '<script> window.location.href = "bevestiging.php"; </script>';
+                            }
                         }
+                    } else {
+                        $error = "wrong information";
                     }
-                } elseif ($_POST['email'] == $_POST['password']) {
-                    $error = "Email and password can't be the same!";
-                } elseif ($_POST['password'] == $_POST['repeatPassword']) {
-                    $sql = "INSERT INTO people (PersonID, Fullname, address, postalCode, city, IsPermittedToLogon, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-                    $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('ssssssssss', $PersonID, $username, $_POST['address'], $_POST['postal'], $_POST['city'], $permitted, $_POST['email'], $HPass, $_POST['phone'], $_POST['email']);
-                    $stmt->execute();
-
-
-                    $sql1 = "INSERT INTO discount (discountCode, PersonID, discountUsed, discount) VALUES (?, ?, ?, ?)";
-
-                    $stmt1 = $connection->prepare($sql1);
-                    $stmt1->bind_param('ssss', $discountCode, $PersonID, $discountUsed, $discountPercent);
-                    $stmt1->execute();
-
-
-                    $sql = "INSERT INTO invoice (PersonID, sendMethod, paymentMethod) VALUES (?, ?, ?)";
-                    $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('sss', $userId, $_POST['sendMethod'], $_POST['paymentMethod']);
-                    $stmt->execute();
-
-                    foreach ($_SESSION["IDs"] as $index => $val) {
-                        $id = $_SESSION['IDs'][$index];
-                        $Quantity = $_SESSION['Quantitys'][$index];
-                        echo $id;
-                        echo $Quantity;
-
-                        $sql = "SELECT * FROM stockitemholdings WHERE StockItemID = '$id'";
-                        /*printen van de resultaten op het scherm*/
-                        $res_data = mysqli_query($connection, $sql);
-                        foreach ($res_data as $row) {
-                            $minQuantity = $row['QuantityOnHand'] - $Quantity;
-                            echo $minQuantity;
-
-                            $sql = "UPDATE stockitemholdings SET QuantityOnHand = ?, LastStocktakeQuantity = ? WHERE StockItemID = '$id'";
-
-                            $stmt = $connection->prepare($sql);
-                            $stmt->bind_param('ss', $minQuantity, $minQuantity);
-                            $stmt->execute();
-
-                        }
-
-                        $sql = "SELECT MAX(InvoicesID) AS HighestID FROM invoice";
-                        /*printen van de resultaten op het scherm*/
-                        $res_data = mysqli_query($connection, $sql);
-                        foreach ($res_data as $row) {
-                            $invoiceID = $row['HighestID'];
-
-                            $sql = "INSERT INTO transactions (StockItemID, Quantity, InvoicesID) VALUES (?, ?, ?)";
-                            $stmt = $connection->prepare($sql);
-                            $stmt->bind_param('sss', $id, $Quantity, $invoiceID);
-                            $stmt->execute();
-                            echo '<script> window.location.href = "bevestiging.php"; </script>';
-                        }
-                    }
-                } else {
-                    $error = "wrong information";
                 }
             }
         }
