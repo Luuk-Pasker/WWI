@@ -3,10 +3,15 @@
 }
 
 .orderlist{
-    background-color: lightblue;
-    width: 231px;
-    height: 100px;
+    background-color: white;
+    width: 300px;
+    height: 250px;
+    max-height: 250px;
     overflow: auto;
     border: 2px solid black;
-    float: left;
+    color: black;
+    padding-left: 1px;
+    padding-right: 1px;
+
+
 }

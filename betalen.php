@@ -1,4 +1,4 @@
-<link rel="stylesheets" tupe="text/css" href="css/betalen.css">
+<link rel="stylesheet" type="text/css" href="css/betalen.css">
 <link rel="stylesheet" type="text/css" href="css/aboutus.css">
 <link rel="stylesheet" type="text/css" href="css/productBekijken.css">
 
@@ -473,12 +473,12 @@ $result3 = mysqli_query($connection, $discount);
 
             print"<h3 style='font-weight: bold;'>Your order:</h3>";
             print"<br>";
+            ?> <div class="orderlist"> <?php
             foreach ($_SESSION["IDs"] as $index => $val) {
                 $Photo = $_SESSION['Images'][$index];
                 $ItemPrice = $_SESSION["Prices"][$index] * $_SESSION["Quantitys"][$index];
 
                 ?>
-                <div class='Orderlist'>
                     <meta name="viewport" content="width=device-width, initial-scale=1">
 
                     <?php
@@ -489,9 +489,10 @@ $result3 = mysqli_query($connection, $discount);
                     print("<h5 style='font-weight: bold;'>" . "price: " . "€" . number_format((float)$_SESSION["Prices"][$index], 2, '.', '') . "</h5>");
                     print"<br>";
                     ?>
-                </div>
                 <?php
             }
+            ?>
+        </div> <?php
             print"<h5 style='font-weight: bold;'>" . "Shipping price €6,95" . "</h5><br>";
             print("<h5 style='font-weight: bold; font-size: 20px'>" . "Total: €    " . number_format($_SESSION["TotalPrice"], 2) . "</h5>");
 
