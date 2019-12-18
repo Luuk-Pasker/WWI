@@ -25,7 +25,8 @@ function GetDealsBrowse($connection)
 /*zoek alle huidige producten die nieuw zijn voor op browse pagina*/
 function GetLaatstToegevoegdBrowse($connection)
 {
-    $sql = "select * from stockitems order by StockItemID desc";
+    /*select * from stockitems order by StockItemID desc*/
+    $sql = "select *, QuantityOnHand from stockitems sitem join stockitemholdings sih on sitem.StockItemID = sih.StockItemID order by sitem.StockItemID desc";
     $GetLatstToegevoed = mysqli_query($connection, $sql);
     return $GetLatstToegevoed;
 }
