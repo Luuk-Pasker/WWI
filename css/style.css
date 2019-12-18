@@ -90,8 +90,6 @@ input[type=submit] {
 
 .niksgevonden {
     margin-left: 50px;
-    margin-right: 400px;
-    margin-top: 50px;
     font-family: Aharoni;
     border: black solid; background: lightgray; padding: 40px;
 }
@@ -114,7 +112,6 @@ input[type=submit] {
     color: black;
     border: black solid 2px; background: lightgray;
     padding: 3px;
-    margin-left: 740px;
 }
 
 .loginBox{
