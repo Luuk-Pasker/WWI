@@ -8,7 +8,7 @@ $discount = "20";
 $discountUsed = "1";
 ?>
 
-    <div class="loginBox" style="height: 70%; top: 55%;">
+    <div class="loginBox" style="height: 85%; top: 70%; margin-bottom: 5%;">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">

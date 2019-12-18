@@ -3,7 +3,7 @@ $active = "login";
 include "includes/header.php";
 ?>
 
-    <div class="loginBox" style="height: 30%;">
+    <div class="loginBox" style="height: 40%;">
         <form method="post">
             <div class="loginRow">
                 <div class="loginHead">
