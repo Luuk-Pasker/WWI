@@ -38,6 +38,7 @@ $result = mysqli_query($connection, $sql);
 <div class="NewItems">
     <?php
     print("<div class='Deals'>");
+    print("<div class='Deals'>");
     print("<form method=\"post\" action=\"/WWI/browse.php\"><button name='NewItems' value='NewItems' class='button' type=\"submit\">New Items</button></form>");
     print("</div>");
     ?>
