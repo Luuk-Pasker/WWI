@@ -464,7 +464,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == TRUE) {
                     <input type="text" name="Author" value="<?php print($author); ?>"
                            style="width: 100%!important; float: left">
                 </td>
-                <td style="width: 100px;">
+                <td style="width: 110px;">
                     <div class="rating" style="float: left; text-align: center">
                         <div class="star-rating"
                              style="height: 20px; margin-top: 0px; padding: 0px; margin-left: 10px; margin-right: auto">
