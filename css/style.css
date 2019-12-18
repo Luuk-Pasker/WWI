@@ -200,7 +200,7 @@ a.loginLink:hover{
     overflow: hidden;
     font-size: large;
     width: 1058px;
-    height: 300px;
+    height: 320px;
     text-align: right;
 }
 
@@ -307,7 +307,7 @@ a.loginLink:hover{
 }
 
 .scDiscountMessageBad2{
-    margin: 80px 60px 0px 800px;
+    margin: 80px 60px 0px 760px;
     background-color: red;
     border-radius: 4px;
     padding: 5px;
