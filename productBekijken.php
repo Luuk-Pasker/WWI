@@ -314,7 +314,7 @@ include "includes/funtions.php";
             <div class="aantallen">
                 <form action="winkelmand.php" method="post">
                     <input id="toevoegenaanwinkelmand" type="submit" value="Add to shopping cart">
-                    Amount: <input id="aantalx" type="number" value="1" name="quantity"><br><br>
+                    Amount: <input id="aantalx" type="number" value="1" name="quantity" min="1"><br><br>
                     <input type="hidden" name="ItemID" value="<?php print("$ItemID"); ?>">
                     <input type="hidden" name="ItemPrice" value="<?php print("$price"); ?>">
                     <input type="hidden" name="DealPrice" value="<?php print("$nieuwekortingprijs"); ?>">
