@@ -1,3 +1,5 @@
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5dfb1905ad112800124ec984&product=inline-share-buttons" async="async"></script>
+
 <!--//header-->
 <?php
 include "includes/header.php";
@@ -12,6 +14,10 @@ include "includes/funtions.php";
     <a class="KEERTERUGNU" href="browse.php" style="color: white;">
         <button class="btn" title="Go back"><i class="fas fa-long-arrow-alt-left"></i> Go back</button>
     </a>
+</div>
+
+<div class="share">
+    <div class="sharethis-inline-share-buttons"></div>
 </div>
 
 <div class="container">
@@ -325,7 +331,7 @@ include "includes/funtions.php";
         }
     }
     ?>
-    <h4 style='text-align: center; margin-bottom: 30px'><a href='guarantee.php'>Warranty Policy</a></h4>
+    <h4 class="warrantypolicy" style='text-align: center; margin-bottom: 30px'><a href='guarantee.php'>Warranty Policy</a></h4>
 </div>
 
 
