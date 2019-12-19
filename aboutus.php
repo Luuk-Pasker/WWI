@@ -12,13 +12,11 @@ include "includes/header.php";
 </a>
 <br>
 <br>
-<br>
-<br>
 <div class="quote2">
-    <quote class='quote' type="tekst"><h1>"We are WWI. We are proud to present our products.
+    <quote class='quote' type="tekst"><h2>"We are WWI. We are proud to present our products.
             Our products are build using state of the art technology creating products with high quality standards.
             Despite our size, we are a small caring company which puts their users on top priority to give them the best service we have to offer.
-            Our products are designed in such a way that it will always find a snug place in your home."</h1></quote>
+            Our products are designed in such a way that it will always find a snug place in your home."</h2></quote>
 </div>
 
 <br>
