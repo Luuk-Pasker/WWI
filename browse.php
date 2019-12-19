@@ -356,7 +356,7 @@ if (isset($_GET['id'])) {
 
                             }
 
-                            if ($row["QuantityOnHand"] >=1){
+                            if ($browsearray[$x]["QuantityOnHand"] >=1){
                                 print("<a>Available Now<a/>");}
                             else {
                                 print ("<a>Sold Out</a>");
