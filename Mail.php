@@ -1,15 +1,19 @@
 <?php
 $okMail=
-'Dear Costumer,
-   
-Thank you for your order. We will send it as soon as possible. If there is something wrong with your order, feel free to contact us. 
-All information you need is on our website. Here you have the invoice, witch is also your warranty.
 
-Greetings WWI
+"Dear customer,
+
+Thank you for your purchase. We will send the product as soon as possible. 
+If the order is incomplete or not functioning properly, feel free to contact us. See the website for the info.
+The invoice is enclosed in this e-mail. The invoice may be used for your warranty.
+
+Kind regards,
+             
+WWI.
 
 
 
-';
+";
 
 
 $tekst ="

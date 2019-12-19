@@ -13,14 +13,19 @@ include "includes/footer.php";
 <br>
 <br>
 
-<div class="guarantee"><h4>We guarantee that if you buy an item from WWI it is in good condition and continues to work as expected under normal use, this is the legal guarantee. If there are signs of misuse of the product than it was meant for, this warranty does not apply.
-    If there is something wrong with the item, we will look for a good solution. Depending on your item, we will arrange a reparation or repayment of the purchase amount.<br>
-    <br>Your invoice or proof of purchase is also your proof of warranty.<br>
-    <br>How long the guarantee will obtain depends on the item. The guarantee that we offer is legally established and applies to the product durability of an item. One item has a longer durability than the other.
-    <br>There’s a dissimilarity between every factory with the warranty of the items. You can see how long that lasts in the captions of your article.<br>
-        <br> If there are any questions or problems about your product, go to <a href='contactForm.php'>contact form</a>  to get in touch with us.
+<div class="guarantee"><h4>
+        We guarantee that any items purchased from the WWI store, is in good condition and continues to work as expected under regular use.
+        If there are any signs of misuse of the product, warranty does not apply.<br>
+        If the item does not work as described, we shall work on finding the best solution to successfully accompany the wishes of our customers.
+        <br><br>Depending on the item purchased, we shall arrange a reparation or repayment of the product.
+        Without a proper invoice or proof of purchase, warranty will not be given for the product.
+        The duration of the warranty will depend on the item. The warranty that we offer is legally established and applies to the products durability.
+        <br>
+        <br>
+        If there are any questions or problems, please fill in the <a href='contactForm.php'>contact form</a> to contact us.
 </h4></div>
 
 <?php
 include "includes/footer.php";
 ?>
+

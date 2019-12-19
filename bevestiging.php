@@ -8,12 +8,11 @@ include "includes/header.php"
 <h2> <img src="images/Check.png" width="35" height="35" alt="check"> Your order has been succesfull! </h2>
     <br>
 <p class="textconfirm">
-    We are happy that you have made a payment on our website.
+    We are happy that you have made a purchase on our website.
     <br>
-    If you want to check out more products, go back to the home page!
+    If you would like to check out more products, please go back to the home page.
     <br>
-    <br>
-    Check your mail to confirm your payment, if you have any questions contact us.
+    Check your e-mail for confirmation of the purchase. If you have any questions, please contact us.
 </p>
 </div>
 
