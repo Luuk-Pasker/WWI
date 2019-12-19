@@ -128,7 +128,7 @@ function PrintSearchResults($search, $no_of_records_per_page, $offset) {
                             print("<a class='specialdeal'>SpecialDeal<a/><br>");
                             print("<a class='standaardprijs'>" . "€" . $kortingprijs . " " . "</a>");
                             print("<a class='kortingprijs'>" . "<strike>€$price</strike>" . "</a><br>");
-                            if ($browsearray[$x][$x]["QuantityOnHand"] >=1){
+                            if ($browsearray[$x]["QuantityOnHand"] >=1){
                                 print("<a>Available Now<a/>");
                             } else {
                                 print ("<a>Sold Out</a>");
