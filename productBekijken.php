@@ -516,7 +516,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == TRUE) {
             </tr>
             <tr>
                 <td colspan="2">
-                    <input class="reviewButton" type="submit" name="verzendReview" value="Verzend Review">
+                    <input class="reviewButton" type="submit" name="verzendReview" value="Send Review">
                 </td>
             </tr>
         </table>
